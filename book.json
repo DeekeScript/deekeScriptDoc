@@ -1,0 +1,124 @@
+{
+    "root": "./docs",
+    "title": "DeekeScript",
+    "language": "zh-hans",
+    "description": "描述",
+    "website": "https://doc.deeke.top/",
+    "keywords": "DeekeScript, 嘀客, Deeke",
+    "published": "04/12/2024",
+    "author": "miniphper",
+    "copyright": "DeekeScript",
+    "plugins": [
+        "hints",
+        "-theme-creative",
+        "theme-comscore",
+        "sidebar-ad",
+        "intopic-toc",
+        "sharing",
+        "exercises",
+        "@honkit/honkit-plugin-ga",
+        "sitemap",
+        "expandable-chapters",
+        "chapter-fold",
+        "hide-published-with",
+        "edit-link",
+        "echarts",
+        "copy-code-button",
+        "-highlight",
+        "prism",
+        "back-to-top-button",
+        "-lunr",
+        "-search",
+        "search-pro",
+        "-insert-logo",
+        "tbfed-pagefooter",
+        "gtalk"
+    ],
+    "pluginsConfig": {
+        "gtalk": {
+            "clientID": "67bf08545b789c1522cd",
+            "clientSecret": "d04e46d41828ad4c8db0ddc9e4fa8ad785943260",
+            "repo": "https://github.com/miniphper/ad-dke",
+            "owner": "miniphper",
+            "admin": [
+                "miniphper"
+            ]
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy script.deeke.top 2024",
+            "modify_label": "该文章修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "insert-logo": {
+            "url": "",
+            "style": "background: none;"
+        },
+        "prism": {
+            "css": [
+                "prismjs/themes/prism-okaidia.css"
+            ]
+        },
+        "ga": {
+            "trackingID": "G-00000000",
+            "anonymizeIP": true
+        },
+        "intopic-toc": {
+            "label": "本章主要内容"
+        },
+        "edit-link": {
+            "base": "https://github.com/miniphper/deekScriptDocument",
+            "label": "在线编辑"
+        },
+        "sidebar-ad": {
+            "imageUrl": "/weixin.png",
+            "url": "/weixin.png",
+            "description": "<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"
+        },
+        "sitemap": {
+            "hostname": "https://script.deeke.top/"
+        },
+        "sharing": {
+            "weibo": true,
+            "qq": true,
+            "whatsapp": true,
+            "douban": false,
+            "facebook": true,
+            "twitter": true,
+            "google": true,
+            "instapaper": false,
+            "line": false,
+            "linkedin": true,
+            "messenger": false,
+            "pocket": false,
+            "qzone": false,
+            "stumbleupon": false,
+            "viber": false,
+            "vk": false,
+            "all": [
+                "facebook",
+                "google",
+                "twitter",
+                "weibo",
+                "instapaper",
+                "linkedin",
+                "pocket",
+                "stumbleupon"
+            ]
+        }
+    },
+    "pdf": {
+        "pageNumbers": true,
+        "fontSize": 12,
+        "fontFamily": "Arial",
+        "margin": {
+            "right": 62,
+            "left": 62,
+            "top": 56,
+            "bottom": 56
+        }
+    },
+    "structure": {
+        "readme": "README.md",
+        "summary": "SUMMARY.md"
+    }
+}

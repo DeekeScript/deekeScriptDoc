@@ -1,0 +1,42 @@
+{
+  "name": "deekescriptdocument",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "honkit build",
+    "serve": "honkit serve",
+    "pdf": "honkit pdf ./ ./DeekeScript.pdf"
+  },
+  "devDependencies": {
+    "@honkit/honkit-plugin-ga": "^1.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "gitbook-plugin-chapter-fold": "^0.0.4",
+    "gitbook-plugin-edit-link": "^2.0.2",
+    "gitbook-plugin-exercises": "^3.0.0",
+    "gitbook-plugin-hide-published-with": "0.0.1",
+    "gitbook-plugin-hints": "^1.0.2",
+    "gitbook-plugin-intopic-toc": "^1.0.6",
+    "gitbook-plugin-sharing": "https://github.com/sumn2u/plugin-sharing.git",
+    "gitbook-plugin-sidebar-ad": "0.0.4",
+    "gitbook-plugin-sitemap": "^1.2.0",
+    "gitbook-plugin-theme-creative": "https://github.com/sumn2u/gitbook-plugin-theme-creative.git",
+    "honkit": "^5.1.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gitbook-plugin-back-to-top-button": "^0.1.4",
+    "gitbook-plugin-copy-code-button": "^0.0.2",
+    "gitbook-plugin-echarts": "^1.0.6",
+    "gitbook-plugin-expandable-chapters": "^0.2.0",
+    "gitbook-plugin-gtalk": "^0.0.9",
+    "gitbook-plugin-insert-logo": "^0.1.5",
+    "gitbook-plugin-search-pro": "^2.0.2",
+    "gitbook-plugin-tbfed-pagefooter": "^0.0.1",
+    "gitbook-plugin-theme-comscore": "^0.0.3",
+    "honkit-plugin-prism": "^2.5.1"
+  }
+}
