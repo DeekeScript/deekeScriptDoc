@@ -9,6 +9,7 @@
     "author": "miniphper",
     "copyright": "DeekeScript",
     "plugins": [
+        "gtalk",
         "hints",
         "-theme-creative",
         "theme-comscore",
@@ -31,14 +32,13 @@
         "-search",
         "search-pro",
         "-insert-logo",
-        "tbfed-pagefooter",
-        "gtalk"
+        "tbfed-pagefooter"
     ],
     "pluginsConfig": {
         "gtalk": {
             "clientID": "67bf08545b789c1522cd",
             "clientSecret": "d04e46d41828ad4c8db0ddc9e4fa8ad785943260",
-            "repo": "https://github.com/miniphper/ad-dke",
+            "repo": "deekeScriptDoc",
             "owner": "miniphper",
             "admin": [
                 "miniphper"
