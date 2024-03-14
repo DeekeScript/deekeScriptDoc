@@ -8,7 +8,7 @@
 
 > 注意，如果你需要使用[多线程](../thread.md)，可以采用Engines来实现
 
-## exec(filename)
+## executeScript(filename)
 > filename {string}   要执行的JS文件地址  必须为相对项目根目录的地址，非当前文件的相对地址
 > 
 > 返回 {Thread}
@@ -18,10 +18,24 @@
 
 ```javascript
 //heart.js主要启动一个定时器setInterval，每间隔几秒钟往服务器发送当前App的状态
-Engines.exec("js/heart.js");//心跳脚本，监测App的在线状态
+Engines.executeScript("js/heart.js");//心跳脚本，监测App的在线状态
 
 //特别说明，即使当前脚本终止运行了，heart.js依旧会继续运行
 //如果需要关闭heart.js，可以使用 Engines.closeAll方法来操作;
+```
+
+## executeScript(name, script)
+> name {string}   脚本名称，自定义；实际中的任务名称，用于排查故障的时候使用
+>
+> script {string} 要执行的脚本内容
+> 
+> 返回 {Thread}
+
+在新的环境中执行JavaScript，新的环境会开启新的堆栈空间，不会和当前的脚本有任何关联，是完全独立的。
+
+```javascript
+//heart.js主要启动一个定时器setInterval，每间隔几秒钟往服务器发送当前App的状态
+Engines.executeScript("My first DeekeScript", "console.log('My first DeekeScript');");
 ```
 
 ## closeAll(bool)
