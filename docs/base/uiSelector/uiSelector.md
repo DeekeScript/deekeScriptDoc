@@ -62,23 +62,32 @@ if(sendButton){
 
 
 ## clickable(canClick)
-> canClick {boolean}
+> canClick {boolean}  是否可以点击
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
 为当前选择器附加控件"clickable 等于 canClick"的筛选条件。
 
 
+
+## isVisibleToUser(canVisible)
+> canVisible {boolean}  是否对用户可见（控件在屏幕上）
+> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+为当前选择器附加控件"isVisibleToUser 等于 canVisible"的筛选条件。
+
+
+
 ## selected(isSelected)
-> isSelected {boolean}
+> isSelected {boolean} 是否已选择
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
 为当前选择器附加控件"selected 等于 isSelected"的筛选条件。
 
 
-## checked(isChecked)
-> isChecked {boolean}
+## checked(isChecked) 
+> isChecked {boolean} 是否被选中
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
@@ -86,7 +95,7 @@ if(sendButton){
 
 
 ## enabled(isEnabled)
-> isEnabled {boolean}
+> isEnabled {boolean}  是否可以交互（为false的时候表示禁用）
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
@@ -94,7 +103,7 @@ if(sendButton){
 
 
 ## scrollable(canScrollable)
-> canScrollable {boolean}
+> canScrollable {boolean}  是否可以滚动
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
@@ -102,7 +111,7 @@ if(sendButton){
 
 
 ## checkable(isCheckable)
-> isCheckable {boolean}
+> isCheckable {boolean} 是否可以选中
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
