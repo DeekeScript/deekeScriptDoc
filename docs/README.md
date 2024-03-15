@@ -12,7 +12,7 @@ DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软�
 * DeekeScript是开发团队优化<a target="_blank" href="https://gitee.com/miniphper/ad-dke">“嘀客APP”</a>而开发出的一款底层框架
 * 支持JSON格式定义主界面、参数设置界面等，开发者无需关注UI设计
 * 支持Vscode开发与调试
-* 为模拟操作和控制APP而生，全平台支持（无阉割）
+* 全平台支持（不针对主流App进行限制）
 * 个人版完全免费使用
 * 企业版支持后台卡密管理系统（支持代理模式，可私有化部署）
 * DeekeScript将在未来提供强大的云市场，企业版用户可以自定义选择打包进自己的APP中
