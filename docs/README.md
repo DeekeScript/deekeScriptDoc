@@ -15,6 +15,7 @@ DeekeScript是开发团队优化<a target="_blank" href="https://gitee.com/minip
 * 支持全平台App（不针对主流App进行限制）
 * 个人版完全免费使用
 * 企业版支持后台卡密管理系统（支持代理模式，可私有化部署）
+* 支持Android8（API26）以上
 
 ### DeekeScript适合哪些场景？
 
