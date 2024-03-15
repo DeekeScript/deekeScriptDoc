@@ -35,6 +35,12 @@
         "tbfed-pagefooter"
     ],
     "pluginsConfig": {
+        "myseo":{
+            "titlePrefix": "DeekeScript",
+            "titleSuffix": "DeekeScript",
+            "description": "DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。",
+            "keywords": "DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"
+        },
         "gtalk": {
             "clientID": "67bf08545b789c1522cd",
             "clientSecret": "d04e46d41828ad4c8db0ddc9e4fa8ad785943260",
