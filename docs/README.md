@@ -2,7 +2,7 @@
 
 ### DeekeScript是什么？
 
-DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件（框架）。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP。并且DeekeScript提供UI支持、卡密接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑，只需要很短的时间就可以通过DeekeScript快速开发出各种商用应用。
+DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件（移动框架）。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP。并且DeekeScript提供UI支持、卡密接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑，只需要很短的时间就可以通过DeekeScript快速开发出各种商用应用。
 
 ### DeekeScript优势有哪些？
 
@@ -10,9 +10,9 @@ DeekeScript是开发团队优化<a target="_blank" href="https://gitee.com/minip
 “稳定”与“快”是DeekeScript的最大特点，也是DeekeScript的最大追求。DeekeScript将在未来提供强大的云市场，企业版用户可以自定义选择打包进自己的APP中。
 
 * 采用JavaScript编写脚本，底层采用V8引擎，执行速度快
-* 支持JSON格式定义主界面、参数设置界面等，开发者无需关注UI设计
+* 支持JSON格式定义主界面、参数设置界面等，开发者无需过多关注UI设计
 * 支持Vscode开发与调试
-* 全平台支持（不针对主流App进行限制）
+* 支持全平台App（不针对主流App进行限制）
 * 个人版完全免费使用
 * 企业版支持后台卡密管理系统（支持代理模式，可私有化部署）
 
