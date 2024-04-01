@@ -3,7 +3,7 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <title>模块 · DeekeScript</title>
+        <title>无障碍问题 · DeekeScript</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 5.1.4">
@@ -96,10 +96,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="encryption.html" />
     
-    
-    <link rel="prev" href="thread.html" />
+    <link rel="prev" href="question.html" />
     
 
     </head>
@@ -474,9 +472,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1.1" data-path="engines/engines.html">
+        <li class="chapter " data-level="3.1.1" data-path="../advance/engines/engines.html">
             
-                <a href="engines/engines.html">
+                <a href="../advance/engines/engines.html">
             
                     
                     Engines
@@ -487,9 +485,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.2" data-path="thread.html">
+        <li class="chapter " data-level="3.1.2" data-path="../advance/thread.html">
             
-                <a href="thread.html">
+                <a href="../advance/thread.html">
             
                     
                     多线程
@@ -500,9 +498,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.3" data-path="module.html">
+        <li class="chapter " data-level="3.1.3" data-path="../advance/module.html">
             
-                <a href="module.html">
+                <a href="../advance/module.html">
             
                     
                     模块
@@ -513,9 +511,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.4" data-path="encryption.html">
+        <li class="chapter " data-level="3.1.4" data-path="../advance/encryption.html">
             
-                <a href="encryption.html">
+                <a href="../advance/encryption.html">
             
                     
                     加解密
@@ -526,9 +524,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.5" data-path="photoAndColor.html">
+        <li class="chapter " data-level="3.1.5" data-path="../advance/photoAndColor.html">
             
-                <a href="photoAndColor.html">
+                <a href="../advance/photoAndColor.html">
             
                     
                     图片与颜色
@@ -539,9 +537,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.6" data-path="extension/extension.html">
+        <li class="chapter " data-level="3.1.6" data-path="../advance/extension/extension.html">
             
-                <a href="extension/extension.html">
+                <a href="../advance/extension/extension.html">
             
                     
                     扩展
@@ -721,9 +719,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="7.1.1" data-path="../question/question.html">
+        <li class="chapter " data-level="7.1.1" data-path="question.html">
             
-                <a href="../question/question.html">
+                <a href="question.html">
             
                     
                     常见问题
@@ -734,9 +732,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.1.2" data-path="../question/accessibility.html">
+        <li class="chapter active" data-level="7.1.2" data-path="accessibility.html">
             
-                <a href="../question/accessibility.html">
+                <a href="accessibility.html">
             
                     
                     无障碍问题
@@ -796,7 +794,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >模块</a>
+        <a href=".." >无障碍问题</a>
     </h1>
 </div>
 
@@ -811,35 +809,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="module---模块">module - 模块</h1>
-<p>在很多时候，我们的应用可能不止1个JavaScript文件就能实现的，尤其是在构建复杂应用的时候。</p>
-<p>在DeekeScript中，可以轻松通过import方法来加载JavaScript文件。下面是一个实例：</p>
-<h2 id="import与export">import与export</h2>
-<pre class="language-"><code class="lang-javascript"><span class="token comment">//项目文件结构如下：项目跟目录下有一个js文件夹和一个task文件夹</span>
-<span class="token comment">//js文件夹中包含了我们需要import的文件，task文件里面有一个dy_toker.js文件</span>
-<span class="token comment">//下面我们在dy_toker.js文件中引用js文件夹下面的a.js和b.js</span>
-<span class="token comment">// |&gt; js</span>
-<span class="token comment">// | - a.js</span>
-<span class="token comment">// | - b.js</span>
-<span class="token comment">// |&gt; task</span>
-<span class="token comment">// | - dy_toker.js</span>
-<span class="token comment">// |DeekeScript.json</span>
-
-<span class="token comment">// js/a.js文件代码如下</span>
-<span class="token keyword">export</span> <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;我是a.js&quot;</span><span class="token punctuation">,</span>
-    <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">//dy_toker.js代码如下  特别说明，路径是相对于项目根目录的路径</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>a<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;js/a.js&quot;</span><span class="token punctuation">;</span><span class="token comment">//非相对于dy_toker.js文件的路径</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出 “我是a.js”</span>
-</code></pre>
-<p></p><div id="gitalk-container"></div><script src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script><script>window.onload = function() {gitbook.events.on("page.change", function() {var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/advance/module.html"});gitalk.render("gitalk-container");});};var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/advance/module.html"});gitalk.render("gitalk-container");</script> <p></p>
+                                <h1 id="无障碍问题">无障碍问题</h1>
+<p>在无障碍程序设计过程中，我们和大家一样，遇到最多的问题，就是无障碍的不稳定，接下来主要介绍几个不稳定因素的起因和解决方案。</p>
+<h5 id="场景1：app运行一段时间就挂掉了？">场景1：APP运行一段时间就挂掉了？</h5>
+<blockquote>
+<p>原因：目前Android对后台应用限制比较严格，尤其内存不足或者电量不足的时候，会对相关应用进行误杀。
+解决方案：目前可以根据各个品牌的机型，关闭对应的省电模式功能，或者插电运行，又或者给应用加锁（具体的可以查看对应品牌机型的加锁方法），当然也可以三者都使用，这样稳定性会更好。</p>
+</blockquote>
+<h5 id="场景2：在页面a点击用户头像进入用户详情页，获取用户数据，最终失败">场景2：在页面A点击用户头像进入用户详情页，获取用户数据，最终失败</h5>
+<blockquote>
+<p>原因1：某些情况下，当前A页面可能存在多个id相同的头像控件，你的代码拿到的可能不是在当前界面上的控件，导致点击了其他控件</p>
+<p>解决方案：增加判断，确保你要获取的id在当前界面，可以通过位置信息确保控件在大概位置（或者判断是否可见等）</p>
+<p>原因2：某些情况下，点击头像控件失效了，但是系统确实点击了（这种情况常见于某些APP框架，DeekeScript中暂未发现）</p>
+<p>解决方案：在点击的时候，尽可能使用控件的特性，假设控件的clickable为true，则直接使用obj.click()即可；或者发现它的父控件的clickable为true，则直接使用obj.parent().click()；只有在clickable为false的时候，才去使用系统提供的位置点击方法。</p>
+<p>原因3：某些情况下被弹窗遮挡了，位置点击的时候跑到其他界面去了</p>
+<p>解决方案：对APP的弹窗进行全局的监控，发现之后进行关闭。</p>
+</blockquote>
+<h5 id="场景3：可滑动的用户列表，对其每个用户进行操作时，经常因为多返回或者少返回，最终找不到用户而出错">场景3：可滑动的用户列表，对其每个用户进行操作时，经常因为多返回或者少返回，最终找不到用户而出错</h5>
+<blockquote>
+<p>原因1：操作用户的时候，国内某些APP框架可能手机卡顿导致返回没有执行（DeekeScript不会存在这种问题）</p>
+<p>解决方案：每次返回之后，做一个界面的判断，如果没有返回，则循环再返回</p>
+<p>原因2：操作用户的时候，通过点击界面上的“返回”按钮返回，但是因为其他原因导致点击失败</p>
+<p>解决方案：尽量使用系统全局的返回，不要使用APP提供的“返回”按钮返回</p>
+<p>原因3：因为操作用户的过程中出错了，导致返回异常</p>
+<p>解决方案：编写强壮的代码，每一步失败，都做到“心中有数”，然后执行对应的返回操作（或者在执行返回的时候，检测是否到了用户列表页）</p>
+</blockquote>
+<h5 id="场景4：因为某个功能的操作周期比较长，应用程序经常挂掉了">场景4：因为某个功能的操作周期比较长，应用程序经常挂掉了</h5>
+<blockquote>
+<p>原因1：有时候，我们在开发一款新的APP的时候（又或者APP功能比较多，更新比较频繁），经常会有一些超出我们预期的东西，比如：未知的弹窗，未知的界面等等（当然也包括手机来电等）</p>
+<p>解决方案：遇到异常，可以退回到主界面（每退一次检查一次是否进入了主界面），然后再重新运行；当然如果没办法进入主界面，应该也可以进入其他默认的界面，或者自行对当前页面进行判断，然后执行对应操作</p>
+<p>注意：尽量不要采用关闭APP，然后重启的方式，因为这种方式很难让客户接受（除非客户接受，并且必须这么做）</p>
+</blockquote>
+<h5 id="场景5：在评论列表或者用户列表出现死循环了">场景5：在评论列表或者用户列表出现死循环了</h5>
+<blockquote>
+<p>原因1：没有列表已经执行完做判断，或者因为某些原因导致一直在滑动列表</p>
+<p>解决方案：对列表执行完成进行判断（DeekeScript中，可以获取对象的_addr属性，比如一次获取到了3个控件，把_addr进行保存，然后滑动之后，再进行读取，与前面的比对，如果相同则认为滑动完成）
+对滑动进行判断，超出时间或者次数，进行异常处理</p>
+</blockquote>
+<p></p><div id="gitalk-container"></div><script src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script><script>window.onload = function() {gitbook.events.on("page.change", function() {var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/question/accessibility.html"});gitalk.render("gitalk-container");});};var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/question/accessibility.html"});gitalk.render("gitalk-container");</script> <p></p>
 <footer class="page-footer"><span class="copyright">Copyright © script.deeke.top 2024 all right reserved，powered by Gitbook</span><span class="footer-modification">该文章修订时间：
-2024-03-11 15:18:16
+2024-04-01 17:55:15
 </span></footer>
                                 
                                 </section>
@@ -867,14 +876,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
             
                 
-                <a href="thread.html" class="navigation navigation-prev " aria-label="Previous page: 多线程">
+                <a href="question.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 常见问题">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="encryption.html" class="navigation navigation-next " aria-label="Next page: 加解密">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -883,7 +888,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"模块","level":"3.1.3","depth":2,"next":{"title":"加解密","level":"3.1.4","depth":2,"path":"advance/encryption.md","ref":"./advance/encryption.md","articles":[]},"previous":{"title":"多线程","level":"3.1.2","depth":2,"path":"advance/thread.md","ref":"./advance/thread.md","articles":[]},"dir":"ltr"},"config":{"plugins":["gtalk","hints","-theme-creative","theme-comscore","sidebar-ad","intopic-toc","sharing","exercises","@honkit/honkit-plugin-ga","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"livereload":{},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"gtalk":{"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"]},"sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://script.deeke.top/"},"theme-comscore":{},"back-to-top-button":{},"@honkit/honkit-plugin-ga":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/miniphper/deekScriptDocument"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"miniphper","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.top/","gitbook":"*","description":"描述"},"file":{"path":"advance/module.md","mtime":"2024-03-11T07:18:16.091Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-04-01T09:55:53.299Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"无障碍问题","level":"7.1.2","depth":2,"previous":{"title":"常见问题","level":"7.1.1","depth":2,"path":"question/question.md","ref":"./question/question.md","articles":[]},"dir":"ltr"},"config":{"plugins":["gtalk","hints","-theme-creative","theme-comscore","sidebar-ad","intopic-toc","sharing","exercises","@honkit/honkit-plugin-ga","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"livereload":{},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"gtalk":{"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"]},"sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://script.deeke.top/"},"theme-comscore":{},"back-to-top-button":{},"@honkit/honkit-plugin-ga":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/miniphper/deekScriptDocument"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"miniphper","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.top/","gitbook":"*","description":"描述"},"file":{"path":"question/accessibility.md","mtime":"2024-04-01T09:55:15.825Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-04-01T09:55:53.299Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -32,4 +32,5 @@
 <url> <loc>https://script.deeke.top/cloud/cloud.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/deeke/deeke.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/question/question.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://script.deeke.top/question/accessibility.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>

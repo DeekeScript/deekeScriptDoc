@@ -54,3 +54,4 @@
 
 -  问题篇
   - [常见问题](./question/question.md)
+  - [无障碍问题](./question/accessibility.md)
