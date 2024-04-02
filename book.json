@@ -13,7 +13,7 @@
         "hints",
         "-theme-creative",
         "theme-comscore",
-        "sidebar-ad",
+        "-sidebar-ad",
         "intopic-toc",
         "sharing",
         "exercises",
@@ -75,7 +75,7 @@
             "base": "https://github.com/miniphper/deekScriptDocument",
             "label": "在线编辑"
         },
-        "sidebar-ad": {
+        "_sidebar-ad": {
             "imageUrl": "/weixin.png",
             "url": "/weixin.png",
             "description": "<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"
