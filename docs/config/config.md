@@ -16,7 +16,7 @@
 |    methods   |  Json   |          [methods参数](#methods)         |  主界面的功能列表，每一个子节点对应一个功能              |
 |  bottomMenus |  Json   |     [bottomMenus参数](#bottomMenus)      | App中底部菜单，可以使用系统内置的，也可以自定义          |
 | settingLists |  Json   |     [settingLists参数](#settingLists)    | App中设置页的列表项，可以使用系统内置的，也可以自定义     |
-|     api      |  Json   |             [api参数](#api)              | 设置相关api，比如激活码api，验证激活码是否有效api登      |
+|     apis     |  Json   |             [apis参数](#api)              | 设置相关api，比如激活码api，验证激活码是否有效api登      |
 
 
 #### methods参数
@@ -27,6 +27,7 @@
 |     icon     | String  |            logo/fans.png           | App主界面的功能图标                                   |
 |    jsFile    | String  |    tasks/task_dy_toker_fans.js     | 功能实际执行的代码所在文件                             |
 | settingPage  |  Json   |   [settingPage参数](#settingPage)  | 功能对应的设置页面，如果为空，则直接执行jsFile脚本       |
+|    hidden    | boolean |                true                | 属性值，当为true的时候，则界面上不再显示此功能模块       |
 
 
 #### bottomMenus参数
@@ -41,29 +42,28 @@
 
 #### settingLists参数
 
-|     参数名    |  类型   |                 示例                |                                                   说明                                                  |
-| ------------ | ------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------|
-|     title    | String  |                清理缓存              | 设置页标题名称                                                                                           |
-|     icon     | String  |            logo/clear.png           | 底部菜单图标                                                                                             |
-|      url     | String  | https://script.deeke.top/upload/log | type为uploadLog的时候，必须，用于接受上传日志                                                              |
-|     type     | String  |                clear                | 支持clear、uploadLog、customerService、update、custom，分别表示 清理缓存、上传日志、联系客服、更新App、自定义 |
-|    jsFile    | String  |                home                 | type为custom的时候必须，点击的时候，会执行对应的js文件                                                      |
-| description  | String  |             确定清理吗？             | type为clear的时候，会弹出提示框，确认后执行清理；type为customerService可以设置为“客服微信：miniphper”         |
+|     参数名    |  类型   |                 示例                |                                                   说明                                                     |
+| ------------ | ------- | ----------------------------------- | -----------------------------------------------------------------------------------------------------------|
+|     title    | String  |                清理缓存              | 设置页标题名称                                                                                              |
+|     icon     | String  |            logo/clear.png           | 底部菜单图标                                                                                                |
+|      url     | String  | https://script.deeke.top/upload/log | type为uploadLog的时候，必须，用于接受上传日志                                                                 |
+|     type     | String  |                clear                | 支持clear、uploadLog、customerService、updateApp、custom，分别表示 清理缓存、上传日志、联系客服、更新App、自定义 |
+|    jsFile    | String  |                home                 | type为custom的时候必须，点击的时候，会执行对应的js文件                                                         |
+| description  | String  |             确定清理吗？             | type为clear的时候，会弹出提示框，确认后执行清理；type为customerService可以设置为“客服微信：miniphper”            |
 
 
-#### api参数
+#### apis参数
 
 |     参数名    |  类型   |                 示例               |                                                         说明                                                 |
 | ------------ | ------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------|
-|      url     | String  | https://script.deeke.top/api/login | 接口地址，type为login，则为激活码激活地址；type为checkLogin，则为激活码验证地址                                   |
-|      type    | String  |                login               | 目前支持login、checkLogin ；其中login用于激活码登录，checkLogin用于每30分钟检查一次状态，状态不对则软件需要重新激活  |
+|      url     | String  | https://script.deeke.top/api/login | 接口地址，type为bind，则为激活码激活地址；type为checkBind，则为激活码验证地址                                     |
+|      type    | String  |                bind                | 目前支持bind、checkBind，bind为首次激活，checkBind用于每次运行功能时执行检查，状态不对则无法运行功能，并会给出提示   |
 
 
 ##### settingPage参数
 
 |     参数名    |  类型   |                 示例               |                 说明                                 |
-| ------------ | ------- | ---------------------------------- | ----------------------------------------------------|
-|    jsFile    |  String |      执行文件，保留字段             |  保留字段                                             |
+| ------------ | ------- | ---------------------------------- | -----------------------------------------------------|
 |   params     |   Json  |       [params参数](#params)        | 需要用户设置的参数                                     |
 
 
@@ -73,12 +73,13 @@
 | ------------ | ------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------|
 |     type     | String  |               text                 | Form参数类型，有text、textArea、select、checkbox、radio、switch、number、numberRange、digitRange、digit|
 |     lable    | String  |              用户账号               | 字段描述，控件的描述，用于告诉用户这个控件输入的内容                                                     |
-|    value     | String  |               miniphper            | 初始值，可以为空                                                                                      |
+|    value     |   any   |               miniphper            | 初始值，可以为空 ; number/numberRange/digitRange/digit的时候，value为数字类型，text/textArea为字符串类型 |
 |     name     | String  |              account               | 控件名称，后续[获取值](#getValue)的时候，需要这个参数名称                                                |
 |     min      |   int   |              0                     | 最小值，当type为numberRange或者digitRange时生效                                                        |
 |     max      |   int   |              1000                  | 最大值，当type为numberRange或者digitRange时生效                                                        |
 |     step     |   int   |                 1                  | 滑动最小单位，当type为numberRange或者digitRange时生效                                                  |
 |    options   |  Json   |       [options参数](#options)      | 属性值，当type为select、checkbox、radio时生效                                                          |
+|    hidden    | boolean |                true                | 属性值，当为true的时候，则界面上不再显示此字段                                                           |
 
 
 ###### options参数
@@ -87,7 +88,7 @@
 | ------------ | ------- | ---------------------------------- | -------------------------------|
 |    selected  | bool    |                 false              | 是否默认选中                    |
 |     lable    | String  |                   男               | 描述，用于告诉用户这个控件的内容  |
-|    value     | String  |                   1                | 值                             |
+|     value    | String  |                   1                | 值                             |
 
 <a id="demo"></a>
 ```json
