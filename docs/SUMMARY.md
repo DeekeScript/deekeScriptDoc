@@ -30,6 +30,7 @@
 
 
 -  高级部分
+  - [弹窗](./advance/dialogs.md)
   - [Engines](./advance/engines/engines.md)
   - [多线程](./advance/thread.md)
   - [模块](./advance/module.md)

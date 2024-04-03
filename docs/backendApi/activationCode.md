@@ -1,8 +1,10 @@
 # 后端接口
 
+> 激活码逻辑已经内嵌在DeekeScript中，开发者只需实现对应后端接口即可
+
 ## 激活码
 
-需要在DeekeScript.json配置文件中配置Uri请求地址
+需要在DeekeScript.json配置文件中配置Uri请求地址。如果用户不填写激活码，则运行DeekeScript上的业务功能（开发者开发的功能）时会提示输入激活码
 
 DeekeScript请求：
 
@@ -30,8 +32,7 @@ Content-Type: application/json
 
 ## 激活状态
 
-需要在DeekeScript.json配置文件中配置Uri请求地址，DeekeScript每5分钟请求一次此接口，如果连续2次返回失败，则会强制退出App
-并且会发生一个通知给客户（通知内容为接口返回的msg字段内容）
+需要在DeekeScript.json配置文件中配置Uri请求地址，DeekeScript每次运行业务功能（开发者开发的功能）都会请求一次此接口，如果返回失败，则会提示用户对应的信息
 
 DeekeScript请求：
 

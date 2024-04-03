@@ -20,6 +20,7 @@
 <url> <loc>https://script.deeke.top/base/files/files.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/base/gesture/gesture.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/base/uiObject/uiObject.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://script.deeke.top/advance/dialogs.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/advance/engines/engines.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/advance/thread.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://script.deeke.top/advance/module.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

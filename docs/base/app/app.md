@@ -77,6 +77,25 @@ context.startActivity(i);
 App.launch("top.deeke.script");//打开DeekeScript
 ```
 
+## getAppVersionName(packageName)
+> packageName {string}
+
+获取某个APP的版本名称
+
+```javascript
+let versionName = App.getAppVersionName("top.deeke.script");
+console.log(versionName);
+```
+
+## getAppVersionCode(packageName)
+> packageName {string}
+
+获取某个APP的版本号
+
+```javascript
+let versionName = App.getAppVersionCode("top.deeke.script");
+console.log(versionName);
+```
 
 ## openAppSetting(packageName)
 > packageName {string}
