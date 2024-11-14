@@ -1,21 +1,28 @@
-### 安装nodejs和git
+### DeekeScript文档部署
+
+> 1.安装nodejs和git
 自行百度
 
-### 拉取代码
+> 2.拉取代码
 ```
 git clone https://github.com/DeekeScript/deekeScriptDoc ./
 ```
 
-### 安装依赖
+> 3.安装依赖
 ```
 npm install
 ```
-### 启动服务
+> 4.启动服务
 ```
 npm run serve
 ```
 
-### 访问文档
+> 5.访问文档
 ```
 打开http://localhost:4000
+```
+
+> 6.编译文档
+```
+npm run build
 ```
