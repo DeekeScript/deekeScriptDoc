@@ -1,6 +1,7 @@
 ### DeekeScript文档部署
 
 > 1.安装nodejs和git
+
 自行百度
 
 > 2.拉取代码
