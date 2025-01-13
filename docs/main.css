@@ -1,0 +1,41 @@
+.page-inner{
+    width: 70%!important;
+    max-width: 1200px;
+
+    p, li, span, tr, td, div{
+        font-size: 14px!important;
+    }
+}
+
+h1{
+    font-size: 1.80em!important;
+}
+
+h2{
+    font-size: 1.6em!important;
+}
+
+h3{
+    font-size: 1.45em!important;
+}
+
+h4{
+    font-size: 1.3em!important;
+}
+
+h5{
+    font-size: 1.15em!important;
+}
+
+h6{
+    font-size: 1.0em!important;
+}
+
+.book-summary{
+    width: 260px;
+}
+
+.book.with-summary .book-body{
+    left: 260px!important;
+}
+

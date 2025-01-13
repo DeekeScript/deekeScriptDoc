@@ -44,6 +44,8 @@ console.log(System.currentPackage());//输出：top.deeke.script
 ```
 
 ## setClip(content)
+> 2.0版本即将上线
+
 > content {string}
 > 
 > 返回 {void}
@@ -51,6 +53,8 @@ console.log(System.currentPackage());//输出：top.deeke.script
 将内容写入到剪切板中
 
 ## getClip()
+> 2.0版本即将上线
+
 > 返回 {string|null}
 
 返回剪切板内容
@@ -98,9 +102,125 @@ console.log(System.currentPackage());//输出：top.deeke.script
 等待Package出现，period为检查Package的间隔。如果timeout毫秒后未出现，则停止等待。
 
 
-## exit(closeAll)
-> closeAll {boolean} 是否关闭所有脚本引擎，为true则关闭所有，否则只关闭当前引擎外的其他脚本引擎
-> 
+## exit()
 > 返回 {void}
 
 关闭脚本引擎
+
+## AiSpeechToken(key, secret)
+> key {string}
+>
+> secret {string}
+>
+> 返回 {string}
+
+获取远程AI智能话术的token，通过此token再去调用对应的接口；下面是完整的JavaScript代码。
+
+```
+let baiduWenxin = {
+    key: 'setting_baidu_wenxin_role',
+    dataFrom: 'role',
+    getToken(key, secret) {
+        key = key || storage.get('setting_baidu_wenxin_key');
+        secret = secret || storage.get('setting_baidu_wenxin_secret');
+
+        //查看是否激活了
+        let body = System.AiSpeechToken(key, secret);
+        Log.log('body', body);
+        let aiRes = JSON.parse(body);
+        Log.log('aiRes[\'data\']', aiRes['data']);
+        if (aiRes['code'] === 0) {
+            //开始激活
+            return aiRes['data'];
+        } else if (aiRes['code'] === 1) {
+            FloatDialogs.show('提示', aiRes.msg);
+            System.sleep(360000 * 1000);
+            return;
+        } else {
+            Log.log('网络异常了');
+            return false;
+        }
+    },
+
+    getComment(title) {
+        let res = this.getToken();
+        let access_token = res['access_token'];
+
+        let len = 20 + Math.round(30 * Math.random());
+
+        let tmp = '';
+        if (title) {
+            tmp = '请你根据短视频标题生成一个有趣的评论内容，标题是：' + title;
+        }
+
+        let params = {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "接下来，请你随机帮我生成一条评论，可以是夸别人的视频拍的好、也开始是写一条祝福语、也可以你最想告诉大众的想法"
+                }
+            ],
+            "max_output_tokens": 60,//最大输出长度60
+            "system": System.getDataFrom(this.key, this.dataFrom, 'content'),
+        }
+
+        if (title) {
+            params = {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "接下来，我会给你一条视频标题，请你帮我生成一条评论，评论内容一定要精简，尽可能能让人看了想和我互动，并且尽可能不要激怒别人；内容字数不要超过" + len + "字，这个很重要"
+                    },
+                    {
+                        "role": "assistant",
+                        "content": '好的，我会尽我所能，请给我一条视频标题吧！'
+                    },
+                    {
+                        "role": "user",
+                        "content": title
+                    },
+                ],
+                "max_output_tokens": 60,//最大输出长度60
+                "system": System.getDataFrom(this.key, this.dataFrom, 'content'),
+            }
+        }
+
+        //console.log(System.getDataFrom(this.key, this.dataFrom, 'content'));
+
+        res = Http.post('https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions?access_token=' + access_token, params);
+        if (res == null) {
+            return false;
+        }
+        let result = JSON.parse(res);
+        Log.log('百度文心返回话术-1', title ? '视频的标题是“' + title + '”，请结合你的角色，写一条少于' + len + '字的吸引人的评论内容' : '请你写一条字数小于' + len + '字的吸引人的评论视频内容', result);
+        if (result && result['result']) {
+            if (result['result'].substring(0, 1) === '"' && result['result'].substring(result['result'].length - 1) === '"') {
+                result['result'] = result['result'].substring(1, result['result'].length - 1);
+            }
+        }
+        return result['result'] || false;
+    }
+}
+```
+
+
+## generateWindowElements()
+> 返回 {void}
+
+该函数会将当前界面的所有控件记录到日志文件（APP上传日志后，即可拿到界面的控件的信息，一般用于bug定位使用）。
+
+## getDataFrom()
+> key {string}
+>
+> dataForm {string}
+>
+> content {string}
+>
+> 返回 {void}
+
+dataForm类型的表单数据获取
+```
+let key = 'setting_baidu_wenxin_role';//deekeScript.json中设置的角色表单的name
+//”role“是配置接口（api地址：/dkee/config）中返回的内容
+System.getDataFrom(key, 'role', 'content');//获取当前设置的角色的内容
+```

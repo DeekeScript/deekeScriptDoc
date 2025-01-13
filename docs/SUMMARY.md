@@ -40,13 +40,13 @@
 
 
 -  后端接口
-  - [激活码](./backendApi/activationCode.md)
+  - [后端接口](./backendApi/activationCode.md)
 
 
 -  Apk打包与云市场
   - [在线打包](./apk/apk.md)
   - [管理后台支持](./backend/backend.md)
-  - [DeekeScript云市场](./cloud/cloud.md)
+  <!-- - [DeekeScript云市场](./cloud/cloud.md) -->
 
 
 -  经典案例篇

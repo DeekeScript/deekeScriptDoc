@@ -2,11 +2,11 @@
 
 ## 基本介绍
 
-UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再对这些控件进行点击、长按等动作。这里需要先简单介绍一下控件和界面的相关知识。
+UiSelector 即选择器，用于筛选屏幕上的控件，再对控件进行点击、输入文本内容、长按等动作。这里需要先简单介绍一下控件和界面的相关知识。
 
 Android中的界面是由一个个控件构成的，例如图片部分是一个图片控件(ImageView)，文字部分是一个文字控件(TextView)；同时，通过各种布局来决定各个控件的位置，例如，线性布局(LinearLayout)里面的控件都是按水平或垂直一次叠放的，列表布局(AbsListView)则是以列表的形式显示控件。
 
-控件有各种属性，包括文本(text), 描述(desc), 类名(className)，是否可以点击（clickable）, id 等等。我们通常用一个控件的属性来找到这个控件，例如，想要点击某软件聊天窗口的"发送"按钮，我们就可以通过他的文本属性为"发送"来找到这个控件并点击他，具体代码为:
+控件有各种属性，包括文本(text), 描述(desc), 类名(className)，是否可以点击（clickable）, id 等等。我们通常用一个控件的属性来找到这个控件，例如，想要点击某软件聊天窗口的"发送"按钮，我们就可以通过它的文本属性为"发送"来找到这个控件并点击他，具体代码为:
 
 > 获取控件后，即可对控件进行点击，滑动，输入文本等操作。控件操作请阅读 __[控件操作](../uiObject/uiObject.md)__ 部分
 
@@ -23,7 +23,7 @@ if(sendButton){
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
-为当前选择器附加控件"id 等于字符串 name"的筛选条件。
+为当前选择器附加控件"id 等于字符串 name"的筛选条件。【对应节点选择器中的viewIdResourceName】
 
 ## className(name)
 > name {string}
@@ -58,7 +58,7 @@ if(sendButton){
 > 
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
-为当前选择器附加控件"contentDescribe 等于字符串 content"的筛选条件。
+为当前选择器附加控件"contentDescribe 等于字符串 content"的筛选条件。【对应节点选择器中的contentDescription】
 
 
 ## clickable(canClick)
@@ -67,15 +67,6 @@ if(sendButton){
 > 返回 {UiSelector} 返回选择器自身以便链式调用
 
 为当前选择器附加控件"clickable 等于 canClick"的筛选条件。
-
-
-
-## isVisibleToUser(canVisible)
-> canVisible {boolean}  是否对用户可见（控件在屏幕上）
-> 返回 {UiSelector} 返回选择器自身以便链式调用
-
-为当前选择器附加控件"isVisibleToUser 等于 canVisible"的筛选条件。
-
 
 
 ## selected(isSelected)
@@ -126,6 +117,15 @@ if(sendButton){
 为当前选择器附加控件"text 包含字符串 content"的筛选条件。
 
 
+## isVisibleToUser(canVisible)
+> canVisible {boolean}  是否对用户可见（控件在屏幕上）
+> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+> 注意：因为它判断的是视图本身是否在布局层级中可见（被遮挡了，也会返回true）
+
+为当前选择器附加控件"isVisibleToUser 等于 canVisible"的筛选条件。
+
+
 ## textMatches(content)
 > content {string}
 > 
@@ -151,11 +151,17 @@ if(sendButton){
 
 
 ## filter(callback)
-> callback {function}
+> callback {Callable}
 > 
-> 返回{UiObject[]}
+> 返回{UiObject[]} 返回控件对象
 
 对当前查找到的UiObject数组进行过滤，过滤的时候执行callback方法，该方法返回false，则对应的UiObject被过滤掉
+
+```
+let ui = UiSelector().filter((v)=>{
+    return v && v.bounds() && v.bounds().left > 100 && v.bounds().top > 300;//获取左边距大于100px，上边距大于300px的控件
+}).findOne();
+```
 
 ## exist()
 > content {string}
@@ -165,6 +171,11 @@ if(sendButton){
 判断当前选择器是否能匹配到UiObject控件信息。
 
 
+## waitFindOne()
+> 返回 {UiObject} 返回控件对象
+
+一直阻塞，直到某个控件对象出现在屏幕上
+
 
 ## find()
 > 返回 {UiObject[]}
@@ -172,7 +183,7 @@ if(sendButton){
 获取当前选择器筛选的所有UiObject控件。
 
 
-## find(uiSelector)
+## findBy(uiSelector)
 > uiSelector {UiSelector}
 > 
 > 返回 {UiObject[]}
@@ -180,12 +191,14 @@ if(sendButton){
 获取当前选择器筛选的所有UiObject控件（a）中查找符合uiSelector选择器的UiObject；从a集合查找，然后遍历它们的子控件、子控件的子控件，直到a下面的所有控件都被查找一遍才结束。
 
 
-## find(timeout)
-> timeout {number}
-> 
-> 返回 {UiObject[]} 
 
-获取当前选择器筛选的所有UiObject控件，查找timeout时间，时间结束后不管是否找到，都会结束查找，并且返回。
+## findBy(timeout)
+> timeout {int}
+> 
+> 返回 {UiObject[]}
+
+获取当前选择器筛选的所有UiObject控件，如果控件一直没有出现，则最大等待timeout毫秒。
+
 
 
 ## findOne()

@@ -69,15 +69,7 @@
 
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
+        <link rel="stylesheet" href="../main.css">
         
     
 
@@ -589,7 +581,7 @@
                 <a href="../backendApi/activationCode.html">
             
                     
-                    激活码
+                    后端接口
             
                 </a>
             
@@ -642,19 +634,6 @@
             
                     
                     管理后台支持
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.3" data-path="../cloud/cloud.html">
-            
-                <a href="../cloud/cloud.html">
-            
-                    
-                    DeekeScript云市场
             
                 </a>
             
@@ -824,40 +803,65 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="vscode开发篇">VSCode开发篇</h1>
-<h2 id="vscode配置">Vscode配置</h2>
+<h2 id="准备工作">准备工作</h2>
 <ul>
-<li><p>下载安装Vscode编辑器</p>
-<blockquote>
-<p>可以通过官网地址下载：<a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
-</blockquote>
+<li>如果电脑还没有安装vscode，请先<a href="https://code.visualstudio.com/" target="_blank">下载vscode</a></li>
+<li><p>在Vscode中安装DeekeScript开发插件，如下图，点击“安装”即可
+<img src="../assets/extension.png" width="100%"> </p>
 </li>
-<li><p>安装DeekeScript扩展</p>
-<blockquote>
-<p>点击vscode左侧的“扩展”图标，输入DeekeScript，然后列表中有一个DeekeScript扩展，点击安装即可</p>
-</blockquote>
+<li><p>如果你还没有下载项目代码，请先阅读<a href="../quick/start.html">快速开始</a></p>
 </li>
 </ul>
 <h2 id="vscode扩展使用">Vscode扩展使用</h2>
+<p><strong>vscode中执行DeekeScript命令有两种方式：</strong></p>
+<blockquote>
+<p>方法1：通过“查看”-“命令面板”-“搜索命令”-“点击命令执行”，如下图：</p>
+</blockquote>
+<p>  <img src="../assets/vscode-command.png" width="100%"></p>
+<blockquote>
+<p>方法2：打开deekeScript.json文件或者任意js文件，通过右上角图标执行，如下图：</p>
+</blockquote>
+<p>  <img src="../assets/project-command.png" width="100%"></p>
+<p>  <img src="../assets/file-command.png" width="100%"></p>
+<blockquote>
+<p>下面以方法2来演示vscode连接、关闭连接、代码同步、文件同步、文件执行</p>
+</blockquote>
 <ul>
-<li><p>发送项目到手机</p>
-<blockquote>
-<p>打开“查看”-“命令面板”，输入“XXX”，确定执行</p>
-</blockquote>
+<li><p>连接手机：点击“连接手机”按钮，在弹窗中输入手机端的局域网IP地址，看到“连接成功”即表示连接成功：
+<img src="../assets/link.png" width="100%"></p>
+<p><img src="../assets/link-success.png" width="100%"></p>
 </li>
-<li><p>执行手机上的项目</p>
-<blockquote>
-<p>打开“查看”-“命令面板”，输入“XXX”，确定执行</p>
-</blockquote>
+<li><p>打开DeekeScript控制台（可以查看相关信息，包括脚本打印信息），如下图：
+<img src="../assets/console.png" width="100%"></p>
 </li>
-<li><p>暂停手机上的程序</p>
-<blockquote>
-<p>打开“查看”-“命令面板”，输入“XXX”，确定执行</p>
-</blockquote>
+<li><p>项目同步：点击“项目同步”按钮，如下图：
+<img src="../assets/project-async-log.png" width="100%"></p>
 </li>
+<li><p>Android端点击“刷新”按钮（安卓图标右侧的按钮）</p>
+<p><img src="../assets/android-main.jpg" width="20%"></p>
+</li>
+<li><p>Android端点击“运行”按钮（安卓图标左侧按钮），运行结果如下图：</p>
+<p><img src="../assets/deeke.png" width="20%"></p>
+</li>
+<li><p>执行单个JavaScript文件，如下图：
+<img src="../assets/file-run.png" width="100%"></p>
+</li>
+<li><p>停止所有脚本（包括死循环脚本），如下图：</p>
+<p><img src="../assets/stop.png" width="100%"></p>
+</li>
+</ul>
+<h2 id="命令说明：">命令说明：</h2>
+<ul>
+<li>DeekeScript 关闭连接：关闭vscode和Android手机的连接</li>
+<li>DeekeScript 连接手机：vscode连接手机（连接后才能“同步代码”、“执行代码”）</li>
+<li>DeekeScript 停止所有脚本：关闭DeekeScript在Android手机上的所有脚本运行</li>
+<li>DeekeScript 项目同步：将vscode中的项目代码同步到Android手机端</li>
+<li>DeekeScript 仅当前文件执行：执行当前JavaScript文件的脚本</li>
+<li>DeekeScript 文件同步：仅同步当前文件到Android手机</li>
 </ul>
 <p></p><div id="gitalk-container"></div><script src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script><script>window.onload = function() {gitbook.events.on("page.change", function() {var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/config/vscode.html"});gitalk.render("gitalk-container");});};var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/config/vscode.html"});gitalk.render("gitalk-container");</script> <p></p>
 <footer class="page-footer"><span class="copyright">Copyright © script.deeke.top 2024 all right reserved，powered by Gitbook</span><span class="footer-modification">该文章修订时间：
-2024-04-02 16:46:46
+2025-01-13 10:42:08
 </span></footer>
                                 
                                 </section>
@@ -897,7 +901,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Vscode开发篇","level":"1.4.2","depth":2,"next":{"title":"基础部分","level":"2.1","depth":1,"ref":"","articles":[{"title":"App","level":"2.1.1","depth":2,"path":"base/app/app.md","ref":"./base/app/app.md","articles":[]},{"title":"系统函数","level":"2.1.2","depth":2,"path":"base/system/funcs.md","ref":"./base/system/funcs.md","articles":[]},{"title":"设备-Device","level":"2.1.3","depth":2,"path":"base/device/device.md","ref":"./base/device/device.md","articles":[]},{"title":"选择器-UiSelector","level":"2.1.4","depth":2,"path":"base/uiSelector/uiSelector.md","ref":"./base/uiSelector/uiSelector.md","articles":[]},{"title":"定时器","level":"2.1.5","depth":2,"path":"base/timer/timer.md","ref":"./base/timer/timer.md","articles":[]},{"title":"Http","level":"2.1.6","depth":2,"path":"base/http/http.md","ref":"./base/http/http.md","articles":[]},{"title":"WebSocket","level":"2.1.7","depth":2,"path":"base/webSocket/webSocket.md","ref":"./base/webSocket/webSocket.md","articles":[]},{"title":"控制台-console","level":"2.1.8","depth":2,"path":"base/console/console.md","ref":"./base/console/console.md","articles":[]},{"title":"日志-Log","level":"2.1.9","depth":2,"path":"base/log/log.md","ref":"./base/log/log.md","articles":[]},{"title":"本地存储","level":"2.1.10","depth":2,"path":"base/storage/storage.md","ref":"./base/storage/storage.md","articles":[]},{"title":"文件系统-Files","level":"2.1.11","depth":2,"path":"base/files/files.md","ref":"./base/files/files.md","articles":[]},{"title":"手势操作","level":"2.1.12","depth":2,"path":"base/gesture/gesture.md","ref":"./base/gesture/gesture.md","articles":[]},{"title":"控件操作","level":"2.1.13","depth":2,"path":"base/uiObject/uiObject.md","ref":"./base/uiObject/uiObject.md","articles":[]}]},"previous":{"title":"DeekeScript.json","level":"1.4.1","depth":2,"path":"config/config.md","ref":"./config/config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["gtalk","hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","@honkit/honkit-plugin-ga","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"livereload":{},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"gtalk":{"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"]},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://script.deeke.top/"},"theme-comscore":{},"back-to-top-button":{},"@honkit/honkit-plugin-ga":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/miniphper/deekScriptDocument"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"miniphper","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.top/","gitbook":"*","description":"描述"},"file":{"path":"config/vscode.md","mtime":"2024-04-02T08:46:46.903Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-04-03T02:19:28.908Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Vscode开发篇","level":"1.4.2","depth":2,"next":{"title":"基础部分","level":"2.1","depth":1,"ref":"","articles":[{"title":"App","level":"2.1.1","depth":2,"path":"base/app/app.md","ref":"./base/app/app.md","articles":[]},{"title":"系统函数","level":"2.1.2","depth":2,"path":"base/system/funcs.md","ref":"./base/system/funcs.md","articles":[]},{"title":"设备-Device","level":"2.1.3","depth":2,"path":"base/device/device.md","ref":"./base/device/device.md","articles":[]},{"title":"选择器-UiSelector","level":"2.1.4","depth":2,"path":"base/uiSelector/uiSelector.md","ref":"./base/uiSelector/uiSelector.md","articles":[]},{"title":"定时器","level":"2.1.5","depth":2,"path":"base/timer/timer.md","ref":"./base/timer/timer.md","articles":[]},{"title":"Http","level":"2.1.6","depth":2,"path":"base/http/http.md","ref":"./base/http/http.md","articles":[]},{"title":"WebSocket","level":"2.1.7","depth":2,"path":"base/webSocket/webSocket.md","ref":"./base/webSocket/webSocket.md","articles":[]},{"title":"控制台-console","level":"2.1.8","depth":2,"path":"base/console/console.md","ref":"./base/console/console.md","articles":[]},{"title":"日志-Log","level":"2.1.9","depth":2,"path":"base/log/log.md","ref":"./base/log/log.md","articles":[]},{"title":"本地存储","level":"2.1.10","depth":2,"path":"base/storage/storage.md","ref":"./base/storage/storage.md","articles":[]},{"title":"文件系统-Files","level":"2.1.11","depth":2,"path":"base/files/files.md","ref":"./base/files/files.md","articles":[]},{"title":"手势操作","level":"2.1.12","depth":2,"path":"base/gesture/gesture.md","ref":"./base/gesture/gesture.md","articles":[]},{"title":"控件操作","level":"2.1.13","depth":2,"path":"base/uiObject/uiObject.md","ref":"./base/uiObject/uiObject.md","articles":[]}]},"previous":{"title":"DeekeScript.json","level":"1.4.1","depth":2,"path":"config/config.md","ref":"./config/config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["gtalk","hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","@honkit/honkit-plugin-ga","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"gtalk":{"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"]},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://script.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"@honkit/honkit-plugin-ga":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/miniphper/deekScriptDocument"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"miniphper","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"config/vscode.md","mtime":"2025-01-13T02:42:08.648Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-01-13T03:47:43.959Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1018,10 +1022,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

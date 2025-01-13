@@ -3,7 +3,7 @@
     "title": "DeekeScript",
     "language": "zh-hans",
     "description": "描述",
-    "website": "https://doc.deeke.top/",
+    "website": "https://doc.deeke.cn/",
     "keywords": "DeekeScript, 嘀客, Deeke",
     "published": "04/12/2024",
     "author": "miniphper",
@@ -34,6 +34,9 @@
         "-insert-logo",
         "tbfed-pagefooter"
     ],
+    "styles": {
+        "website": "main.css"
+    },
     "pluginsConfig": {
         "myseo":{
             "titlePrefix": "DeekeScript",
@@ -81,7 +84,7 @@
             "description": "<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"
         },
         "sitemap": {
-            "hostname": "https://script.deeke.top/"
+            "hostname": "https://script.deeke.cn/"
         },
         "sharing": {
             "weibo": true,

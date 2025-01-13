@@ -1,28 +1,30 @@
-
 # 案例篇
 
+### 嘀客App
+嘀客APP作为DeekeScript工具开发的经典案例之一，具有参考价值。通过案例，可以让你了解到DeekeScript能做什么，以便你能够快速地做技术选型
 
-### 嘀客
+> autojs开发的嘀客APP
 
-嘀客（<a href="https://gitee.com/miniphper/ad-dke" target="_blank">查看项目</a>）作为DeekeScript工具开发的经典案例之一，具有参考价值；通过案例，可以让你了解到DeekeScript能做什么，以便你能够快速地做技术选型，开发“嘀客”需要做以下几步：
+嘀客App <a href="https://github.com/DeekeScript/ad-dke" target="_blank">查看项目</a>
 
+> DeekeScript改造后的Deeke
 
-### 开发出这样的一款带App需要做哪些工作？
+Deeke <a href="https://github.com/DeekeScript/ad-deeke" target="_blank">查看项目</a>
 
-- 电脑端下载Vscode，安装DeekeScript开发插件
-- 拉取DeekeScript开发的基础代码
-- 编写JavaScript脚本
-- 设计几个图标（当然，也可以在iconfont.cn平台下载几个）
-- 手机安装<a href="#">DeekeScript App软件</a>
+### 开发类似Deeke的APP，你需要做什么？
+> 如果需要快速开始，可以进入[快速开始部分](../quick/start.md)
+
+- 电脑端下载Vscode，安装[DeekeScript开发插件](https://marketplace.visualstudio.com/items?itemName=DeekeScript.deekescript)
+- 拉取[DeekeScript开发的基础代码](https://github.com/DeekeScript/DeekeScript)
+- 编写JavaScript或者Typescript脚本
+- 设计几个图标（当然，也可以在iconfont.cn平台下载）
+- 手机安装<a href="../deekeScript_v1.00.01-release.apk">DeekeScript App软件</a>
 - 不断调试运行，确保代码文档、无bug
-- 编写激活码后端Api（需要配置在DeekeScript中，便于你的打包后的App激活）
-- 上传开发脚本，DeekeScript后台打包成App
-
-此时你可以将打包后的App提供给你的客户群体去使用，将你的激活码提供给客户，客户即可使用你开发的App工具了。
+- 编写激活码后端Api（需要配置在DeekeScript中，便于你的打包后的App激活，不需要激活可省略）
+- 上传开发脚本，DeekeScript后台打包成App（无需打包可省略）
 
 ### 如果你是企业用户（或者具备企业权限），你可能还需要以下功能：
- - 在DeekeScript开放平台注册管理后台
+ - 在[DeekeScript开放平台](https://mp.deeke.cn)注册账号
  - 将相关接口配置到DeekeScript开发环境中
 
-DeekeScript后台支持贴牌代理模式，后台有三种角色，分别是平台、代理商、用户；平台可以开通代理商账号（分配激活码数量），代理商可以开通普通用户（分配激活码数量）和激活码，普通用户可以创建激活码；
-因此，你可以把“代理商”看作这是“城市合伙人”， “用户”看作是“区域合伙人”，区域合伙人创建激活码给到终端用户使用。
+DeekeScript后台支持贴牌代理模式，如有需要，[请访问DeekeScript开放平台](https://mp.deeke.cn)获取！

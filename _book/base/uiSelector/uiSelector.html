@@ -69,15 +69,7 @@
 
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
+        <link rel="stylesheet" href="../../main.css">
         
     
 
@@ -591,7 +583,7 @@
                 <a href="../../backendApi/activationCode.html">
             
                     
-                    激活码
+                    后端接口
             
                 </a>
             
@@ -644,19 +636,6 @@
             
                     
                     管理后台支持
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.3" data-path="../../cloud/cloud.html">
-            
-                <a href="../../cloud/cloud.html">
-            
-                    
-                    DeekeScript云市场
             
                 </a>
             
@@ -827,9 +806,9 @@
                                 
                                 <h1 id="选择器---uiselector">选择器 - UiSelector</h1>
 <h2 id="基本介绍">基本介绍</h2>
-<p>UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再对这些控件进行点击、长按等动作。这里需要先简单介绍一下控件和界面的相关知识。</p>
+<p>UiSelector 即选择器，用于筛选屏幕上的控件，再对控件进行点击、输入文本内容、长按等动作。这里需要先简单介绍一下控件和界面的相关知识。</p>
 <p>Android中的界面是由一个个控件构成的，例如图片部分是一个图片控件(ImageView)，文字部分是一个文字控件(TextView)；同时，通过各种布局来决定各个控件的位置，例如，线性布局(LinearLayout)里面的控件都是按水平或垂直一次叠放的，列表布局(AbsListView)则是以列表的形式显示控件。</p>
-<p>控件有各种属性，包括文本(text), 描述(desc), 类名(className)，是否可以点击（clickable）, id 等等。我们通常用一个控件的属性来找到这个控件，例如，想要点击某软件聊天窗口的&quot;发送&quot;按钮，我们就可以通过他的文本属性为&quot;发送&quot;来找到这个控件并点击他，具体代码为:</p>
+<p>控件有各种属性，包括文本(text), 描述(desc), 类名(className)，是否可以点击（clickable）, id 等等。我们通常用一个控件的属性来找到这个控件，例如，想要点击某软件聊天窗口的&quot;发送&quot;按钮，我们就可以通过它的文本属性为&quot;发送&quot;来找到这个控件并点击他，具体代码为:</p>
 <blockquote>
 <p>获取控件后，即可对控件进行点击，滑动，输入文本等操作。控件操作请阅读 <strong><a href="../uiObject/uiObject.html">控件操作</a></strong> 部分</p>
 </blockquote>
@@ -844,7 +823,7 @@
 <p>name {string}</p>
 <p>返回 {UiSelector} 返回选择器自身以便链式调用</p>
 </blockquote>
-<p>为当前选择器附加控件&quot;id 等于字符串 name&quot;的筛选条件。</p>
+<p>为当前选择器附加控件&quot;id 等于字符串 name&quot;的筛选条件。【对应节点选择器中的viewIdResourceName】</p>
 <h2 id="classnamename">className(name)</h2>
 <blockquote>
 <p>name {string}</p>
@@ -871,19 +850,13 @@
 <p>content {string}</p>
 <p>返回 {UiSelector} 返回选择器自身以便链式调用</p>
 </blockquote>
-<p>为当前选择器附加控件&quot;contentDescribe 等于字符串 content&quot;的筛选条件。</p>
+<p>为当前选择器附加控件&quot;contentDescribe 等于字符串 content&quot;的筛选条件。【对应节点选择器中的contentDescription】</p>
 <h2 id="clickablecanclick">clickable(canClick)</h2>
 <blockquote>
 <p>canClick {boolean}  是否可以点击</p>
 <p>返回 {UiSelector} 返回选择器自身以便链式调用</p>
 </blockquote>
 <p>为当前选择器附加控件&quot;clickable 等于 canClick&quot;的筛选条件。</p>
-<h2 id="isvisibletousercanvisible">isVisibleToUser(canVisible)</h2>
-<blockquote>
-<p>canVisible {boolean}  是否对用户可见（控件在屏幕上）
-返回 {UiSelector} 返回选择器自身以便链式调用</p>
-</blockquote>
-<p>为当前选择器附加控件&quot;isVisibleToUser 等于 canVisible&quot;的筛选条件。</p>
 <h2 id="selectedisselected">selected(isSelected)</h2>
 <blockquote>
 <p>isSelected {boolean} 是否已选择</p>
@@ -920,6 +893,13 @@
 <p>返回 {UiSelector} 返回选择器自身以便链式调用</p>
 </blockquote>
 <p>为当前选择器附加控件&quot;text 包含字符串 content&quot;的筛选条件。</p>
+<h2 id="isvisibletousercanvisible">isVisibleToUser(canVisible)</h2>
+<blockquote>
+<p>canVisible {boolean}  是否对用户可见（控件在屏幕上）
+返回 {UiSelector} 返回选择器自身以便链式调用</p>
+<p>注意：因为它判断的是视图本身是否在布局层级中可见（被遮挡了，也会返回true）</p>
+</blockquote>
+<p>为当前选择器附加控件&quot;isVisibleToUser 等于 canVisible&quot;的筛选条件。</p>
 <h2 id="textmatchescontent">textMatches(content)</h2>
 <blockquote>
 <p>content {string}</p>
@@ -940,33 +920,41 @@
 <p>为当前选择器附加控件&quot;contentDescribe 正则匹配 content&quot;的筛选条件。</p>
 <h2 id="filtercallback">filter(callback)</h2>
 <blockquote>
-<p>callback {function}</p>
-<p>返回{UiObject[]}</p>
+<p>callback {Callable}</p>
+<p>返回{UiObject[]} 返回控件对象</p>
 </blockquote>
 <p>对当前查找到的UiObject数组进行过滤，过滤的时候执行callback方法，该方法返回false，则对应的UiObject被过滤掉</p>
-<h2 id="exist">exist()</h2>
+<pre class="language-"><code>let ui = UiSelector().filter((v)=&gt;{
+    return v &amp;&amp; v.bounds() &amp;&amp; v.bounds().left &gt; 100 &amp;&amp; v.bounds().top &gt; 300;//获取左边距大于100px，上边距大于300px的控件
+}).findOne();
+</code></pre><h2 id="exist">exist()</h2>
 <blockquote>
 <p>content {string}</p>
 <p>返回 {boolean} 返回是否存在</p>
 </blockquote>
 <p>判断当前选择器是否能匹配到UiObject控件信息。</p>
+<h2 id="waitfindone">waitFindOne()</h2>
+<blockquote>
+<p>返回 {UiObject} 返回控件对象</p>
+</blockquote>
+<p>一直阻塞，直到某个控件对象出现在屏幕上</p>
 <h2 id="find">find()</h2>
 <blockquote>
 <p>返回 {UiObject[]}</p>
 </blockquote>
 <p>获取当前选择器筛选的所有UiObject控件。</p>
-<h2 id="finduiselector">find(uiSelector)</h2>
+<h2 id="findbyuiselector">findBy(uiSelector)</h2>
 <blockquote>
 <p>uiSelector {UiSelector}</p>
 <p>返回 {UiObject[]}</p>
 </blockquote>
 <p>获取当前选择器筛选的所有UiObject控件（a）中查找符合uiSelector选择器的UiObject；从a集合查找，然后遍历它们的子控件、子控件的子控件，直到a下面的所有控件都被查找一遍才结束。</p>
-<h2 id="findtimeout">find(timeout)</h2>
+<h2 id="findbytimeout">findBy(timeout)</h2>
 <blockquote>
-<p>timeout {number}</p>
-<p>返回 {UiObject[]} </p>
+<p>timeout {int}</p>
+<p>返回 {UiObject[]}</p>
 </blockquote>
-<p>获取当前选择器筛选的所有UiObject控件，查找timeout时间，时间结束后不管是否找到，都会结束查找，并且返回。</p>
+<p>获取当前选择器筛选的所有UiObject控件，如果控件一直没有出现，则最大等待timeout毫秒。</p>
 <h2 id="findone">findOne()</h2>
 <blockquote>
 <p>返回 {UiObject}</p>
@@ -991,7 +979,7 @@
 <p>获取当前选择器筛选的第一个UiObject控件，查找timeout时间，时间结束后不管是否找到，都会结束查找，并且返回。</p>
 <p></p><div id="gitalk-container"></div><script src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script><script>window.onload = function() {gitbook.events.on("page.change", function() {var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/base/uiSelector/uiSelector.html"});gitalk.render("gitalk-container");});};var gitalk = new Gitalk({"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"],"id":"/base/uiSelector/uiSelector.html"});gitalk.render("gitalk-container");</script> <p></p>
 <footer class="page-footer"><span class="copyright">Copyright © script.deeke.top 2024 all right reserved，powered by Gitbook</span><span class="footer-modification">该文章修订时间：
-2024-03-14 11:17:37
+2025-01-13 11:40:28
 </span></footer>
                                 
                                 </section>
@@ -1035,7 +1023,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"选择器-UiSelector","level":"2.1.4","depth":2,"next":{"title":"定时器","level":"2.1.5","depth":2,"path":"base/timer/timer.md","ref":"./base/timer/timer.md","articles":[]},"previous":{"title":"设备-Device","level":"2.1.3","depth":2,"path":"base/device/device.md","ref":"./base/device/device.md","articles":[]},"dir":"ltr"},"config":{"plugins":["gtalk","hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","@honkit/honkit-plugin-ga","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"livereload":{},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"gtalk":{"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"]},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://script.deeke.top/"},"theme-comscore":{},"back-to-top-button":{},"@honkit/honkit-plugin-ga":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/miniphper/deekScriptDocument"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"miniphper","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.top/","gitbook":"*","description":"描述"},"file":{"path":"base/uiSelector/uiSelector.md","mtime":"2024-03-14T03:17:37.324Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-04-03T02:19:28.908Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"选择器-UiSelector","level":"2.1.4","depth":2,"next":{"title":"定时器","level":"2.1.5","depth":2,"path":"base/timer/timer.md","ref":"./base/timer/timer.md","articles":[]},"previous":{"title":"设备-Device","level":"2.1.3","depth":2,"path":"base/device/device.md","ref":"./base/device/device.md","articles":[]},"dir":"ltr"},"config":{"plugins":["gtalk","hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","@honkit/honkit-plugin-ga","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"gtalk":{"clientID":"67bf08545b789c1522cd","clientSecret":"d04e46d41828ad4c8db0ddc9e4fa8ad785943260","repo":"deekeScriptDoc","owner":"miniphper","admin":["miniphper"]},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://script.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"@honkit/honkit-plugin-ga":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/miniphper/deekScriptDocument"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"miniphper","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"base/uiSelector/uiSelector.md","mtime":"2025-01-13T03:40:28.516Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-01-13T03:47:43.959Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1156,10 +1144,6 @@
     
         
         <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
