@@ -10,8 +10,32 @@
 ## 多线程使用
 
 ```
-new Thread(() => {
-  console.log('多线程');
-  System.sleep(3000);
-}).start();
+let obj = {
+  run: function () {
+    console.log('线程');
+  } 
+}
+
+new java.lang.Thread(new java.lang.Runnable(obj)).start();
+for(let i = 0; i < 10; i++){
+  console.log(i);
+  System.sleep(2000);
+}
+
+//输出如下
+/**
+
+18:02:29.063     0
+18:02:29.063     线程
+18:02:31.071     1
+18:02:33.081     2
+18:02:35.084     3
+18:02:37.086     4
+18:02:39.097     5
+18:02:41.111     6
+18:02:43.124     7
+18:02:45.132     8
+18:02:47.135     9
+*/
+            
 ```
