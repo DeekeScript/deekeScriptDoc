@@ -2,7 +2,7 @@
 
 ## 基本介绍
 
-UiObject 即控件对象，可以对控件进行点击、长按等动作。这里需要先简单介绍一下控件的相关知识。
+UiObject 即控件对象，可以对控件进行点击、输入文本、长按等动作。这里需要先简单介绍一下控件的相关知识。
 
 Android中的界面是由一个个控件构成的，例如图片部分是一个图片控件(ImageView)，文字部分是一个文字控件(TextView)；同时，通过各种布局来决定各个控件的位置。
 
@@ -16,7 +16,7 @@ if(sendButton){
 }
 ```
 ## click()
-> 返回 {Boolean} 返回是否点击成功
+> 返回 {Boolean} 返回是否点击成功（需要注意的是，返回成功只能说明无障碍已经将点击成功发送到了控件，但是不能确保控件被点击了，返回失败则一定没有点击成功）
 
 点击控件
 
@@ -119,18 +119,21 @@ obj.setText("DeekeScript");//将字符串“DeekeScript”输入到文本框
 > uiSelector {UiSelector} 要查找的内容
 > 返回 {UiObject[]|null} 返回查找到的控件对象
 
-在当前的控件下查找某些控件，查找条件通过UiSelector定义
+在当前的控件下查找某些控件，查找符合UiSelector过滤器条件的控件
 
 ```javascript
 let obj = new UiSelector().className("name").findOne();
 let uiObjects = obj.find(new UiSelector().className("EditText"));//查找obj下面的所有输入框控件
+
+//查找obj所有子节点中的输入框控件
+let uiObjects2 = obj.children().find(new UiSelector().className("EditText"));
 ```
 
 ## findOne(uiSelector)
 > uiSelector {UiSelector} 要查找的内容
 > 返回 {UiObject|null} 返回查找到的控件对象
 
-在当前的控件下查找某个控件，查找条件通过UiSelector定义
+同find(uiSelector)，但是findOne只返回一个符合条件的控件
 
 ```javascript
 let obj = new UiSelector().className("name").findOne();
@@ -157,7 +160,7 @@ console.log(rect.left, rect.top, rect.right, rect.bottom, rect.height(), rec.wid
 
 ```javascript
 let obj = new UiSelector().id("p2").findOne();
-let str = obj.id();//输出p2
+let str = obj.id();//查找viewIdResourceName的值，输出p2
 ```
 
 ## text()
@@ -183,12 +186,29 @@ let str = obj.desc();//控件的contentDescription属性获取
 ## children()
 > 返回 {UiObject[]|null}
 
-返回当前控件的所有子控件对象
+返回当前控件的所有子控件对象，需要和length、getChildren方法联合使用
 
 ```javascript
 let obj = new UiSelector().id("p2").findOne();
-let childs = obj.children();//子控件内容
+let children = obj.children();
+for(let i = 0; i < children.length(); i++){
+    let c = children.getChildren(i);
+    console.log(c.text());
+}
 ```
+
+## getChildren(index)
+
+> 返回 {UiObject|null}
+
+需要和children方法一起使用
+
+
+## length()
+
+> 返回 {number}
+
+返回子控件数量
 
 ## parent()
 > 返回 {UiObject}
@@ -197,7 +217,7 @@ let childs = obj.children();//子控件内容
 
 ```javascript
 let obj = new UiSelector().id("p2").findOne();
-let childs = obj.parent();//子控件内容
+let parent = obj.parent();//子控件内容
 ```
 
 ## getDrawingOrder()
@@ -213,9 +233,36 @@ let index = obj.getDrawingOrder();//控件绘制层级
 ## isClickable()
 > 返回 {boolean}
 
-是否可以点击，相关的方法还有：isFocusable/isScrollable/isLongClickable/isEnable/isPassword/isEditable/isVisibleToUser/isCheckable/isChecked/isSelected
+是否可以点击，类似的方法还有
+
+| 方法                        | 作用                          |
+|-----------------------------|-------------------------------|
+| `isSelected()`               | 判断控件是否被选中（如复选框）  |
+| `isLongClickable()`          | 判断控件是否支持长按事件       |
+| `isClickable()`              | 判断控件是否可点击             |
+| `isEditable()`               | 判断控件是否可编辑（如文本框） |
+| `isFocusable()`              | 判断控件是否可获得焦点         |
+| `isEnabled()`                | 判断控件是否启用               |
+| `isPassword()`               | 判断控件是否为密码输入框       |
+| `isScrollable()`             | 判断控件是否可滚动             |
+| `isVisibleToUser()`          | 判断控件是否对用户可见         |
+| `isCheckable()`              | 判断控件是否可选中（如复选框） |
+| `isChecked()`                | 判断控件是否已选中（如复选框） |
+
 
 ## setClickable(bool)
 > 返回 {void}
 
-设置是否可以点击，相关的方法还有：setFocusable/setScrollable/setLongClickable/setEnable/setPassword/setEditable/setVisibleToUser/setCheckable/setChecked/setSelected
+设置是否可以点击，类似的方法还有
+
+| 方法                          | 作用                          |
+|-------------------------------|-------------------------------|
+| `setLongClickable()`           | 设置控件是否支持长按事件       |
+| `setEditable()`                | 设置控件是否可编辑（如文本框） |
+| `setEnabled()`                 | 设置控件是否启用               |
+| `setChecked()`                 | 设置控件是否选中（如复选框）   |
+| `setSelected()`                | 设置控件是否被选中（如复选框） |
+| `setFocusable()`               | 设置控件是否可获得焦点         |
+| `setFocused()`                 | 设置控件是否已获得焦点         |
+| `setPassword()`                | 设置控件是否为密码输入框       |
+| `setVisibleToUser()`           | 设置控件是否对用户可见         |
