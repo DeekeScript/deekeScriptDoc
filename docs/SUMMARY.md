@@ -32,7 +32,7 @@
 -  高级部分
   - [弹窗](./advance/dialogs.md)
   - [Engines](./advance/engines/engines.md)
-  - [多线程](./advance/thread.md)
+  - [多线程-Thread](./advance/thread.md)
   - [模块](./advance/module.md)
   - [加解密](./advance/encryption.md)
   - [图片与颜色](./advance/photoAndColor.md)
