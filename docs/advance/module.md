@@ -4,7 +4,9 @@
 
 在DeekeScript中，可以轻松通过import方法来加载JavaScript文件。下面是一个实例：
 
-## import与export
+> 注意：如果使用Typescript开发，可以使用Typescript的模块导入语法
+
+## require
 
 ```javascript
 //项目文件结构如下：项目跟目录下有一个js文件夹和一个task文件夹
@@ -24,8 +26,9 @@ export let a = {
         return this.name;
     }
 }
+module.exports = a;
 
 //dy_toker.js代码如下  特别说明，路径是相对于项目根目录的路径
-import {a} from "js/a.js";//非相对于dy_toker.js文件的路径
+let a = require('js/a.js');//相对于系统根目录路径
 console.log(a.getName());//输出 “我是a.js”
 ```
