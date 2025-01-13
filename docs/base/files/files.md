@@ -1,5 +1,7 @@
 # Files
 
+> 2.0版本即将上线
+
 Files模块提供了一些常见的文件处理，包括文件读写、移动、复制、删掉等。
 
 一次性的文件读写可以直接使用Files.read(), Files.write(), Files.append()等方便的函数;
