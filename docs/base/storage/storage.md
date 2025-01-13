@@ -5,16 +5,16 @@
 > 存储模块底层使用的<a target="_blank" href="https://developer.android.com/topic/libraries/architecture/datastore?hl=zh-cn">Android DataStore</a>实现
 
 
-## createDataStore(namespace);
-> namespace {string}
+## create(db);
+> db {string}
 > 
 > 返回 {boolean}
 
-设置存储文件，不同模块可以设置不同的namespace 【对应Android中的filename】
-> 注意：前缀为"deekeScript:XXX"的namespace被系统使用，用户只能读取不能写入
+设置存储文件，不同模块可以设置不同的db 【对应Android中的filename】
+> 注意："deekeScript"的db被系统使用，用户只能读取不能写入
 
 ```javascript
-Storage.createDataStore(namespace);
+let storage = Storage.create('myDb');
 
 ```
 
@@ -27,12 +27,8 @@ Storage.createDataStore(namespace);
 
 
 ```javascript
-let user = {
-    name: "张三",
-    age: 22
-};
-
-Storage.put("user", user);
+//storage通过create创建
+storage.put("user", "test");
 ```
 
 ## get(key);
@@ -43,8 +39,44 @@ Storage.put("user", user);
 输出键为key的值，不存在的时候返回null
 
 ```javascript
-let user = Storage.get("user");
-Log.log(user);//输出json数据  {name: "张三", age: 22}
+//storage通过create创建
+let myUser = storage.get('user');
+Log.log(user);//输出字符串test
+```
+
+## putXXX(key, value);
+> key {string}
+> 
+> value {xxx}
+> 
+> 返回 {boolean}
+>
+> 注意：这里的putXXX是指一些列方法，请查看下面的案例
+
+
+```javascript
+//storage通过create创建
+storage.putInteger("age", 18);
+storage.putBool("is_success", true);
+storage.putDouble("money", 1000000.11);
+storage.putObj("obj", "333");
+storage.putSet("arr", [1,2,3]);
+```
+
+## getXXX(key);
+> key {string}
+> 
+> 返回 {xxx}
+>
+> 注意：这里的getXXX是指一些列方法，请查看下面的案例
+
+```javascript
+//storage通过create创建
+storage.getInteger("age");//输出：18
+storage.getBoolean("is_success");//输出：true
+storage.getDouble("money");//输出：1000000.11
+storage.getObject("obj");//输出：333
+storage.getArray("arr");//输出：[1,2,3]
 ```
 
 ## remove(key);
@@ -55,8 +87,9 @@ Log.log(user);//输出json数据  {name: "张三", age: 22}
 存在则删除，不存在则什么都不做
 
 ```javascript
-let user = Storage.remove("user");
-Log.log(Storage.get("user"));//输出 null
+//storage通过create创建
+let user = storage.remove("user");
+Log.log(storage.get("user"));//输出 null
 ```
 
 ## clear();
@@ -65,5 +98,6 @@ Log.log(Storage.get("user"));//输出 null
 清空所有内容
 
 ```javascript
-Log.log(Storage.clear());//输出 true
+//storage通过create创建
+Log.log(storage.clear());//输出 true
 ```
