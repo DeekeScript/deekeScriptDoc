@@ -48,7 +48,7 @@ console.log(account);
 弹出弹窗
 
 ```javascript
-Dialogs.confirm("提示", "确定执行吗？", (result)=>{
+Dialogs.confirm("提示", "确定执行吗？", (result) => {
     if(result){
         console.log('点击了确定');
     }else{
