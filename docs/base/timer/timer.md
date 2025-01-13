@@ -3,9 +3,12 @@
 用于在未来某个未来时间执行函数；计时器函数实现了与 Web 浏览器提供的定时器类似的 API。
 
 ## setTimeout(callback, delay)
+
 > callback {callback} 要执行的函数
 > 
 > delay {number} 延时 毫秒数
+>
+> 2.0版本即将上线
 
 > 示例：
 
@@ -16,9 +19,12 @@ setTimeout(()=>{
 ```
 
 ## setInterval(callback, delay)
+
 > callback {callback} 要执行的函数
 > 
 > delay {number} 延时 毫秒数
+>
+> 2.0版本即将上线
 
 > 示例：
 
@@ -29,7 +35,10 @@ setInterval(()=>{
 ```
 
 ## setImmediate(callback)
+
 > callback {callback} 要执行的函数
+>
+>  2.0版本即将上线
 
 在Looper循环的当前回合结束时要调用的函数
 
@@ -42,6 +51,8 @@ setImmediate(()=>{
 ```
 
 ## clearTimeout(id)
+
+>  2.0版本即将上线
 
 取消一个由setTimeout(callback, delay)创建的定时任务
 
@@ -57,6 +68,8 @@ clearTimeout(timer);
 
 ## clearInterval(id)
 
+>  2.0版本即将上线
+
 取消一个由setInterval(callback, delay)创建的定时任务
 
 > 示例：
@@ -71,6 +84,7 @@ clearInterval(timer);
 
 ## clearImmediate(id)
 
+> 2.0版本即将上线
 取消一个由setImmediate(callback, delay)创建的定时任务
 
 > 示例：
