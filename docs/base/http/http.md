@@ -2,17 +2,17 @@
 
 Http模块提供一些进行http请求的函数。
 
-## get(url, headers)
+## get(url)
 > url {string} 请求地址
 > 
 > headers {json} 请求头 可以为 null
 
 ```javascript
-let res = Http.get('https://script.deeke.top/api/userInfo');
-console.log(res);//输出 {code: 0, msg: "成功", data: {name: "miniphper", weixin: "miniphper"}}
+let res = Http.get('https://script.deeke.cn/api/userInfo');
+console.log(res);//输出 {code: 0, msg: "成功", data: {name: "DeekeScript", weixin: "DeekeScript"}}
 ```
 
-## post(url, params, headers)
+## post(url, params)
 > url {string} 请求地址
 > 
 > params {json} 请求参数
@@ -23,11 +23,11 @@ console.log(res);//输出 {code: 0, msg: "成功", data: {name: "miniphper", wei
 
 ```javascript
 let params = {
-    account: "miniphper",
-    password: "miniphper"
+    account: "DeekeScript",
+    password: "DeekeScript"
 }
 
-let res = Http.post('https://script.deeke.top/api/login', params, null);
+let res = Http.post('https://script.deeke.cn/api/login', params, null);
 console.log(res);//输出 {code: 0, msg: "成功", data: []}
 ```
 
@@ -43,7 +43,7 @@ console.log(res);//输出 {code: 0, msg: "成功", data: []}
 
 ```javascript
 let files = [new File("文件地址"), new File("文件地址2")];
-let params = {username: "miniphper"};
+let params = {username: "DeekeScript"};
 
 let res = Http.postFile('https://script.deeke.top/api/fileUpload', files, params, {
     success: (response)=>{
@@ -56,3 +56,9 @@ let res = Http.postFile('https://script.deeke.top/api/fileUpload', files, params
     }
 });
 ```
+
+## setHeader(headers)
+
+> headers {json} 请求头设置
+>
+> 2.0版本即将发布
