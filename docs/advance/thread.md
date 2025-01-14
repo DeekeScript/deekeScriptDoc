@@ -39,3 +39,20 @@ for(let i = 0; i < 10; i++){
 */
             
 ```
+
+## 其他使用多线程的方法
+
+```
+let obj = {
+  run: function () {
+    console.log('线程');
+  }
+}
+
+//注意java.lang.Thread和java.lang.Runnable外层不需要引号
+let javaImporterTest = JavaImporter(java.lang.Thread, java.lang.Runnable);
+
+with(javaImporterTest){
+  new Thread(new Runnable(obj)).start();
+}
+```
