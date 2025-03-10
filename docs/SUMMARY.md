@@ -42,6 +42,8 @@
 -  后端接口
   - [后端接口](./backendApi/activationCode.md)
 
+- 代码安全
+  - [代码混淆加密](./code/encryption.md)
 
 -  Apk打包与云市场
   - [在线打包](./apk/apk.md)

@@ -6,10 +6,9 @@
     "website": "https://doc.deeke.cn/",
     "keywords": "DeekeScript, 嘀客, Deeke",
     "published": "04/12/2024",
-    "author": "miniphper",
+    "author": "DeekeScript",
     "copyright": "DeekeScript",
     "plugins": [
-        "gtalk",
         "hints",
         "-theme-creative",
         "theme-comscore",
@@ -17,7 +16,6 @@
         "intopic-toc",
         "sharing",
         "exercises",
-        "@honkit/honkit-plugin-ga",
         "sitemap",
         "expandable-chapters",
         "chapter-fold",
@@ -44,15 +42,6 @@
             "description": "DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。",
             "keywords": "DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"
         },
-        "gtalk": {
-            "clientID": "67bf08545b789c1522cd",
-            "clientSecret": "d04e46d41828ad4c8db0ddc9e4fa8ad785943260",
-            "repo": "deekeScriptDoc",
-            "owner": "miniphper",
-            "admin": [
-                "miniphper"
-            ]
-        },
         "tbfed-pagefooter": {
             "copyright": "Copyright &copy script.deeke.top 2024",
             "modify_label": "该文章修订时间：",
@@ -75,7 +64,7 @@
             "label": "本章主要内容"
         },
         "edit-link": {
-            "base": "https://github.com/miniphper/deekScriptDocument",
+            "base": "https://github.com/DeekeScript/deekeScriptDoc",
             "label": "在线编辑"
         },
         "_sidebar-ad": {
@@ -84,7 +73,7 @@
             "description": "<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"
         },
         "sitemap": {
-            "hostname": "https://script.deeke.cn/"
+            "hostname": "https://doc.deeke.cn/"
         },
         "sharing": {
             "weibo": true,

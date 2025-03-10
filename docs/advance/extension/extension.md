@@ -15,6 +15,12 @@ console.log(new java.util.Date());//输出："Tue Jan 14 10:52:55 CST 2025"
 
 let f = new java.io.File("test.txt");
 console.log(f.exists());// false
+
+
+let Files = java.nio.file.Files;
+let path = java.nio.file.Paths.get('example.txt');
+console.log(Files.exists(path));//输出：false
+
 ```
 
 ### 使用JavaImporter
@@ -33,4 +39,12 @@ let javaImporterTest = JavaImporter(java.lang.Thread, java.lang.Runnable);
 with(javaImporterTest){
   new Thread(new Runnable(obj)).start();
 }
+```
+
+### 使用Packages导入模块
+
+```
+var Files = Packages.java.nio.file.Files;
+var path = Packages.java.nio.file.Paths.get('example.txt');
+console.log(Files.exists(path));//输出：false
 ```
