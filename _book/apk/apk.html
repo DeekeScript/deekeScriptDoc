@@ -825,9 +825,40 @@
                                 
                                 <h1 id="在线打包">在线打包</h1>
 <h2 id="在线打包">在线打包</h2>
-<p>2.0版本即将发布</p>
+<p><a href="https://mp.deeke.cn" target="_blank">DeekeScript开放平台</a>提供了在线打包的功能，用户可以在线打包Android应用。</p>
+<h3 id="操作流程">操作流程</h3>
+<ul>
+<li><p>本地执行打包（压缩成zip文件）,打开项目根目录下面的package.json文件，可以看到如下配置</p>
+<pre class="language-"><code>&quot;scripts&quot;: {
+  &quot;build&quot;: &quot;cpx \&quot;src/**/*\&quot; script&quot;,
+  &quot;build-zip&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; ts-node --esm ./deekeScriptZipBuild&quot;,
+  &quot;build-obfuscator&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; javascript-obfuscator script --output script --config obfuscator.config.json&quot;,
+  &quot;build-obfuscator-zip&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; javascript-obfuscator script --output script --config obfuscator.config.json &amp;&amp; ts-node --esm ./deekeScriptZipBuild&quot;,
+  &quot;postinstall&quot;: &quot;ts-node --esm init&quot;
+},
+</code></pre></li>
+<li><p>执行<code>npm run build-zip</code>命令，即可打包成zip文件。(如果需要<a href="../code/encryption.html">混淆代码</a>，请执行<code>npm run build-obfuscator-zip</code>命令)</p>
+</li>
+<li><p>执行完后，会在根目录下生成一个<code>deekeScript.zip</code>文件</p>
+</li>
+<li><p>登录<a href="https://mp.deeke.cn" target="_blank">DeekeScript开放平台</a></p>
+</li>
+<li><p>购买会员服务</p>
+</li>
+<li><p>创建App</p>
+</li>
+<li><p>进入App包管理，创建包</p>
+</li>
+<li><p>将deekeScript.zip文件上传到包中</p>
+</li>
+<li><p>等待打包完成，下载App即可</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：包名不允许修改，deekeScript.json文件的host配置的域名也不允许修改；后续只允许修改版本号~</p>
+</blockquote>
 <footer class="page-footer"><span class="copyright">Copyright © script.deeke.top 2024 all right reserved，powered by Gitbook</span><span class="footer-modification">该文章修订时间：
-2025-03-17 09:50:51
+2025-03-19 10:53:32
 </span></footer>
                                 
                                 </section>
@@ -867,7 +898,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"在线打包","level":"4.3.1","depth":2,"next":{"title":"管理后台支持","level":"4.3.2","depth":2,"path":"backend/backend.md","ref":"./backend/backend.md","articles":[]},"previous":{"title":"Apk打包与云市场","level":"4.3","depth":1,"ref":"","articles":[{"title":"在线打包","level":"4.3.1","depth":2,"path":"apk/apk.md","ref":"./apk/apk.md","articles":[]},{"title":"管理后台支持","level":"4.3.2","depth":2,"path":"backend/backend.md","ref":"./backend/backend.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"apk/apk.md","mtime":"2025-03-17T01:50:51.347Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-03-19T02:13:15.600Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"在线打包","level":"4.3.1","depth":2,"next":{"title":"管理后台支持","level":"4.3.2","depth":2,"path":"backend/backend.md","ref":"./backend/backend.md","articles":[]},"previous":{"title":"Apk打包与云市场","level":"4.3","depth":1,"ref":"","articles":[{"title":"在线打包","level":"4.3.1","depth":2,"path":"apk/apk.md","ref":"./apk/apk.md","articles":[]},{"title":"管理后台支持","level":"4.3.2","depth":2,"path":"backend/backend.md","ref":"./backend/backend.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"apk/apk.md","mtime":"2025-03-19T02:53:32.329Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-03-19T02:53:49.753Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
