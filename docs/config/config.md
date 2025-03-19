@@ -12,10 +12,11 @@
 |     name     | String  |    是   |         Deeke                    | App安装成功之后，在手机上的名称                        |
 |     icon     | String  |    是   |      logo/dke.png               | 图标建议采用200*200像素的，清晰度大的                  |
 |     head     | String  |    是   |      img/root.png               | App中用户设置页面的头像，无设置页可以不填               |
+|     debug    | Boolean |    否   |      true               | 默认为true（不需要激活码也可以启动脚本），如果需要激活才能使用APP，请设置为false               |
 | settingTopBg | String  |    是   |    img/sett-top.png            | App中用户设置页面的背景图，可以不设置，但是建议设置      |
 |      host    | String  |    是   |    https://xx.xxx.xxx          | 接口请求域名      |
 | switchSetting|  Json   |    是   |[switchSetting参数](#switchsetting参数)    | 功能开关设置      |
-|    groups    |  Json   |    是   |[groups参数](#methods参数)         |  主界面的功能组，每组都会包含若干个功能              |
+|    groups    |  Array   |    是   |[groups参数](#methods参数)         |  主界面的功能组，每组都会包含若干个功能              |
 |  bottomMenus |  Json   |    是   |[bottomMenus参数](#bottommenus参数)      | App中底部菜单，可以使用系统内置的，也可以自定义          |
 | settingLists |  Json   |    是   |[settingLists参数](#settinglists参数)    | App中设置页的列表项，可以使用系统内置的，也可以自定义     |
 |     apis     |  Json   |    是   |    [apis参数](#api参数)              | 设置相关api，比如激活码api，验证激活码是否有效api登      |
@@ -43,7 +44,11 @@
 |     icon     | String  |   是  |logo/fans.png   | App主界面的功能图标 |
 |    jsFile    | String  |   是  |tasks/task_dy_toker_fans.js  | 功能实际执行的代码所在文件 |
 | settingPage  |  Json   |   是  |[settingPage参数](#settingpage参数)| 功能对应的设置页面，如果为空，则直接执行jsFile脚本 |
-|    hidden    | boolean |   否  |    true  | 属性值，当为true的时候，则界面上不再显示此功能模块 |
+|    hidden    | Boolean |   否  |    true  | 属性值，当为true的时候，则界面上不再显示此功能模块 |
+|    runType   | String  |   否  | floatSwitch    | 如果为floatSwitch则需要手动点击右侧悬浮窗执行 |
+|   packageName| String  |   否  | com.xingin.xhs | 包名，和runType配合使用|
+|    columns   | Number  |   否  |        8       |  每行被等分为24,8则表示当前groups一行放3个功能图标| 
+|    autoOpen  | Boolean |   否  |       true     | 是否自动打开界面（需要和packageName配合使用）|
 
 
 ##### settingPage参数
@@ -57,7 +62,7 @@
 
 |     参数名    |  类型    | 必填 |      示例    |    说明   |
 | ------------ | ------- | ------- | ----------- | ---------|
-|     type     | String  |    是   |   text      | Form参数类型，有text、textArea、select、checkboxGroup、checkbox、radio、switch、number、numberRange、digitRange、digit|
+|     type     | String  |    是   |   text      | Form参数类型，有text、textArea、select、checkboxGroup、checkbox、radio、switch、number、numberRange、digitRange、digit、notice|
 |     label    | String  |    是   |   用户账号   | 字段描述，控件的描述，用于告诉用户这个控件输入的内容 |
 |    value     |   any   |    是   |   miniphper| 初始值，可以为空 ; number/numberRange/digitRange/digit的时候，value为数字类型，text/textArea为字符串类型 |
 |     name     | String  |    是   |   account  | 控件名称，后续[获取值](../base/storage/storage.md)的时候，需要这个参数名称  |
@@ -68,7 +73,9 @@
 |    hidden    | boolean |    否   |   true    | 属性值，当为true的时候，则界面上不再显示此字段；默认为false   |
 |  columnCount |  array  |    否   |   true    | 每行展示Checkbox数量，当type为checkboxGroup时必须   |
 |   children   |  array  |    否   |   true    | CheckboxsGroup里面的Checkbox所有值，当type为checkboxGroup时必须|
+|   notice     | String  |    否   |   * 注意：用户账号不能为空| 特别注意，当type为text或者textArea的时候，用于表单下方的提示语 |
 
+> 注：type为notice，用于每个设置页面的说明。
 
 ###### options参数
 
@@ -86,7 +93,7 @@
 |     title    | String  |   是    | 首页，如果想和name参数保持一致，可以使用"{NAME}" | 底部菜单名称名称  |
 |     icon     | String  |   是    | logo/fans.png | 底部菜单图标    |
 |    banner    | String  |   否    | banner/banner.png | type为home的时候必填，表示首页顶部图片 |
-|     type     | String  |   否    |     home      | 目前支持home、setting、speech，分别表示首页、设置页、话术页 |
+|     type     | String  |   是    |     home      | 目前支持home、setting、speech，分别表示首页、设置页、话术页 |
 
 
 #### settingLists参数
@@ -96,12 +103,12 @@
 |    title   | String  |   是  |   清理缓存   | 设置页标题名称    |
 |    icon    | String  |   是  | logo/clear.png| 底部菜单图标  |
 |     url    | String  |   否  | /dke/uploadLog | type为uploadLog的时候必须，用于接受上传日志；type为updateApp的时候必须，用于下载apk  |
-|    type    | String  |   是  |   clear   | 支持clear、uploadLog、customerService、updateApp、custom，分别表示 清理缓存、上传日志、联系客服、更新App、自定义 |
+|    type    | String  |   是  |   clear   | 支持clear、uploadLog、customerService、updateApp、notice、settingService、qiwei，分别表示 清理缓存、上传日志、联系客服、更新App、自定义html页面、设置页、企业微信机器人通知表单 |
 |   jsFile   | String  |   否  |   statistics/statistics.js    | type为statistics时候必须，用于统计数据  |
 |description | String  |   否  |  确定清理吗？  | type为clear的时候，会弹出提示框，确认后执行清理；type为customerService可以设置为“客服微信：miniphper”  |
 |    file    | String  |   否  |  task.html  | type为notice的时候必须  |
 |   hidden   | Boolean |   否  |  false  | 默认为false  |
-|settingPage |  Json   |   否  |  [settingPage参数](#settingpage参数)，注意当前仅支持text和notice表单  | type为qiwei的时候，需要设置，用于往企微机器人表单收集（或者举报）|
+|settingPage |  Json   |   否  |  [settingPage参数](#settingpage参数) | type为qiwei的时候，需要设置，用于往企微机器人表单收集（或者举报）；type为settingService的时候也需要设置，表示系统的一些设置，用于应用其他位置读取|
 
 #### apis参数
 

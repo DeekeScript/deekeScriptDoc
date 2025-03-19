@@ -12,7 +12,9 @@ Android中的界面是由一个个控件构成的，例如图片部分是一个�
 
 ```javascript
 //这里的sendButton就是一个控件对象，可以对控件对象进行各种操作
-let sendButton = new UiSelector().text("发送").findOne();
+let simpleMode = false;// 默认UiSelector不带参数，则为简单模式；如果simpleMode为false则为复杂模式（能查看到更多控件，包括系统控件，如：状态栏的WiFi、时间等）
+let sendButton = UiSelector(simpleMode).text("发送").findOne();
+//UiSelector(true) 和 UiSelector()是等同的
 if(sendButton){
     sendButton.click();
 }
