@@ -8,6 +8,10 @@
   - [开发环境说明](./quick/envir.md)
   - [快速开始](./quick/start.md)
 
+<!-- - 入门视频
+  - [3小时入门](./video/base.md)
+  - [3小时进阶](./video/advanced.md) -->
+
 -  配置
   - [DeekeScript.json](./config/config.md)
   - [Vscode开发篇](./config/vscode.md)
@@ -34,6 +38,7 @@
   - [Engines](./advance/engines/engines.md)
   - [多线程-Thread](./advance/thread.md)
   - [模块](./advance/module.md)
+  - [异步](./promise/awa.md)
   - [加解密](./advance/encryption.md)
   - [图片与颜色](./advance/photoAndColor.md)
   - [扩展](./advance/extension/extension.md)
@@ -52,7 +57,7 @@
 
 
 -  经典案例篇
-  - [嘀客APP](./deeke/deeke.md)
+  - [Deeke APP](./deeke/deeke.md)
 
 
 -  问题篇
@@ -60,4 +65,5 @@
   - [无障碍问题](./question/accessibility.md)
 
 
+- [更新文档](./UPDATE.md)
 - [招贤纳士](./INVITE.md)

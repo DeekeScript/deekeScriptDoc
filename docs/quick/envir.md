@@ -8,11 +8,13 @@ DeekeScript对绝大多数Android版本都提供支持，主要支持Android 8.0
 <img src="../assets/android-rate.png" width="100%" />
 
 ### Android权限说明
-使用DeekeScript可以获取Android的哪些权限呢？ 目前DeekeScript不限制应用获取Android权限，只要Android开放的权限，DeekeScript都会开放；DeekeScript默认支持了大多数常用<a href="#">权限</a>，对于DeekeScript默认不支持的权限，可以通过<a href="#">自定义权限</a>方式获取（注意此方式，需要将开发脚本<a href="#">打包成App</a>）。
+使用DeekeScript可以获取Android的哪些权限呢？ 目前DeekeScript不限制应用获取Android权限，只要Android开放的权限，DeekeScript都会开放。当前功能运行默认需要启动“无障碍”、“悬浮窗”权限。
 
 ### JavaScript支持哪些能力？
 
-DeekeScript底层是基于[Rhino引擎](https://rhino.github.io/tutorials/embedding_tutorial/)，Rhino是由Java开发的JavaScript引擎，因此它对JavaScript调用Java天生就很友好，因此DeekeScript后续也将逐步开放越来越多的Java对象提供给JavaScript使用。目前来看在脚本启停这块，Rhino比j2v8等基于v8框架要丝滑很多，不会出现停止脚本卡顿问题，更不会出现中断不了脚本的情况。
+DeekeScript底层是基于[Rhino引擎（1.8版本）](https://rhino.github.io/tutorials/embedding_tutorial/)，Rhino是由Java开发的JavaScript引擎，因此它对JavaScript调用Java天生就很友好，因此DeekeScript后续也将逐步开放越来越多的Java对象提供给JavaScript使用。目前来看在脚本启停这块，Rhino比j2v8等基于v8框架要丝滑很多，不会出现停止脚本卡顿问题，更不会出现中断不了脚本的情况。
+
+> 如果你需要了解对es5和es6支持情况，请访问：https://mozilla.github.io/rhino/compat/engines.html
 
 
 ### 基础函数支持
@@ -22,7 +24,7 @@ DeekeScript底层是基于[Rhino引擎](https://rhino.github.io/tutorials/embedd
 另外关注点更多的可能是模块化部分，因为DeekeScript本身就是为了支持项目化（针对某个或者某些应用开发N个脚本）开发的工具（而不仅仅只是支持单个脚本的开发），所以对模块化支持也是很友好的，具体可以参阅<a href="../advance/module.md">模块化</a>
 
 ### 异步支持
-DeekeScript提供了异步支持，具体参考<a href="../promise/await.md">DeekeScript异步</a>
+DeekeScript提供了异步支持，具体参考<a href="../promise/awa.md">DeekeScript异步</a>
 
 ### 是否支持多线程？
 
@@ -30,4 +32,4 @@ DeekeScript提供了异步支持，具体参考<a href="../promise/await.md">Dee
 
 ### 其他支持
 
-类似http请求，websocket都有支持，具体可以参考文档对应部分
+类似[http](../base/http/http.md)请求，[websocket](../base/webSocket/webSocket.md)都有支持，具体可以参考文档对应部分
