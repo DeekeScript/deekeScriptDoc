@@ -18,7 +18,7 @@ let storage = Storage.create('myDb');
 
 //下面是使用系统默认的db获取数据的方法
 //假设我们deekeScript.json文件中的method的settingPage里面的params有一个name为zan_rate的表单，则可以通过下面的方法获取设置的值
-let zanRate = Storage.getInteger('zan_rate');//注意，类型不同使用的方法不同，否则读取的数据会存在问题
+let zanRate = Storage.get('zan_rate');
 ```
 
 ## put(key, value);

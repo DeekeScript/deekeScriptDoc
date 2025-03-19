@@ -21,8 +21,6 @@ if ($secret !== md5($android_id . $res->getAttr("token") . $timestamp)) {
 
 ## 激活
 
-> type: aiSpeechToken
-
 需要在DeekeScript.json配置文件中配置Uri请求地址。如果用户不填写激活码，则运行DeekeScript上的业务功能（开发者开发的功能）时会提示输入激活码
 
 DeekeScript请求：
@@ -52,7 +50,6 @@ Content-Type: application/json
 
 
 ## 激活状态检查
-> type: checkBind
 
 需要在DeekeScript.json配置文件中配置Uri请求地址，DeekeScript每次运行业务功能（开发者开发的功能）都会请求一次此接口，如果返回失败，则会提示用户对应的信息
 
@@ -86,8 +83,7 @@ Content-Type: application/json
 ## 下面的接口请求参数同“激活状态检查”
 
 ### 百度AI大模型token获取接口
-> type: aiSpeechToken
->
+
 > 每次生成智能话术都会调用一次此接口，接口地址：/dke/getBaiduToken
 
 ```
@@ -99,8 +95,7 @@ Content-Type: application/json
 ```
 
 ### 配置接口
-> type: config
->
+
 > 请求地址：/dkee/config
 
 ```
@@ -123,8 +118,7 @@ Content-Type: application/json
 ```
 
 ### 是否展示支付入口接口
-> type: getToken
->
+
 > 接口地址：/alipay/getToken
 
 ```
@@ -135,8 +129,7 @@ Content-Type: application/json
 ```
 
 ### 支付宝支付订单创建接口
-> type: createOrder
->
+
 > 接口地址：/alipay/createOrder
 
 ```

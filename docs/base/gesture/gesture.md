@@ -84,5 +84,5 @@ Gesture.home();
 显示最近任务
 
 ```javascript
-Gesture.recents();
+Gesture.back();
 ```
