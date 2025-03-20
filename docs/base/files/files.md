@@ -2,24 +2,17 @@
 
 > 这里直接使用Java内置的java.nio.file.Files对象
 
-Files模块提供了一些常见的文件处理，包括文件读写、移动、复制、删掉等。
+下面提供了Files模块一些常见的文件处理，包括文件读写、移动、复制、删掉等。
 
-一次性的文件读写可以直接使用Files.read(), Files.write(), Files.append()等方便的函数;
-
-## isFile(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
-
-返回路径path是否是文件。
-
-```javascript
-let Files = java.nio.file.Files;
-let Paths = java.nio.file.Paths;
-console.log(Files.isFile(Paths.get("/sdcard/文件夹/2.txt"))); //返回false
+> 注：可以使用for循环打印出Files的相关方法：
+```
+for(let i in Files){
+    let Files = java.nio.file.Files;
+    console.log(i);
+}
 ```
 
-## isDir(path)
+## isDirectory(path)
 > path {Path} 路径
 > 
 > 返回 {boolean}
@@ -29,7 +22,7 @@ console.log(Files.isFile(Paths.get("/sdcard/文件夹/2.txt"))); //返回false
 ```javascript
 let Files = java.nio.file.Files;
 let Paths = java.nio.file.Paths;
-console.log(Files.isDir(Paths.get("/sdcard/文件夹/"))); //返回false
+console.log(Files.isDirectory(Paths.get("/sdcard/文件夹/"))); //返回false
 ```
 
 

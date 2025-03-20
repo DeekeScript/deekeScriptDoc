@@ -7,7 +7,7 @@
 
 在嘀客APP产品运作过程中，技术团队遇到了很多问题、不稳定、闪退、息屏等等。这些问题为我们开拓市场埋下了很大的隐患，甚至影响到产品的未来。
 
-再后来，我们决定对[嘀客APP](https://github.com/DeekeScript/ad-dke)进行重构，而重构必须得有自己的底层框架，否则根本问题无法解决。最终我们决定在2023年年底启动了DeekeScript项目。
+再后来，我们做了一个艰难的决定，对[嘀客APP](https://github.com/DeekeScript/ad-dke)进行重构，团队自己设计底层框架，从而在根本上解决问题。并且我们决定在2023年年底启动了DeekeScript框架项目。
 
 历时6个多月，我们完成了DeekeScript的1.0版本，随后把原先的[嘀客APP](https://github.com/DeekeScript/ad-dke)也迁移进DeekeScript了，并且更名为[Deeke](https://github.com/DeekeScript/ad-deeke)，[Deeke](https://github.com/DeekeScript/ad-deeke)的体验提升了很多，运行速度也大幅提升。不再有运行一段时间挂掉、无法识别到界面的节点等情况发生。
 

@@ -24,6 +24,7 @@
 <url> <loc>https://doc.deeke.cn/advance/engines/engines.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/advance/thread.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/advance/module.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/promise/awa.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/advance/encryption.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/advance/photoAndColor.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/advance/extension/extension.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -34,5 +35,6 @@
 <url> <loc>https://doc.deeke.cn/deeke/deeke.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/question/question.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/question/accessibility.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/UPDATE.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/INVITE.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>
