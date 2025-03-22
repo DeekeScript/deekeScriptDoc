@@ -855,123 +855,54 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="混淆加密">混淆加密</h1>
-<p>JavaScript代码混淆，主要是为了防止源码被窃取，从而一定程度上达到保护代码的目的。默认采用了javascript-obfuscator插件进行代码混淆。</p>
+<p>JavaScript代码混淆，一定程度上达到了保护原代码的目的。DeekeScript默认采用了UglifyJS插件进行代码混淆。</p>
 <blockquote>
-<p>注意：开发模式下建议不开启压缩与加密，生产环境可以使用压缩与加密。同时还需要了解到复杂的加密会增加代码执行时间，降低代码运行效率。</p>
+<p>注意：开发模式下不建议使用混淆，生产环境可以使用混淆。同时还需要了解到混淆之后，给生产bug排查带来了一定阻碍。</p>
 </blockquote>
-<h2 id="javascript-obfuscator">javascript-obfuscator</h2>
+<h2 id="uglifyjs">UglifyJS</h2>
 <blockquote>
-<p>javascript-obfuscator 插件的目标是 代码混淆，它不仅压缩代码，还对代码的结构进行修改，使得代码变得更难以理解和逆向。这种混淆通常包括更复杂的技术，比如控制流扁平化、字符串加密、死代码注入等。</p>
+<p>UglifyJS 是一个 JavaScript 压缩与混淆工具，专注于减少代码体积、优化逻辑结构，并提供基础的变量名混淆功能。它是前端工程化中常用的代码优化工具。</p>
 </blockquote>
-<h3 id="主要解决的问题：">主要解决的问题：</h3>
-<ul>
-<li>代码混淆：通过改变代码的结构、变量名、函数名等，使代码更加难以阅读和理解。例如，变量名被替换成无意义的短字符（如 a, b, c 等），控制流被打乱，字符串被加密等。</li>
-<li>字符串加密与提取：将代码中的字符串提取到数组中，并通过索引引用，这样可以避免直接查看源代码时轻松找到敏感信息。
-控制流扁平化：通过改变代码的控制流，使代码变得更加复杂，并不直接按常规顺序执行。</li>
-<li>死代码注入：向代码中插入一些永远不会执行的“死代码”，以增加分析和理解的难度。</li>
-</ul>
-<h3 id="适用场景：">适用场景：</h3>
-<ul>
-<li>代码保护：如果你希望保护代码免受逆向工程、剖析或窃取，特别是涉及到敏感业务逻辑或算法时，使用代码混淆是一种有效手段。</li>
-<li>防止盗用：通过混淆技术，增加其他人复制或修改你的代码的难度。</li>
-<li>高级混淆：如果你需要更复杂的混淆（如控制流扁平化、字符串加密等）。</li>
-</ul>
-<h3 id="执行步骤：">执行步骤：</h3>
-<ul>
-<li>打开项目根目录下面的package.json文件，可以看到如下配置：<pre class="language-"><code>&quot;scripts&quot;: {
-  &quot;build&quot;: &quot;cpx \&quot;src/**/*\&quot; script&quot;,
-  &quot;build-zip&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; ts-node --esm ./deekeScriptZipBuild&quot;,
-  &quot;build-obfuscator&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; javascript-obfuscator script --output script --config obfuscator.config.json&quot;,
-  &quot;build-obfuscator-zip&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; javascript-obfuscator script --output script --config obfuscator.config.json &amp;&amp; ts-node --esm ./deekeScriptZipBuild&quot;,
-  &quot;postinstall&quot;: &quot;ts-node --esm init&quot;
-},
+<h3 id="核心功能">核心功能</h3>
+<blockquote>
+<p>代码压缩</p>
+</blockquote>
+<pre class="language-"><code>删除空格、换行、注释。
+
+缩短变量名（如 myVariable → a）。
+
+合并表达式（如 a=1; b=2; → a=1,b=2;）。
+</code></pre><blockquote>
+<p>语法优化</p>
+</blockquote>
+<pre class="language-"><code>移除未使用的代码（Dead Code Elimination）。
+
+简化逻辑（如 if (true) { ... } 直接执行内部代码）。
+
+数学表达式优化（如 2 * 3 → 6）。
+</code></pre><blockquote>
+<p>变量混淆</p>
+</blockquote>
+<pre class="language-"><code>重命名局部变量（全局变量默认不混淆）。
+
+可选混淆属性名（需手动配置）。
+</code></pre><h3 id="执行步骤：">执行步骤：</h3>
+<blockquote>
+<p>打开项目根目录下面的package.json文件，可以看到如下配置：</p>
+</blockquote>
+<pre class="language-"><code>  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;cpx \&quot;src/**/*\&quot; script&quot;,
+    &quot;build-zip&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; ts-node --esm ./deekeScriptZipBuild&quot;,
+    &quot;build-obfuscator&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; ts-node --esm ./gulpfile&quot;,
+    &quot;build-obfuscator-zip&quot;: &quot;cpx \&quot;src/**/*\&quot; script &amp;&amp; ts-node --esm ./gulpfile &amp;&amp; ts-node --esm ./deekeScriptZipBuild&quot;,
+    &quot;postinstall&quot;: &quot;ts-node --esm init&quot;
+  },
 </code></pre><blockquote>
 <p>build命令是将源码复制到script文件夹；build-zip命令是将源码复制到script文件夹并打包成zip；包含“obfuscator”相关的命令则是在原有命令基础上增加代码混淆。</p>
 <p>混淆执行命令：npm run build-obfuscator</p>
 </blockquote>
-</li>
-</ul>
-<h3 id="代码混淆示例">代码混淆示例</h3>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 自动抛出 RangeError，因为数组索引越界 192.168.1.3:8088</span>
-<span class="token keyword">const</span> value <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// TypeScript 会提示 `undefined`，但是在运行时会引发错误</span>
-
-<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> <span class="token literal-property property">obj</span><span class="token operator">:</span> any <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token comment">// 访问 null 时，会触发 TypeError</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// TypeError: Cannot read property &apos;someMethod&apos; of null</span>
-<span class="token punctuation">}</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>加密后【未启用压缩】，如下：</p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">a1_0x1ec2</span><span class="token punctuation">(</span><span class="token parameter">_0x5231f6<span class="token punctuation">,</span> _0x2af77f</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> _0x5a5af3 <span class="token operator">=</span> <span class="token function">a1_0x5a5a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function-variable function">a1_0x1ec2</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">_0x1ec206<span class="token punctuation">,</span> _0x34fa78</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        _0x1ec206 <span class="token operator">=</span> _0x1ec206 <span class="token operator">-</span> <span class="token number">0x179</span><span class="token punctuation">;</span>
-        <span class="token keyword">var</span> _0x37087a <span class="token operator">=</span> _0x5a5af3<span class="token punctuation">[</span>_0x1ec206<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> _0x37087a<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token function">a1_0x1ec2</span><span class="token punctuation">(</span>_0x5231f6<span class="token punctuation">,</span> _0x2af77f<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">a1_0x5a5a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> _0x1d7dd5 <span class="token operator">=</span> <span class="token punctuation">[</span>
-        <span class="token string">&apos;518VpvfkM&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;23080UeErzH&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;1602955bwJgKL&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;342gUFXyW&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;12dsfZzM&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;1806525wDAlMV&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;SbsGP&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;log&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;7117510QcznoC&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;2088666fYozPk&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;5582424BzocDR&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;1339PzFigh&apos;</span><span class="token punctuation">,</span>
-        <span class="token string">&apos;someMethod&apos;</span>
-    <span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function-variable function">a1_0x5a5a</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> _0x1d7dd5<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">a1_0x5a5a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">_0x505f31<span class="token punctuation">,</span> _0x8f1e42</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> _0x4cc1b2 <span class="token operator">=</span> a1_0x1ec2<span class="token punctuation">,</span> _0x21a0db <span class="token operator">=</span> <span class="token function">_0x505f31</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            <span class="token keyword">var</span> _0x204909 <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x184</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x1</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x179</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token operator">-</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x17c</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x3</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x17a</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x4</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x17b</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x5</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x17d</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x6</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token operator">-</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x17e</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x7</span> <span class="token operator">+</span> <span class="token operator">-</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x183</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x8</span> <span class="token operator">+</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x182</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0x9</span> <span class="token operator">+</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">_0x4cc1b2</span><span class="token punctuation">(</span><span class="token number">0x181</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">0xa</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>_0x204909 <span class="token operator">===</span> _0x8f1e42<span class="token punctuation">)</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span>
-                _0x21a0db<span class="token punctuation">[</span><span class="token string">&apos;push&apos;</span><span class="token punctuation">]</span><span class="token punctuation">(</span>_0x21a0db<span class="token punctuation">[</span><span class="token string">&apos;shift&apos;</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>_0x17c6b7<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            _0x21a0db<span class="token punctuation">[</span><span class="token string">&apos;push&apos;</span><span class="token punctuation">]</span><span class="token punctuation">(</span>_0x21a0db<span class="token punctuation">[</span><span class="token string">&apos;shift&apos;</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">(</span>a1_0x5a5a<span class="token punctuation">,</span> <span class="token number">0x55c72</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token string">&apos;use strict&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> _0x349cf0 <span class="token operator">=</span> a1_0x1ec2<span class="token punctuation">,</span> _0x4b0556 <span class="token operator">=</span> <span class="token punctuation">{</span>
-            <span class="token string-property property">&apos;SbsGP&apos;</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">_0x2127e2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token function">_0x2127e2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> _0x461321 <span class="token operator">=</span> <span class="token punctuation">[</span>
-            <span class="token number">0x1</span><span class="token punctuation">,</span>
-            <span class="token number">0x2</span><span class="token punctuation">,</span>
-            <span class="token number">0x3</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span> _0x7f0d4c <span class="token operator">=</span> _0x461321<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0x1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">function</span> <span class="token function">_0x27bef1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> _0xd3ee64 <span class="token operator">=</span> a1_0x1ec2<span class="token punctuation">,</span> _0x353c31 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-        console<span class="token punctuation">[</span><span class="token function">_0xd3ee64</span><span class="token punctuation">(</span><span class="token number">0x180</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">(</span>_0x353c31<span class="token punctuation">[</span><span class="token function">_0xd3ee64</span><span class="token punctuation">(</span><span class="token number">0x185</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    console<span class="token punctuation">[</span><span class="token string">&apos;log&apos;</span><span class="token punctuation">]</span><span class="token punctuation">(</span>_0x461321<span class="token punctuation">)</span><span class="token punctuation">,</span> _0x4b0556<span class="token punctuation">[</span><span class="token function">_0x349cf0</span><span class="token punctuation">(</span><span class="token number">0x17f</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">(</span>_0x27bef1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//# sourceMappingURL=task/test.js.map</span>
-<span class="token comment">//# sourceMappingURL=test.js.map</span>
-</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright © script.deeke.top 2024 all right reserved，powered by Gitbook</span><span class="footer-modification">该文章修订时间：
-2025-03-20 11:17:58
+2025-03-23 02:13:56
 </span></footer>
                                 
                                 </section>
@@ -1007,7 +938,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"代码混淆加密","level":"5.2.1","depth":2,"next":{"title":"Apk打包与云市场","level":"5.3","depth":1,"ref":"","articles":[{"title":"在线打包","level":"5.3.1","depth":2,"path":"apk/apk.md","ref":"./apk/apk.md","articles":[]},{"title":"管理后台支持","level":"5.3.2","depth":2,"path":"backend/backend.md","ref":"./backend/backend.md","articles":[]}]},"previous":{"title":"代码安全","level":"5.2","depth":1,"ref":"","articles":[{"title":"代码混淆加密","level":"5.2.1","depth":2,"path":"code/encryption.md","ref":"./code/encryption.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"code/encryption.md","mtime":"2025-03-20T03:17:58.095Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-03-20T07:39:52.341Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"代码混淆加密","level":"5.2.1","depth":2,"next":{"title":"Apk打包与云市场","level":"5.3","depth":1,"ref":"","articles":[{"title":"在线打包","level":"5.3.1","depth":2,"path":"apk/apk.md","ref":"./apk/apk.md","articles":[]},{"title":"管理后台支持","level":"5.3.2","depth":2,"path":"backend/backend.md","ref":"./backend/backend.md","articles":[]}]},"previous":{"title":"代码安全","level":"5.2","depth":1,"ref":"","articles":[{"title":"代码混淆加密","level":"5.2.1","depth":2,"path":"code/encryption.md","ref":"./code/encryption.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy script.deeke.top 2024","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"本章主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"在线编辑","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"code/encryption.md","mtime":"2025-03-22T18:13:56.251Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-03-22T18:18:34.632Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
