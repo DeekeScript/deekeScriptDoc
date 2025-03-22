@@ -12,8 +12,8 @@
   "scripts": {
     "build": "cpx \"src/**/*\" script",
     "build-zip": "cpx \"src/**/*\" script && ts-node --esm ./deekeScriptZipBuild",
-    "build-obfuscator": "cpx \"src/**/*\" script && javascript-obfuscator script --output script --config obfuscator.config.json",
-    "build-obfuscator-zip": "cpx \"src/**/*\" script && javascript-obfuscator script --output script --config obfuscator.config.json && ts-node --esm ./deekeScriptZipBuild",
+    "build-obfuscator": "cpx \"src/**/*\" script && ts-node --esm ./gulpfile",
+    "build-obfuscator-zip": "cpx \"src/**/*\" script && ts-node --esm ./gulpfile && ts-node --esm ./deekeScriptZipBuild",
     "postinstall": "ts-node --esm init"
   },
   ```
