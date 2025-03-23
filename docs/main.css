@@ -39,3 +39,52 @@ h6{
     left: 260px!important;
 }
 
+@media (max-width: 768px){
+    nav.intopic-toc{
+        display: none;
+    }
+
+    div.page-wrapper{
+        display: block;
+    }
+
+    div.page-inner{
+        width: 100%!important;
+    }
+
+    .book-header a{
+        display: none!important;
+    }
+
+    .book-header a:first-child{
+        display: block!important;
+    }
+
+    .book-header a:first-child i{
+        font-size: 1.6em;
+    }
+
+    h1{
+        font-size: 1.60em!important;
+    }
+
+    h2{
+        font-size: 1.4em!important;
+    }
+
+    h3{
+        font-size: 1.3em!important;
+    }
+
+    h4{
+        font-size: 1.2em!important;
+    }
+
+    h5{
+        font-size: 1.1em!important;
+    }
+
+    h6{
+        font-size: 1.0em!important;
+    }
+}
