@@ -40,12 +40,18 @@ h6{
 }
 
 @media (max-width: 768px){
+    .book-header{
+        padding: 0;
+        position: fixed;
+    }
+
     nav.intopic-toc{
         display: none;
     }
 
     div.page-wrapper{
         display: block;
+        margin-top: 1em;
     }
 
     div.page-inner{
@@ -64,30 +70,31 @@ h6{
     }
 
     .book-header a:first-child i{
-        font-size: 1.6em;
+        font-size: 1.5em;
     }
 
     h1{
-        font-size: 1.60em!important;
+        font-size: 1.40em!important;
+      
     }
 
     h2{
-        font-size: 1.4em!important;
-    }
-
-    h3{
         font-size: 1.3em!important;
     }
 
-    h4{
+    h3{
         font-size: 1.2em!important;
     }
 
-    h5{
+    h4{
         font-size: 1.1em!important;
     }
 
-    h6{
+    h5{
         font-size: 1.0em!important;
+    }
+
+    h6{
+        font-size: 0.9em!important;
     }
 }
