@@ -50,6 +50,9 @@ h6{
 
     div.page-inner{
         width: 100%!important;
+        p, li, span, tr, td, div{
+            font-size: 12px!important;
+        }
     }
 
     .book-header a{
