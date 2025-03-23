@@ -63,6 +63,7 @@
 -  问题篇
   - [常见问题](./question/question.md)
   - [无障碍问题](./question/accessibility.md)
+  - [Bug提交入口](./question/bug.md)
 
 
 - [更新文档](./UPDATE.md)
