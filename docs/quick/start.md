@@ -60,7 +60,7 @@
   npm run build
   ```
 
-<img src="../assets/build.png" width="100%" />
+  <img src="../assets/build.png" width="100%" />
   
 - [同步项目到手机](../config/vscode.md)，让APP启动
 
