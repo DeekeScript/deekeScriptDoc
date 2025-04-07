@@ -149,7 +149,7 @@ let uiObject = obj.findOne(new UiSelector().className("EditText"));//查找obj�
 let obj = new UiSelector().className("EditText").findOne();
 let rect = obj.bounds();
 //输出  左边距、上边距、右边距、下边距、高度、宽度
-console.log(rect.left, rect.top, rect.right, rect.bottom, rect.height(), rec.width());
+console.log(rect.left, rect.top, rect.right, rect.bottom, rect.height(), rect.width());
 ```
 
 
