@@ -222,10 +222,17 @@ let ui = UiSelector().filter((v)=>{
 
 获取当前选择器筛选的第一个UiObject控件（a）中查找符合uiSelector选择器的UiObject；从a集合查找，然后遍历它们的子控件、子控件的子控件，直到a下面的所有控件都被查找一遍才结束。
 
-
-## find(timeout)
-> timeout {number}
+## findOneBy(uiSelector)
+> uiSelector {UiSelector}
 > 
-> 返回 {UiObject} 
+> 返回 {UiObject[]}
 
-获取当前选择器筛选的第一个UiObject控件，查找timeout时间，时间结束后不管是否找到，都会结束查找，并且返回。
+与findBy类似，区别是找到一个符合条件的控件，立马返回
+
+
+## findOneBy(timeout)
+> timeout {int}
+> 
+> 返回 {UiObject[]}
+
+与findBy类似，区别是找到一个符合条件的控件，立马返回
