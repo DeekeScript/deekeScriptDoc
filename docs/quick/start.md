@@ -13,7 +13,10 @@
 * 在Vscode中安装DeekeScript开发插件，如下图，点击“安装”即可
 <img src="../assets/extension.png" width="100%" /> 
 
-* 在手机上<a target="_blank" href="../assets/v1.0.08-release.apk">下载安装DeekeScript软件包</a>
+* 在手机上<a target="_blank" href="../assets/v1.0.08-release.apk">下载安装DeekeScript软件包</a>，或者扫码下载：
+
+   <img src="../assets/qrcode.png" width="30%" />
+  
 * 打开DeekeScript的侧边栏（左上角“三条杠”），开启“无障碍”、“悬浮窗”、“开启服务”
 
 ### 认识节点查看器
