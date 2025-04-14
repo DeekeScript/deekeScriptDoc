@@ -2,7 +2,7 @@
 
 用于在未来某个未来时间执行函数；计时器函数实现了与 Web 浏览器提供的定时器类似的 API。
 
-> 注意：setInterval和setTimeout均通过多线程实现，与JavaScript（单线程，时间循环实现）的实现有差异。
+> 注意：setInterval和setTimeout均通过多线程实现，与JavaScript（单线程，事件循环）的实现有差异。
 
 ## setTimeout(callback, delay)
 
