@@ -35,7 +35,7 @@ Engines.executeScriptStr("My first DeekeScript", "console.log('My first DeekeScr
 
 ## closeAll()
 
-关闭所有正在运行的脚本
+关闭所有正在运行的脚本和定时器
 
 ```javascript
 Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时也会被结束
@@ -43,6 +43,6 @@ Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时�
 
 ## closeOther()
 
-关闭除了当前脚本之外的其他脚本（有一定延时）
+关闭除了当前脚本之外的其他脚本（有一定延时）和所有定时器
 
 > 如果你想在当前脚本执行一段时间后，进入休眠一段时间，并且在休眠的时间内执行其他脚本；休眠完成后，立马关闭其他脚本，就需要使用此方法

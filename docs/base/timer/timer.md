@@ -48,6 +48,8 @@ let timer = setTimeout(()=>{
 clearTimeout(timer);
 ```
 
+> 关闭所有定时器，请使用[Engines](../../advance/engines/engines.md)相关方法
+
 ## clearInterval(id)
 
 取消一个由setInterval(callback, delay)创建的定时任务
@@ -61,3 +63,5 @@ let timer = setInterval(()=>{
 
 clearInterval(timer);
 ```
+
+> 关闭所有定时器，请使用[Engines](../../advance/engines/engines.md)相关方法
