@@ -44,7 +44,7 @@
         },
         "tbfed-pagefooter": {
             "copyright": "Copyright &copy doc.deeke.cn 2025",
-            "modify_label": "该文章修订时间：",
+            "modify_label": "更新时间：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
         "insert-logo": {
@@ -61,11 +61,11 @@
             "anonymizeIP": true
         },
         "intopic-toc": {
-            "label": "本章主要内容"
+            "label": "主要内容"
         },
         "edit-link": {
             "base": "https://github.com/DeekeScript/deekeScriptDoc",
-            "label": "在线编辑"
+            "label": ""
         },
         "_sidebar-ad": {
             "imageUrl": "/weixin.png",
