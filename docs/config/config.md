@@ -13,7 +13,6 @@
 |     icon     | String  |    是   |      logo/dke.png               | 图标建议采用200*200像素的，清晰度大的                  |
 |     head     | String  |    是   |      img/root.png               | App中用户设置页面的头像，无设置页可以不填               |
 |     debug    | Boolean |    否   |      true               | 默认为true（不需要激活码也可以启动脚本），如果需要激活才能使用APP，请设置为false               |
-| settingTopBg | String  |    是   |    img/sett-top.png            | App中用户设置页面的背景图，可以不设置，但是建议设置      |
 |      host    | String  |    是   |    https://xx.xxx.xxx          | 接口请求域名      |
 | switchSetting|  Json   |    是   |[switchSetting参数](#switchsetting参数)    | 功能开关设置      |
 |    groups    |  Array   |    是   |[groups参数](#methods参数)         |  主界面的功能组，每组都会包含若干个功能              |
@@ -127,7 +126,6 @@
   "name": "Deeke",
   "icon": "logo/dke.png",
   "head": "img/robot.png",
-  "settingTopBg": "img/setting-top.png",
   "host": "https://home.deeke.top",
   "switchSetting": {
     "alipay": true
