@@ -872,16 +872,194 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="图片与颜色">图片与颜色</h1>
-<h2 id="图片识别">图片识别</h2>
 <blockquote>
-<p>2.0版本即将上线</p>
+<p>本模块提供了图片截图、图片查找图片、图片裁剪、图片缩放、图片识别文字、图片取色、图片查找颜色等方法</p>
 </blockquote>
-<h2 id="颜色识别">颜色识别</h2>
+<h2 id="图片">图片</h2>
+<h3 id="capture">capture</h3>
+<p>&gt;</p>
 <blockquote>
-<p>2.0版本即将上线 </p>
+<p>返回  {string}</p>
 </blockquote>
+<p>屏幕截图</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;截图异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="getmatimagefile">getMat(imageFile)</h3>
+<p>&gt;</p>
+<blockquote>
+<p>imageFile  {string} 图片地址
+返回  {Mat}  矩阵对象</p>
+</blockquote>
+<p>获取图片的矩阵对象</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> mat <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="findonesource-template-threshold">findOne(source, template, threshold)</h3>
+<p>&gt;</p>
+<blockquote>
+<p>source  {Mat} 矩阵对象
+template  {Mat} 矩阵对象
+返回  {Point}  位置</p>
+</blockquote>
+<p>从source中查找template，返回template在source中的位置</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> mat <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> template <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span><span class="token string">&quot;/xxx/xxx/template.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> templateMat <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span>template<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> point <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>mat<span class="token punctuation">,</span> templateMat<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>point <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;位置：&quot;</span> <span class="token operator">+</span> point<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">+</span> point<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;未找到&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="findsource-template-threshold">find(source, template, threshold)</h3>
+<p>&gt;</p>
+<blockquote>
+<p>source  {Mat} 矩阵对象
+template  {Mat} 矩阵对象
+返回  {Point}  位置</p>
+</blockquote>
+<p>从source中查找template，返回所有template在source中的位置</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> mat <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> template <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span><span class="token string">&quot;/xxx/xxx/template.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> templateMat <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getMat</span><span class="token punctuation">(</span>template<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> points <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>mat<span class="token punctuation">,</span> templateMat<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>points<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> points<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;位置：&quot;</span> <span class="token operator">+</span> points<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">+</span> points<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="cropimagefile-left-number-top-number-width-number-height-number">crop(imageFile, left: number, top: number, width: number, height: number)</h3>
+<p>&gt;</p>
+<blockquote>
+<p>imageFile  {string} 图片地址
+left  {number} 左边距
+top  {number} 上边距
+width  {number} 采集图片宽度
+height  {number} 裁剪图片高度
+返回  {string}  裁剪后的图片地址</p>
+</blockquote>
+<p>裁剪图片</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> scopImages <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">crop</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>scopImages<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//裁剪后的图片地址</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="scaleimagefile-multiple">scale(imageFile, multiple)</h3>
+<p>&gt;</p>
+<blockquote>
+<p>imageFile  {string} 图片地址
+multiple  {number} 缩放倍数
+返回  {string} 缩放后的图片地址</p>
+</blockquote>
+<p>裁剪图片</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> scopImages <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>scopImages<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//缩小2倍后的图片地址</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="文字识别">文字识别</h2>
+<h3 id="gettextimagefile">getText(imageFile)</h3>
+<blockquote>
+<p>imageFile  {string} 图片地址
+返回  {string[]} 返回后的文字</p>
+</blockquote>
+<p>文字识别</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> texts <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>texts<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//图片中的文字</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="颜色">颜色</h2>
+<h3 id="getcolorimagefile-pixelx-number-pixely-number">getColor(imageFile, pixelX: number, pixelY: number)</h3>
+<blockquote>
+<p>imageFile  {string} 图片地址
+pixelX  {number} x坐标
+pixelY  {number} y坐标
+返回  {string} rgba颜色值</p>
+</blockquote>
+<p>查找图片颜色</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> color <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//左边距100，上边距100 位置的颜色</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出： rgba(255,255,255,1.0)</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="findcolorimagefile-color">findColor(imageFile, color)</h3>
+<blockquote>
+<p>imageFile  {string} 图片地址
+color  {string} rgba颜色值
+返回  {Point[]} 坐标数组</p>
+</blockquote>
+<p>查找图片中颜色与color一致的坐标</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> imageFile <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取图片地址  后续可以通过此地址进行图片处理</span>
+    <span class="token keyword">let</span> points <span class="token operator">=</span> Images<span class="token punctuation">.</span><span class="token function">findColor</span><span class="token punctuation">(</span>imageFile<span class="token punctuation">,</span> <span class="token string">&quot;rgba(255,255,255,1.0)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//左边距100，上边距100 位置的颜色</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">in</span> points<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>points<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> points<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;异常：&quot;</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="findcolorimagefile-startcolor-endcolor">findColor(imageFile, startColor, endColor)</h3>
+<blockquote>
+<p>imageFile  {string} 图片地址
+startColor  {string} rgba颜色值
+endColor  {string} rgba颜色值
+返回  {Point[]} 坐标数组</p>
+</blockquote>
+<p>查找图片中颜色介于startColor和endColor的颜色坐标；此方法主要解决不同手机下色彩不一致导致的颜色误差问题。</p>
+<pre class="language-"><code>比如：startColor为rgba(252,253,254,0.9)；endColor为rgba(255,255,255,1.0)；
+则符合条件的颜色规则如下：
+252 &lt;= R &lt;= 255
+253 &lt;= G &lt;= 255 
+254 &lt;= B &lt;= 255 
+0.9 &lt;= A &lt;= 1.0
+</code></pre><p>```javascript
+try{
+    let imageFile = Images.capture();//获取图片地址  后续可以通过此地址进行图片处理
+    let points = Images.findColor(imageFile, &quot;rgba(252,253,254,0.9)&quot;, &quot;rgba(255,255,255,1.0)&quot;);
+    for(let i in points){
+        console.log(points[i].x, points[i].y);
+    }
+}catch(e){
+    console.log(&quot;异常：&quot; + e.message);
+}</p>
 <footer class="page-footer"><span class="copyright">Copyright © doc.deeke.cn 2025 all right reserved，powered by Gitbook</span><span class="footer-modification">更新时间：
-2025-03-21 23:14:33
+2025-04-16 14:07:30
 </span></footer>
                                 
                                 </section>
@@ -925,7 +1103,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图片与颜色","level":"4.1.7","depth":2,"next":{"title":"扩展","level":"4.1.8","depth":2,"path":"advance/extension/extension.md","ref":"./advance/extension/extension.md","articles":[]},"previous":{"title":"加解密","level":"4.1.6","depth":2,"path":"advance/encryption.md","ref":"./advance/encryption.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"advance/photoAndColor.md","mtime":"2025-03-21T15:14:33.590Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-04-14T17:19:48.252Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图片与颜色","level":"4.1.7","depth":2,"next":{"title":"扩展","level":"4.1.8","depth":2,"path":"advance/extension/extension.md","ref":"./advance/extension/extension.md","articles":[]},"previous":{"title":"加解密","level":"4.1.6","depth":2,"path":"advance/encryption.md","ref":"./advance/encryption.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"advance/photoAndColor.md","mtime":"2025-04-16T06:07:30.208Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-04-16T06:08:23.861Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
