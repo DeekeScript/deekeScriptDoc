@@ -6,7 +6,6 @@
 
 
 ### capture
->
 > 返回  {string}
 
 屏幕截图
@@ -22,8 +21,8 @@ try{
 
 
 ### getMat(imageFile)
->
 > imageFile  {string} 图片地址
+> 
 > 返回  {Mat}  矩阵对象
 
 获取图片的矩阵对象
@@ -40,9 +39,10 @@ try{
 
 
 ### findOne(source, template, threshold)
->
 > source  {Mat} 矩阵对象
+> 
 > template  {Mat} 矩阵对象
+> 
 > 返回  {Point}  位置
 
 从source中查找template，返回template在source中的位置
@@ -67,9 +67,10 @@ try{
 ```
 
 ### find(source, template, threshold)
->
 > source  {Mat} 矩阵对象
+> 
 > template  {Mat} 矩阵对象
+> 
 > 返回  {Point}  位置
 
 从source中查找template，返回所有template在source中的位置
@@ -93,12 +94,16 @@ try{
 ```
 
 ### crop(imageFile, left: number, top: number, width: number, height: number)
->
 > imageFile  {string} 图片地址
+> 
 > left  {number} 左边距
+> 
 > top  {number} 上边距
+> 
 > width  {number} 采集图片宽度
+> 
 > height  {number} 裁剪图片高度
+> 
 > 返回  {string}  裁剪后的图片地址
 
 裁剪图片
@@ -115,9 +120,10 @@ try{
 
 
 ###  scale(imageFile, multiple)
->
 > imageFile  {string} 图片地址
+> 
 > multiple  {number} 缩放倍数
+> 
 > 返回  {string} 缩放后的图片地址
 
 裁剪图片
@@ -135,8 +141,8 @@ try{
 ## 文字识别
 
 ### getText(imageFile)
-
 > imageFile  {string} 图片地址
+> 
 > 返回  {string[]} 返回后的文字
 
 文字识别
@@ -154,10 +160,12 @@ try{
 ## 颜色
 
 ### getColor(imageFile, pixelX: number, pixelY: number)
-
 > imageFile  {string} 图片地址
+> 
 > pixelX  {number} x坐标
+> 
 > pixelY  {number} y坐标
+> 
 > 返回  {string} rgba颜色值
 
 查找图片颜色
@@ -174,9 +182,10 @@ try{
 
 
 ### findColor(imageFile, color)
-
 > imageFile  {string} 图片地址
+> 
 > color  {string} rgba颜色值
+> 
 > 返回  {Point[]} 坐标数组
 
 查找图片中颜色与color一致的坐标
@@ -195,10 +204,12 @@ try{
 
 
 ### findColor(imageFile, startColor, endColor)
-
 > imageFile  {string} 图片地址
+> 
 > startColor  {string} rgba颜色值
+> 
 > endColor  {string} rgba颜色值
+> 
 > 返回  {Point[]} 坐标数组
 
 查找图片中颜色介于startColor和endColor的颜色坐标；此方法主要解决不同手机下色彩不一致导致的颜色误差问题。
