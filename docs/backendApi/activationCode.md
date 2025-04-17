@@ -21,7 +21,7 @@ if ($secret !== md5($android_id . $res->getAttr("token") . $timestamp)) {
 
 ## 激活
 
-> type: aiSpeechToken
+> type: bind
 
 需要在DeekeScript.json配置文件中配置Uri请求地址。如果用户不填写激活码，则运行DeekeScript上的业务功能（开发者开发的功能）时会提示输入激活码
 
@@ -44,7 +44,7 @@ Content-Type: application/json
 
 ```json
 //激活成功
- {code: 0, msg: "成功", token_time: "29.99天后过期", success: true, data: []}
+ {code: 0, msg: "成功", success: true, data: { token_time: "29.99天后过期"}}
 
 //激活失败
 {code: 1, success: false, msg: "激活失败"}
