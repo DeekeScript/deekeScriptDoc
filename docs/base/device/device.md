@@ -60,6 +60,18 @@ Device.keepScreenOn(600);//常量10分钟
 
 获取设备的随机的uuid
 
+## getToken()
+> 返回 {string}
+
+获取设备激活码（用户激活后，才有次值）
+
+## getAttr(key)
+> key {string}
+> 
+> 返回 {string}
+
+获取设备其他数据，也可以使用getAttr('token')代替getToken方法
+
 ## isScreenOn()
 > 返回 {boolean}
 
