@@ -11,6 +11,7 @@
 <url> <loc>https://doc.deeke.cn/base/system/funcs.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/base/device/device.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/base/uiSelector/uiSelector.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/base/ui/form.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/base/timer/timer.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/base/http/http.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/base/webSocket/webSocket.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

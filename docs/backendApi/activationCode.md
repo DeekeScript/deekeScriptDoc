@@ -122,6 +122,8 @@ Content-Type: application/json
 }
 ```
 
+`注意：这里的的role、ad等属性与deekeScript.json配置的dataFrom有联系，如果开发者需要使用类似角色的动态select选择框表单，可以使用此接口实现。`
+
 ### 是否展示支付入口接口
 > type: getToken
 >
