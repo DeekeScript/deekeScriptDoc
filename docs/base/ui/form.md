@@ -45,7 +45,7 @@
 | :----- | :------: | :----: | :------: | :------: |
 |  label  |   表单的标题   |  String  |  -  |  -  |
 |  name   |   表单的name属性   |  String  |  -  |  -  |
-|  value  |   表单的默认值   |  String  |  -  |  -  |
+|  value  |   表单的默认值   |  String或者Number  |  -  |  -  |
 |  notice  |   表单的提示信息   |  String  |  -  |  -  |
 |  hidden  |   表单是否隐藏   |  Boolean  |  true、false  |  false  |
 |  lines  |   textArea的行数   |  Number  |  -  |  -  |
