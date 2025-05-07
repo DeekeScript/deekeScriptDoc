@@ -904,7 +904,7 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">类型/值</th>
+<th style="text-align:left">属性/类型</th>
 <th style="text-align:center">text</th>
 <th style="text-align:center">textArea</th>
 <th style="text-align:center">select</th>
@@ -1117,12 +1117,125 @@
 </tr>
 </tbody>
 </table>
+<h3 id="属性说明">属性说明</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">可选值</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">label</td>
+<td style="text-align:center">表单的标题</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:center">表单的name属性</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:center">表单的默认值</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">notice</td>
+<td style="text-align:center">表单的提示信息</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">hidden</td>
+<td style="text-align:center">表单是否隐藏</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">true、false</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">lines</td>
+<td style="text-align:center">textArea的行数</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">options</td>
+<td style="text-align:center">select、checkboxGroup的选项</td>
+<td style="text-align:center">Array</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">max</td>
+<td style="text-align:center">numberRange、digitRange的最大值</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">min</td>
+<td style="text-align:center">numberRange、digitRange的最小值</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">step</td>
+<td style="text-align:center">numberRange、digitRange的步长</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">dataFrom</td>
+<td style="text-align:center">radio的动态数据源</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">children</td>
+<td style="text-align:center">checkboxGroup的子元素</td>
+<td style="text-align:center">Array</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">values</td>
+<td style="text-align:center">checkboxGroup的默认值</td>
+<td style="text-align:center">Array</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">columnCount</td>
+<td style="text-align:center">checkboxGroup的列数</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>需要注意的是，Preference Framework有一个特点，就是当表单的名称和类型确定之后，如果再更改表单类型，可能会出现问题导致崩溃。更改表单的name属性即可解决，或者卸载app重装</p>
+<p>属性类型说明请参考<a href="../../config/config.html">deekeScript.json文件</a></p>
 <p>dataFrom属性需要与<a href="../../backendApi/activationCode.html">config接口</a>对应，需要动态渲染的列表，可以使用radio的dataFrom属性。</p>
+<p>需要注意的是，Preference Framework有一个特点，就是当表单的名称和类型确定之后，如果再更改表单类型，可能会出现问题导致崩溃。更改表单的name属性即可解决，或者卸载app重装</p>
 </blockquote>
 <footer class="page-footer"><span class="copyright">Copyright © doc.deeke.cn 2025 all right reserved，powered by Gitbook</span><span class="footer-modification">更新时间：
-2025-05-06 22:13:33
+2025-05-07 10:07:11
 </span></footer>
                                 
                                 </section>
@@ -1166,7 +1279,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"表单","level":"3.1.5","depth":2,"next":{"title":"定时器","level":"3.1.6","depth":2,"path":"base/timer/timer.md","ref":"./base/timer/timer.md","articles":[]},"previous":{"title":"选择器-UiSelector","level":"3.1.4","depth":2,"path":"base/uiSelector/uiSelector.md","ref":"./base/uiSelector/uiSelector.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"base/ui/form.md","mtime":"2025-05-06T14:13:33.874Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-06T14:16:04.479Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"表单","level":"3.1.5","depth":2,"next":{"title":"定时器","level":"3.1.6","depth":2,"path":"base/timer/timer.md","ref":"./base/timer/timer.md","articles":[]},"previous":{"title":"选择器-UiSelector","level":"3.1.4","depth":2,"path":"base/uiSelector/uiSelector.md","ref":"./base/uiSelector/uiSelector.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"base/ui/form.md","mtime":"2025-05-07T02:07:11.364Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-07T02:08:15.397Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
