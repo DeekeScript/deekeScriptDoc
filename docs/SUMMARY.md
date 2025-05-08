@@ -44,6 +44,8 @@
   - [图片与颜色](./advance/photoAndColor.md)
   - [扩展](./advance/extension/extension.md)
 
+- Android权限
+  - [基础权限](./access/access.md)
 
 -  后端接口
   - [后端接口](./backendApi/activationCode.md)
