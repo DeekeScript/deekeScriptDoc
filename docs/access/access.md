@@ -22,7 +22,7 @@ DeekeScript权限主要划分为2种，一种是必须用户授权的权限（�
 ```
 if(!Access.isBackgroundAlertEnabled()){
     Dialogs.confirm('温馨提示', '请开启后台弹窗权限', (result) => {
-        Access.backgroundAlertSetting();
+        Access.openBackgroundAlertSetting();
         System.exit();//关闭当前任务    
     });
 }
@@ -36,7 +36,7 @@ if(!Access.isBackgroundAlertEnabled()){
 ```
 if(!Access.isMediaProjectionEnable()){
     Dialogs.confirm('温馨提示', '请开启屏幕截图权限', (result) => {
-        Access.mediaProjectionSetting();
+        Access.openMediaProjectionSetting();
         System.exit();//关闭当前任务    
     });
 }
