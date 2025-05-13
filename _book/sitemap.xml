@@ -30,6 +30,10 @@
 <url> <loc>https://doc.deeke.cn/advance/photoAndColor.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/advance/extension/extension.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/access/access.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/hook/hook.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/hid/hid.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/hid/bluetooth.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/hid/method.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/backendApi/activationCode.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/code/encryption.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/apk/apk.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
