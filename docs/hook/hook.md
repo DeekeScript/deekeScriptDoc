@@ -10,7 +10,7 @@
 ```
 {
     "hooks": {
-        "start_app": "scripts/hooks/start_app.py"
+        "start_app": "scripts/hooks/start_app.js"
     }
 }
 ```
