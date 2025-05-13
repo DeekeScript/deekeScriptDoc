@@ -62,7 +62,13 @@ Log.log(user);//输出字符串test
 storage.putInteger("age", 18);
 storage.putBool("is_success", true);
 storage.putDouble("money", 1000000.11);
-storage.putObj("obj", "333");
+storage.putObj("obj", {
+    name: "DeekeScript",
+    age: 22,
+    getName: function() {
+        return this.name;
+    }
+});
 storage.putSet("arr", [1,2,3]);
 ```
 
@@ -78,7 +84,7 @@ storage.putSet("arr", [1,2,3]);
 storage.getInteger("age");//输出：18
 storage.getBoolean("is_success");//输出：true
 storage.getDouble("money");//输出：1000000.11
-storage.getObject("obj");//输出：333
+storage.getObj("obj");//输出：【json对象】
 storage.getArray("arr");//输出：[1,2,3]
 ```
 

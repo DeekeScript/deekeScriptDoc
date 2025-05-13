@@ -47,6 +47,14 @@
 - Android权限
   - [基础权限](./access/access.md)
 
+- Hook
+  - [Hook介绍](./hook/hook.md)
+
+- Hid模式【即将上线】
+  - [模式介绍](./hid/hid.md)
+  - [蓝牙Hid硬件介绍](./hid/bluetooth.md)
+  - [Hid方法](./hid/method.md)
+
 -  后端接口
   - [后端接口](./backendApi/activationCode.md)
 
