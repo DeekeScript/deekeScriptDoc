@@ -69,7 +69,7 @@ storage.putObj("obj", {
         return this.name;
     }
 });
-storage.putSet("arr", [1,2,3]);
+storage.putArray("arr", [1,2,3]);
 ```
 
 ## getXXX(key);
