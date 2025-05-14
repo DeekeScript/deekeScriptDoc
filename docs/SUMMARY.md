@@ -14,6 +14,7 @@
 
 -  配置
   - [DeekeScript.json](./config/config.md)
+ -  [动态配置](./config/dynamics.md)
   - [Vscode开发篇](./config/vscode.md)
 
 
