@@ -3,7 +3,7 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <title>基础权限 · DeekeScript</title>
+        <title>动态配置 · DeekeScript</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 5.1.4">
@@ -80,6 +80,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="vscode.html" />
+    
+    
+    <link rel="prev" href="config.html" />
     
 
     </head>
@@ -213,9 +217,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="../config/config.html">
+        <li class="chapter " data-level="2.1.1" data-path="config.html">
             
-                <a href="../config/config.html">
+                <a href="config.html">
             
                     
                     DeekeScript.json
@@ -226,9 +230,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="../config/dynamics.html">
+        <li class="chapter active" data-level="2.1.2" data-path="dynamics.html">
             
-                <a href="../config/dynamics.html">
+                <a href="dynamics.html">
             
                     
                     动态配置
@@ -239,9 +243,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="../config/vscode.html">
+        <li class="chapter " data-level="2.1.3" data-path="vscode.html">
             
-                <a href="../config/vscode.html">
+                <a href="vscode.html">
             
                     
                     Vscode开发篇
@@ -609,9 +613,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="4.2.1" data-path="access.html">
+        <li class="chapter " data-level="4.2.1" data-path="../access/access.html">
             
-                <a href="access.html">
+                <a href="../access/access.html">
             
                     
                     基础权限
@@ -993,7 +997,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >基础权限</a>
+        <a href=".." >动态配置</a>
     </h1>
 </div>
 
@@ -1008,43 +1012,98 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="基础权限">基础权限</h1>
-<p><code>一直以来，Android在权限上面做了很多变化，并且有逐步收紧的态势。包括国内各大厂商也是绞尽脑汁限制APP申请各类权限。Android权限一直以来都被滥用、或者非法利用，导致用户权益严重受损，甚至财产安全也得不到保证。DeekeScript作为RPA领域的后来者，也深知保护用户的隐私的重要性，同时大量的权限申请也会严重影响用户体验，基于此两方面。我们只提供尽可能少的权限！</code></p>
-<p>DeekeScript权限主要划分为2种，一种是必须用户授权的权限（这类权限通常不需要开发者进行判断，框架内部会自动判断是否开启，未开启则提示用户开启）；另外一类则是可选权限（根据需要提醒用户是否授权），比如图色识别，这类权限需要开发者进行判断，如果代码执行需要开启但是未开启则提醒用户开启。</p>
-<h2 id="无障碍权限">无障碍权限</h2>
+                                <h1 id="动态配置">动态配置</h1>
+<p>很多时候，开发者需要控制app主页的功能模块，比如年会员展示所有功能图标，试用会员只展示部分图标等；同时，有时候还需要根据不同等级的用户来设置不同的功能配置参数。这样更加细化盈利策略。</p>
+<h2 id="deekescriptjson">DeekeScriptJson</h2>
+<p>DeekeScript给开发者提供了DeekeScriptJson对象，可以使用此对象来进行主界面功能模块设置、功能参数设置、设置页面的动态配置等</p>
+<h3 id="setdeekescriptjsongroupstr">setDeekeScriptJsonGroup(str)</h3>
 <blockquote>
-<p>重要等级：必须</p>
-<p>无障碍权限是DeekeScript必须权限，因为DeekeScript是基于无障碍应用，因此用户必须开启。无需开发者提醒用户开启。用户运行对应任务的时候，系统会自动提醒用户开启</p>
+<p>str {string}</p>
+<p>返回 {boolean} 如果出错，会抛出异常</p>
 </blockquote>
-<h2 id="悬浮窗权限">悬浮窗权限</h2>
-<blockquote>
-<p>重要等级：必须</p>
-<p>悬浮窗权限是DeekeScript必须权限，悬浮窗权限主要有5个作用：一是展示当前任务运行时间、二是作为关闭任务的开关（双击两次，间隔2-5秒）、三是保持屏幕常亮、四是后台启动其他APP应用、五是后台弹出弹窗。无需开发者提醒用户开启。</p>
-</blockquote>
-<h2 id="后台弹窗权限">后台弹窗权限</h2>
-<blockquote>
-<p>重要程度：可选</p>
-<p>后台弹窗权限在一些机型是必须的，否则可能无法从后台打开其他APP应用</p>
-</blockquote>
-<pre class="language-"><code>if(!Access.isBackgroundAlertEnabled()){
-    Dialogs.confirm(&apos;温馨提示&apos;, &apos;请开启后台弹窗权限&apos;, (result) =&gt; {
-        Access.openBackgroundAlertSetting();
-        System.exit();//关闭当前任务    
-    });
+<pre class="language-"><code>//这里可以调用远程接口来获取数据
+let obj = {
+    &quot;groups&quot;: [
+        {
+            &quot;title&quot;: &quot;DY·万能引流&quot;,
+            &quot;titleHidden&quot;: false,
+            &quot;hidden&quot;: false,
+            &quot;methods&quot;: [
+                {
+                    &quot;title&quot;: &quot;点赞功能&quot;,
+                    &quot;icon&quot;: &quot;img/finger.png&quot;,
+                    &quot;jsFile&quot;: &quot;tasks/task_dy_toker.js&quot;,
+                    &quot;settingPage&quot;: {
+                        &quot;params&quot;: [
+                            {
+                                &quot;type&quot;: &quot;numberRange&quot;,
+                                &quot;label&quot;: &quot;观看时长（秒）&quot;,
+                                &quot;name&quot;: &quot;toker_view_video_second&quot;,
+                                &quot;max&quot;: 60,
+                                &quot;min&quot;: 5,
+                                &quot;value&quot;: 12,
+                                &quot;step&quot;: 1
+                            },
+                            {
+                                &quot;type&quot;: &quot;textArea&quot;,
+                                &quot;label&quot;: &quot;关键词筛选（多个使用逗号隔开）&quot;,
+                                &quot;name&quot;: &quot;toker_view_video_keywords&quot;,
+                                &quot;value&quot;: &quot;&quot;,
+                                &quot;notice&quot;: &quot;* 关键词不填则操作所有&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;numberRange&quot;,
+                                &quot;label&quot;: &quot;点赞频率（%）&quot;,
+                                &quot;name&quot;: &quot;toker_zan_rate&quot;,
+                                &quot;max&quot;: 100,
+                                &quot;min&quot;: 0,
+                                &quot;step&quot;: 1,
+                                &quot;value&quot;: 100
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
 }
-</code></pre><h2 id="图色权限">图色权限</h2>
+
+let str = JSON.stringify(obj);
+DeekeScriptJson.setDeekeScriptJsonGroup(str);
+</code></pre><h3 id="setsettinglistsstr">setSettingLists(str)</h3>
 <blockquote>
-<p>重要程度：可选</p>
-<p>如果需要使用图片比对、查找，颜色查找、比对等功能，就需要开启此权限</p>
+<p>设置“系统设置”界面功能模块</p>
+<p>str {string}</p>
+<p>返回 {boolean} 如果出错，会抛出异常</p>
 </blockquote>
-<pre class="language-"><code>if(!Access.isMediaProjectionEnable()){
-    Dialogs.confirm(&apos;温馨提示&apos;, &apos;请开启屏幕截图权限&apos;, (result) =&gt; {
-        Access.openMediaProjectionSetting();
-        System.exit();//关闭当前任务    
-    });
+<pre class="language-"><code>//这里可以调用远程接口来获取数据
+let obj = {
+    &quot;settingLists&quot;: [
+        {
+        &quot;title&quot;: &quot;联系客服&quot;,
+        &quot;icon&quot;: &quot;img/kefu.png&quot;,
+        &quot;type&quot;: &quot;customerService&quot;,
+        &quot;description&quot;: &quot;客服微信：DeekeScript&quot;,
+        &quot;hidden&quot;: false
+        },
+        {
+        &quot;title&quot;: &quot;功能说明&quot;,
+        &quot;icon&quot;: &quot;img/manual.png&quot;,
+        &quot;type&quot;: &quot;notice&quot;,
+        &quot;file&quot;: &quot;task.html&quot;
+        }
+    ]
 }
-</code></pre><footer class="page-footer"><span class="copyright">Copyright © doc.deeke.cn 2025 all right reserved，powered by Gitbook</span><span class="footer-modification">更新时间：
-2025-05-09 11:20:59
+
+let str = JSON.stringify(obj);
+DeekeScriptJson.setDeekeScriptJsonGroup(str);
+</code></pre><h3 id="tojson">toJson()</h3>
+<blockquote>
+<p>获取最新的deekeScript.json文件内容</p>
+<p>返回 {json对象}</p>
+</blockquote>
+<footer class="page-footer"><span class="copyright">Copyright © doc.deeke.cn 2025 all right reserved，powered by Gitbook</span><span class="footer-modification">更新时间：
+2025-05-14 17:52:50
 </span></footer>
                                 
                                 </section>
@@ -1072,6 +1131,14 @@
 
             
                 
+                <a href="config.html" class="navigation navigation-prev " aria-label="Previous page: DeekeScript.json">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="vscode.html" class="navigation navigation-next " aria-label="Next page: Vscode开发篇">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -1080,7 +1147,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"基础权限","level":"4.2.1","depth":2,"next":{"title":"Hook","level":"4.3","depth":1,"ref":"","articles":[{"title":"Hook介绍","level":"4.3.1","depth":2,"path":"hook/hook.md","ref":"./hook/hook.md","articles":[]}]},"previous":{"title":"Android权限","level":"4.2","depth":1,"ref":"","articles":[{"title":"基础权限","level":"4.2.1","depth":2,"path":"access/access.md","ref":"./access/access.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"access/access.md","mtime":"2025-05-09T03:20:59.007Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-14T09:53:24.418Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"动态配置","level":"2.1.2","depth":2,"next":{"title":"Vscode开发篇","level":"2.1.3","depth":2,"path":"config/vscode.md","ref":"./config/vscode.md","articles":[]},"previous":{"title":"DeekeScript.json","level":"2.1.1","depth":2,"path":"config/config.md","ref":"./config/config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"config/dynamics.md","mtime":"2025-05-14T09:52:50.797Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-14T09:53:24.418Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
