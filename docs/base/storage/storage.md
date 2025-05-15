@@ -1,6 +1,6 @@
 # 本地存储
 
-本地存储模块提供了一些数据写入和读取的功能。
+本地存储模块提供了一些key-value数据写入和读取的功能。
 
 > 存储模块底层使用的<a target="_blank" href="https://developer.android.com/topic/libraries/architecture/datastore?hl=zh-cn">Android DataStore</a>实现
 
@@ -10,8 +10,7 @@
 > 
 > 返回 {boolean}
 
-设置存储文件，不同模块可以设置不同的db 【对应Android中的filename】
-> 注意："deekeScript"的db被系统使用，用户只能读取不能写入
+设置存储文件，不同模块可以设置不同的db
 
 ```javascript
 let storage = Storage.create('myDb');
@@ -60,7 +59,7 @@ Log.log(user);//输出字符串test
 ```javascript
 //storage通过create创建
 storage.putInteger("age", 18);
-storage.putBool("is_success", true);
+storage.putBoolean("is_success", true);
 storage.putDouble("money", 1000000.11);
 storage.putObj("obj", {
     name: "DeekeScript",
@@ -69,7 +68,12 @@ storage.putObj("obj", {
         return this.name;
     }
 });
-storage.putArray("arr", [1,2,3]);
+
+storage.putArray("arr", [1,2,3, 'a', 'c', {name: 'deekeScript'}]);
+
+//设置deekeScript.json文件中的表单的值（主要修改checkbox类型的表单的值）
+Storage.putArray("arr", [1,2,3]);
+//特别说明，arr中的元素必须都是字符串，如：Storage.putArray("checkbox_name", ["1","2","3"]);
 ```
 
 ## getXXX(key);
