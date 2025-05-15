@@ -1011,9 +1011,319 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="hid方法">Hid方法</h1>
-<p>等待完善...</p>
+<h2 id="swipex1-y1-x2-y2-step-downtimeout-uptimeout-timeout-updowntimes">swipe(x1, y1, x2, y2, step, down_timeout, up_timeout, timeout, up_down_times)</h2>
+<blockquote>
+<p>x1 {number} 按下点的X1坐标</p>
+<p>y1 {number} 按下点的Y1坐标</p>
+<p>x2 {number} 移动到点的X2坐标</p>
+<p>y2 {number} 移动到的Y2坐标</p>
+<p>step {number} 单步移动距离(5-60建议,越大越快)(可选 默认20-51随机)</p>
+<p>down_timeout {number} 按下后等待多久开始滑动(可选 默认100-180随机)</p>
+<p>up_timeout {number} 滑动完等多久抬起(可选 默认100-180随机)</p>
+<p>timeout {number} 每个步长中间延时(可选 默认8-15随机)</p>
+<p>up_down_times {number} 抬起次数(一般不需要)(可选 默认1)</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<pre class="language-"><code>Hid.swipe(10,1000,1000,1050)
+</code></pre><h2 id="swipexx1-y1-x2-y2-radian-step-downtimeout-uptimeout-timeout-updowntimes">swipex(x1, y1, x2, y2, radian, step, down_timeout, up_timeout, timeout, up_down_times)</h2>
+<blockquote>
+<p>x1 {number} 按下点的X1坐标</p>
+<p>y1 {number} 按下点的Y1坐标</p>
+<p>x2 {number} 移动到点的X2坐标</p>
+<p>y2 {number} 移动到的Y2坐标</p>
+<p>radian {number} 1-500建议,越大弧度越大推荐10-100(可选:默认10-100)</p>
+<p>step {number} 单步移动距离(5-60建议,越大越快)(可选 默认20-51随机)</p>
+<p>down_timeout {number} 按下后等待多久开始滑动(可选 默认100-180随机)</p>
+<p>up_timeout {number} 滑动完等多久抬起(可选 默认100-180随机)</p>
+<p>timeout {number} 每个步长中间延时(可选 默认8-15随机)</p>
+<p>up_down_times {number} 抬起次数(一般不需要)(可选 默认1)</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>仿真曲线滑动</p>
+<pre class="language-"><code>Hid.swipex(10,1000,1000,1050)
+</code></pre><h2 id="gethidzcm">getHidZcm()</h2>
+<blockquote>
+<p>返回 {string} 获取服务器HID激活码</p>
+</blockquote>
+<p>获取服务器HID激活码</p>
+<pre class="language-"><code>Hid.getHidZcm()//若蓝牙未初始化可能抛出异常,建议获取成功将注册码写入本地,下次启动从本地检测文件读取,没有再去服务器获取,一般激活永久只需要一次
+</code></pre><h2 id="ver">ver()</h2>
+<blockquote>
+<p>返回 {double} 插件版本号</p>
+</blockquote>
+<p>获取插件版本号</p>
+<h2 id="home">home()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按下Home键。</p>
+<h2 id="recents">recents()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按下任务键。</p>
+<h2 id="back">back()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按下返回键。</p>
+<h2 id="back1">back1()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>另一种方式模拟按下返回键。</p>
+<h2 id="touchdownx-y">touchDown(x, y)</h2>
+<blockquote>
+<p>x {number} 触摸点的X坐标</p>
+<p>y {number} 触摸点的Y坐标</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟手指按下事件。</p>
+<h2 id="touchmoveint-x-int-y">touchMove(int x, int y)</h2>
+<blockquote>
+<p>x {number} 触摸点的X坐标</p>
+<p>y {number} 触摸点的Y坐标</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟手指移动事件。</p>
+<h2 id="touchupint-x-int-y">touchUp(int x, int y)</h2>
+<blockquote>
+<p>x {number} 触摸点的X坐标</p>
+<p>y {number} 触摸点的Y坐标</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟手指抬起事件。</p>
+<h2 id="touchup">touchUp()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟手指抬起事件，使用最后一次记录的触摸位置。</p>
+<h2 id="touchup2">touchUp2()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟手指抬起事件，尝试多次抬起。</p>
+<h2 id="tapint-x-int-y">tap(int x, int y)</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟手指点击事件。</p>
+<h2 id="initbluetoothctx">initBluetooth(ctx)</h2>
+<blockquote>
+<p>ctx {Context} 上下文对象</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>初始化蓝牙适配器，并检查蓝牙是否已启用。</p>
+<p><code>系统默认已初始化，无需再次执行此方法</code></p>
+<h2 id="getname">getName()</h2>
+<blockquote>
+<p>返回 {String}</p>
+</blockquote>
+<p>获取已连接蓝牙设备的名称。</p>
+<h2 id="keydowncode">keyDown(code)</h2>
+<blockquote>
+<p>code {number} 键码</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按键按下事件。</p>
+<h2 id="keyupcode">keyUp(code)</h2>
+<blockquote>
+<p>code {number} 键码</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按键抬起事件。</p>
+<h2 id="keypresscode">keyPress(code)</h2>
+<blockquote>
+<p>code {number} 键码</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按键按下和抬起事件。</p>
+<h2 id="keypresscodecode">keyPress_code(code)</h2>
+<blockquote>
+<p>code {number} 键码</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟特定的按键按下和抬起事件，与keyPress不同。</p>
+<h2 id="keydowncodecode">keyDown_code(code)</h2>
+<blockquote>
+<p>code {number} 键码</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<h2 id="keyupcodecode">keyUp_code(code)</h2>
+<blockquote>
+<p>code {number} 键码</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟特定的按键抬起事件，与keyUp不同。</p>
+<h2 id="keyupall">keyUpAll()</h2>
+<blockquote>
+<p>返回  {boolean}</p>
+</blockquote>
+<p>模拟松开所有按键。</p>
+<h2 id="keyselect">key_select()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟全选操作。</p>
+<h2 id="keypaste">key_paste()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟粘贴操作。</p>
+<h2 id="keycopy">key_copy()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟复制操作。</p>
+<h2 id="keycat">key_cat()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟剪切操作。</p>
+<h2 id="keydel">key_del()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟退格（删除）操作。</p>
+<h2 id="keydelete">key_delete()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟删除操作。</p>
+<h2 id="keyenter">key_enter()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟回车操作。</p>
+<h2 id="keynumn">key_num(n)</h2>
+<blockquote>
+<p>n  {number} 数字（0-9）</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟数字键按下。</p>
+<h2 id="keyabcn">key_abc(n)</h2>
+<blockquote>
+<p>n  {char} 字母</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟字母键按下。</p>
+<h2 id="volup">volUp()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟音量增大操作。</p>
+<h2 id="voldown">volDown()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟音量减小操作。</p>
+<h2 id="power">power()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按下电源键。</p>
+<h2 id="powertime">power(time)</h2>
+<blockquote>
+<p>time {number} 持续时间（毫秒）</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟按住电源键一段时间。</p>
+<h2 id="reboot">reboot()</h2>
+<blockquote>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>模拟重启蓝牙主板。</p>
+<h2 id="setxyx-y">setXY(x, y)</h2>
+<blockquote>
+<p>x {number} X坐标</p>
+<p>y {number} Y坐标</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>设置分辨率。</p>
+<h2 id="regkey">reg(key)</h2>
+<blockquote>
+<p>key {string} 注册密钥</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>注册设备。</p>
+<h2 id="setrndx-y">setRnd(x, y)</h2>
+<blockquote>
+<p>x {number} 随机数X</p>
+<p>y {number} 随机数Y</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>设置点击延时随机数。</p>
+<h2 id="setbatterylv">setBattery(lv)</h2>
+<blockquote>
+<p>lv {number} 电量百分比</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>设置电池电量。</p>
+<h2 id="connectboolean-autoconnect-int-index">connect(boolean autoconnect, int index)</h2>
+<blockquote>
+<p>autoconnect {boolean} 是否自动连接</p>
+<p>index {number} 设备索引</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>连接蓝牙设备。</p>
+<h2 id="getconnecteddevices">getConnectedDevices()</h2>
+<blockquote>
+<p>返回 {BluetoothDevice|null}</p>
+</blockquote>
+<p>获取已连接的蓝牙设备。</p>
+<h2 id="getconnectstate">getConnectState()</h2>
+<blockquote>
+<p>返回  {boolean}</p>
+</blockquote>
+<p>获取当前蓝牙连接状态，true表示已连接。</p>
+<h2 id="senddatastr">sendData(str)</h2>
+<blockquote>
+<p>str {string} 要发送的数据</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>发送数据到蓝牙设备。</p>
+<h2 id="senddataawaitstr-time">sendDataAwait(str, time)</h2>
+<blockquote>
+<p>str {string} 要发送的数据</p>
+<p>time {number} 等待时间（毫秒）</p>
+<p>返回 {boolean}</p>
+</blockquote>
+<p>发送数据并等待响应。</p>
+<h2 id="getdatatime">getData(time)</h2>
+<blockquote>
+<p>time {number} 等待时间（毫秒）</p>
+<p>返回 {string}</p>
+</blockquote>
+<h2 id="waitfortime-sleep">waitFor(time, sleep)</h2>
+<blockquote>
+<p>time {number} 最大等待时间（毫秒）</p>
+<p>sleep {number} 检查间隔（毫秒）</p>
+<p>返回 {String} 数据或超时提示</p>
+</blockquote>
+<p>等待数据并处理超时。</p>
+<h2 id="waitfortime">waitFor(time)</h2>
+<blockquote>
+<p>time {number} 默认最大等待时间（毫秒）</p>
+<p>返回 {String} 数据或超时提示</p>
+</blockquote>
+<p>等待数据并处理超时（默认检查间隔）。</p>
+<h2 id="waitfor">waitFor()</h2>
+<blockquote>
+<p>返回 {String} 数据或断开连接提示</p>
+</blockquote>
+<p>持续等待数据直到连接断开或数据可用。</p>
+<h2 id="getdata">getData()</h2>
+<blockquote>
+<p> 返回 {String}</p>
+</blockquote>
+<p>获取最新接收到的数据。</p>
+<h2 id="disconnect">disconnect()</h2>
+<blockquote>
+<p> 返回 {boolean}</p>
+</blockquote>
+<p>断开蓝牙连接。</p>
 <footer class="page-footer"><span class="copyright">Copyright © doc.deeke.cn 2025 all right reserved，powered by Gitbook</span><span class="footer-modification">更新时间：
-2025-05-14 16:30:08
+2025-05-16 02:22:18
 </span></footer>
                                 
                                 </section>
@@ -1053,7 +1363,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hid方法","level":"4.4.3","depth":2,"next":{"title":"后端接口","level":"4.5","depth":1,"ref":"","articles":[{"title":"后端接口","level":"4.5.1","depth":2,"path":"backendApi/activationCode.md","ref":"./backendApi/activationCode.md","articles":[]}]},"previous":{"title":"蓝牙Hid硬件介绍","level":"4.4.2","depth":2,"path":"hid/bluetooth.md","ref":"./hid/bluetooth.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"hid/method.md","mtime":"2025-05-14T08:30:08.616Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-15T09:55:10.575Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hid方法","level":"4.4.3","depth":2,"next":{"title":"后端接口","level":"4.5","depth":1,"ref":"","articles":[{"title":"后端接口","level":"4.5.1","depth":2,"path":"backendApi/activationCode.md","ref":"./backendApi/activationCode.md","articles":[]}]},"previous":{"title":"蓝牙Hid硬件介绍","level":"4.4.2","depth":2,"path":"hid/bluetooth.md","ref":"./hid/bluetooth.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"hid/method.md","mtime":"2025-05-15T18:22:18.436Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-15T18:22:39.026Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
