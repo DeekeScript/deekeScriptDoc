@@ -3,7 +3,7 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <title>开发环境说明 · DeekeScript</title>
+        <title>输入法-Ime · DeekeScript</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 5.1.4">
@@ -80,10 +80,6 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="start.html" />
-    
-    
-    <link rel="prev" href="quick.html" />
     
 
     </head>
@@ -152,9 +148,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="quick.html">
+        <li class="chapter " data-level="1.3.1" data-path="../quick/quick.html">
             
-                <a href="quick.html">
+                <a href="../quick/quick.html">
             
                     
                     认识DeekeScript
@@ -165,9 +161,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="envir.html">
+        <li class="chapter " data-level="1.3.2" data-path="../quick/envir.html">
             
-                <a href="envir.html">
+                <a href="../quick/envir.html">
             
                     
                     开发环境说明
@@ -178,9 +174,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="start.html">
+        <li class="chapter " data-level="1.3.3" data-path="../quick/start.html">
             
-                <a href="start.html">
+                <a href="../quick/start.html">
             
                     
                     快速开始
@@ -735,9 +731,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.5.1" data-path="../inputMethod/method.html">
+        <li class="chapter active" data-level="4.5.1" data-path="method.html">
             
-                <a href="../inputMethod/method.html">
+                <a href="method.html">
             
                     
                     输入法-Ime
@@ -1029,7 +1025,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >开发环境说明</a>
+        <a href=".." >输入法-Ime</a>
     </h1>
 </div>
 
@@ -1044,32 +1040,521 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="开发环境说明">开发环境说明</h1>
-<h3 id="android版本支持">Android版本支持</h3>
-<p>DeekeScript对绝大多数Android版本都提供支持，主要支持Android 8.0及以上版本（截止目前&gt;95.4%）；对应的Android Api版本是26及以上。下图是截止日期（2025-01-10）Android的版本占比分布情况。</p>
-<p><img src="../assets/android-rate.png" width="40%"></p>
-<h3 id="android权限说明">Android权限说明</h3>
-<p>使用DeekeScript可以获取Android的哪些权限呢？ 目前DeekeScript不限制应用获取Android权限，只要Android开放的权限，DeekeScript都会开放。当前功能运行默认需要启动“无障碍”、“悬浮窗”权限。</p>
-<h3 id="javascript支持哪些能力？">JavaScript支持哪些能力？</h3>
-<p>DeekeScript底层是基于<a href="https://rhino.github.io/tutorials/embedding_tutorial/" target="_blank">Rhino引擎（1.8版本）</a>，Rhino是由Java开发的JavaScript引擎，因此它对JavaScript调用Java天生就很友好，后续DeekeScript也将逐步开放越来越多的Java对象提供给JavaScript使用。</p>
+                                <h1 id="输入法-ime">输入法-Ime</h1>
+<h2 id="输入法的作用">输入法的作用</h2>
+<p>输入法主要有以下作用：</p>
 <blockquote>
-<p>如果你需要了解Rhino对es5和es6支持情况，请访问：<a href="https://mozilla.github.io/rhino/compat/engines.html" target="_blank">https://mozilla.github.io/rhino/compat/engines.html</a></p>
+<p>部分控件不支持输入文字</p>
+<p>部分输入框没有确认按钮,需要发送回车指令</p>
+<p>代替粘贴输入文字操作</p>
 </blockquote>
-<h3 id="基础函数支持">基础函数支持</h3>
-<p>很多开发者之前可能了解浏览器环境下的JavaScript，因此可能习惯了使用setTimeout、setInterval、console.log等方法，这些DeekeScript也都是支持的。</p>
-<h3 id="是否支持模块化">是否支持模块化</h3>
-<p>DeekeScript本身就是为了支持项目化（针对某个或者某些应用开发N个脚本）开发的工具（而不仅仅只是支持单个脚本的开发），所以对模块化支持也是很友好的，具体可以参阅<a href="../advance/module.html">模块化</a></p>
-<h3 id="异步支持">异步支持</h3>
-<p>DeekeScript提供了异步支持，具体参考<a href="../promise/awa.html">DeekeScript异步</a></p>
-<h3 id="是否支持多线程？">是否支持多线程？</h3>
-<p>相信富有经验的开发者，会发现很多工具都有提供多线程支持；因为很多时候，我们需要同时执行两个操作（比如，采集直播间弹幕的时候，又要实时获取在线人数）；这个时候使用多线程的方式可以更好地满足我们的需求。DeekeScript本身也是支持多线程的；因为JavaScript是不支持多线程的，实际上底层是由Java在执行，具体可以参考<a href="../advance/thread.html">多线程篇</a>。</p>
-<h3 id="其他支持">其他支持</h3>
-<ul>
-<li><a href="../base/http/http.html">Http</a>支持</li>
-<li><a href="../base/webSocket/webSocket.html">Websocket</a>支持</li>
-</ul>
+<h2 id="isactive">isActive</h2>
+<p>判断输入法是否可用</p>
+<blockquote>
+<p>返回 {boolean}  输入法是否可用</p>
+</blockquote>
+<pre class="language-"><code class="lang-js">Ime<span class="token punctuation">.</span><span class="token function">isActive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="inputinfo">input(info)</h2>
+<p>输入文字</p>
+<blockquote>
+<p>info {string}  输入的内容
+返回 {boolean}  输入是否成功</p>
+</blockquote>
+<pre class="language-"><code class="lang-js">Ime<span class="token punctuation">.</span><span class="token function">input</span><span class="token punctuation">(</span><span class="token string">&quot;我正在使用DeekeScript开发工具&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="clear">clear()</h2>
+<p>让输入法清空在焦点内的文字</p>
+<blockquote>
+<p>返回 {boolean}  是否清空成功</p>
+</blockquote>
+<pre class="language-"><code class="lang-js">Ime<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="keyskeys-duration">keys(keys, duration)</h2>
+<p>发送按键指令</p>
+<blockquote>
+<p>keys {Number[]}  需要发送的按键列表</p>
+<p>duration {int}  按键的持续时间，单位毫秒</p>
+<p>返回 {boolean}  是否清空成功</p>
+</blockquote>
+<pre class="language-"><code class="lang-js">Ime<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">66</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//模拟回车按键</span>
+</code></pre>
+<h2 id="android中的按键码">Android中的按键码</h2>
+<h3 id="数字键（0–9）">数字键（0–9）</h3>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_0</td>
+<td>7</td>
+</tr>
+<tr>
+<td>KEYCODE_1</td>
+<td>8</td>
+</tr>
+<tr>
+<td>KEYCODE_2</td>
+<td>9</td>
+</tr>
+<tr>
+<td>KEYCODE_3</td>
+<td>10</td>
+</tr>
+<tr>
+<td>KEYCODE_4</td>
+<td>11</td>
+</tr>
+<tr>
+<td>KEYCODE_5</td>
+<td>12</td>
+</tr>
+<tr>
+<td>KEYCODE_6</td>
+<td>13</td>
+</tr>
+<tr>
+<td>KEYCODE_7</td>
+<td>14</td>
+</tr>
+<tr>
+<td>KEYCODE_8</td>
+<td>15</td>
+</tr>
+<tr>
+<td>KEYCODE_9</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字母键（a–z）">字母键（A–Z）</h3>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_A</td>
+<td>29</td>
+</tr>
+<tr>
+<td>KEYCODE_B</td>
+<td>30</td>
+</tr>
+<tr>
+<td>KEYCODE_C</td>
+<td>31</td>
+</tr>
+<tr>
+<td>KEYCODE_D</td>
+<td>32</td>
+</tr>
+<tr>
+<td>KEYCODE_E</td>
+<td>33</td>
+</tr>
+<tr>
+<td>KEYCODE_F</td>
+<td>34</td>
+</tr>
+<tr>
+<td>KEYCODE_G</td>
+<td>35</td>
+</tr>
+<tr>
+<td>KEYCODE_H</td>
+<td>36</td>
+</tr>
+<tr>
+<td>KEYCODE_I</td>
+<td>37</td>
+</tr>
+<tr>
+<td>KEYCODE_J</td>
+<td>38</td>
+</tr>
+<tr>
+<td>KEYCODE_K</td>
+<td>39</td>
+</tr>
+<tr>
+<td>KEYCODE_L</td>
+<td>40</td>
+</tr>
+<tr>
+<td>KEYCODE_M</td>
+<td>41</td>
+</tr>
+<tr>
+<td>KEYCODE_N</td>
+<td>42</td>
+</tr>
+<tr>
+<td>KEYCODE_O</td>
+<td>43</td>
+</tr>
+<tr>
+<td>KEYCODE_P</td>
+<td>44</td>
+</tr>
+<tr>
+<td>KEYCODE_Q</td>
+<td>45</td>
+</tr>
+<tr>
+<td>KEYCODE_R</td>
+<td>46</td>
+</tr>
+<tr>
+<td>KEYCODE_S</td>
+<td>47</td>
+</tr>
+<tr>
+<td>KEYCODE_T</td>
+<td>48</td>
+</tr>
+<tr>
+<td>KEYCODE_U</td>
+<td>49</td>
+</tr>
+<tr>
+<td>KEYCODE_V</td>
+<td>50</td>
+</tr>
+<tr>
+<td>KEYCODE_W</td>
+<td>51</td>
+</tr>
+<tr>
+<td>KEYCODE_X</td>
+<td>52</td>
+</tr>
+<tr>
+<td>KEYCODE_Y</td>
+<td>53</td>
+</tr>
+<tr>
+<td>KEYCODE_Z</td>
+<td>54</td>
+</tr>
+</tbody>
+</table>
+<h3 id="系统功能键">系统功能键</h3>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_HOME</td>
+<td>3</td>
+</tr>
+<tr>
+<td>KEYCODE_BACK</td>
+<td>4</td>
+</tr>
+<tr>
+<td>KEYCODE_CALL</td>
+<td>5</td>
+</tr>
+<tr>
+<td>KEYCODE_ENDCALL</td>
+<td>6</td>
+</tr>
+<tr>
+<td>KEYCODE_MENU</td>
+<td>82</td>
+</tr>
+<tr>
+<td>KEYCODE_POWER</td>
+<td>26</td>
+</tr>
+<tr>
+<td>KEYCODE_VOLUME_UP</td>
+<td>24</td>
+</tr>
+<tr>
+<td>KEYCODE_VOLUME_DOWN</td>
+<td>25</td>
+</tr>
+<tr>
+<td>KEYCODE_VOLUME_MUTE</td>
+<td>164</td>
+</tr>
+<tr>
+<td>KEYCODE_APP_SWITCH</td>
+<td>187</td>
+</tr>
+<tr>
+<td>KEYCODE_ASSIST</td>
+<td>219</td>
+</tr>
+<tr>
+<td>KEYCODE_ALL_APPS</td>
+<td>284</td>
+</tr>
+</tbody>
+</table>
+<h3 id="导航方向键">导航方向键</h3>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_DPAD_UP</td>
+<td>19</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_DOWN</td>
+<td>20</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_LEFT</td>
+<td>21</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_RIGHT</td>
+<td>22</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_CENTER</td>
+<td>23</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_UP_LEFT</td>
+<td>268</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_UP_RIGHT</td>
+<td>270</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_DOWN_LEFT</td>
+<td>269</td>
+</tr>
+<tr>
+<td>KEYCODE_DPAD_DOWN_RIGHT</td>
+<td>271</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特殊输入符号">特殊输入符号</h3>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_ENTER</td>
+<td>66</td>
+</tr>
+<tr>
+<td>KEYCODE_DEL</td>
+<td>67</td>
+</tr>
+<tr>
+<td>KEYCODE_SPACE</td>
+<td>62</td>
+</tr>
+<tr>
+<td>KEYCODE_TAB</td>
+<td>61</td>
+</tr>
+<tr>
+<td>KEYCODE_ESCAPE</td>
+<td>111</td>
+</tr>
+<tr>
+<td>KEYCODE_COMMA</td>
+<td>55</td>
+</tr>
+<tr>
+<td>KEYCODE_PERIOD</td>
+<td>56</td>
+</tr>
+<tr>
+<td>KEYCODE_SLASH</td>
+<td>76</td>
+</tr>
+<tr>
+<td>KEYCODE_BACKSLASH</td>
+<td>73</td>
+</tr>
+<tr>
+<td>KEYCODE_SEMICOLON</td>
+<td>74</td>
+</tr>
+<tr>
+<td>KEYCODE_APOSTROPHE</td>
+<td>75</td>
+</tr>
+<tr>
+<td>KEYCODE_EQUALS</td>
+<td>70</td>
+</tr>
+<tr>
+<td>KEYCODE_MINUS</td>
+<td>69</td>
+</tr>
+<tr>
+<td>KEYCODE_LEFT_BRACKET</td>
+<td>71</td>
+</tr>
+<tr>
+<td>KEYCODE_RIGHT_BRACKET</td>
+<td>72</td>
+</tr>
+<tr>
+<td>KEYCODE_AT</td>
+<td>77</td>
+</tr>
+<tr>
+<td>KEYCODE_GRAVE</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+<h2 id="媒体控制键">媒体控制键</h2>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_MEDIA_PLAY</td>
+<td>126</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_PAUSE</td>
+<td>127</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_PLAY_PAUSE</td>
+<td>85</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_STOP</td>
+<td>86</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_NEXT</td>
+<td>87</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_PREVIOUS</td>
+<td>88</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_REWIND</td>
+<td>89</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_FAST_FORWARD</td>
+<td>90</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_RECORD</td>
+<td>130</td>
+</tr>
+<tr>
+<td>KEYCODE_MEDIA_EJECT</td>
+<td>129</td>
+</tr>
+</tbody>
+</table>
+<h2 id="游戏控制按钮">游戏控制按钮</h2>
+<table>
+<thead>
+<tr>
+<th>键名</th>
+<th>键码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEYCODE_BUTTON_A</td>
+<td>96</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_B</td>
+<td>97</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_C</td>
+<td>98</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_X</td>
+<td>99</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_Y</td>
+<td>100</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_Z</td>
+<td>101</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_L1</td>
+<td>102</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_R1</td>
+<td>103</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_L2</td>
+<td>104</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_R2</td>
+<td>105</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_THUMBL</td>
+<td>106</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_THUMBR</td>
+<td>107</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_START</td>
+<td>108</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_SELECT</td>
+<td>109</td>
+</tr>
+<tr>
+<td>KEYCODE_BUTTON_MODE</td>
+<td>110</td>
+</tr>
+</tbody>
+</table>
 <footer class="page-footer"><span class="copyright">Copyright © doc.deeke.cn 2025 all right reserved，powered by Gitbook</span><span class="footer-modification">更新时间：
-2025-03-20 11:42:22
+2025-05-19 17:11:00
 </span></footer>
                                 
                                 </section>
@@ -1097,14 +1582,6 @@
 
             
                 
-                <a href="quick.html" class="navigation navigation-prev " aria-label="Previous page: 认识DeekeScript">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="start.html" class="navigation navigation-next " aria-label="Next page: 快速开始">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1113,7 +1590,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"开发环境说明","level":"1.3.2","depth":2,"next":{"title":"快速开始","level":"1.3.3","depth":2,"path":"quick/start.md","ref":"./quick/start.md","articles":[]},"previous":{"title":"认识DeekeScript","level":"1.3.1","depth":2,"path":"quick/quick.md","ref":"./quick/quick.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"quick/envir.md","mtime":"2025-03-20T03:42:22.478Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-19T09:11:19.390Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"输入法-Ime","level":"4.5.1","depth":2,"next":{"title":"后端接口","level":"4.6","depth":1,"ref":"","articles":[{"title":"后端接口","level":"4.6.1","depth":2,"path":"backendApi/activationCode.md","ref":"./backendApi/activationCode.md","articles":[]}]},"previous":{"title":"DeekeScript输入法【即将上线】","level":"4.5","depth":1,"ref":"","articles":[{"title":"输入法-Ime","level":"4.5.1","depth":2,"path":"inputMethod/method.md","ref":"./inputMethod/method.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hints","-theme-creative","theme-comscore","-sidebar-ad","intopic-toc","sharing","exercises","sitemap","expandable-chapters","chapter-fold","hide-published-with","edit-link","echarts","copy-code-button","-highlight","prism","back-to-top-button","-lunr","-search","search-pro","-insert-logo","tbfed-pagefooter"],"root":"./docs","styles":{"website":"main.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy doc.deeke.cn 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"主要内容"},"search-pro":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"hide-published-with":{},"myseo":{"titlePrefix":"DeekeScript","titleSuffix":"DeekeScript","description":"DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。并且DeekeScript提供UI支持、接口支持和SaaS卡密系统支持，开发者只需关注业务逻辑。","keywords":"DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"},"fontsettings":{"theme":"white","family":"sans","size":2},"_sidebar-ad":{"imageUrl":"/weixin.png","url":"/weixin.png","description":"<div style='line-height:28px;margin-top:-12px;color: #777777;'>你有好的建议？<br/>想寻求技术支持？<br/>请扫码添加微信<br/>添加时请注明来意~</div>"},"sitemap":{"hostname":"https://doc.deeke.cn/"},"theme-comscore":{},"back-to-top-button":{},"copy-code-button":{},"ga":{"trackingID":"G-00000000","anonymizeIP":true},"echarts":{},"exercises":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":true,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":true},"edit-link":{"label":"","base":"https://github.com/DeekeScript/deekeScriptDoc"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{},"insert-logo":{"url":"","style":"background: none;"},"expandable-chapters":{}},"copyright":"DeekeScript","theme":"default","keywords":"DeekeScript, 嘀客, Deeke","author":"DeekeScript","published":"04/12/2024","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"DeekeScript","language":"zh-hans","website":"https://doc.deeke.cn/","gitbook":"*","description":"描述"},"file":{"path":"inputMethod/method.md","mtime":"2025-05-19T09:11:00.341Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2025-05-19T09:11:19.390Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
