@@ -55,6 +55,9 @@
   - [模式介绍](./hid/hid.md)
   - [蓝牙Hid硬件介绍](./hid/bluetooth.md)
   - [Hid方法](./hid/method.md)
+  
+- DeekeScript输入法【即将上线】
+  -  [输入法-Ime](./inputMethod/method.md)
 
 -  后端接口
   - [后端接口](./backendApi/activationCode.md)
