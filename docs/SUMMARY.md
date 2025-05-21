@@ -51,7 +51,7 @@
 - Hook
   - [Hook介绍](./hook/hook.md)
 
-- Hid模式【即将上线】
+- Hid模式
   - [模式介绍](./hid/hid.md)
   - [蓝牙Hid硬件介绍](./hid/bluetooth.md)
   - [Hid方法](./hid/method.md)

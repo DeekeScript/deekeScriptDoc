@@ -27,3 +27,17 @@
     }
 }
 ```
+
+## APP激活hook
+
+可以在激活之后，刷新主界面功能图标
+
+> 在deekeScript.json中配置hooks.app_active_after字段即可，用户输入激活码，激活成功之后，将会执行配置的脚本。
+
+```
+{
+    "hooks": {
+        app_active_after: "scripts/hooks/app_active_after.js"
+    }
+}
+```
