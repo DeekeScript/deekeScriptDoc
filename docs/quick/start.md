@@ -10,6 +10,8 @@
 
 ## 准备工作
 * [下载vscode](https://code.visualstudio.com/)
+  > 特别说明：vscode请升级到最新版
+
 * 在Vscode中安装DeekeScript开发插件，如下图，点击“安装”即可
 <img src="../assets/extension.png" width="100%" /> 
 
