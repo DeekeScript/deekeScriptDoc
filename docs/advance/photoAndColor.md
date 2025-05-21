@@ -140,20 +140,61 @@ try{
 
 ## 文字识别
 
-### getText(imageFile)
-> imageFile  {string} 图片地址
+### getTextAndRegion(imageFile)
+> imageFile  {string} 本地图片地址
 > 
-> 返回  {string[]} 返回后的文字
+> 返回  {object[]} 文字和区域信息
 
-文字识别
+查找图片中的文字和区域信息
 
 ```javascript
 try{
     let imageFile = Images.capture();//获取图片地址  后续可以通过此地址进行图片处理
-    let texts = Images.getText(imageFile);
-    console.log(texts);//图片中的文字
+    let result = Images.getText(imageFile);
+    for(let i in result){
+        //输出 文字和区域信息（左边距、上边距、宽度、高度）
+        console.log(result[i].text, result[i].rect.left, result[i].rect.top, result[i].rect.width(), result[i].rect.height())
+    }
 }catch(e){
     console.log("异常：" + e.message);
+}
+```
+
+### findTextPosition(imageFile, keyword)
+> imageFile  {string} 图片地址
+>
+> keyword  {string} 关键字
+>
+> 返回  {Rect[]} 区域数组
+
+查找图片中所有keyword的区域
+
+```javascript
+let arr = Images.findTextPosition(imageFile, "百度一下");
+for(let i in arr){
+    console.log(arr[i].left, arr[i].top, arr[i].width(), arr[i].height());//输出keyword所在区域的坐标以及区域宽高度
+}
+```
+
+### findTextInRegion(String imageFile, int left, int top, int width, int height)
+> imageFile  {string} 图片地址
+> 
+> left  {int} 区域左上角X坐标
+>
+> top  {int} 区域左上角Y坐标
+>
+> width  {int} 区域宽度
+>
+> height  {int} 区域高度
+>
+> 返回 {string[]}
+
+获取某个区域内的文字
+
+```javascript
+let arr = Images.findTextInRegion(imageFile, 0, 0, 1080, 1920);
+for(let i in arr){
+    console.log(arr[i]);//输出文字
 }
 ```
 

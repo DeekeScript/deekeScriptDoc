@@ -135,16 +135,6 @@ Hid.swipex(10,1000,1000,1050)
 模拟手指点击事件。
 
 
-## initBluetooth(ctx)
-> ctx {Context} 上下文对象
->
-> 返回 {boolean}
-
-初始化蓝牙适配器，并检查蓝牙是否已启用。
-
-`系统默认已初始化，无需再次执行此方法`
-
-
 ## getName()
 > 返回 {String}
 
