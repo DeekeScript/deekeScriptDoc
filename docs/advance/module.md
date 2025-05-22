@@ -2,7 +2,7 @@
 
 在很多时候，我们的应用不是一个或者几个JavaScript文件组成，而是由几十个甚至几百个文件组成，这个时候就需要模块化，将不同功能拆分到不同模块。
 
-在DeekeScript中，可以轻松通过import方法来加载JavaScript文件。下面是一个实例：
+在DeekeScript中，可以轻松通过require方法来加载JavaScript文件。下面是一个实例：
 
 > 注意：为了方便你的使用，在使用require的时候，请使用相对路径，不要使用绝对路径（如果你不使用代码混淆，则可以使用绝对路径，否则混淆后的代码由原src文件夹变更到script文件夹，导致找不到模块）
 
@@ -10,7 +10,7 @@
 
 ```javascript
 //项目文件结构如下：项目跟目录下有一个js文件夹和一个task文件夹
-//js文件夹中包含了我们需要import的文件，task文件里面有一个dy_toker.js文件
+//js文件夹中包含了我们需要require的文件，task文件里面有一个dy_toker.js文件
 //下面我们在dy_toker.js文件中引用js文件夹下面的a.js和b.js
 // |> js
 // | - a.js
