@@ -95,7 +95,7 @@ let obj = {
 }
 
 let str = JSON.stringify(obj);
-DeekeScriptJson.setDeekeScriptJsonGroup(str);
+DeekeScriptJson.setSettingLists(str);
 ```
 
 ### toJson()
