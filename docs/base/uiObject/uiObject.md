@@ -42,12 +42,12 @@ if(sendButton){
 ## scrollForward()
 > 返回 {Boolean} 返回是否滑动成功
 
-向前滑动控件，将会让界面下方的节点往上滚动或者右边的节点往左滚动
+向前滑动控件，将会让界面下方的节点往上滚动或者右边的节点往左滚动。可以通过返回false来判断是否滑动到底。
 
 ## scrollBackward()
 > 返回 {Boolean} 返回是否滑动成功
 
-向后滑动控件，将会让界面上方的节点往下滚动或者左边的节点往右滚动
+向后滑动控件，将会让界面上方的节点往下滚动或者左边的节点往右滚动。可以通过返回false来判断是否滑动到顶。
 
 
 ## setSelection(startPosition, endPosition)
