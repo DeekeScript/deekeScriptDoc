@@ -125,7 +125,7 @@ Content-Type: application/json
 `注意：这里的的role、ad等属性与deekeScript.json配置的dataFrom有联系，如果开发者需要使用类似角色的动态select选择框表单，可以使用此接口实现。`
 
 
-### APP升级接口
+## APP升级接口
 目前DeekeScript内置了软件升级能力，可以通过设置[settinglists参数](../config/config.md#settinglists参数)，type为updateApp的时候，用户点击“系统升级”，会请求配置的url参数地址完成APP下载与安装
 
 ```
@@ -166,7 +166,7 @@ Content-Type: application/json
 
 系统拿到接口结果后，会比对当前版本号是否小于最新版本号，如果是则访问downloadUrl下载apk，最终提示用户安装apk，并完成升级。
 
-### 是否展示支付入口接口
+## 是否展示支付入口接口
 > type: getToken
 >
 > 接口地址：/alipay/getToken
@@ -178,7 +178,7 @@ Content-Type: application/json
   {code: 1, msg: '展示支付入口', success: false, data: []}
 ```
 
-### 支付宝支付订单创建接口
+## 支付宝支付订单创建接口
 > type: createOrder
 >
 > 接口地址：/alipay/createOrder
