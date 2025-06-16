@@ -124,6 +124,48 @@ Content-Type: application/json
 
 `注意：这里的的role、ad等属性与deekeScript.json配置的dataFrom有联系，如果开发者需要使用类似角色的动态select选择框表单，可以使用此接口实现。`
 
+
+### APP升级接口
+目前DeekeScript内置了软件升级能力，可以通过设置[settinglists参数](../config/config.md#settinglists参数)，type为updateApp的时候，用户点击“系统升级”，会请求配置的url参数地址完成APP下载与安装
+
+```
+//升级配置如下：
+"settingLists": [
+    {
+        "title": "系统升级",
+        "icon": "img/update.png",
+        "type": "updateApp",
+        "url": "/dke/updateApp"
+    }
+]
+```
+
+点击“系统升级”后，系统会请求“https://xxx.xx/dke/updateApp?version=100”（注意是post方式请求），接口返回如下json内容如下：
+```
+//存在更新
+{
+    code: 0, 
+    msg: "成功", 
+    success: true, data: {
+        "downloadUrl": "https:\/\/xxx.xxx.com\/xxx.apk",
+        "newVersion": "101",
+        "appCurrentVersion": "100"
+    }
+}
+
+//不存在最新版
+{
+    code: 1,
+    msg: "暂无更新",
+    data: []
+}
+```
+> downloadUrl：下载地址
+> newVersion：新版本号
+> appCurrentVersion：当前版本号
+
+系统拿到接口结果后，会比对当前版本号是否小于最新版本号，如果是则访问downloadUrl下载apk，最终提示用户安装apk，并完成升级。
+
 ### 是否展示支付入口接口
 > type: getToken
 >
