@@ -10,6 +10,8 @@
 |     参数名    |  类型   | 必填|  示例   |    说明    |
 | ------------ | ------- | ------ | -------| ----------|
 |     name     | String  |    是   |         Deeke                    | App安装成功之后，在手机上的名称                        |
+| versionCode  | String  |    是   |      100               | 版本号（软件自动升级凭证，当前版本号大于或者等于后台上传的版本号，则无法升级）                  |
+| versionName  | String  |    是   |      1.0.0               | 版本名称，尽量和版本号统一（版本号100，则配置为1.0.0）                 |
 |     icon     | String  |    是   |      logo/dke.png               | 图标建议采用200*200像素的，清晰度大的                  |
 |     head     | String  |    是   |      img/root.png               | App中用户设置页面的头像，无设置页可以不填               |
 |     debug    | Boolean |    否   |      true               | 默认为true（不需要激活码也可以启动脚本），如果需要激活才能使用APP，请设置为false               |
@@ -126,6 +128,8 @@
   "name": "Deeke",
   "icon": "logo/dke.png",
   "head": "img/robot.png",
+  "versionCode": "100",
+  "versionName": "1.0.0",
   "host": "https://home.deeke.top",
   "switchSetting": {
     "alipay": true
