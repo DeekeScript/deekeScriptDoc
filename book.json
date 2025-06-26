@@ -30,7 +30,8 @@
         "-search",
         "search-pro",
         "-insert-logo",
-        "tbfed-pagefooter"
+        "tbfed-pagefooter",
+        "footer"
     ],
     "styles": {
         "website": "main.css"
@@ -43,7 +44,7 @@
             "keywords": "DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架"
         },
         "tbfed-pagefooter": {
-            "copyright": "Copyright &copy doc.deeke.cn 2025",
+            "copyright": "Copyright &copy doc.deeke.cn 2025 | <a href='https://deeke.cn' target='_blank'>Deeke官网</a>",
             "modify_label": "更新时间：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
@@ -102,6 +103,9 @@
                 "pocket",
                 "stumbleupon"
             ]
+        },
+        "footer": {
+            "copyright": "<a href='https://deeke.cn' target='_blank'>Deeke官网</a>"
         }
     },
     "pdf": {

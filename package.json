@@ -32,6 +32,7 @@
     "gitbook-plugin-copy-code-button": "^0.0.2",
     "gitbook-plugin-echarts": "^1.0.6",
     "gitbook-plugin-expandable-chapters": "^0.2.0",
+    "gitbook-plugin-footer": "^0.0.6",
     "gitbook-plugin-gtalk": "^0.0.9",
     "gitbook-plugin-insert-logo": "^0.1.5",
     "gitbook-plugin-search-pro": "^2.0.2",
