@@ -35,6 +35,7 @@
 <url> <loc>https://doc.deeke.cn/hid/hid.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/hid/bluetooth.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/hid/method.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://doc.deeke.cn/inputMethod/base.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/inputMethod/method.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/backendApi/activationCode.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://doc.deeke.cn/code/encryption.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

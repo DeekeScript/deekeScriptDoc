@@ -1,190 +1,62 @@
-# 输入法-Ime
+# 输入法-Keyboards
 
 ## 输入法的作用
 
-输入法主要有以下作用：
+各大平台（如微信、支付宝、抖音、小红书等）通常会检测以下行为，安全性和平台推荐度：
 
-> 部分控件不支持输入文字
-> 
-> 部分输入框没有确认按钮,需要发送回车指令
->
-> 代替粘贴输入文字操作
-> 
+| 场景           | 推荐输入方式               |
+| ------------ | -------------------- |
+| 一般文本输入       | ✅ **输入法更优**          |
+| 需要频繁改文本、填表等  | ⚠️ 输入法优先，避免用 setText |
+| 自动化模拟输入      | ✅ 输入法更隐蔽、更稳定         |
+| 被平台反作弊监控的场景  | ✅ 输入法更安全             |
+| 不可编辑字段或非标准控件 | ⚠️ 必须用无障碍            |
 
 
-## isActive
-判断输入法是否可用
+`总的来说，输入法输入内容，安全性更高；如果结合hid点击滑动，将会导致平台更难监控软件行为。`
 
-> 返回 {boolean}  输入法是否可用
->
+## canInput()
+判断当前输入法是不是默认输入法，如果不是则不能输入
+
+> 返回 {boolean}  是否可以输入
 
 ```js
-Ime.isActive();
+
+if(Keyboards.canInput()){
+    Keyboards.input("文本框新增内容");
+}
+```
+
+## isEnabled()
+判断当前输入法是不是启用
+
+> 返回 {boolean}  是否启用（注意，输入法启用之后，没有设置为默认输入法，此时不能输入，但是启用状态为true
+
+```js
+
+if(!Keyboards.isEnabled()){
+    //输入法没有启用
+}
 ```
 
 
 ## input(info)
-输入文字
+往文本框尾部输入文字（注意输入前，请先确认文本框获取焦点，否则输入失败，但是也会返回true）
 
 > info {string}  输入的内容
 > 返回 {boolean}  输入是否成功
 >
 
 ```js
-Ime.input("我正在使用DeekeScript开发工具");
+Keyboards.input("文本框新增内容");
 ```
 
-## clear()
-让输入法清空在焦点内的文字
+## delete()
+删除获取焦点的文本框中的内容
 
-> 返回 {boolean}  是否清空成功
+> 返回 {boolean}  删除指令是否发送成功（注意，文本框内容删除完成之后，此方法依然返回true）
 >
 
 ```js
-Ime.clear();
+Keyboards.delete();//删除一个字符，如果需要全部删除，可以先获取文本长度，再循环调用delete方法
 ```
-
-
-## keys(keys, duration)
-发送按键指令
-
-> keys {Number[]}  需要发送的按键列表
->
-> duration {int}  按键的持续时间，单位毫秒
->
-> 返回 {boolean}  是否清空成功
->
-
-```js
-Ime.keys([66]);//模拟回车按键
-```
-
-## Android中的按键码
-
-### 数字键（0–9）
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_0 | 7 |
-| KEYCODE_1 | 8 |
-| KEYCODE_2 | 9 |
-| KEYCODE_3 | 10 |
-| KEYCODE_4 | 11 |
-| KEYCODE_5 | 12 |
-| KEYCODE_6 | 13 |
-| KEYCODE_7 | 14 |
-| KEYCODE_8 | 15 |
-| KEYCODE_9 | 16 |
-
-### 字母键（A–Z）
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_A | 29 |
-| KEYCODE_B | 30 |
-| KEYCODE_C | 31 |
-| KEYCODE_D | 32 |
-| KEYCODE_E | 33 |
-| KEYCODE_F | 34 |
-| KEYCODE_G | 35 |
-| KEYCODE_H | 36 |
-| KEYCODE_I | 37 |
-| KEYCODE_J | 38 |
-| KEYCODE_K | 39 |
-| KEYCODE_L | 40 |
-| KEYCODE_M | 41 |
-| KEYCODE_N | 42 |
-| KEYCODE_O | 43 |
-| KEYCODE_P | 44 |
-| KEYCODE_Q | 45 |
-| KEYCODE_R | 46 |
-| KEYCODE_S | 47 |
-| KEYCODE_T | 48 |
-| KEYCODE_U | 49 |
-| KEYCODE_V | 50 |
-| KEYCODE_W | 51 |
-| KEYCODE_X | 52 |
-| KEYCODE_Y | 53 |
-| KEYCODE_Z | 54 |
-
-### 系统功能键
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_HOME | 3 |
-| KEYCODE_BACK | 4 |
-| KEYCODE_CALL | 5 |
-| KEYCODE_ENDCALL | 6 |
-| KEYCODE_MENU | 82 |
-| KEYCODE_POWER | 26 |
-| KEYCODE_VOLUME_UP | 24 |
-| KEYCODE_VOLUME_DOWN | 25 |
-| KEYCODE_VOLUME_MUTE | 164 |
-| KEYCODE_APP_SWITCH | 187 |
-| KEYCODE_ASSIST | 219 |
-| KEYCODE_ALL_APPS | 284 |
-
-### 导航方向键
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_DPAD_UP | 19 |
-| KEYCODE_DPAD_DOWN | 20 |
-| KEYCODE_DPAD_LEFT | 21 |
-| KEYCODE_DPAD_RIGHT | 22 |
-| KEYCODE_DPAD_CENTER | 23 |
-| KEYCODE_DPAD_UP_LEFT | 268 |
-| KEYCODE_DPAD_UP_RIGHT | 270 |
-| KEYCODE_DPAD_DOWN_LEFT | 269 |
-| KEYCODE_DPAD_DOWN_RIGHT | 271 |
-
-### 特殊输入符号
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_ENTER | 66 |
-| KEYCODE_DEL | 67 |
-| KEYCODE_SPACE | 62 |
-| KEYCODE_TAB | 61 |
-| KEYCODE_ESCAPE | 111 |
-| KEYCODE_COMMA | 55 |
-| KEYCODE_PERIOD | 56 |
-| KEYCODE_SLASH | 76 |
-| KEYCODE_BACKSLASH | 73 |
-| KEYCODE_SEMICOLON | 74 |
-| KEYCODE_APOSTROPHE | 75 |
-| KEYCODE_EQUALS | 70 |
-| KEYCODE_MINUS | 69 |
-| KEYCODE_LEFT_BRACKET | 71 |
-| KEYCODE_RIGHT_BRACKET | 72 |
-| KEYCODE_AT | 77 |
-| KEYCODE_GRAVE | 68 |
-
-## 媒体控制键
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_MEDIA_PLAY | 126 |
-| KEYCODE_MEDIA_PAUSE | 127 |
-| KEYCODE_MEDIA_PLAY_PAUSE | 85 |
-| KEYCODE_MEDIA_STOP | 86 |
-| KEYCODE_MEDIA_NEXT | 87 |
-| KEYCODE_MEDIA_PREVIOUS | 88 |
-| KEYCODE_MEDIA_REWIND | 89 |
-| KEYCODE_MEDIA_FAST_FORWARD | 90 |
-| KEYCODE_MEDIA_RECORD | 130 |
-| KEYCODE_MEDIA_EJECT | 129 |
-
-## 游戏控制按钮
-| 键名 | 键码 |
-|------|------|
-| KEYCODE_BUTTON_A | 96 |
-| KEYCODE_BUTTON_B | 97 |
-| KEYCODE_BUTTON_C | 98 |
-| KEYCODE_BUTTON_X | 99 |
-| KEYCODE_BUTTON_Y | 100 |
-| KEYCODE_BUTTON_Z | 101 |
-| KEYCODE_BUTTON_L1 | 102 |
-| KEYCODE_BUTTON_R1 | 103 |
-| KEYCODE_BUTTON_L2 | 104 |
-| KEYCODE_BUTTON_R2 | 105 |
-| KEYCODE_BUTTON_THUMBL | 106 |
-| KEYCODE_BUTTON_THUMBR | 107 |
-| KEYCODE_BUTTON_START | 108 |
-| KEYCODE_BUTTON_SELECT | 109 |
-| KEYCODE_BUTTON_MODE | 110 |
-
