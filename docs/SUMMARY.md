@@ -27,6 +27,7 @@
   - [定时器](./base/timer/timer.md)
   - [Http](./base/http/http.md)
   - [WebSocket](./base/webSocket/webSocket.md)
+ -  [Socket.IO-客户端](./base/Socket/client.md)
   - [控制台-console](./base/console/console.md)
   - [日志-Log](./base/log/log.md)
   - [本地存储](./base/storage/storage.md)
