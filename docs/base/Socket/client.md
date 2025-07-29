@@ -50,6 +50,7 @@ while(true){
 ```
 
 ## getInstance(url, reconnect, timeout)
+
 > url {string} 服务器地址
 >
 > reconnect {boolean} 是否自动重连
@@ -59,6 +60,7 @@ while(true){
 > 创建socket.io客户端实例
 
 ## connect()
+
 > 返回 {void}
 > 
 ```
@@ -66,6 +68,7 @@ socketIOClient.connect();//连接服务端
 ```
 
 ## isConnected()
+
 > 返回 {boolean}
 >
 > 描述：判断是否连接成功
@@ -82,11 +85,13 @@ socketIOClient.disconnect();//关闭连接
 ```
 
 ## on(type, callback:function)
+
 > type {string}
 > 
 > callback {function}
 > 
 > 描述：监听服务端发送的消息
+
 ```
 socketIOClient.on("connect", () => {
     console.error("连接成功");
@@ -111,6 +116,7 @@ socketIOClient.on("message", function(data) {
 ```
 
 ## emit(eventName, msg)
+
 > eventName {string} 事件名称
 > 
 > msg {object} 消息内容
@@ -127,6 +133,7 @@ socketIOClient.emit("message", {
 ```
 
 ## emit(eventName, msg, callback)
+
 > eventName {string} 事件名称
 > 
 > msg {object} 消息内容
