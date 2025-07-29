@@ -84,9 +84,9 @@ let bool = socketIOClient.isConnected();
 socketIOClient.disconnect();//关闭连接
 ```
 
-## on(type, callback:function)
+## on(eventName, callback:function)
 
-> type {string}
+> eventName {string}
 > 
 > callback {function}
 > 
