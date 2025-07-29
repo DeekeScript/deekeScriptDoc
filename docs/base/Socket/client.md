@@ -1,6 +1,6 @@
 # Socket.IO-客户端
 
-`注意：在使用socket.io客户端的时候，需要手动使用discount关闭连接。尤其在设置断开后重连的情况。`
+`注意：在使用socket.io客户端的时候，需要手动使用disconnect()方法关闭连接。尤其在设置断开后重连的情况。`
 
 > 创建socket.io客户端
 
