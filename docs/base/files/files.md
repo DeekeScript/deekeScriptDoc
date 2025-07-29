@@ -6,8 +6,8 @@
 
 > 注：可以使用for循环打印出Files的相关方法：
 ```
+let Files = java.nio.file.Files;
 for(let i in Files){
-    let Files = java.nio.file.Files;
     console.log(i);
 }
 ```
