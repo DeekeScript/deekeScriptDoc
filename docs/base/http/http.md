@@ -68,6 +68,7 @@ console.log(res);//输出 {code: 0, msg: "成功", data: []}
 > headers {json} 请求头 可以为 null
 
 ```javascript
+let File = java.io.File;
 let files = [new File("文件地址"), new File("文件地址2")];
 let params = {username: "DeekeScript"};
 
