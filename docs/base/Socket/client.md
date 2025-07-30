@@ -77,6 +77,12 @@ socketIOClient.connect();//连接服务端
 let bool = socketIOClient.isConnected();
 ```
 
+## setReconnect(reconnect)
+
+> reconnect {boolean} 是否自动重连
+> 设置是否自动重连
+> 
+
 ## disconnect()
 > 返回 {void}
 > 
@@ -152,3 +158,24 @@ socketIOClient.emit("message", {
    console.log("收到 ack: " + response);
 });
 ```
+
+
+## off(eventName)
+
+> eventName {string} 事件名称
+>
+> 移除指定事件监听
+>
+
+## off(eventName, callback)
+
+> eventName {string} 事件名称
+>
+> callback {function} 监听函数
+>
+> 移除指定事件监听
+
+## off()
+
+> 移除所有事件监听
+>
