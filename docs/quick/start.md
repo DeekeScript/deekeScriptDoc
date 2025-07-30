@@ -15,7 +15,7 @@
 * 在Vscode中安装DeekeScript开发插件，如下图，点击“安装”即可
 <img src="../assets/extension.png" width="100%" /> 
 
-* 在手机上<a target="_blank" href="../assets/v1.1.02-release.apk">下载安装DeekeScript软件包</a>，或者扫码下载：
+* 在手机上<a target="_blank" href="../assets/v1.1.03-release.apk">下载安装DeekeScript软件包</a>，或者扫码下载：
 
    <img src="../assets/qrcode.png" width="30%" />
   
