@@ -1,6 +1,8 @@
 
 # 配置
 
+磨刀不误砍柴工，如果你需要打包脚本，请务必认真阅读本节内容，确保每个必填参数都正确配置，这将会解决你遇到的大部分问题
+
 ## deekeScript.json文件说明
 
 [示例](#demo)请查看本页末尾部分
@@ -15,12 +17,12 @@
 |     icon     | String  |    是   |      logo/dke.png               | 图标建议采用200*200像素的，清晰度大的                  |
 |     head     | String  |    是   |      img/root.png               | App中用户设置页面的头像，无设置页可以不填               |
 |     debug    | Boolean |    否   |      true               | 默认为true（不需要激活码也可以启动脚本），如果需要激活才能使用APP，请设置为false               |
-|      host    | String  |    是   |    https://xx.xxx.xxx          | 接口请求域名      |
+|      host    | String  |    是   |    https://xx.xxx.xxx          | 接口请求域名，<font color="red">请同时完成apis配置，否则可能无法运行脚本或者APP</font>      |
 | switchSetting|  Json   |    是   |[switchSetting参数](#switchsetting参数)    | 功能开关设置      |
 |    groups    |  Array   |    是   |[groups参数](#methods参数)         |  主界面的功能组，每组都会包含若干个功能              |
 |  bottomMenus |  Json   |    是   |[bottomMenus参数](#bottommenus参数)      | App中底部菜单，可以使用系统内置的，也可以自定义          |
 | settingLists |  Json   |    是   |[settingLists参数](#settinglists参数)    | App中设置页的列表项，可以使用系统内置的，也可以自定义     |
-|     apis     |  Json   |    是   |    [apis参数](#api参数)              | 设置相关api，比如激活码api，验证激活码是否有效api登      |
+|     apis     |  Json   |    是   |    [apis参数](#api参数)              | 设置相关api，比如激活码api，验证激活码是否有效api等，否则可能导致无法运行脚本或者APP      |
 
 ##### switchSetting参数
 
