@@ -224,3 +224,14 @@ let key = 'setting_baidu_wenxin_role';//deekeScript.json中设置的角色表单
 //”role“是配置接口（api地址：/dkee/config）中返回的内容
 System.getDataFrom(key, 'role', 'content');//获取当前设置的角色的内容
 ```
+
+## setTimeWindowShow(show)
+> show {boolean}
+>
+> 返回 {void}
+
+设置时间窗的显示状态
+
+```
+System.setTimeWindowShow(false);//关闭运行时间悬浮窗
+```
