@@ -75,7 +75,8 @@ let params = {username: "DeekeScript"};
 let res = Http.postFile('https://script.deeke.top/api/fileUpload', files, params, {
     success: (response)=>{
         //处理逻辑
-        let js = response.json();
+        let body = response.body().string();
+        let code = response.code();
         console.log(js);
     },
     fail: (response)=>{
