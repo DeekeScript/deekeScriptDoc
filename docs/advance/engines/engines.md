@@ -42,7 +42,7 @@ Engines.executeScriptStr("My first DeekeScript", "console.log('My first DeekeScr
 
 ## closeAll()
 
-关闭所有正在运行的脚本（包括子脚本、定时器、socket等）
+关闭所有正在运行的脚本（包括子脚本、定时器、socket等）；注意不包括hooks启动的脚本
 
 ```javascript
 Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时也会被结束
@@ -53,3 +53,10 @@ Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时�
 关闭除了当前脚本之外的其他脚本（包括脚本里面的子脚本、定时器、socket等）
 
 > 如果你想在当前脚本执行一段时间后，进入休眠一段时间，并且在休眠的时间内执行其他脚本；休眠完成后，立马关闭其他脚本，就需要使用此方法
+
+
+## closeHook()
+
+关闭hooks启动的脚本
+
+> 如果你在hooks里面启动了持续保活的脚本，可以使用这个方法关闭hooks脚本
