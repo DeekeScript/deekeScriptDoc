@@ -18,7 +18,7 @@ promise.then(resolve => {
 
 ```
 
-### 注意：下面这种方式无效，因为setTimeout在另外的线程执行，导致promise.then方法没有执行！
+### Promise + 定时器
 ```
 let promise = new Promise(function (resolve, reject) {
     setTimeout(function () {
