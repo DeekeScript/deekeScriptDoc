@@ -2,6 +2,8 @@
 
 ## 创建WebSocket
 
+`使用WebSocket的时候，请在不使用的时候手动关闭；如果没有手动关闭，当使用Engines.closeAll()的时候，会关闭当前线程和子线程的WebSocket。`
+
 ```
 let client = new WebSocket("ws://192.168.0.100:8080");
 client.onMessage = function (msg){
@@ -25,6 +27,11 @@ client.onClose = function (code, reason){
 client.onError = function (errorMsg){
     console.log('出错了：' + errorMsg);
 }
+
+//保持当前线程不关闭，否则当前主线程会立马关闭，导致WebSocket也立即关闭
+setInterval(function () {
+  console.log('当前线程不关闭');
+}, 1000);
 ```
 
 ## send(msg)

@@ -2,8 +2,11 @@
 
 相信富有经验的开发者，会发现很多工具都有提供多线程支持；因为很多时候，我们需要同时执行两个操作（比如，采集直播间弹幕的时候，又要实时获取在线人数）；这个时候使用多线程的方式可以更好地满足我们的需求。DeekeScript本身也是支持多线程的；
 
-> 还可以使用[Engines](./engines/engines.md)来实现多线程效果
-> 也可以使用[setInterval](../base/timer/timer.md)定时器来实现
+`我们推荐使用setTimeout或者setInterval等方式来代替多线程的方式实现相关功能，或者使用Engines来实现多线程`
+
+> 使用[Engines](./engines/engines.md)来实现多线程效果
+>
+> 使用[setInterval](../base/timer/timer.md)定时器，通过异步的方式来实现系统的效果
 
 
 ## 多线程使用
@@ -15,28 +18,16 @@ let obj = {
   } 
 }
 
-new java.lang.Thread(new java.lang.Runnable(obj)).start();
-for(let i = 0; i < 10; i++){
-  console.log(i);
-  System.sleep(2000);
-}
+let thread = new java.lang.Thread(new java.lang.Runnable(obj))
+thread.start();
+thread.join();//这句会阻塞当前线程，直到线程结束，当前线程才会结束
 
-//输出如下
-/**
-
-18:02:29.063     0
-18:02:29.063     线程
-18:02:31.071     1
-18:02:33.081     2
-18:02:35.084     3
-18:02:37.086     4
-18:02:39.097     5
-18:02:41.111     6
-18:02:43.124     7
-18:02:45.132     8
-18:02:47.135     9
-*/
-            
+//如果你不使用join()方法，那么当前会立马结束，那么线程就会结束
+//当然你也可以使用setInterval方法让当前线程保持活跃
+//使用setInterval方法之后，也可以不使用thread.join()方法
+setInterval(function () {
+  console.log('线程保持活跃');
+}, 1000);
 ```
 
 ## 其他使用多线程的方法

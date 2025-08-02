@@ -4,6 +4,8 @@
 
 当然，在一些时候，如果你想彻底关闭JavaScript运行时，也是通过Engines来关闭。
 
+`目前Engines运行时是通过线程池的方式实现，并且有数量限制，因此不能无限开启Engines，否则会报错`
+
 ## executeScript(filename)
 
 > filename {string}   要执行的JS文件地址  必须为相对项目根目录的地址，非当前文件的相对地址
@@ -14,8 +16,13 @@
 //heart.js主要启动一个定时任务，每间隔几秒钟往服务器发送当前App的状态
 Engines.executeScript("script/task/heart.js");//心跳脚本，监测App的在线状态
 
-//特别说明，即使当前脚本终止运行了，heart.js依旧会继续运行
-//如果需要关闭heart.js，可以使用 Engines.closeAll方法来操作;
+//保持当前线程不关闭，否则上面的代码也会关闭，导致心跳任务也立即关闭
+setInterval(() => {
+    console.log('保持当前线程活跃');
+}, 1000);
+
+//如果你需要一段时间后关闭心跳，可以使用Engines.closeOther();
+Engines.closeOther();
 ```
 
 ## executeScriptStr(name, script)
@@ -35,7 +42,7 @@ Engines.executeScriptStr("My first DeekeScript", "console.log('My first DeekeScr
 
 ## closeAll()
 
-关闭所有正在运行的脚本和定时器
+关闭所有正在运行的脚本（包括子脚本、定时器、socket等）
 
 ```javascript
 Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时也会被结束
@@ -43,6 +50,6 @@ Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时�
 
 ## closeOther()
 
-关闭除了当前脚本之外的其他脚本（有一定延时）和所有定时器
+关闭除了当前脚本之外的其他脚本（包括脚本里面的子脚本、定时器、socket等）
 
 > 如果你想在当前脚本执行一段时间后，进入休眠一段时间，并且在休眠的时间内执行其他脚本；休眠完成后，立马关闭其他脚本，就需要使用此方法

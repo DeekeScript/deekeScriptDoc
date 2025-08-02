@@ -1,6 +1,6 @@
 # Socket.IO-客户端
 
-`注意：在使用socket.io客户端的时候，需要手动使用disconnect()方法关闭连接。尤其在设置断开后重连的情况。`
+`注意：在使用socket.io客户端的时候，需要手动使用disconnect()方法关闭连接。尤其在设置断开后重连的情况。如果没有手动关闭，当使用Engines.closeAll()的时候，会关闭当前线程和子线程的socket.io客户端`
 
 > 创建socket.io客户端
 
@@ -36,16 +36,10 @@ socketIOClient.on("connect", function(){
 socketIOClient.connect();//放在事件定义之前
 
 let i = 0;
-//防止当前脚本关闭
-while(true){
-    System.sleep(1000);
-    i++;
-
-    //这里实现一些断开逻辑
-    if(i > 60){
-        console.log('断开连接');
-    }
-}
+//防止当前脚本关闭，否则当前主线程会立马关闭，导致WebSocket也立即关闭
+setInterval(function () {
+  console.log('当前线程不关闭');
+}, 1000);
 
 ```
 
