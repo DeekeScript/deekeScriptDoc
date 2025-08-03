@@ -15,6 +15,8 @@ export default defineConfig({
   markdown: {
     lineNumbers: true
   },
+  cleanUrls: true,
+  ssr: true, 
   // 添加静态导出配置
   vite: {
     build: {
@@ -24,7 +26,6 @@ export default defineConfig({
         }
       }
     },
-    cleanUrls: true
   },
   themeConfig: {
     logo: '/logo.png',
