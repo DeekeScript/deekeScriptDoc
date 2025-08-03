@@ -10,7 +10,8 @@ description: DeekeScript - Files
 下面提供了Files模块一些常见的文件处理，包括文件读写、移动、复制、删掉等。
 
 > 注：可以使用for循环打印出Files的相关方法：
-```
+
+```javascript
 let Files = java.nio.file.Files;
 for(let i in Files){
     console.log(i);
@@ -18,9 +19,10 @@ for(let i in Files){
 ```
 
 ## isDirectory(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
+
+**参数：** `path {Path}` 路径
+
+**返回：** `{boolean}`
 
 返回路径path是否是文件夹。
 
@@ -30,124 +32,137 @@ let Paths = java.nio.file.Paths;
 console.log(Files.isDirectory(Paths.get("/sdcard/文件夹/"))); //返回false
 ```
 
-
 ## createFile(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
+
+**参数：** `path {Path}` 路径
+
+**返回：** `{boolean}`
 
 会尝试创建一个新文件，如果文件已经存在，会抛出FileAlreadyExistsException异常
 
 ## createDirectory(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
+
+**参数：** `path {Path}` 路径
+
+**返回：** `{boolean}`
 
 会创建一个单独的目录。如果目录的父目录不存在，会抛出 NoSuchFileException，并且如果目录已经存在，它会抛出 FileAlreadyExistsException。
 
-
 ## createDirectories(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
+
+**参数：** `path {Path}` 路径
+
+**返回：** `{boolean}`
 
 会确保目标路径的所有父目录存在。如果父目录不存在，它们会一并创建，而不会抛出异常。
 如果目录已经存在，它不会抛出异常。
 
 ## exists(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
+
+**参数：** `path {Path}` 路径
+
+**返回：** `{boolean}`
 
 返回在路径path处的文件是否存在。
 
-
 ## readAllLines(path[, encoding = "utf-8"])
-> path {Path} 路径
-> 
-> encoding {string} 字符编码，可选，默认为utf-8
-> 
-> 返回 {string}
+
+**参数：**
+- `path {Path}` 路径
+- `encoding {string}` 字符编码，可选，默认为utf-8
+
+**返回：** `{string}`
 
 读取文本文件path的所有行并返回。如果文件不存在，则抛出异常；文件特别大的情况下，不推荐使用这种方式读取文件
 
 ## readBytes(path)
-> path {string} 路径
-> 
-> 返回 {byte[]}
+
+**参数：** `path {string}` 路径
+
+**返回：** `{byte[]}`
 
 读取文件path的所有内容并返回一个字节数组。如果文件不存在，则抛出异常。
 
 ## write(path, text[, encoding = "utf-8"][, OpenOption... options])
-> path {Path} 路径
-> 
-> text {string} 要写入的文本内容
-> 
-> encoding {string} 字符编码
->
-> options {java.nio.file.StandardOpenOption.CREATE|java.nio.file.StandardOpenOption.APPEND}可选
+
+**参数：**
+- `path {Path}` 路径
+- `text {string}` 要写入的文本内容
+- `encoding {string}` 字符编码
+- `options {java.nio.file.StandardOpenOption.CREATE|java.nio.file.StandardOpenOption.APPEND}` 可选
 
 把text写入到文件path中。如果文件存在则覆盖，不存在则创建。如果需要追加，则options可以设置为java.nio.file.StandardOpenOption.APPEND
 
-```
+```javascript
 let Files = java.nio.file.Files;
 let Paths = java.nio.file.Paths;
 console.log(Files.write(Paths.get("/sdcard/文件夹/2.txt"), "DeekeScript", java.nio.file.StandardOpenOption.APPEND)); //返回false
 ```
 
 ## write(path, bytes[, OpenOption... options])
-> path {Path} 路径
-> 
-> bytes {byte[]} 字节数组，要写入的二进制数据
->
-> options {java.nio.file.StandardOpenOption.CREATE|java.nio.file.StandardOpenOption.APPEND}可选
 
-把bytes写入到文件path中。如果文件存在则覆盖，不存在则创建。
+**参数：**
+- `path {Path}` 路径
+- `bytes {byte[]}` 要写入的字节数组
+- `options {java.nio.file.StandardOpenOption.CREATE|java.nio.file.StandardOpenOption.APPEND}` 可选
 
-## copy(fromPath, toPath)
-> fromPath {Path} 要复制的原文件路径
-> 
-> toPath {Path} 复制到的文件路径
-> 
-> 返回 {boolean}
+把bytes写入到文件path中。如果文件存在则覆盖，不存在则创建。如果需要追加，则options可以设置为java.nio.file.StandardOpenOption.APPEND
 
-复制文件，返回是否复制成功。
-
-```
+```javascript
 let Files = java.nio.file.Files;
 let Paths = java.nio.file.Paths;
-Files.copy(Paths.get("/sdcard/1.txt"), Paths.get("/sdcard/Download/1.txt"));
+let bytes = [68, 101, 101, 107, 101, 83, 99, 114, 105, 112, 116]; // "DeekeScript" 的字节数组
+Files.write(Paths.get("/sdcard/文件夹/3.txt"), bytes);
 ```
 
-## move(fromPath, toPath)
-> fromPath {Path} 要移动的原文件路径
-> 
-> toPath {Path} 移动到的文件路径
-> 
-> 返回 {boolean}
+## copy(source, target[, CopyOption... options])
 
-移动文件，返回是否移动成功
+**参数：**
+- `source {Path}` 源文件路径
+- `target {Path}` 目标文件路径
+- `options {java.nio.file.StandardCopyOption.REPLACE_EXISTING}` 可选
 
+复制文件。如果目标文件已存在，可以使用StandardCopyOption.REPLACE_EXISTING选项来覆盖
+
+```javascript
+let Files = java.nio.file.Files;
+let Paths = java.nio.file.Paths;
+Files.copy(
+    Paths.get("/sdcard/文件夹/1.txt"), 
+    Paths.get("/sdcard/文件夹/1_copy.txt"),
+    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+);
+```
+
+## move(source, target[, CopyOption... options])
+
+**参数：**
+- `source {Path}` 源文件路径
+- `target {Path}` 目标文件路径
+- `options {java.nio.file.StandardCopyOption.REPLACE_EXISTING}` 可选
+
+移动文件。如果目标文件已存在，可以使用StandardCopyOption.REPLACE_EXISTING选项来覆盖
+
+```javascript
+let Files = java.nio.file.Files;
+let Paths = java.nio.file.Paths;
+Files.move(
+    Paths.get("/sdcard/文件夹/1.txt"), 
+    Paths.get("/sdcard/文件夹/1_moved.txt"),
+    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+);
+```
 
 ## delete(path)
-> path {Path} 路径
-> 
-> 返回 {boolean}
 
-删除文件；文件不存在，它会抛出异常。
+**参数：** `path {Path}` 路径
 
-## deleteIfExists(path)
-> path {string} 路径
-> 
-> path {string} 路径
-> 
-> 返回 {boolean}
+**返回：** `{boolean}`
 
-删除文件，如果文件存在
+删除文件或目录。如果文件不存在，会抛出NoSuchFileException异常
 
-
-## list(path)
-> path {Path} 路径
-> 
-
-返回path下面的所有文件和文件夹。
+```javascript
+let Files = java.nio.file.Files;
+let Paths = java.nio.file.Paths;
+Files.delete(Paths.get("/sdcard/文件夹/1.txt"));
+```

@@ -10,6 +10,7 @@ description: DeekeScript - 日志 - Log
 > 如果你需要记录日志到文件，请使用Log.log()方法
 
 ## setFile(filename);
+
 设置日志输出文件
 
 ```javascript
@@ -19,7 +20,9 @@ Log.setFile("myfile.log");
 ```
 
 ## log([data][, ...args])
+
+与console.log类似，区别是会记录输出内容到文件，而不会打印到控制台。
+
 ```javascript
 Log.log(132,"sdfds", [12,3]);
 ```
-与console.log类似，区别是会记录输出内容到文件，而不会打印到控制台。

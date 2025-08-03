@@ -9,11 +9,11 @@ description: DeekeScript - 本地存储
 
 > 存储模块底层使用的<a target="_blank" href="https://developer.android.com/topic/libraries/architecture/datastore?hl=zh-cn">Android DataStore</a>实现
 
-
 ## create(db);
-> db {string}
-> 
-> 返回 {boolean}
+
+**参数：** `db {string}`
+
+**返回：** `{boolean}`
 
 设置存储文件，不同模块可以设置不同的db
 
@@ -26,12 +26,12 @@ let zanRate = Storage.getInteger('zan_rate');//注意，类型不同使用的方
 ```
 
 ## put(key, value);
-> key {string}
-> 
-> value {any}
-> 
-> 返回 {boolean}
 
+**参数：**
+- `key {string}`
+- `value {any}`
+
+**返回：** `{boolean}`
 
 ```javascript
 //storage通过create创建
@@ -39,9 +39,10 @@ storage.put("user", "test");
 ```
 
 ## get(key);
-> key {string}
-> 
-> 返回 {any}
+
+**参数：** `key {string}`
+
+**返回：** `{any}`
 
 输出键为key的值，不存在的时候返回null
 
@@ -52,14 +53,14 @@ Log.log(user);//输出字符串test
 ```
 
 ## putXXX(key, value);
-> key {string}
-> 
-> value {xxx}
-> 
-> 返回 {boolean}
->
-> 注意：这里的putXXX是指一些列方法，请查看下面的案例
 
+**参数：**
+- `key {string}`
+- `value {xxx}`
+
+**返回：** `{boolean}`
+
+**注意：** 这里的putXXX是指一些列方法，请查看下面的案例
 
 ```javascript
 //storage通过create创建
@@ -82,11 +83,12 @@ Storage.putArray("arr", [1,2,3]);
 ```
 
 ## getXXX(key);
-> key {string}
-> 
-> 返回 {xxx}
->
-> 注意：这里的getXXX是指一些列方法，请查看下面的案例
+
+**参数：** `key {string}`
+
+**返回：** `{xxx}`
+
+**注意：** 这里的getXXX是指一些列方法，请查看下面的案例
 
 ```javascript
 //storage通过create创建
@@ -98,24 +100,38 @@ storage.getArray("arr");//输出：[1,2,3]
 ```
 
 ## remove(key);
-> key {string}
-> 
-> 返回 {boolean}
 
-存在则删除，不存在则什么都不做
+**参数：** `key {string}`
+
+**返回：** `{boolean}`
+
+删除键为key的数据
 
 ```javascript
 //storage通过create创建
-let user = storage.remove("user");
-Log.log(storage.get("user"));//输出 null
+storage.remove("user");
 ```
 
 ## clear();
-> 返回 {boolean}
 
-清空所有内容
+**返回：** `{boolean}`
+
+清空所有数据
 
 ```javascript
 //storage通过create创建
-Log.log(storage.clear());//输出 true
+storage.clear();
+```
+
+## contains(key);
+
+**参数：** `key {string}`
+
+**返回：** `{boolean}`
+
+判断是否包含键为key的数据
+
+```javascript
+//storage通过create创建
+let hasUser = storage.contains("user");
 ```

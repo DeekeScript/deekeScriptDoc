@@ -13,12 +13,11 @@ description: DeekeScript - 定时器
 
 ## setTimeout(callback, delay)
 
-> callback {callback} 要执行的函数
-> 
-> delay {number} 延时 毫秒数
->
+**参数：**
+- `callback {callback}` 要执行的函数
+- `delay {number}` 延时 毫秒数
 
-> 示例：
+**示例：**
 
 ```javascript
 setTimeout(()=>{
@@ -28,12 +27,11 @@ setTimeout(()=>{
 
 ## setInterval(callback, delay)
 
-> callback {callback} 要执行的函数
-> 
-> delay {number} 延时 毫秒数
->
+**参数：**
+- `callback {callback}` 要执行的函数
+- `delay {number}` 延时 毫秒数
 
-> 示例：
+**示例：**
 
 ```javascript
 setInterval(()=>{
@@ -45,7 +43,7 @@ setInterval(()=>{
 
 取消一个由setTimeout(callback, delay)创建的定时任务
 
-> 示例：
+**示例：**
 
 ```javascript
 let timer = setTimeout(()=>{
@@ -61,7 +59,7 @@ clearTimeout(timer);
 
 取消一个由setInterval(callback, delay)创建的定时任务
 
-> 示例：
+**示例：**
 
 ```javascript
 let timer = setInterval(()=>{

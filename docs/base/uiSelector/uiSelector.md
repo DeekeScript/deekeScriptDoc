@@ -26,76 +26,78 @@ if(sendButton){
 ```
 
 ## id(name)
-> name {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `name {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"id 等于字符串 name"的筛选条件。【对应节点选择器中的viewIdResourceName】
 
 ## className(name)
-> name {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `name {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"className 等于字符串 name"的筛选条件。
 
 ## bounds(left, top, right, bottom)
-> left {number} 控件左边缘与屏幕左边的距离
-> 
-> top {number} 上边距
-> 
-> right {number} 右边距
-> 
-> bottom {number} 下边距
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：**
+- `left {number}` 控件左边缘与屏幕左边的距离
+- `top {number}` 上边距
+- `right {number}` 右边距
+- `bottom {number}` 下边距
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"bounds范围"的筛选条件。
 
 ## text(content)
-> content {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"text 等于字符串 content"的筛选条件。
 
-
 ## desc(content)
-> content {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"contentDescribe 等于字符串 content"的筛选条件。【对应节点选择器中的contentDescription】
 
-
 ## clickable(canClick)
-> canClick {boolean}  是否可以点击
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `canClick {boolean}` 是否可以点击
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"clickable 等于 canClick"的筛选条件。
 
-
 ## selected(isSelected)
-> isSelected {boolean} 是否已选择
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `isSelected {boolean}` 是否已选择
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"selected 等于 isSelected"的筛选条件。
 
+## checked(isChecked)
 
-## checked(isChecked) 
-> isChecked {boolean} 是否被选中
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+**参数：** `isChecked {boolean}` 是否被选中
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"checked 等于字符串 isChecked"的筛选条件。
 
-
 ## enabled(isEnabled)
-> isEnabled {boolean}  是否可以交互（为false的时候表示禁用）
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `isEnabled {boolean}` 是否可以交互（为false的时候表示禁用）
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"enabled 等于字符串 isEnabled"的筛选条件。
 
