@@ -1,3 +1,8 @@
+---
+title: 定时器
+description: DeekeScript - 定时器
+---
+
 # 定时器
 
 用于在未来某个未来时间执行函数；计时器函数实现了与 Web 浏览器提供的定时器类似的 API。

@@ -1,3 +1,8 @@
+---
+title: 模式介绍
+description: DeekeScript - 模式介绍
+---
+
 
 # 模式介绍
 

@@ -1,3 +1,8 @@
+---
+title: DeekeScript介绍
+description: DeekeScript - DeekeScript介绍
+---
+
 # DeekeScript介绍
 <img src='https://home.deeke.top/Index/githubStatistic?name=github-deekeScriptDoc' style="display:none" width=0 height=0 />
 

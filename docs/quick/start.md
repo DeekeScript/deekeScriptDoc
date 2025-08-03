@@ -1,3 +1,8 @@
+---
+title: 快速开始
+description: DeekeScript - 快速开始
+---
+
 # 快速开始
 
 目前DeekeScript采用JavaScript语言开发。

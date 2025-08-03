@@ -1,3 +1,8 @@
+---
+title: 选择器 - UiSelector
+description: DeekeScript - 选择器 - UiSelector
+---
+
 # 选择器 - UiSelector
 
 ## 基本介绍

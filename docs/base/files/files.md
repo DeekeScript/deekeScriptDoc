@@ -1,3 +1,8 @@
+---
+title: Files
+description: DeekeScript - Files
+---
+
 # Files
 
 > 这里直接使用Java内置的java.nio.file.Files对象

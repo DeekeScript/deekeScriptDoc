@@ -1,3 +1,8 @@
+---
+title: 输入法-Keyboards
+description: DeekeScript - 输入法-Keyboards
+---
+
 # 输入法-Keyboards
 
 ## 输入法的作用

@@ -1,3 +1,8 @@
+---
+title: 输入法设置
+description: DeekeScript - 输入法设置
+---
+
 # 输入法设置
 
 ## DeekeScript输入法效果图

@@ -1,3 +1,8 @@
+---
+title: 加解密 Encrypt
+description: DeekeScript - 加解密 Encrypt
+---
+
 # 加解密 Encrypt
 
 本模块主要囊括了一些场景的加密方式，和一些编码方式

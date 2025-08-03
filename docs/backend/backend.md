@@ -1,3 +1,8 @@
+---
+title: 管理后台支持
+description: DeekeScript - 管理后台支持
+---
+
 # 管理后台支持
 
 DeekeScript给企业用户提供了后台管理系统支持，可以轻松管理App的激活码，开通代理商等。
@@ -19,3 +24,4 @@ DeekeScript给企业用户提供了后台管理系统支持，可以轻松管理
 <img alt="Deeke后台登录界面" src="../photo/backend-1.png" width="100%">
 <img alt="Deeke后台主界面" src="../photo/backend-1-1.png" width="100%">
 <img alt="Deeke后台主界面" src="../photo/backend-1-2.png" width="100%">
+</div>

@@ -1,3 +1,8 @@
+---
+title: 设备 - Device
+description: DeekeScript - 设备 - Device
+---
+
 # 设备 - Device
 
 Device对象，提供一些设备相关的方法。

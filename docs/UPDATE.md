@@ -1,3 +1,8 @@
+---
+title: DeekeScript更新文档
+description: DeekeScript - DeekeScript更新文档
+---
+
 # DeekeScript更新文档
 
 ## 1.00.05版本 [2024-03-16]

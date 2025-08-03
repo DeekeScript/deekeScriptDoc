@@ -1,3 +1,8 @@
+---
+title: Socket.IO-客户端
+description: DeekeScript - Socket.IO-客户端
+---
+
 # Socket.IO-客户端
 
 `注意：在使用socket.io客户端的时候，需要手动使用disconnect()方法关闭连接。尤其在设置断开后重连的情况。如果没有手动关闭，当使用Engines.closeAll()的时候，会关闭当前线程和子线程的socket.io客户端`

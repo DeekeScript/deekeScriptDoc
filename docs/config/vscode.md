@@ -1,3 +1,8 @@
+---
+title: VSCode开发篇
+description: DeekeScript - VSCode开发篇
+---
+
 # VSCode开发篇
 
 ## 准备工作

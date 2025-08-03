@@ -1,3 +1,8 @@
+---
+title: webSocket
+description: DeekeScript - webSocket
+---
+
 # webSocket
 
 ## 创建WebSocket

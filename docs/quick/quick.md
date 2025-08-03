@@ -1,3 +1,7 @@
+---
+title: 认识DeekeScript
+description: 了解DeekeScript的起源和发展历程
+---
 
 # 快速入门
 

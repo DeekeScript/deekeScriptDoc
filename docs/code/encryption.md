@@ -1,3 +1,8 @@
+---
+title: 混淆加密
+description: DeekeScript - 混淆加密
+---
+
 # 混淆加密
 
 JavaScript代码混淆，一定程度上达到了保护原代码的目的。DeekeScript默认采用了UglifyJS插件进行代码混淆。

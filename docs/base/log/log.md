@@ -1,3 +1,8 @@
+---
+title: 日志 - Log
+description: DeekeScript - 日志 - Log
+---
+
 # 日志 - Log
 
 日志模块提供了一些日志写入方法。

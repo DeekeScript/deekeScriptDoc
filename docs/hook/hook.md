@@ -1,3 +1,8 @@
+---
+title: Hook介绍
+description: DeekeScript - Hook介绍
+---
+
 # Hook介绍
 
 很多时候，开发者需要在APP运行过程中，加入一些自定义逻辑，比如在进入APP主界面的时候，拉取远程接口，获取一些初始化数据或者上报一些信息等，这个时候就可以使用hook来实现了。

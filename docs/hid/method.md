@@ -1,3 +1,8 @@
+---
+title: Hid方法
+description: DeekeScript - Hid方法
+---
+
 
 # Hid方法
 

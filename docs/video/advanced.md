@@ -1,3 +1,8 @@
+---
+title: advanced
+description: DeekeScript - advanced
+---
+
 ## 进阶视频
 
 > 3小时6个视频，讲解DeekeScript进阶开发

@@ -1,3 +1,8 @@
+---
+title: 本地存储
+description: DeekeScript - 本地存储
+---
+
 # 本地存储
 
 本地存储模块提供了一些key-value数据写入和读取的功能。

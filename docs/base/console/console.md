@@ -1,3 +1,8 @@
+---
+title: 控制台 - console
+description: DeekeScript - 控制台 - console
+---
+
 # 控制台 - console
 
 控制台模块提供了一个和Web浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。 console模块中的一些函数也可以直接作为全局函数使用，例如log, info等。

@@ -1,3 +1,8 @@
+---
+title: App
+description: DeekeScript - App
+---
+
 # App
 
 App对象提供了一些应用相关的数据获取能力，比如当前App的版本号、获取某个App的版本等。

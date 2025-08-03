@@ -1,3 +1,8 @@
+---
+title: module - 模块
+description: DeekeScript - module - 模块
+---
+
 # module - 模块
 
 在很多时候，我们的应用不是一个或者几个JavaScript文件组成，而是由几十个甚至几百个文件组成，这个时候就需要模块化，将不同功能拆分到不同模块。

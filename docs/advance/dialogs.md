@@ -1,3 +1,8 @@
+---
+title: 弹窗
+description: DeekeScript - 弹窗
+---
+
 # 弹窗
 
 弹窗主要分为两类，一类当前APP在前台运行，请使用Dialogs弹窗；如果APP已经在后台启动了，Dialogs弹窗将会无法弹出。此时可以使用FloatDialogs弹窗（基于悬浮窗实现，需要开启悬浮窗权限）

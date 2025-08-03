@@ -1,3 +1,8 @@
+---
+title: 系统函数 - System
+description: DeekeScript - 系统函数 - System
+---
+
 # 系统函数 - System
 
 System对象，提供一些常用的方法。

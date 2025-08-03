@@ -1,3 +1,8 @@
+---
+title: Table of contents
+description: DeekeScript - Table of contents
+---
+
 # Table of contents
 
 - [介绍](./README.md)

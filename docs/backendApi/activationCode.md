@@ -1,3 +1,8 @@
+---
+title: 后端接口
+description: DeekeScript - 后端接口
+---
+
 # 后端接口
 
 > 激活码逻辑已经内嵌在DeekeScript中，开发者只需实现对应后端接口即可

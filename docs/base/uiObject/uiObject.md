@@ -1,3 +1,8 @@
+---
+title: 控件操作
+description: DeekeScript - 控件操作
+---
+
 # 控件操作
 
 ## 基本介绍

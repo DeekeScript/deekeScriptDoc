@@ -1,3 +1,8 @@
+---
+title: 配置
+description: DeekeScript - 配置
+---
+
 
 # 配置
 

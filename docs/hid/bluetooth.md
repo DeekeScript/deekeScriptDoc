@@ -1,3 +1,8 @@
+---
+title: 蓝牙Hid硬件介绍
+description: DeekeScript - 蓝牙Hid硬件介绍
+---
+
 # 蓝牙Hid硬件介绍
 
 ## 硬件介绍
