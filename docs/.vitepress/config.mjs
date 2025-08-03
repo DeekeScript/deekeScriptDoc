@@ -16,7 +16,7 @@ export default defineConfig({
     lineNumbers: true
   },
   cleanUrls: true,
-  ssr: true, 
+  ssr: false, 
   // 添加静态导出配置
   vite: {
     build: {
