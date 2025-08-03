@@ -19,7 +19,11 @@ export default defineConfig({
             'theme': ['vitepress/theme']
           }
         }
-      }
+      },
+      ssr: false
+    },
+    ssr: {
+      noExternal: true
     }
   },
   markdown: {
@@ -174,7 +178,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the ISC License.',
-      copyright: 'Copyright © 2024-present DeekeScript'
+      copyright: 'Copyright © 2025-present DeekeScript'
     },
     search: {
       provider: 'local'
