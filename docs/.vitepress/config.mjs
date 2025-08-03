@@ -15,7 +15,6 @@ export default defineConfig({
   markdown: {
     lineNumbers: true
   },
-  cleanUrls: true,
   ssr: false, 
   // 添加静态导出配置
   vite: {
