@@ -1,15 +1,15 @@
 ---
-title: webSocket
-description: DeekeScript - webSocket
+title: WebSocket
+description: DeekeScript - WebSocket
 ---
 
-# webSocket
+# WebSocket
 
 ## 创建WebSocket
 
 `使用WebSocket的时候，请在不使用的时候手动关闭；如果没有手动关闭，当使用Engines.closeAll()的时候，会关闭当前线程和子线程的WebSocket。`
 
-```
+```javascript
 let client = new WebSocket("ws://192.168.0.100:8080");
 client.onMessage = function (msg){
  	console.log('消息来了' + msg); 
@@ -40,11 +40,12 @@ setInterval(function () {
 ```
 
 ## send(msg)
-> msg {string}
-> 
-> 返回 {void}
 
-```
+**参数：** `msg {string}`
+
+**返回：** `{void}`
+
+```javascript
 let client = new WebSocket("ws://192.168.0.100:8080");
 
 //连接完成后
@@ -57,12 +58,18 @@ client.onOpen = function (){
 ```
 
 ## close()
-```
+
+关闭当前WebSocket连接
+
+```javascript
 let client = new WebSocket("ws://192.168.0.100:8080");
 client.close();//关闭当前连接
 ```
 
 ## WebSocket.closeAll()
-```
+
+关闭所有的WebSocket客户端
+
+```javascript
 WebSocket.closeAll();//关闭所有的客户端
 ```

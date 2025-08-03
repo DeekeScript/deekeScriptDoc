@@ -101,145 +101,190 @@ if(sendButton){
 
 为当前选择器附加控件"enabled 等于字符串 isEnabled"的筛选条件。
 
+## focusable(canFocus)
 
-## scrollable(canScrollable)
-> canScrollable {boolean}  是否可以滚动
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+**参数：** `canFocus {boolean}` 是否可以获取焦点
 
-为当前选择器附加控件"scrollable 等于字符串 canScrollable"的筛选条件。
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
+为当前选择器附加控件"focusable 等于 canFocus"的筛选条件。
 
-## checkable(isCheckable)
-> isCheckable {boolean} 是否可以选中
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+## scrollable(canScroll)
 
-为当前选择器附加控件"checkable 等于字符串 isCheckable"的筛选条件。
+**参数：** `canScroll {boolean}` 是否可以滚动
 
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"scrollable 等于 canScroll"的筛选条件。
+
+## longClickable(canLongClick)
+
+**参数：** `canLongClick {boolean}` 是否可以长按
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"longClickable 等于 canLongClick"的筛选条件。
+
+## packageName(name)
+
+**参数：** `name {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"packageName 等于字符串 name"的筛选条件。
+
+## resourceId(name)
+
+**参数：** `name {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"resourceId 等于字符串 name"的筛选条件。
 
 ## textContains(content)
-> content {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"text 包含字符串 content"的筛选条件。
 
+## textStartsWith(content)
 
-## isVisibleToUser(canVisible)
-> canVisible {boolean}  是否对用户可见（控件在屏幕上）
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+**参数：** `content {string}`
 
-> 注意：因为它判断的是视图本身是否在布局层级中可见（被遮挡了，也会返回true）
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
-为当前选择器附加控件"isVisibleToUser 等于 canVisible"的筛选条件。
+为当前选择器附加控件"text 以字符串 content 开头"的筛选条件。
 
+## textEndsWith(content)
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"text 以字符串 content 结尾"的筛选条件。
 
 ## textMatches(content)
-> content {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"text 正则匹配 content"的筛选条件。
 
-
 ## descContains(content)
-> content {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
 
-为当前选择器附加控件"contentDescribe 正则匹配 content"的筛选条件。
+**参数：** `content {string}`
 
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"contentDescribe 包含字符串 content"的筛选条件。
+
+## descStartsWith(content)
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"contentDescribe 以字符串 content 开头"的筛选条件。
+
+## descEndsWith(content)
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"contentDescribe 以字符串 content 结尾"的筛选条件。
 
 ## descMatches(content)
-> content {string}
-> 
-> 返回 {UiSelector} 返回选择器自身以便链式调用
+
+**参数：** `content {string}`
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"contentDescribe 正则匹配 content"的筛选条件。
 
-
 ## filter(callback)
-> callback {Callable}
-> 
-> 返回{UiObject[]} 返回控件对象
+
+**参数：** `callback {Callable}`
+
+**返回：** `{UiObject[]}` 返回控件对象
 
 对当前查找到的UiObject数组进行过滤，过滤的时候执行callback方法，该方法返回false，则对应的UiObject被过滤掉
 
-```
+```javascript
 let ui = UiSelector().filter((v)=>{
     return v && v.bounds() && v.bounds().left > 100 && v.bounds().top > 300;//获取左边距大于100px，上边距大于300px的控件
 }).findOne();
 ```
 
 ## exist()
-> content {string}
-> 
-> 返回 {boolean} 返回是否存在
+
+**返回：** `{boolean}` 返回是否存在
 
 判断当前选择器是否能匹配到UiObject控件信息。
 
-
 ## waitFindOne()
-> 返回 {UiObject} 返回控件对象
+
+**返回：** `{UiObject}` 返回控件对象
 
 一直阻塞，直到某个控件对象出现在屏幕上
 
-
 ## find()
-> 返回 {UiObject[]}
+
+**返回：** `{UiObject[]}`
 
 获取当前选择器筛选的所有UiObject控件。
 
-
 ## findBy(uiSelector)
-> uiSelector {UiSelector}
-> 
-> 返回 {UiObject[]}
+
+**参数：** `uiSelector {UiSelector}`
+
+**返回：** `{UiObject[]}`
 
 获取当前选择器筛选的所有UiObject控件（a）中查找符合uiSelector选择器的UiObject；从a集合查找，然后遍历它们的子控件、子控件的子控件，直到a下面的所有控件都被查找一遍才结束。
 
-
-
 ## findBy(timeout)
-> timeout {int}
-> 
-> 返回 {UiObject[]}
+
+**参数：** `timeout {int}`
+
+**返回：** `{UiObject[]}`
 
 获取当前选择器筛选的所有UiObject控件，如果控件一直没有出现，则最大等待timeout毫秒。
 
-
-
 ## findOne()
-> 返回 {UiObject}
+
+**返回：** `{UiObject}`
 
 获取当前选择器筛选的第一个UiObject控件。
-
 
 ## findOnce()
-> 返回 {UiObject}
+
+**返回：** `{UiObject}`
 
 获取当前选择器筛选的第一个UiObject控件。
 
-
 ## findOne(uiSelector)
-> uiSelector {UiSelector}
-> 
-> 返回 {UiObject}
+
+**参数：** `uiSelector {UiSelector}`
+
+**返回：** `{UiObject}`
 
 获取当前选择器筛选的第一个UiObject控件（a）中查找符合uiSelector选择器的UiObject；从a集合查找，然后遍历它们的子控件、子控件的子控件，直到a下面的所有控件都被查找一遍才结束。
 
 ## findOneBy(uiSelector)
-> uiSelector {UiSelector}
-> 
-> 返回 {UiObject[]}
+
+**参数：** `uiSelector {UiSelector}`
+
+**返回：** `{UiObject[]}`
 
 与findBy类似，区别是找到一个符合条件的控件，立马返回
 
-
 ## findOneBy(timeout)
-> timeout {int}
-> 
-> 返回 {UiObject[]}
+
+**参数：** `timeout {int}`
+
+**返回：** `{UiObject[]}`
 
 与findBy类似，区别是找到一个符合条件的控件，立马返回

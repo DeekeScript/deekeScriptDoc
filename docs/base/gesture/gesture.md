@@ -1,9 +1,9 @@
 ---
-title: gesture
-description: DeekeScript - gesture
+title: 手势操作 - Gesture
+description: DeekeScript - 手势操作 - Gesture
 ---
 
-## 手势 - Gesture
+# 手势操作 - Gesture
 
 ## click(x, y)
 

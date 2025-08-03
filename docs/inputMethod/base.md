@@ -7,9 +7,10 @@ description: DeekeScript - 输入法设置
 
 ## DeekeScript输入法效果图
 
-<img src="../assets/images/keyboard-1.jpg" width="30%" />
-<img src="../assets/images/keyboard-2.jpeg" width="30%" />
-
+<div style="display:flex">
+    <img src="../assets/images/keyboard-1.jpg" width="30%" />
+    <img style="margin-left:24px" src="../assets/images/keyboard-2.jpeg" width="30%" />
+</div>
 
 ## 开启步骤
 

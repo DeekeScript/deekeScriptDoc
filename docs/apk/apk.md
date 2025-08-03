@@ -5,9 +5,7 @@ description: DeekeScript - 在线打包
 
 # 在线打包
 
-## 在线打包
-
-<a href="https://mp.deeke.cn" target="_blank">DeekeScript开放平台</a>提供了在线打包的功能，用户可以在线打包Android应用。
+> <a href="https://mp.deeke.cn" target="_blank">DeekeScript开放平台</a>提供了在线打包的功能，用户可以在线打包Android应用。
 
 ### 操作流程
 
