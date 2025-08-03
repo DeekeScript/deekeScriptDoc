@@ -15,6 +15,16 @@ export default defineConfig({
   markdown: {
     lineNumbers: true
   },
+  // 添加静态导出配置
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: undefined
+        }
+      }
+    },
+  },
   themeConfig: {
     logo: '/logo.png',
     siteTitle: 'DeekeScript',
