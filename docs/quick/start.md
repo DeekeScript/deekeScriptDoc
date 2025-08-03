@@ -31,7 +31,7 @@ description: DeekeScript - 快速开始
 
 - 打开手机端的DeekeScript，如下图，可以看到手机的局域网IP是“192.168.1.3”：
 
-  <img src="../assets/dk.jpg" width="20%" />
+  <img src="../assets/dk.jpg" width="30%" />
 
 - 打开浏览器，输入："http://192.168.1.3:8080"，可以看到下面的页面
   <img src="../assets/widget.png" width="100%" />
@@ -76,7 +76,7 @@ description: DeekeScript - 快速开始
 
 - 手机中的APP已经出现了相应的界面，可以在手机中点击对应的功能进行运行，大概如下图：
 
-  <img src="../assets/deeke.png" width="20%" />
+  <img src="../assets/deeke.png" width="30%" />
 
 
 ## 单个JavaScript调试

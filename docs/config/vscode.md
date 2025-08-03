@@ -40,11 +40,11 @@ description: DeekeScript - VSCode开发篇
 
 * Android端点击“刷新”按钮（安卓图标右侧的按钮）
 
-  <img src="../assets/android-main.jpg" width="20%" />
+  <img src="../assets/android-main.jpg" width="30%" />
 
 * Android端点击“运行”按钮（安卓图标左侧按钮），运行结果如下图：
 
-  <img src="../assets/deeke.png" width="20%" />
+  <img src="../assets/deeke.png" width="30%" />
 
 * 执行单个JavaScript文件，如下图：
   <img src="../assets/file-run.png" width="100%" />
