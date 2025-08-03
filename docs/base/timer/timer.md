@@ -53,7 +53,7 @@ let timer = setTimeout(()=>{
 clearTimeout(timer);
 ```
 
-> 关闭所有定时器，请使用[Engines](../../advance/engines/engines.md)相关方法
+> 主脚本关闭后，定时器所有定时器会自动关闭
 
 ## clearInterval(id)
 
@@ -69,4 +69,4 @@ let timer = setInterval(()=>{
 clearInterval(timer);
 ```
 
-> 关闭所有定时器，请使用[Engines](../../advance/engines/engines.md)相关方法
+> 主脚本关闭后，定时器所有定时器会自动关闭
