@@ -24,6 +24,7 @@ export default defineConfig({
         }
       }
     },
+    cleanUrls: true
   },
   themeConfig: {
     logo: '/logo.png',
