@@ -5,26 +5,13 @@ export default defineConfig({
   description: 'DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件',
   lang: 'zh-CN',
   outDir: '../_book',
+  // 如果部署在子目录，请设置base路径，例如：base: '/docs/'
+  // base: '/',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'keywords', content: 'DeekeScript,Deeke,按键控制,模拟点击,模拟输入,自动化,脚本,SaaS系统,Android自动化,卡密系统,自动化框架' }],
     ['meta', { name: 'description', content: 'DeekeScript是一款基于Android无障碍的自动化脚本开发和打包软件。通过DeekeScript提供的接口，可以模拟用户操作、控制Android手机的APP（框架）。' }]
   ],
-  // 添加配置来解决水合问题
-  vite: {
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'theme': ['vitepress/theme']
-          }
-        }
-      }
-    },
-    ssr: {
-      noExternal: ['*']
-    }
-  },
   markdown: {
     lineNumbers: true
   },
@@ -177,7 +164,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the ISC License.',
-      copyright: 'Copyright © 2025-present DeekeScript'
+      copyright: 'Copyright © 2024-present DeekeScript'
     },
     search: {
       provider: 'local'

@@ -1,9 +1,11 @@
-import "./chunk-4FZUCWOW.js";
+import {
+  useMediaQuery
+} from "./chunk-P2XGSYO7.js";
 import {
   computed,
   ref,
-  shallowReadonly,
-  shallowRef
+  shallowRef,
+  watch
 } from "./chunk-HVR2FF6M.js";
 
 // node_modules/vitepress/dist/client/theme-default/index.js
@@ -40,48 +42,11 @@ import { default as default17 } from "/Users/huangrong/deekeScriptDoc/node_modul
 import { default as default18 } from "/Users/huangrong/deekeScriptDoc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue";
 import { default as default19 } from "/Users/huangrong/deekeScriptDoc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue";
 
-// node_modules/vitepress/dist/client/theme-default/composables/layout.js
-import { inBrowser, onContentUpdated, useRoute } from "vitepress";
+// node_modules/vitepress/dist/client/theme-default/composables/local-nav.js
+import { onContentUpdated } from "vitepress";
 
-// node_modules/vitepress/dist/client/shared.js
-var UnpackStackView = Symbol("stack-view:unpack");
-function stackView(..._layers) {
-  const layers = _layers.filter((layer) => isObject(layer));
-  if (layers.length <= 1)
-    return _layers[0];
-  const allKeys = new Set(layers.flatMap((layer) => Reflect.ownKeys(layer)));
-  const allKeysArray = [...allKeys];
-  return new Proxy({}, {
-    // TODO: optimize for performance, this is a hot path
-    get(_, prop) {
-      if (prop === UnpackStackView)
-        return layers;
-      return stackView(...layers.map((layer) => layer[prop]).filter((v) => v !== void 0));
-    },
-    set() {
-      throw new Error("StackView is read-only and cannot be mutated.");
-    },
-    has(_, prop) {
-      return allKeys.has(prop);
-    },
-    ownKeys() {
-      return allKeysArray;
-    },
-    getOwnPropertyDescriptor(_, prop) {
-      for (const layer of layers) {
-        const descriptor = Object.getOwnPropertyDescriptor(layer, prop);
-        if (descriptor)
-          return descriptor;
-      }
-    }
-  });
-}
-stackView.unpack = function(obj) {
-  return obj?.[UnpackStackView];
-};
-function isObject(value) {
-  return Object.prototype.toString.call(value) === "[object Object]";
-}
+// node_modules/vitepress/dist/client/theme-default/composables/outline.js
+import { getScrollOffset } from "vitepress";
 
 // node_modules/vitepress/dist/client/theme-default/support/utils.js
 import { withBase } from "vitepress";
@@ -90,12 +55,31 @@ import { withBase } from "vitepress";
 import { useData as useData$ } from "vitepress";
 var useData = useData$;
 
+// node_modules/vitepress/dist/client/theme-default/support/utils.js
+function ensureStartingSlash(path) {
+  return path.startsWith("/") ? path : `/${path}`;
+}
+
 // node_modules/vitepress/dist/client/theme-default/support/sidebar.js
-function getSidebarGroups(sidebar2) {
+function getSidebar(_sidebar, path) {
+  if (Array.isArray(_sidebar))
+    return addBase(_sidebar);
+  if (_sidebar == null)
+    return [];
+  path = ensureStartingSlash(path);
+  const dir = Object.keys(_sidebar).sort((a, b) => {
+    return b.split("/").length - a.split("/").length;
+  }).find((dir2) => {
+    return path.startsWith(ensureStartingSlash(dir2));
+  });
+  const sidebar = dir ? _sidebar[dir] : [];
+  return Array.isArray(sidebar) ? addBase(sidebar) : addBase(sidebar.items, sidebar.base);
+}
+function getSidebarGroups(sidebar) {
   const groups = [];
   let lastGroupIndex = 0;
-  for (const index in sidebar2) {
-    const item = sidebar2[index];
+  for (const index in sidebar) {
+    const item = sidebar[index];
     if (item.items) {
       lastGroupIndex = groups.push(item);
       continue;
@@ -107,53 +91,152 @@ function getSidebarGroups(sidebar2) {
   }
   return groups;
 }
-
-// node_modules/vitepress/dist/client/theme-default/composables/outline.js
-import { getScrollOffset } from "vitepress";
+function addBase(items, _base) {
+  return [...items].map((_item) => {
+    const item = { ..._item };
+    const base = item.base || _base;
+    if (base && item.link)
+      item.link = base + item.link;
+    if (item.items)
+      item.items = addBase(item.items, base);
+    return item;
+  });
+}
 
 // node_modules/vitepress/dist/client/theme-default/composables/sidebar.js
-var isOpen = ref(false);
-
-// node_modules/vitepress/dist/client/theme-default/composables/layout.js
-var headers = shallowRef([]);
-var sidebar = shallowRef([]);
-var is960 = shallowRef(false);
-function useLayout() {
-  const { frontmatter, theme: theme2 } = useData();
-  const isHome = computed(() => {
-    return !!(frontmatter.value.isHome ?? frontmatter.value.layout === "home");
+function useSidebar() {
+  const { frontmatter, page, theme: theme2 } = useData();
+  const is960 = useMediaQuery("(min-width: 960px)");
+  const isOpen = ref(false);
+  const _sidebar = computed(() => {
+    const sidebarConfig = theme2.value.sidebar;
+    const relativePath = page.value.relativePath;
+    return sidebarConfig ? getSidebar(sidebarConfig, relativePath) : [];
+  });
+  const sidebar = ref(_sidebar.value);
+  watch(_sidebar, (next, prev) => {
+    if (JSON.stringify(next) !== JSON.stringify(prev))
+      sidebar.value = _sidebar.value;
   });
   const hasSidebar = computed(() => {
-    return frontmatter.value.sidebar !== false && sidebar.value.length > 0 && !isHome.value;
+    return frontmatter.value.sidebar !== false && sidebar.value.length > 0 && frontmatter.value.layout !== "home";
   });
-  const isSidebarEnabled = computed(() => hasSidebar.value && is960.value);
-  const sidebarGroups = computed(() => {
-    return hasSidebar.value ? getSidebarGroups(sidebar.value) : [];
+  const leftAside = computed(() => {
+    if (hasAside)
+      return frontmatter.value.aside == null ? theme2.value.aside === "left" : frontmatter.value.aside === "left";
+    return false;
   });
   const hasAside = computed(() => {
-    if (isHome.value)
+    if (frontmatter.value.layout === "home")
       return false;
     if (frontmatter.value.aside != null)
       return !!frontmatter.value.aside;
     return theme2.value.aside !== false;
   });
-  const leftAside = computed(() => {
-    if (!hasAside.value)
-      return false;
-    return frontmatter.value.aside == null ? theme2.value.aside === "left" : frontmatter.value.aside === "left";
+  const isSidebarEnabled = computed(() => hasSidebar.value && is960.value);
+  const sidebarGroups = computed(() => {
+    return hasSidebar.value ? getSidebarGroups(sidebar.value) : [];
   });
+  function open() {
+    isOpen.value = true;
+  }
+  function close() {
+    isOpen.value = false;
+  }
+  function toggle() {
+    isOpen.value ? close() : open();
+  }
+  return {
+    isOpen,
+    sidebar,
+    sidebarGroups,
+    hasSidebar,
+    hasAside,
+    leftAside,
+    isSidebarEnabled,
+    open,
+    close,
+    toggle
+  };
+}
+
+// node_modules/vitepress/dist/client/theme-default/composables/outline.js
+var ignoreRE = /\b(?:VPBadge|header-anchor|footnote-ref|ignore-header)\b/;
+var resolvedHeaders = [];
+function getHeaders(range) {
+  const headers = [
+    ...document.querySelectorAll(".VPDoc :where(h1,h2,h3,h4,h5,h6)")
+  ].filter((el) => el.id && el.hasChildNodes()).map((el) => {
+    const level = Number(el.tagName[1]);
+    return {
+      element: el,
+      title: serializeHeader(el),
+      link: "#" + el.id,
+      level
+    };
+  });
+  return resolveHeaders(headers, range);
+}
+function serializeHeader(h) {
+  let ret = "";
+  for (const node of h.childNodes) {
+    if (node.nodeType === 1) {
+      if (ignoreRE.test(node.className))
+        continue;
+      ret += node.textContent;
+    } else if (node.nodeType === 3) {
+      ret += node.textContent;
+    }
+  }
+  return ret.trim();
+}
+function resolveHeaders(headers, range) {
+  if (range === false) {
+    return [];
+  }
+  const levelsRange = (typeof range === "object" && !Array.isArray(range) ? range.level : range) || 2;
+  const [high, low] = typeof levelsRange === "number" ? [levelsRange, levelsRange] : levelsRange === "deep" ? [2, 6] : levelsRange;
+  return buildTree(headers, high, low);
+}
+function buildTree(data, min, max) {
+  resolvedHeaders.length = 0;
+  const result = [];
+  const stack = [];
+  data.forEach((item) => {
+    const node = { ...item, children: [] };
+    let parent = stack[stack.length - 1];
+    while (parent && parent.level >= node.level) {
+      stack.pop();
+      parent = stack[stack.length - 1];
+    }
+    if (node.element.classList.contains("ignore-header") || parent && "shouldIgnore" in parent) {
+      stack.push({ level: node.level, shouldIgnore: true });
+      return;
+    }
+    if (node.level > max || node.level < min)
+      return;
+    resolvedHeaders.push({ element: node.element, link: node.link });
+    if (parent)
+      parent.children.push(node);
+    else
+      result.push(node);
+    stack.push(node);
+  });
+  return result;
+}
+
+// node_modules/vitepress/dist/client/theme-default/composables/local-nav.js
+function useLocalNav() {
+  const { theme: theme2, frontmatter } = useData();
+  const headers = shallowRef([]);
   const hasLocalNav = computed(() => {
     return headers.value.length > 0;
   });
+  onContentUpdated(() => {
+    headers.value = getHeaders(frontmatter.value.outline ?? theme2.value.outline);
+  });
   return {
-    isHome,
-    sidebar: shallowReadonly(sidebar),
-    sidebarGroups,
-    hasSidebar,
-    isSidebarEnabled,
-    hasAside,
-    leftAside,
-    headers: shallowReadonly(headers),
+    headers,
     hasLocalNav
   };
 }
@@ -186,6 +269,7 @@ export {
   default18 as VPTeamPageSection,
   default19 as VPTeamPageTitle,
   without_fonts_default as default,
-  useLayout
+  useLocalNav,
+  useSidebar
 };
 //# sourceMappingURL=@theme_index.js.map
