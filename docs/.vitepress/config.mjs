@@ -19,11 +19,10 @@ export default defineConfig({
             'theme': ['vitepress/theme']
           }
         }
-      },
-      ssr: false
+      }
     },
     ssr: {
-      noExternal: true
+      noExternal: ['*']
     }
   },
   markdown: {
