@@ -12,9 +12,18 @@ export default defineConfig({
   ],
   // 添加配置来解决水合问题
   vite: {
-    ssr: {
-      noExternal: ['vitepress']
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'theme': ['vitepress/theme']
+          }
+        }
+      }
     }
+  },
+  markdown: {
+    lineNumbers: true
   },
   themeConfig: {
     logo: '/logo.png',
@@ -23,12 +32,13 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '快速开始', link: '/quick/start' },
       { text: 'API文档', link: '/quick/quick' },
-      { text: '案例', link: '/demo/demo' },
+      { text: '案例', link: '/deeke/deeke' },
       { text: 'Deeke官网', link: 'https://deeke.cn' }
     ],
     sidebar: [
       {
         text: '介绍',
+        collapsed: false,
         items: [
           { text: '认识DeekeScript', link: '/quick/quick' },
           { text: '开发环境说明', link: '/quick/envir' },
@@ -37,6 +47,7 @@ export default defineConfig({
       },
       {
         text: '配置',
+        collapsed: false,
         items: [
           { text: 'DeekeScript.json', link: '/config/config' },
           { text: '动态配置', link: '/config/dynamics' },
@@ -45,6 +56,7 @@ export default defineConfig({
       },
       {
         text: '基础部分',
+        collapsed: false,
         items: [
           { text: 'App', link: '/base/app/app' },
           { text: '系统函数', link: '/base/system/funcs' },
@@ -65,6 +77,7 @@ export default defineConfig({
       },
       {
         text: '高级部分',
+        collapsed: false,
         items: [
           { text: '弹窗', link: '/advance/dialogs' },
           { text: 'Engines', link: '/advance/engines/engines' },
@@ -78,18 +91,21 @@ export default defineConfig({
       },
       {
         text: 'Android权限',
+        collapsed: false,
         items: [
           { text: '基础权限', link: '/access/access' }
         ]
       },
       {
         text: 'Hook',
+        collapsed: false,
         items: [
           { text: 'Hook介绍', link: '/hook/hook' }
         ]
       },
       {
         text: 'Hid模式',
+        collapsed: false,
         items: [
           { text: '模式介绍', link: '/hid/hid' },
           { text: '蓝牙Hid硬件介绍', link: '/hid/bluetooth' },
@@ -98,6 +114,7 @@ export default defineConfig({
       },
       {
         text: 'DeekeScript输入法',
+        collapsed: false,
         items: [
           { text: '输入法设置', link: '/inputMethod/base' },
           { text: '输入法-Keyboards', link: '/inputMethod/method' }
@@ -105,18 +122,21 @@ export default defineConfig({
       },
       {
         text: '后端接口',
+        collapsed: false,
         items: [
           { text: '后端接口', link: '/backendApi/activationCode' }
         ]
       },
       {
         text: '代码安全',
+        collapsed: false,
         items: [
           { text: '代码混淆加密', link: '/code/encryption' }
         ]
       },
       {
         text: 'Apk打包与云市场',
+        collapsed: false,
         items: [
           { text: '在线打包', link: '/apk/apk' },
           { text: '管理后台支持', link: '/backend/backend' }
@@ -124,12 +144,14 @@ export default defineConfig({
       },
       {
         text: '经典案例篇',
+        collapsed: false,
         items: [
           { text: 'Deeke APP', link: '/deeke/deeke' }
         ]
       },
       {
         text: '问题篇',
+        collapsed: false,
         items: [
           { text: '常见问题', link: '/question/question' },
           { text: '无障碍问题', link: '/question/accessibility' },
@@ -138,6 +160,7 @@ export default defineConfig({
       },
       {
         text: '其他',
+        collapsed: false,
         items: [
           { text: '更新文档', link: '/UPDATE' },
           { text: '招贤纳士', link: '/INVITE' },
