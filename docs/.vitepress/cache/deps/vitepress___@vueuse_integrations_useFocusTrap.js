@@ -3,7 +3,7 @@ import {
   toArray,
   tryOnScopeDispose,
   unrefElement
-} from "./chunk-P2XGSYO7.js";
+} from "./chunk-4FZUCWOW.js";
 import {
   computed,
   shallowRef,
@@ -1097,21 +1097,29 @@ function useFocusTrap(target, options = {}) {
     (els) => {
       if (!els.length)
         return;
-      trap = createFocusTrap(els, {
-        ...focusTrapOptions,
-        onActivate() {
-          hasFocus.value = true;
-          if (options.onActivate)
-            options.onActivate();
-        },
-        onDeactivate() {
-          hasFocus.value = false;
-          if (options.onDeactivate)
-            options.onDeactivate();
+      if (!trap) {
+        trap = createFocusTrap(els, {
+          ...focusTrapOptions,
+          onActivate() {
+            hasFocus.value = true;
+            if (options.onActivate)
+              options.onActivate();
+          },
+          onDeactivate() {
+            hasFocus.value = false;
+            if (options.onDeactivate)
+              options.onDeactivate();
+          }
+        });
+        if (immediate)
+          activate();
+      } else {
+        const isActive = trap == null ? void 0 : trap.active;
+        trap == null ? void 0 : trap.updateContainerElements(els);
+        if (!isActive && immediate) {
+          activate();
         }
-      });
-      if (immediate)
-        activate();
+      }
     },
     { flush: "post" }
   );

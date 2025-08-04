@@ -281,7 +281,7 @@ import {
   watchTriggerable,
   watchWithFilter,
   whenever
-} from "./chunk-P2XGSYO7.js";
+} from "./chunk-4FZUCWOW.js";
 import "./chunk-HVR2FF6M.js";
 export {
   DefaultMagicKeysAliasMap,
@@ -580,4 +580,3 @@ export {
   watchWithFilter,
   whenever
 };
-//# sourceMappingURL=vitepress___@vueuse_core.js.map

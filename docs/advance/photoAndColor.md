@@ -159,7 +159,7 @@ try{
 ```javascript
 try{
     let imageFile = Images.capture();//获取图片地址  后续可以通过此地址进行图片处理
-    let result = Images.getText(imageFile);
+    let result = Images.getTextAndRegion(imageFile);
     for(let i in result){
         //输出 文字和区域信息（左边距、上边距、宽度、高度）
         console.log(result[i].text, result[i].rect.left, result[i].rect.top, result[i].rect.width(), result[i].rect.height())
@@ -196,7 +196,7 @@ for(let i in arr){
 >
 > height  {int} 区域高度
 >
-> 返回 {string[]}
+> 返回  {string[]} 文字数组
 
 获取某个区域内的文字
 
@@ -283,3 +283,5 @@ try{
 }catch(e){
     console.log("异常：" + e.message);
 }
+
+```
