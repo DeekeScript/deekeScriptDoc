@@ -39,21 +39,21 @@ features:
 
 <script setup>
 // 全局气泡系统实例
-let bubbleSystemInstance = null;
+let globalBubbleSystem = null;
 
 // 动态气泡系统
 class BubbleSystem {
     constructor() {
-        // 如果已经存在实例，直接返回
-        if (bubbleSystemInstance) {
-            return bubbleSystemInstance;
+        // 如果已经存在实例，先销毁
+        if (globalBubbleSystem) {
+            globalBubbleSystem.destroy();
         }
         
         this.bubbles = [];
         this.isActive = false;
         this.animationId = null;
         this.intervalId = null;
-        this.container = null;
+        this.routeListeners = [];
         this.colors = [
             'rgba(255, 107, 107, 0.15)',   // 红色
             'rgba(78, 205, 196, 0.15)',     // 青色
@@ -79,8 +79,8 @@ class BubbleSystem {
             'rgba(120, 119, 198, 0.2)'
         ];
         
-        // 保存实例
-        bubbleSystemInstance = this;
+        // 设置为全局实例
+        globalBubbleSystem = this;
         this.init();
     }
 
@@ -90,13 +90,9 @@ class BubbleSystem {
             return;
         }
 
-        // 如果容器已存在，先清理
-        if (this.container) {
-            this.stopAnimation();
-        }
-
         // 创建气泡容器
         this.container = document.createElement('div');
+        this.container.setAttribute('data-bubble-system', 'true');
         this.container.style.cssText = `
             position: fixed;
             top: 0;
@@ -126,6 +122,23 @@ class BubbleSystem {
         this.setupRouteListener();
     }
 
+    destroy() {
+        this.stopAnimation();
+        this.removeRouteListeners();
+        if (this.container && this.container.parentNode) {
+            this.container.parentNode.removeChild(this.container);
+        }
+        globalBubbleSystem = null;
+    }
+
+    removeRouteListeners() {
+        // 移除所有事件监听器
+        this.routeListeners.forEach(({element, event, handler}) => {
+            element.removeEventListener(event, handler);
+        });
+        this.routeListeners = [];
+    }
+
     isHomePage() {
         // 检查是否在主页
         return window.location.pathname === '/' || 
@@ -137,23 +150,29 @@ class BubbleSystem {
         // 监听VitePress的路由变化
         if (typeof window !== 'undefined') {
             // 监听popstate事件（浏览器前进后退）
-            window.addEventListener('popstate', () => {
+            const popstateHandler = () => {
                 this.handleRouteChange();
-            });
+            };
+            window.addEventListener('popstate', popstateHandler);
+            this.routeListeners.push({element: window, event: 'popstate', handler: popstateHandler});
 
             // 监听pushstate事件（编程式导航）
             const originalPushState = history.pushState;
-            history.pushState = function(...args) {
+            const pushStateHandler = function(...args) {
                 originalPushState.apply(history, args);
                 this.handleRouteChange();
             }.bind(this);
+            history.pushState = pushStateHandler;
+            this.routeListeners.push({element: history, event: 'pushState', handler: pushStateHandler});
 
             // 监听replaceState事件
             const originalReplaceState = history.replaceState;
-            history.replaceState = function(...args) {
+            const replaceStateHandler = function(...args) {
                 originalReplaceState.apply(history, args);
                 this.handleRouteChange();
             }.bind(this);
+            history.replaceState = replaceStateHandler;
+            this.routeListeners.push({element: history, event: 'replaceState', handler: replaceStateHandler});
         }
     }
 
@@ -288,14 +307,18 @@ class BubbleSystem {
     }
 }
 
-// 使用多种方式确保执行
+// 使用多种方式确保执行，但只创建一个实例
 function initBubbles() {
     if (typeof window !== 'undefined' && document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            new BubbleSystem();
+            if (!globalBubbleSystem) {
+                new BubbleSystem();
+            }
         });
     } else if (typeof window !== 'undefined') {
-        new BubbleSystem();
+        if (!globalBubbleSystem) {
+            new BubbleSystem();
+        }
     }
 }
 
@@ -304,7 +327,7 @@ initBubbles();
 
 // 延迟执行，确保VitePress完全加载
 setTimeout(() => {
-    if (typeof window !== 'undefined' && !bubbleSystemInstance) {
+    if (typeof window !== 'undefined' && !globalBubbleSystem) {
         new BubbleSystem();
     }
 }, 1000);
