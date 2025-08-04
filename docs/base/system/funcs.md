@@ -54,8 +54,6 @@ console.log(System.currentPackage());//输出：top.deeke.script
 
 ## setClip(content)
 
-> 2.0版本即将上线
-
 **参数：** `content {string}`
 
 **返回：** `{void}`
@@ -63,8 +61,6 @@ console.log(System.currentPackage());//输出：top.deeke.script
 将内容写入到剪切板中
 
 ## getClip()
-
-> 2.0版本即将上线
 
 **返回：** `{string|null}`
 

@@ -11,7 +11,7 @@ description: DeekeScript - Socket.IO-客户端
 
 ```javascript
 //创建socket.io客户端   自动重连   超时重连延时为5000毫秒
-let socketIOClient = SocketIOClient.getInstance("http://192.168.1.106:3000", true, 5000);
+let socketIOClient = SocketIoClient.getInstance("http://192.168.1.106:3000", true, 5000);
 
 socketIOClient.on("connect_error", (error) => {
     console.error("连接错误:", error);
