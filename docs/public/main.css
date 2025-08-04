@@ -1,0 +1,142 @@
+.page-inner{
+    width: 70%!important;
+    max-width: 1200px;
+
+    p, li, span, tr, td, div{
+        font-size: 14px!important;
+    }
+}
+
+h1{
+    font-size: 1.80em!important;
+}
+
+h2{
+    font-size: 1.6em!important;
+}
+
+h3{
+    font-size: 1.45em!important;
+}
+
+h4{
+    font-size: 1.3em!important;
+}
+
+h5{
+    font-size: 1.15em!important;
+}
+
+h6{
+    font-size: 1.0em!important;
+}
+
+.book-summary{
+    width: 260px;
+}
+
+.book.with-summary .book-body{
+    left: 260px!important;
+}
+
+@media (max-width: 768px){
+    .book-header{
+        padding: 0;
+        position: fixed;
+    }
+
+    nav.intopic-toc{
+        display: none;
+    }
+
+    div.page-wrapper{
+        display: block;
+        margin-top: 1.2em;
+    }
+
+    div.page-inner{
+        width: 100%!important;
+        p, li, span, tr, td, div{
+            font-size: 12px!important;
+        }
+    }
+
+    .book-header a{
+        display: none!important;
+    }
+
+    .book-header a:first-child{
+        display: block!important;
+    }
+
+    .book-header a:first-child i{
+        font-size: 1.5em;
+    }
+
+    h1{
+        font-size: 1.40em!important;
+      
+    }
+
+    h2{
+        font-size: 1.3em!important;
+    }
+
+    h3{
+        font-size: 1.2em!important;
+    }
+
+    h4{
+        font-size: 1.1em!important;
+    }
+
+    h5{
+        font-size: 1.0em!important;
+    }
+
+    h6{
+        font-size: 0.9em!important;
+    }
+}
+
+/* 主页专用背景和动画效果 */
+.VPHero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+/* 淡淡的背景渐变 */
+.VPHero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 确保主页内容在背景之上 */
+.VPHero .container,
+.VPFeatures .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Features部分上边距 */
+.VPFeatures {
+    margin-top: 32px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .VPHero::before {
+        opacity: 0.5;
+    }
+}
