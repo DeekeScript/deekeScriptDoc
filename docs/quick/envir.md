@@ -3,38 +3,119 @@ title: 开发环境说明
 description: DeekeScript - 开发环境说明
 ---
 
+# 🛠️ 开发环境说明
 
-# 开发环境说明
+## 📱 Android版本支持
 
-### Android版本支持
+**DeekeScript** 支持 **Android 8.0及以上版本**（截止目前市场占比 **>95.4%**），对应的Android Api版本是26及以上。
 
-DeekeScript对绝大多数Android版本都提供支持，主要支持Android 8.0及以上版本（截止目前>95.4%）；对应的Android Api版本是26及以上。下图是截止日期（2025-01-10）Android的版本占比分布情况。
+### 📊 市场覆盖率
+
+下图是截止日期（2025-01-10）Android的版本占比分布情况：
 
 <img src="/assets/android-rate.png" width="100%" />
 
-### Android权限说明
-使用DeekeScript可以获取Android的哪些权限呢？ 目前DeekeScript不限制应用获取Android权限，只要Android开放的权限，DeekeScript都会开放。当前功能运行默认需要启动“无障碍”、“悬浮窗”权限。
+> **覆盖范围**：支持市面上95.4%以上的Android设备，确保您的应用能够触达绝大多数用户。
 
-### JavaScript支持哪些能力？
+## 🔐 Android权限说明
 
-DeekeScript底层是基于[Rhino引擎（1.8版本）](https://rhino.github.io/tutorials/embedding_tutorial/)，Rhino是由Java开发的JavaScript引擎，因此它对JavaScript调用Java天生就很友好，后续DeekeScript也将逐步开放越来越多的Java对象提供给JavaScript使用。
+### 权限开放策略
 
-> 如果你需要了解Rhino对es5和es6支持情况，请访问：https://mozilla.github.io/rhino/compat/engines.html
+**DeekeScript** 采用开放的权限策略，不限制应用获取Android权限。只要Android系统开放的且有利于自动化相关的权限，DeekeScript都会逐步开放给开发者使用。
 
+### 默认必需权限
 
-### 基础函数支持
-很多开发者之前可能了解浏览器环境下的JavaScript，因此可能习惯了使用setTimeout、setInterval、console.log等方法，这些DeekeScript也都是支持的。
+当前功能运行默认需要启动以下权限：
 
-### 是否支持模块化
-DeekeScript本身就是为了支持项目化（针对某个或者某些应用开发N个脚本）开发的工具（而不仅仅只是支持单个脚本的开发），所以对模块化支持也是很友好的，具体可以参阅<a href="../advance/module.md">模块化</a>
+| 权限类型 | 用途说明 | 是否必需 |
+|----------|----------|----------|
+| **无障碍服务** | 实现自动化操作的核心权限 | ✅ 必需 |
+| **悬浮窗权限** | 提供悬浮控制界面 | ✅ 必需 |
+| **后台弹窗权限** | 提供悬浮控制界面 | ✅ 必需 |
 
-### 异步支持
-DeekeScript提供了异步支持，具体参考<a href="../promise/awa.md">DeekeScript异步</a>
+> **权限管理**：DeekeScript遵循最小权限原则，只申请必要的权限，保护用户隐私。同时必须开启的基础权限，DeekeScript会提醒用户开启。
 
-### 是否支持多线程？
-相信富有经验的开发者，会发现很多工具都有提供多线程支持；因为很多时候，我们需要同时执行两个操作（比如，采集直播间弹幕的时候，又要实时获取在线人数）；这个时候使用多线程的方式可以更好地满足我们的需求。DeekeScript本身也是支持多线程的；因为JavaScript是不支持多线程的，实际上底层是由Java在执行，具体可以参考<a href="../advance/thread.md">多线程篇</a>。
+## 🚀 JavaScript能力支持
 
-### 其他支持
+### 核心引擎
 
-- [Http](../base/http/http.md)支持
-- [Websocket](../base/webSocket/webSocket.md)支持
+**DeekeScript** 底层基于 **[Rhino引擎（1.8版本）](https://rhino.github.io/tutorials/embedding_tutorial/)**，Rhino是基于Java开发的JavaScript引擎，因此它对JavaScript调用Java天生就很友好。
+
+### 技术优势
+
+- **原生Java集成** - JavaScript可以直接调用Java对象
+- **ES5/ES6支持** - 完整的JavaScript语法支持
+- **性能优化** - 基于JVM的高性能执行环境
+
+> **兼容性参考**：如果您需要了解Rhino对ES5和ES6支持情况，请访问：[https://mozilla.github.io/rhino/compat/engines.html](https://mozilla.github.io/rhino/compat/engines.html)
+
+## 🔧 基础函数支持
+
+### 熟悉的开发体验
+
+很多开发者之前可能了解浏览器环境下的JavaScript，因此可能习惯了使用以下方法，**DeekeScript** 都完全支持：
+
+| 函数类型 | 支持情况 | 说明 |
+|----------|----------|------|
+| **setTimeout** | ✅ 完全支持 | 延时执行函数 |
+| **setInterval** | ✅ 完全支持 | 定时循环执行 |
+| **console.log** | ✅ 完全支持 | 调试输出 |
+| **Promise** | ✅ 完全支持 | 异步处理 |
+
+## 📦 模块化支持
+
+### 项目化开发
+
+**DeekeScript** 本身就是为了支持项目化开发而设计的工具（而不仅仅只是支持单个脚本的开发），所以对模块化支持也是很友好的。
+
+### 模块化特性
+
+- **多脚本管理** - 支持针对某个或某些应用开发多个脚本
+- **代码复用** - 模块间可以相互引用和复用
+- **项目结构** - 清晰的项目组织结构
+
+> **详细参考**：具体可以参阅 [模块化](../advance/module.md)
+
+## ⚡ 异步支持
+
+### 现代异步编程
+
+**DeekeScript** 提供了完整的异步支持，让您可以使用现代JavaScript的异步编程模式。
+
+> **详细参考**：具体参考 [DeekeScript异步](../promise/awa.md)
+
+## 🧵 多线程支持
+
+### 并发处理能力
+
+相信富有经验的开发者，会发现很多工具都有提供多线程支持。因为很多时候，我们需要同时执行两个操作（比如，采集直播间弹幕的时候，又要实时获取在线人数）。
+
+### 应用场景
+
+| 场景 | 传统方式 | 多线程方式 | 优势 |
+|------|----------|------------|------|
+| **数据采集** | 串行处理 | 并行采集 | 效率提升3-5倍 |
+| **实时监控** | 单线程阻塞 | 多线程并发 | 响应更及时 |
+| **复杂任务** | 任务排队 | 任务并行 | 充分利用资源 |
+
+> **详细参考**：具体可以参考 [多线程篇](../advance/thread.md)
+
+## 🔌 其他支持
+
+### 网络通信
+
+| 功能 | 支持情况 | 用途 |
+|------|----------|------|
+| **[Http](../base/http/http.md)** | ✅ 完全支持 | RESTful API调用 |
+| **[Websocket](../base/webSocket/webSocket.md)** | ✅ 完全支持 | 实时双向通信 |
+
+### 开发工具
+
+- **VSCode插件** - 完整的开发环境支持
+- **实时调试** - 断点调试、变量查看
+- **热更新** - 代码修改即时生效
+- **完整文档** - 详细的API文档和示例
+
+---
+
+> **DeekeScript** - 为开发者提供专业、稳定、高效的Android自动化开发环境

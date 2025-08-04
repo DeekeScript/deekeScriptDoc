@@ -3,23 +3,22 @@ title: 动态配置
 description: DeekeScript - 动态配置
 ---
 
-# 动态配置
+# 🔄 动态配置
 
 很多时候，开发者需要控制app主页的功能模块，比如年会员展示所有功能图标，试用会员只展示部分图标等；同时，有时候还需要根据不同等级的用户来设置不同的功能配置参数。这样更加细化盈利策略。
 
-## DeekeScriptJson
+## 📋 DeekeScriptJson
 
-DeekeScript给开发者提供了DeekeScriptJson对象，可以使用此对象来进行主界面功能模块设置、功能参数设置、设置页面的动态配置等
+**DeekeScript** 给开发者提供了 **DeekeScriptJson** 对象，可以使用此对象来进行主界面功能模块设置、功能参数设置、设置页面的动态配置等。
 
-### setDeekeScriptJsonGroup(str)
+### ⚙️ setDeekeScriptJsonGroup(str)
 
-> str {string}
+> **参数**：str {string}
 > 
-> 返回 {boolean} 如果出错，会抛出异常
->
+> **返回**：{boolean} 如果出错，会抛出异常
 
-```
-//这里可以调用远程接口来获取数据
+```javascript
+// 这里可以调用远程接口来获取数据
 let obj = {
     "groups": [
         {
@@ -70,37 +69,33 @@ let str = JSON.stringify(obj);
 DeekeScriptJson.setDeekeScriptJsonGroup(str);
 ```
 
+### 🔧 setSettingLists(str)
 
-### setSettingLists(str)
-
-> 设置“系统设置”界面功能模块
+> **功能**：设置"系统设置"界面功能模块
 > 
-> str {string}
+> **参数**：str {string}
 > 
-> 返回 {boolean} 如果出错，会抛出异常
+> **返回**：{boolean} 如果出错，会抛出异常
 
-```
-//这里可以调用远程接口来获取数据
+```javascript
+// 这里可以调用远程接口来获取数据
 let obj = {
     "settingLists": [
         {
-        "title": "联系客服",
-        "icon": "img/kefu.png",
-        "type": "customerService",
-        "description": "客服微信：DeekeScript",
-        "hidden": false
+            "title": "联系客服",
+            "icon": "img/kefu.png",
+            "type": "customerService",
+            "description": "客服微信：DeekeScript",
+            "hidden": false
         },
         {
-        "title": "功能说明",
-        "icon": "img/manual.png",
-        "type": "notice",
-        "file": "task.html"
+            "title": "功能说明",
+            "icon": "img/manual.png",
+            "type": "notice",
+            "file": "task.html"
         }
     ]
 }
-
-let str = JSON.stringify(obj);
-DeekeScriptJson.setSettingLists(str);
 ```
 
 ### toJson()

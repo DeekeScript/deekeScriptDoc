@@ -2,8 +2,8 @@
 layout: home
 hero:
   name: DeekeScript
-  text: 自动化App开发框架
-  tagline: 基于Android无障碍的自动化脚本开发和打包软件，提供UI支持、接口支持和SaaS卡密系统支持
+  text: 一站式商业化解决方案
+  tagline: 无需编写UI、更快捷、更稳定的Android自动化脚本开发方案，提供打包、后台（卡密/代理商系统）支持
   actions:
     - theme: brand
       text: 快速开始
@@ -19,16 +19,16 @@ hero:
 features:
   - icon: 🚀
     title: 快速开发
-    details: 提供丰富的API接口，开发者只需关注业务逻辑，快速构建自动化脚本
+    details: JSON配置UI、内置标准的APP界面，开发者只需关注应用业务逻辑，大幅提升开发效率
   - icon: 🔧
     title: 强大功能
-    details: 支持模拟点击、输入、手势操作，完整的UI控件操作和系统功能
+    details: 支持模拟点击、输入、手势操作，完整的UI控件操作和系统功能，内置输入法、Hid操作
   - icon: 📱
     title: Android原生
     details: 基于Android无障碍服务，稳定可靠，兼容性强
   - icon: ☁️
-    title: 云端支持
-    details: 提供SaaS卡密系统和管理后台，支持在线打包和分发
+    title: 系统化支持
+    details: 提供SaaS卡密系统和管理后台，支持在线打包
   - icon: 🔒
     title: 安全可靠
     details: 支持代码混淆加密，保护开发者知识产权
