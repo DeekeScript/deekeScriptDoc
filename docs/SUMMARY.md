@@ -6,7 +6,6 @@ description: DeekeScript - Table of contents
 # Table of contents
 
 - [介绍](./README.md)
-- [案例篇](./demo/demo.md)
 
 -  快速入门
   - [认识DeekeScript](./quick/quick.md)
@@ -90,4 +89,5 @@ description: DeekeScript - Table of contents
 
 - [更新文档](./UPDATE.md)
 - [招贤纳士](./INVITE.md)
+- [企业服务](./demo/demo.md)
 - [Deeke官网](https://deeke.cn)

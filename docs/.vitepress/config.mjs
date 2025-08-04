@@ -174,7 +174,7 @@ export default defineConfig({
         items: [
           { text: '更新文档', link: '/UPDATE' },
           { text: '招贤纳士', link: '/INVITE' },
-          { text: '案例篇', link: '/demo/demo' }
+          { text: '企业服务', link: '/demo/demo' }
         ]
       }
     ],
