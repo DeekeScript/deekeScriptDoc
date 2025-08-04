@@ -183,7 +183,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the ISC License.',
-      copyright: 'Copyright © 2024-present DeekeScript'
+      copyright: 'Copyright © 2025 DeekeScript'
     },
     search: {
       provider: 'local'
