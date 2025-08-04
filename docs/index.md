@@ -38,29 +38,21 @@ features:
 ---
 
 <script setup>
-// 全局气泡系统实例
-let globalBubbleSystem = null;
-
-// 动态气泡系统
-class BubbleSystem {
+// 简单的气泡系统
+class SimpleBubbleSystem {
     constructor() {
-        // 如果已经存在实例，先销毁
-        if (globalBubbleSystem) {
-            globalBubbleSystem.destroy();
-        }
-        
         this.bubbles = [];
-        this.isActive = false;
         this.animationId = null;
         this.intervalId = null;
-        this.routeListeners = [];
+        this.isRunning = false;
+        this.maxBubbles = 6; // 最大气泡数量限制
         this.colors = [
-            'rgba(255, 107, 107, 0.15)',   // 红色
-            'rgba(78, 205, 196, 0.15)',     // 青色
-            'rgba(118, 75, 162, 0.15)',     // 紫色
-            'rgba(254, 202, 87, 0.15)',     // 黄色
-            'rgba(255, 159, 243, 0.15)',    // 粉色
-            'rgba(120, 119, 198, 0.15)'     // 蓝紫色
+            'rgba(255, 107, 107, 0.15)',
+            'rgba(78, 205, 196, 0.15)',
+            'rgba(118, 75, 162, 0.15)',
+            'rgba(254, 202, 87, 0.15)',
+            'rgba(255, 159, 243, 0.15)',
+            'rgba(120, 119, 198, 0.15)'
         ];
         this.borderColors = [
             'rgba(255, 107, 107, 0.3)',
@@ -79,20 +71,24 @@ class BubbleSystem {
             'rgba(120, 119, 198, 0.2)'
         ];
         
-        // 设置为全局实例
-        globalBubbleSystem = this;
         this.init();
     }
 
     init() {
-        // 检查是否在主页
-        if (!this.isHomePage()) {
+        // 检查是否在浏览器环境
+        if (typeof window === 'undefined' || typeof document === 'undefined') {
             return;
         }
 
-        // 创建气泡容器
+        // 清理可能存在的旧容器
+        const existingContainer = document.querySelector('[data-bubble-container]');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        // 创建容器
         this.container = document.createElement('div');
-        this.container.setAttribute('data-bubble-system', 'true');
+        this.container.setAttribute('data-bubble-container', 'true');
         this.container.style.cssText = `
             position: fixed;
             top: 0;
@@ -105,117 +101,83 @@ class BubbleSystem {
         `;
         document.body.appendChild(this.container);
 
-        // 生成初始气泡（减少数量）
+        // 创建初始气泡
         this.createBubbles(4);
         
-        // 开始动画循环
-        this.startAnimation();
+        // 启动动画
+        this.start();
         
-        // 定期生成新气泡（降低频率）
-        this.intervalId = setInterval(() => {
-            if (this.bubbles.length < 6) {
-                this.createBubble();
-            }
-        }, 5000); // 5秒生成一个
-
-        // 监听路由变化
-        this.setupRouteListener();
-    }
-
-    destroy() {
-        this.stopAnimation();
-        this.removeRouteListeners();
-        if (this.container && this.container.parentNode) {
-            this.container.parentNode.removeChild(this.container);
-        }
-        globalBubbleSystem = null;
-    }
-
-    removeRouteListeners() {
-        // 移除所有事件监听器
-        this.routeListeners.forEach(({element, event, handler}) => {
-            element.removeEventListener(event, handler);
-        });
-        this.routeListeners = [];
+        // 设置初始可见性
+        this.updateVisibility();
     }
 
     isHomePage() {
-        // 检查是否在主页
+        if (typeof window === 'undefined') return false;
         return window.location.pathname === '/' || 
-               window.location.pathname === '/index.html' ||
+               window.location.pathname === '/index.html' || 
                window.location.pathname.endsWith('/');
     }
 
-    setupRouteListener() {
-        // 监听VitePress的路由变化
-        if (typeof window !== 'undefined') {
-            // 监听popstate事件（浏览器前进后退）
-            const popstateHandler = () => {
-                this.handleRouteChange();
-            };
-            window.addEventListener('popstate', popstateHandler);
-            this.routeListeners.push({element: window, event: 'popstate', handler: popstateHandler});
-
-            // 监听pushstate事件（编程式导航）
-            const originalPushState = history.pushState;
-            const pushStateHandler = function(...args) {
-                originalPushState.apply(history, args);
-                this.handleRouteChange();
-            }.bind(this);
-            history.pushState = pushStateHandler;
-            this.routeListeners.push({element: history, event: 'pushState', handler: pushStateHandler});
-
-            // 监听replaceState事件
-            const originalReplaceState = history.replaceState;
-            const replaceStateHandler = function(...args) {
-                originalReplaceState.apply(history, args);
-                this.handleRouteChange();
-            }.bind(this);
-            history.replaceState = replaceStateHandler;
-            this.routeListeners.push({element: history, event: 'replaceState', handler: replaceStateHandler});
-        }
-    }
-
-    handleRouteChange() {
-        if (this.isHomePage()) {
-            // 如果在主页且动画未启动，则启动
-            if (!this.isActive) {
-                this.startAnimation();
+    updateVisibility() {
+        if (this.container) {
+            if (this.isHomePage()) {
+                this.container.style.display = 'block';
+            } else {
+                this.container.style.display = 'none';
             }
-        } else {
-            // 如果不在主页，停止动画
-            this.stopAnimation();
         }
     }
 
-    startAnimation() {
-        if (!this.isActive) {
-            this.isActive = true;
-            this.animate();
-        }
+    start() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        
+        // 动画循环
+        this.animate();
+        
+        // 定时生成新气泡
+        this.intervalId = setInterval(() => {
+            if (this.bubbles.length < this.maxBubbles) {
+                this.createBubble();
+            }
+        }, 5000);
     }
 
-    stopAnimation() {
-        this.isActive = false;
+    stop() {
+        this.isRunning = false;
+        
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);
             this.animationId = null;
         }
+        
         if (this.intervalId) {
             clearInterval(this.intervalId);
             this.intervalId = null;
         }
+        
         // 清除所有气泡
-        this.clearBubbles();
+        this.clearAllBubbles();
     }
 
-    clearBubbles() {
+    clearAllBubbles() {
+        // 清理数组中的气泡
         this.bubbles.forEach(bubble => {
-            if (bubble.parentNode) {
+            if (bubble && bubble.parentNode) {
                 bubble.parentNode.removeChild(bubble);
             }
         });
         this.bubbles = [];
+        
+        // 清理容器中的所有气泡（双重保险）
+        if (this.container) {
+            const allBubbles = this.container.querySelectorAll('div');
+            allBubbles.forEach(bubble => {
+                if (bubble.parentNode) {
+                    bubble.parentNode.removeChild(bubble);
+                }
+            });
+        }
     }
 
     createBubbles(count) {
@@ -225,8 +187,13 @@ class BubbleSystem {
     }
 
     createBubble() {
+        // 检查气泡数量限制
+        if (this.bubbles.length >= this.maxBubbles) {
+            return;
+        }
+
         const bubble = document.createElement('div');
-        const size = Math.random() * 40 + 40; // 40-80px，稍微大一点
+        const size = Math.random() * 40 + 40;
         const colorIndex = Math.floor(Math.random() * this.colors.length);
         
         bubble.style.cssText = `
@@ -243,94 +210,137 @@ class BubbleSystem {
             transition: opacity 1s ease;
         `;
 
-        // 气泡属性 - 降低速度（再慢3倍）
-        bubble.vx = (Math.random() - 0.5) * 0.17; // 水平速度降低3倍
-        bubble.vy = (Math.random() - 0.5) * 0.17; // 垂直速度降低3倍
+        bubble.vx = (Math.random() - 0.5) * 0.17;
+        bubble.vy = (Math.random() - 0.5) * 0.17;
         bubble.life = 0;
-        bubble.maxLife = 1000; // 增加生命周期，让气泡存在更久
+        bubble.maxLife = 1000;
 
         this.container.appendChild(bubble);
         this.bubbles.push(bubble);
 
-        // 淡入效果
         setTimeout(() => {
             bubble.style.opacity = '0.6';
         }, 200);
     }
 
     animate() {
-        if (!this.isActive) return;
+        if (!this.isRunning) return;
+
+        // 清理无效的气泡引用
+        this.bubbles = this.bubbles.filter(bubble => bubble && bubble.parentNode);
 
         this.bubbles.forEach((bubble, index) => {
-            // 更新位置
+            if (!bubble || !bubble.parentNode) {
+                this.bubbles.splice(index, 1);
+                return;
+            }
+
             let x = parseFloat(bubble.style.left) + bubble.vx;
             let y = parseFloat(bubble.style.top) + bubble.vy;
 
-            // 边界检测
             if (x < 0 || x > 100) bubble.vx *= -1;
             if (y < 0 || y > 100) bubble.vy *= -1;
 
-            // 确保在边界内
             x = Math.max(0, Math.min(100, x));
             y = Math.max(0, Math.min(100, y));
 
             bubble.style.left = x + '%';
             bubble.style.top = y + '%';
 
-            // 生命周期管理 - 修复消失问题
             bubble.life++;
             if (bubble.life > bubble.maxLife) {
-                // 重新生成气泡而不是删除
-                this.replaceBubble(bubble, index);
+                this.removeBubble(bubble, index);
             }
         });
 
         this.animationId = requestAnimationFrame(() => this.animate());
     }
 
-    replaceBubble(oldBubble, index) {
-        // 淡出旧气泡
-        oldBubble.style.opacity = '0';
-        
-        setTimeout(() => {
-            // 移除旧气泡
-            if (oldBubble.parentNode) {
-                oldBubble.parentNode.removeChild(oldBubble);
-            }
+    removeBubble(bubble, index) {
+        if (bubble && bubble.parentNode) {
+            bubble.style.opacity = '0';
             
-            // 创建新气泡
-            this.createBubble();
-            
-            // 从数组中移除旧气泡
-            this.bubbles.splice(index, 1);
-        }, 1000);
-    }
-}
-
-// 使用多种方式确保执行，但只创建一个实例
-function initBubbles() {
-    if (typeof window !== 'undefined' && document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            if (!globalBubbleSystem) {
-                new BubbleSystem();
-            }
-        });
-    } else if (typeof window !== 'undefined') {
-        if (!globalBubbleSystem) {
-            new BubbleSystem();
+            setTimeout(() => {
+                if (bubble && bubble.parentNode) {
+                    bubble.parentNode.removeChild(bubble);
+                }
+                // 从数组中移除
+                const bubbleIndex = this.bubbles.indexOf(bubble);
+                if (bubbleIndex > -1) {
+                    this.bubbles.splice(bubbleIndex, 1);
+                }
+            }, 1000);
         }
     }
 }
 
-// 立即执行
-initBubbles();
+// 全局实例
+let bubbleSystem = null;
 
-// 延迟执行，确保VitePress完全加载
-setTimeout(() => {
-    if (typeof window !== 'undefined' && !globalBubbleSystem) {
-        new BubbleSystem();
+// 初始化函数
+function initBubbleSystem() {
+    // 检查是否在浏览器环境
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+        return;
     }
-}, 1000);
-</script>
 
- 
+    // 清理旧实例
+    if (bubbleSystem) {
+        bubbleSystem.stop();
+        bubbleSystem = null;
+    }
+    
+    // 创建新实例
+    bubbleSystem = new SimpleBubbleSystem();
+}
+
+// 页面加载时初始化
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBubbleSystem);
+    } else {
+        initBubbleSystem();
+    }
+}
+
+// 监听路由变化，更新气泡可见性
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    // 监听popstate事件（浏览器前进后退）
+    window.addEventListener('popstate', () => {
+        if (bubbleSystem) {
+            bubbleSystem.updateVisibility();
+        }
+    });
+
+    // 监听pushstate事件（编程式导航）
+    const originalPushState = history.pushState;
+    history.pushState = function(...args) {
+        originalPushState.apply(history, args);
+        if (bubbleSystem) {
+            bubbleSystem.updateVisibility();
+        }
+    };
+
+    // 监听replaceState事件
+    const originalReplaceState = history.replaceState;
+    history.replaceState = function(...args) {
+        originalReplaceState.apply(history, args);
+        if (bubbleSystem) {
+            bubbleSystem.updateVisibility();
+        }
+    };
+}
+
+// 监听页面可见性变化，避免后台运行
+if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', () => {
+        if (bubbleSystem) {
+            if (document.hidden) {
+                bubbleSystem.stop();
+            } else {
+                bubbleSystem.start();
+            }
+        }
+    });
+}
+</script>
