@@ -57,7 +57,7 @@ DeekeScript 正在快速发展，我们诚邀更多志同道合的伙伴共同�
 添加微信，与 DeekeScript 官方对接：
 
 <a id="weixin"></a>  
-<img src="./assets/weixin.png" width="200" />
+<img src="/assets/weixin.png" width="200" />
 
 
 

@@ -23,9 +23,17 @@ export default defineConfig({
         output: {
           manualChunks: undefined
         }
-      }
+      },
+      // 增加文件大小限制
+      chunkSizeWarningLimit: 1000,
+      // 确保大文件被正确处理
+      assetsInlineLimit: 0
     },
+    // 确保静态资源被正确复制
+    publicDir: 'public'
   },
+  // 确保静态资源被正确复制
+  publicDir: 'public',
   themeConfig: {
     logo: '/logo.png',
     siteTitle: 'DeekeScript',

@@ -8,8 +8,8 @@ description: DeekeScript - 输入法设置
 ## DeekeScript输入法效果图
 
 <div style="display:flex">
-    <img src="../assets/images/keyboard-1.jpg" width="30%" />
-    <img style="margin-left:24px" src="../assets/images/keyboard-2.jpeg" width="30%" />
+    <img src="/assets/images/keyboard-1.jpg" width="30%" />
+<img style="margin-left:24px" src="/assets/images/keyboard-2.jpeg" width="30%" />
 </div>
 
 ## 开启步骤
@@ -22,6 +22,6 @@ description: DeekeScript - 输入法设置
 > 注意：必须将DeekeScript输入法选择为默认
 
 ### 最终效果图如下：
-<img src="../assets/images/keyboard-3.jpeg" width="30%" />
+<img src="/assets/images/keyboard-3.jpeg" width="30%" />
 
 `最终打开任意输入框，如果出现最上面的输入法界面，则说明输入法设置成功`

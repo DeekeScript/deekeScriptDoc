@@ -10,7 +10,7 @@ description: DeekeScript - 开发环境说明
 
 DeekeScript对绝大多数Android版本都提供支持，主要支持Android 8.0及以上版本（截止目前>95.4%）；对应的Android Api版本是26及以上。下图是截止日期（2025-01-10）Android的版本占比分布情况。
 
-<img src="../assets/android-rate.png" width="100%" />
+<img src="/assets/android-rate.png" width="100%" />
 
 ### Android权限说明
 使用DeekeScript可以获取Android的哪些权限呢？ 目前DeekeScript不限制应用获取Android权限，只要Android开放的权限，DeekeScript都会开放。当前功能运行默认需要启动“无障碍”、“悬浮窗”权限。

@@ -18,11 +18,11 @@ description: DeekeScript - 快速开始
   > 特别说明：vscode请升级到最新版
 
 * 在Vscode中安装DeekeScript开发插件，如下图，点击“安装”即可
-<img src="../assets/extension.png" width="100%" /> 
+<img src="/assets/extension.png" width="100%" /> 
 
-* 在手机上<a target="_blank" href="../assets/apk/v1.2.01-release.apk">下载安装DeekeScript软件包</a>，或者扫码下载：
+* 在手机上<a target="_blank" href="/assets/apk/v1.2.01-release.apk">下载安装DeekeScript软件包</a>，或者扫码下载：
 
-   <img src="../assets/qrcode.png" width="30%" />
+   <img src="/assets/qrcode.png" width="30%" />
   
 * 打开DeekeScript的侧边栏（左上角“三条杠”），开启“无障碍”、“悬浮窗”、“开启服务”
 
@@ -31,10 +31,10 @@ description: DeekeScript - 快速开始
 
 - 打开手机端的DeekeScript，如下图，可以看到手机的局域网IP是“192.168.1.3”：
 
-  <img src="../assets/dk.jpg" width="30%" />
+  <img src="/assets/dk.jpg" width="30%" />
 
 - 打开浏览器，输入："http://192.168.1.3:8080"，可以看到下面的页面
-  <img src="../assets/widget.png" width="100%" />
+  <img src="/assets/widget.png" width="100%" />
 
 - 选择左侧的控件，点击之后，就可以清楚地看到控件信息了
 
@@ -60,7 +60,7 @@ description: DeekeScript - 快速开始
   ```
 
 - 打开Vscode代码编辑器，并且将刚刚拉取的项目打开，如下图：
-<img src="../assets/typescript.png" width="100%" />
+<img src="/assets/typescript.png" width="100%" />
 
 - 编写JavaScript代码
 
@@ -70,13 +70,13 @@ description: DeekeScript - 快速开始
   npm run build
   ```
 
-  <img src="../assets/build.png" width="100%" />
+  <img src="/assets/build.png" width="100%" />
   
 - [同步项目到手机](../config/vscode.md)，让APP启动
 
 - 手机中的APP已经出现了相应的界面，可以在手机中点击对应的功能进行运行，大概如下图：
 
-  <img src="../assets/deeke.png" width="30%" />
+  <img src="/assets/deeke.png" width="30%" />
 
 
 ## 单个JavaScript调试

@@ -11,7 +11,7 @@ description: DeekeScript - 蓝牙Hid硬件介绍
 
 ### 原理图
 
-<img src="../assets/bluetooth-hid.png" width="50%" />
+<img src="/assets/bluetooth-hid.png" width="50%" />
 
 ### 工作流程
 
@@ -27,7 +27,7 @@ description: DeekeScript - 蓝牙Hid硬件介绍
 
 ### 硬件展示
 
-<img src="../assets/bluetooth-hid-hardware.png" width="50%" />
+<img src="/assets/bluetooth-hid-hardware.png" width="50%" />
 
 ### 售价(5个起售)
 

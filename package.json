@@ -11,7 +11,12 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "keywords": ["DeekeScript", "文档", "自动化", "Android"],
+  "keywords": [
+    "DeekeScript",
+    "文档",
+    "自动化",
+    "Android"
+  ],
   "author": "DeekeScript",
   "license": "ISC",
   "devDependencies": {
