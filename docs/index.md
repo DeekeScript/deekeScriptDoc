@@ -38,13 +38,22 @@ features:
 ---
 
 <script setup>
+// 全局气泡系统实例
+let bubbleSystemInstance = null;
+
 // 动态气泡系统
 class BubbleSystem {
     constructor() {
+        // 如果已经存在实例，直接返回
+        if (bubbleSystemInstance) {
+            return bubbleSystemInstance;
+        }
+        
         this.bubbles = [];
         this.isActive = false;
         this.animationId = null;
         this.intervalId = null;
+        this.container = null;
         this.colors = [
             'rgba(255, 107, 107, 0.15)',   // 红色
             'rgba(78, 205, 196, 0.15)',     // 青色
@@ -69,6 +78,9 @@ class BubbleSystem {
             'rgba(255, 159, 243, 0.2)',
             'rgba(120, 119, 198, 0.2)'
         ];
+        
+        // 保存实例
+        bubbleSystemInstance = this;
         this.init();
     }
 
@@ -76,6 +88,11 @@ class BubbleSystem {
         // 检查是否在主页
         if (!this.isHomePage()) {
             return;
+        }
+
+        // 如果容器已存在，先清理
+        if (this.container) {
+            this.stopAnimation();
         }
 
         // 创建气泡容器
@@ -287,7 +304,7 @@ initBubbles();
 
 // 延迟执行，确保VitePress完全加载
 setTimeout(() => {
-    if (typeof window !== 'undefined' && !document.querySelector('[data-bubble-system]')) {
+    if (typeof window !== 'undefined' && !bubbleSystemInstance) {
         new BubbleSystem();
     }
 }, 1000);
