@@ -7,7 +7,7 @@ description: DeekeScript - 多线程-Thread
 
 相信富有经验的开发者，会发现很多工具都有提供多线程支持；因为很多时候，我们需要同时执行两个操作（比如，采集直播间弹幕的时候，又要实时获取在线人数）；这个时候使用多线程的方式可以更好地满足我们的需求。DeekeScript本身也是支持多线程的；
 
-`我们推荐使用setTimeout或者setInterval等方式来代替多线程的方式实现相关功能，或者使用Engines来实现多线程`
+`我们推荐使用setTimeout或者setInterval等方式来代替多线程的方式实现相关功能，或者使用Engines来实现多线程；当前这种方式可能会出现未知的问题，请谨慎使用`
 
 > 使用[Engines](./engines/engines.md)来实现多线程效果
 >

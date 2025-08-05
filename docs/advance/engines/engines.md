@@ -13,13 +13,20 @@ description: DeekeScript - Engines
 
 ## executeScript(filename)
 
-> filename {string}   要执行的JS文件地址  必须为相对项目根目录的地址，非当前文件的相对地址
+> filename {string}   要执行的JS文件地址
 > 
 > 返回 {Thread}
 
 ```javascript
 //heart.js主要启动一个定时任务，每间隔几秒钟往服务器发送当前App的状态
+//注意这种路径是相对于项目根目录的地址
 Engines.executeScript("script/task/heart.js");//心跳脚本，监测App的在线状态
+
+//下面这种是相对当前文件的路径  假设当前文件是script/task/main.js  则下面的路径是script/task/heart.js
+//Engines.executeScript("./heart.js");//心跳脚本，监测App的在线状态
+
+//下面这种是相对当前文件的路径  假设当前文件是script/task/main.js  则下面的路径是script/other/heart.js
+//Engines.executeScript("../other/heart.js");//心跳脚本，监测App的在线状态
 
 //保持当前线程不关闭，否则上面的代码也会关闭，导致心跳任务也立即关闭
 setInterval(() => {
@@ -29,6 +36,7 @@ setInterval(() => {
 //如果你需要一段时间后关闭心跳，可以使用Engines.closeOther();
 Engines.closeOther();
 ```
+
 
 ## executeScriptStr(name, script)
 
