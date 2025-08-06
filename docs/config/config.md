@@ -51,7 +51,7 @@ description: DeekeScript - 配置
 |     title    | String  |   是  |   XX截流        | App主界面的功能名称|
 |     icon     | String  |   是  |logo/fans.png   | App主界面的功能图标 |
 |    jsFile    | String  |   是  |tasks/task_dy_toker_fans.js  | 功能实际执行的代码所在文件 |
-| settingPage  |  Json   |   是  |[settingPage参数](#settingpage参数)| 功能对应的设置页面，如果为空，则直接执行jsFile脚本 |
+| settingPage  |  Json   |   否  |[settingPage参数](#settingpage参数)| 功能对应的设置页面，如果没有这个参数，则直接执行jsFile脚本 |
 |    hidden    | Boolean |   否  |    true  | 属性值，当为true的时候，则界面上不再显示此功能模块 |
 |    runType   | String  |   否  | floatSwitch    | 如果为floatSwitch则需要手动点击右侧悬浮窗执行 |
 |   packageName| String  |   否  | com.xingin.xhs | 包名，和runType配合使用|
