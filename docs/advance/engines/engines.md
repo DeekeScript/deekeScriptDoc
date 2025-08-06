@@ -23,9 +23,11 @@ description: DeekeScript - Engines
 Engines.executeScript("script/task/heart.js");//心跳脚本，监测App的在线状态
 
 //下面这种是相对当前文件的路径  假设当前文件是script/task/main.js  则下面的路径是script/task/heart.js
+//注意，这种方式目前只支持在主脚本中使用，不能在require引入的脚本中使用
 //Engines.executeScript("./heart.js");//心跳脚本，监测App的在线状态
 
 //下面这种是相对当前文件的路径  假设当前文件是script/task/main.js  则下面的路径是script/other/heart.js
+//注意，这种方式目前只支持在主脚本中使用，不能在require引入的脚本中使用
 //Engines.executeScript("../other/heart.js");//心跳脚本，监测App的在线状态
 
 //保持当前线程不关闭，否则上面的代码也会关闭，导致心跳任务也立即关闭
