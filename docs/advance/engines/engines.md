@@ -9,7 +9,7 @@ description: DeekeScript - Engines
 
 当然，在一些时候，如果你想彻底关闭JavaScript运行时，也是通过Engines来关闭。
 
-`目前Engines运行时是通过线程池的方式实现，并且有数量限制，因此不能无限开启Engines，否则会报错`
+`目前Engines运行时是通过线程池的方式实现，并且有数量限制，因此不能无限同时持续执行的Engines，否则会报错`
 
 ## executeScript(filename)
 
@@ -23,11 +23,9 @@ description: DeekeScript - Engines
 Engines.executeScript("script/task/heart.js");//心跳脚本，监测App的在线状态
 
 //下面这种是相对当前文件的路径  假设当前文件是script/task/main.js  则下面的路径是script/task/heart.js
-//注意，这种方式目前只支持在主脚本中使用，不能在require引入的脚本中使用
 //Engines.executeScript("./heart.js");//心跳脚本，监测App的在线状态
 
 //下面这种是相对当前文件的路径  假设当前文件是script/task/main.js  则下面的路径是script/other/heart.js
-//注意，这种方式目前只支持在主脚本中使用，不能在require引入的脚本中使用
 //Engines.executeScript("../other/heart.js");//心跳脚本，监测App的在线状态
 
 //保持当前线程不关闭，否则上面的代码也会关闭，导致心跳任务也立即关闭
