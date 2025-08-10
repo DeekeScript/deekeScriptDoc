@@ -46,3 +46,18 @@ if(!Access.isMediaProjectionEnable()){
     });
 }
 ```
+
+## 是否开启通知权限
+
+> 重要程度：可选
+
+```
+let hasAccess = Access.hasNotificationAccess();
+
+console.log('是否有通知读取权限', hasAccess);
+
+if (!hasAccess) {
+    Access.requestNotificationAccess();
+    System.exit();
+}
+```

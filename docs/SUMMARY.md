@@ -49,6 +49,7 @@ description: DeekeScript - Table of contents
   - [加解密](./advance/encryption.md)
   - [图片与颜色](./advance/photoAndColor.md)
   - [扩展](./advance/extension/extension.md)
+  - [系统通知](./advance/notification.md)
 
 - Android权限
   - [基础权限](./access/access.md)
