@@ -22,7 +22,7 @@ import{_ as p,c as i,o as l,j as s,ah as a,a as e}from"./chunks/framework.Dgl5HH
 <span class="line"><span>NotificationBridge.startListening((packageName, title, text) =&gt; {</span></span>
 <span class="line"><span>    console.log(&#39;收到通知&#39;, packageName, title, text);</span></span>
 <span class="line"><span>}, (packageName, title, text) =&gt; {</span></span>
-<span class="line"><span>    console.log(&#39;通知监听已关闭&#39;, packageName, title, text);</span></span>
+<span class="line"><span>    console.log(&#39;通知已关闭&#39;, packageName, title, text);</span></span>
 <span class="line"><span>});</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>NotificationBridge.startService();</span></span>

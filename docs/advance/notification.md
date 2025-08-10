@@ -46,7 +46,7 @@ NotificationBridge.startService();
 NotificationBridge.startListening((packageName, title, text) => {
     console.log('收到通知', packageName, title, text);
 }, (packageName, title, text) => {
-    console.log('通知监听已关闭', packageName, title, text);
+    console.log('通知已关闭', packageName, title, text);
 });
 
 NotificationBridge.startService();
