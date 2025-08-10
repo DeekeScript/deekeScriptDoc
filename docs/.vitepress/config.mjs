@@ -96,7 +96,8 @@ export default defineConfig({
           { text: '异步', link: '/promise/awa' },
           { text: '加解密', link: '/advance/encryption' },
           { text: '图片与颜色', link: '/advance/photoAndColor' },
-          { text: '扩展', link: '/advance/extension/extension' }
+          { text: '扩展', link: '/advance/extension/extension' },
+          { text: '通知', link: '/advance/notification' }
         ]
       },
       {
