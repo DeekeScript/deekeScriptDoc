@@ -7,7 +7,7 @@ description: DeekeScript - 前台服务
 
 如果你需要后台常驻任务，可以使用前台服务
 
-## startService
+## startService()
 > 返回 {void}
 
 启动前台服务
@@ -17,7 +17,7 @@ ForegroundServiceBridge.setContent('测试', '前台服务');
 ForegroundServiceBridge.startService();
 ```
 
-## setContent
+## setContent(title, content)
 > 返回 {void}
 
 设置前台服务的标题和描述
@@ -27,7 +27,7 @@ ForegroundServiceBridge.setContent('测试', '前台服务');
 ForegroundServiceBridge.startService();
 ```
 
-## register(func: Function)
+## register(func)
 
 > func 需要执行的方法
 >
@@ -62,7 +62,7 @@ setInterval(() => {
 ```
 
 
-## stopService
+## stopService()
 
 > 返回 {void}
 

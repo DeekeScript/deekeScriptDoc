@@ -7,7 +7,7 @@ description: DeekeScript - 系统通知
 
 主要接收系统内其他App发出的通知
 
-## startService
+## startService()
 > 返回 {void}
 
 启动服务
@@ -27,6 +27,10 @@ NotificationBridge.startService();
 ```
 
 ## startListening(listener, listenerClosed)
+> listener {Function} 收到通知执行的方法
+>
+> listenerClosed {Function} 通知关闭执行的方法
+>
 > 返回 {void}
 
 监听通知
@@ -57,7 +61,7 @@ setInterval(() => {
 
 ```
 
-## stopService
+## stopService()
 
 > 返回 {void}
 
