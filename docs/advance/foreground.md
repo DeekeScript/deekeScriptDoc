@@ -30,6 +30,7 @@ ForegroundServiceBridge.startService();
 ## register(func: Function)
 
 > func 需要执行的方法
+>
 > 返回 {void}
 
 前台服务执行的任务（注意，需要在服务启动前执行）
@@ -68,5 +69,5 @@ setInterval(() => {
 停止服务
 
 ```javascript
-ForegroundServiceBridge.stopService();
+NotificationBridge.stopService();
 ```
