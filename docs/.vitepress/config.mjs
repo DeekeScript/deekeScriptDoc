@@ -97,7 +97,8 @@ export default defineConfig({
           { text: '加解密', link: '/advance/encryption' },
           { text: '图片与颜色', link: '/advance/photoAndColor' },
           { text: '扩展', link: '/advance/extension/extension' },
-          { text: '通知', link: '/advance/notification' }
+          { text: '通知', link: '/advance/notification' },
+          { text: '前台服务', link: '/advance/foreground' }
         ]
       },
       {

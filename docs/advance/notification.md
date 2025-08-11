@@ -56,3 +56,13 @@ setInterval(() => {
 }, 10000);
 
 ```
+
+## stopService
+
+> 返回 {void}
+
+停止服务
+
+```javascript
+NotificationBridge.stopService();
+```
