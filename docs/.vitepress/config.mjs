@@ -52,7 +52,8 @@ export default defineConfig({
         items: [
           { text: '认识DeekeScript', link: '/quick/quick' },
           { text: '开发环境说明', link: '/quick/envir' },
-          { text: '快速开始', link: '/quick/start' }
+          { text: '快速开始', link: '/quick/start' },
+          { text: '视频教程', link: '/video/base' }
         ]
       },
       {
