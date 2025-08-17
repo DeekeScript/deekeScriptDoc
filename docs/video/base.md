@@ -4,7 +4,7 @@ description: DeekeScript - base
 ---
 
 <style>
-.main{
+.main2{
     display: flex;
     flex-wrap: wrap;  /* 允许换行 */
     gap: 10px;        /* 元素间距，可选 */
@@ -41,7 +41,7 @@ description: DeekeScript - base
     text-align: center;
 }
 </style>
-<div class="main">
+<div class="main2">
     <div class="video-container">
         <div>第一讲：DeekeScript介绍</div>
         <div>
