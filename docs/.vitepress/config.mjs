@@ -14,7 +14,17 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: '/main.css' }]
   ],
   markdown: {
-    lineNumbers: true
+    lineNumbers: true,
+    // 自定义锚点生成规则
+    anchor: {
+      slugify: (str) => {
+        // 移除图标和特殊字符，只保留中文、英文、数字
+        return str
+          .replace(/[📝🔍🎛️📱⚙️🚀🔧📱☁️🔒🎯]/g, '') // 移除常见图标
+          .replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g, '') // 只保留中文、英文、数字
+          .toLowerCase() // 转换为小写
+      }
+    }
   },
   ssr: false, 
   // 添加静态导出配置
