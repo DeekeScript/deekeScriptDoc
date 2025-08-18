@@ -24,10 +24,10 @@ description: DeekeScript - 配置
 |     debug    | Boolean |    否   |      true               | 默认为true（不需要激活码也可以启动脚本），如果需要激活才能使用APP，请设置为false               |
 |      host    | String  |    是   |    https://xx.xxx.xxx          | 接口请求域名，<font color="red">请同时完成apis配置，否则可能无法运行脚本或者APP</font>      |
 | switchSetting|  Json   |    是   |[switchSetting参数](#switchsetting参数)    | 功能开关设置      |
-|    groups    |  Array   |    是   |[groups参数](#methods参数)         |  主界面的功能组，每组都会包含若干个功能              |
-|  bottomMenus |  Json   |    是   |[bottomMenus参数](#bottommenus参数)      | App中底部菜单，可以使用系统内置的，也可以自定义          |
-| settingLists |  Json   |    是   |[settingLists参数](#settinglists参数)    | App中设置页的列表项，可以使用系统内置的，也可以自定义     |
-|     apis     |  Json   |    是   |    [apis参数](#api参数)              | 设置相关api，比如激活码api，验证激活码是否有效api等，否则可能导致无法运行脚本或者APP      |
+|    groups    |  Array   |    是   |[groups参数](#groups参数)         |  主界面的功能组，每组都会包含若干个功能              |
+|  bottomMenus |  Array   |    是   |[bottomMenus参数](#bottommenus参数)      | App中底部菜单，可以使用系统内置的，也可以自定义          |
+| settingLists |  Array   |    是   |[settingLists参数](#settinglists参数)    | App中设置页的列表项，可以使用系统内置的，也可以自定义     |
+|     apis     |  Array   |    是   |    [apis参数](#api参数)              | 设置相关api，比如激活码api，验证激活码是否有效api等，否则可能导致无法运行脚本或者APP      |
 
 ### 🔧 switchSetting参数
 
@@ -42,7 +42,7 @@ description: DeekeScript - 配置
 |     title    | String  |   是    | XX截流  | App主界面的功能名称 |
 |  titleHidden | String  |   否    | false  | App主界面功能组标题是否隐藏，默认不隐藏 |
 |    hidden    | Boolean |   否    | false  | 功能实际执行的代码所在文件 |
-|   methods    |  Json   |   是    | [methods参数](#methods参数)  | 功能对应的设置页面，如果为空，则直接执行jsFile脚本  |
+|   methods    |  Array   |   是    | [methods参数](#methods参数)  | 功能对应的设置页面，如果为空，则直接执行jsFile脚本  |
 
 ### ⚡ methods参数
 
