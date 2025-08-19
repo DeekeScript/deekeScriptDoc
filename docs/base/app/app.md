@@ -48,22 +48,6 @@ console.log(App.currentPackageName());//输出 top.deeke.script
  App.gotoIntent('snssdk1128://user/profile/' + user_id);
 ```
 
-## startActivity(intent)
-
-> 2.0版本即将上线
-
-**参数：** `intent {Intent}`
-
-**返回：** `{void}`
-
-根据intent启动Activity
-
-```javascript
-//跳转到目标APP
-let intent = new Intent(Intent.ACTION_VIEW, Uri.parse("myapp://second_activity"));
-startActivity(intent);
-```
-
 ## backApp()
 
 **返回：** `{void}`
@@ -74,25 +58,6 @@ startActivity(intent);
 App.backApp();
 ```
 
-## startService(intent)
-
-> 2.0版本即将上线
-
-**参数：** `options {object}`
-
-**返回：** `{void}`
-
-根据选项构造一个Intent，并启动该服务。
-
-## sendBroadcast(intent)
-
-> 2.0版本即将上线
-
-**参数：** `intent {Intent}`
-
-**返回：** `{void}`
-
-根据选项构造一个Intent，并发送该广播。
 
 ## launch(packageName)
 
@@ -146,4 +111,20 @@ let version = App.getAppVersion("top.deeke.script");
 
 ```javascript
 let versionName = App.getAppVersionName("top.deeke.script");
+```
+
+## startActivity(intent)
+
+> 2.0版本即将上线
+
+**参数：** `intent {Intent}`
+
+**返回：** `{void}`
+
+根据intent启动Activity
+
+```javascript
+//跳转到目标APP
+let intent = new Intent(Intent.ACTION_VIEW, Uri.parse("myapp://second_activity"));
+startActivity(intent);
 ```

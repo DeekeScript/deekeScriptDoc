@@ -188,6 +188,14 @@ if(obj){
 
 获取控件的描述信息
 
+## setDesc(desc)
+
+**参数：** `desc {string}` 控件描述内容
+
+**返回：** `{void}`
+
+设置控件的描述信息
+
 ```javascript
 let obj = new UiSelector().className("ImageView").findOne();
 if(obj){
@@ -461,3 +469,11 @@ if(obj){
     obj.clear();
 }
 ```
+
+## setHintText(hintText)
+
+**参数：** `hintText {string}` 辅助提示文本
+
+**返回：** `{void}`
+
+设置一个 辅助提示文本

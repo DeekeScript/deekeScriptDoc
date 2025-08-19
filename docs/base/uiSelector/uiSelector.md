@@ -109,6 +109,22 @@ if(sendButton){
 
 为当前选择器附加控件"focusable 等于 canFocus"的筛选条件。
 
+## focused(isFocused)
+
+**参数：** `isFocused {boolean}` 是否可以已获取焦点
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"focused 等于 isFocused"的筛选条件。
+
+## editable(canEdit)
+
+**参数：** `canEdit {boolean}` 是否可以编辑
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"editable 等于 canEdit"的筛选条件。
+
 ## scrollable(canScroll)
 
 **参数：** `canScroll {boolean}` 是否可以滚动
