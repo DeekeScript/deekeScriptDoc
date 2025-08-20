@@ -69,19 +69,6 @@ App.backApp();
 App.launch("top.deeke.script");//打开DeekeScript
 ```
 
-## createNotification(title, content)
-
-**参数：**
-- `title {string}` 通知标题
-- `content {string}` 通知内容
-
-**返回：** `{Notification}`
-
-创建一个通知
-
-```javascript
-let notification = App.createNotification("标题", "内容");
-```
 
 ## isAppInstalled(packageName)
 
@@ -93,14 +80,14 @@ let notification = App.createNotification("标题", "内容");
 let isInstalled = App.isAppInstalled("top.deeke.script");
 ```
 
-## getAppVersion(packageName)
+## getAppVersionCode(packageName)
 
 **参数：** `packageName {string}`
 
 获取指定应用的版本号
 
 ```javascript
-let version = App.getAppVersion("top.deeke.script");
+let version = App.getAppVersionCode("top.deeke.script");
 ```
 
 ## getAppVersionName(packageName)
@@ -112,6 +99,15 @@ let version = App.getAppVersion("top.deeke.script");
 ```javascript
 let versionName = App.getAppVersionName("top.deeke.script");
 ```
+
+## openAppSetting(packageName)
+
+**参数：** `packageName {string}` 包名
+
+**返回：** `{void}`
+
+打开某个APP的设置页面
+
 
 ## startActivity(intent)
 
