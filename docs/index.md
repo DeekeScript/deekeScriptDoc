@@ -7,10 +7,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /quick/quick
+      link: /quick/start
     - theme: alt
       text: API文档
-      link: /quick/start
+      link: /quick/quick
     - theme: alt
       text: 在线打包平台
       link: https://mp.deeke.cn
