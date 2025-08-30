@@ -501,6 +501,7 @@ if(obj){
 ## setClickable(clickable)
 
 **参数：** `clickable {boolean}` 是否可以点击
+
 **返回：** `{UiObject}`
 
 设置控件是否可以点击
@@ -509,6 +510,7 @@ if(obj){
 ## setLongClickable(longClickable)
 
 **参数：** `longClickable {boolean}` 是否可以长按
+
 **返回：** `{UiObject}`
 
 设置控件是否可以长按
@@ -517,6 +519,7 @@ if(obj){
 ## setEditable(editable)
 
 **参数：** `editable {boolean}` 是否可以编辑
+
 **返回：** `{UiObject}`
 
 设置控件是否可以编辑
@@ -525,6 +528,7 @@ if(obj){
 ## setEnabled(enabled)
 
 **参数：** `enabled {boolean}` 是否可用
+
 **返回：** `{UiObject}`
 
 设置控件是否可用
@@ -533,6 +537,7 @@ if(obj){
 ## setCheckable(checkable)
 
 **参数：** `checkable {boolean}` 是否可以选中
+
 **返回：** `{UiObject}`
 
 设置控件是否可以选中
@@ -541,6 +546,7 @@ if(obj){
 ## setChecked(checked)
 
 **参数：** `checked {boolean}` 是否选中
+
 **返回：** `{UiObject}`
 
 设置控件是否选中
@@ -549,6 +555,7 @@ if(obj){
 ## setSelected(selected)
 
 **参数：** `selected {boolean}` 是否选中
+
 **返回：** `{UiObject}`
 
 设置控件是否选中
@@ -565,6 +572,7 @@ if(obj){
 ## setFocused(focusable)
 
 **参数：** `focusable {boolean}` 是否获得焦点
+
 **返回：** `{UiObject}`
 
 设置控件是否获得焦点
@@ -581,6 +589,7 @@ if(obj){
 ## setPassword(password)
 
 **参数：** `password {boolean}` 是否是密码控件
+
 **返回：** `{UiObject}`
 
 设置控件是否是密码控件
@@ -589,6 +598,7 @@ if(obj){
 ## setVisibleToUser(visibleToUser)
 
 **参数：** `visibleToUser {boolean}` 是否对用户可见
+
 **返回：** `{UiObject}`
 
 设置控件是否对用户可见
