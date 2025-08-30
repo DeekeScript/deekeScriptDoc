@@ -26,7 +26,7 @@ export default defineConfig({
       }
     }
   },
-  ssr: false, 
+  ssr: false,
   // 添加静态导出配置
   vite: {
     build: {
@@ -79,10 +79,12 @@ export default defineConfig({
         text: '基础部分',
         collapsed: false,
         items: [
+          { text: '选择器-UiSelector', link: '/base/uiSelector/uiSelector' },
+          { text: '控件操作-UiObject', link: '/base/uiObject/uiObject' },
+          { text: '手势操作-Gesture', link: '/base/gesture/gesture' },
           { text: 'App', link: '/base/app/app' },
           { text: '系统函数', link: '/base/system/funcs' },
           { text: '设备-Device', link: '/base/device/device' },
-          { text: '选择器-UiSelector', link: '/base/uiSelector/uiSelector' },
           { text: '表单', link: '/base/ui/form' },
           { text: '定时器', link: '/base/timer/timer' },
           { text: 'Http', link: '/base/http/http' },
@@ -92,8 +94,6 @@ export default defineConfig({
           { text: '日志-Log', link: '/base/log/log' },
           { text: '本地存储', link: '/base/storage/storage' },
           { text: '文件系统-Files', link: '/base/files/files' },
-          { text: '手势操作', link: '/base/gesture/gesture' },
-          { text: '控件操作', link: '/base/uiObject/uiObject' }
         ]
       },
       {
