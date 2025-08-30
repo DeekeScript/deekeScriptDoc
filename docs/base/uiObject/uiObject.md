@@ -107,6 +107,17 @@ let obj = new UiSelector().className("EditText").findOne();
 obj.paste();
 ```
 
+## focus()
+**返回：** `{boolean}` 返回是否成功
+
+获取焦点
+
+```javascript
+let obj = new UiSelector().className("EditText").findOne();
+obj.focus();
+```
+
+
 ## setText(text)
 
 **参数：** `text {string}` 输入参数
@@ -288,111 +299,20 @@ if(obj){
 }
 ```
 
-## clickable()
+## getDrawingOrder()
+**返回：** `{number}` 绘制顺序
 
-**返回：** `{boolean}`
-
-判断控件是否可点击
+获取控件的绘制顺序
 
 ```javascript
-let obj = new UiSelector().className("Button").findOne();
+let obj = new UiSelector().className("TextView").findOne();
 if(obj){
-    console.log("是否可点击：" + obj.clickable());
+    console.log("绘制顺序：" + obj.getDrawingOrder());
 }
 ```
 
-## longClickable()
 
-**返回：** `{boolean}`
-
-判断控件是否可长按
-
-```javascript
-let obj = new UiSelector().className("Button").findOne();
-if(obj){
-    console.log("是否可长按：" + obj.longClickable());
-}
-```
-
-## checkable()
-
-**返回：** `{boolean}`
-
-判断控件是否可选中
-
-```javascript
-let obj = new UiSelector().className("CheckBox").findOne();
-if(obj){
-    console.log("是否可选中：" + obj.checkable());
-}
-```
-
-## checked()
-
-**返回：** `{boolean}`
-
-判断控件是否已选中
-
-```javascript
-let obj = new UiSelector().className("CheckBox").findOne();
-if(obj){
-    console.log("是否已选中：" + obj.checked());
-}
-```
-
-## enabled()
-
-**返回：** `{boolean}`
-
-判断控件是否已启用
-
-```javascript
-let obj = new UiSelector().className("Button").findOne();
-if(obj){
-    console.log("是否已启用：" + obj.enabled());
-}
-```
-
-## focusable()
-
-**返回：** `{boolean}`
-
-判断控件是否可获取焦点
-
-```javascript
-let obj = new UiSelector().className("EditText").findOne();
-if(obj){
-    console.log("是否可获取焦点：" + obj.focusable());
-}
-```
-
-## focused()
-
-**返回：** `{boolean}`
-
-判断控件是否已获取焦点
-
-```javascript
-let obj = new UiSelector().className("EditText").findOne();
-if(obj){
-    console.log("是否已获取焦点：" + obj.focused());
-}
-```
-
-## scrollable()
-
-**返回：** `{boolean}`
-
-判断控件是否可滚动
-
-```javascript
-let obj = new UiSelector().className("ScrollView").findOne();
-if(obj){
-    console.log("是否可滚动：" + obj.scrollable());
-}
-```
-
-## selected()
+## isSelected()
 
 **返回：** `{boolean}`
 
@@ -401,11 +321,117 @@ if(obj){
 ```javascript
 let obj = new UiSelector().className("RadioButton").findOne();
 if(obj){
-    console.log("是否已选中：" + obj.selected());
+    console.log("是否已选中：" + obj.isSelected());
 }
 ```
 
-## visibleToUser()
+
+## isClickable()
+
+**返回：** `{boolean}`
+
+判断控件是否可点击
+
+```javascript
+let obj = new UiSelector().className("Button").findOne();
+if(obj){
+    console.log("是否可点击：" + obj.isClickable());
+}
+```
+
+## isLongClickable()
+
+**返回：** `{boolean}`
+
+判断控件是否可长按
+
+```javascript
+let obj = new UiSelector().className("Button").findOne();
+if(obj){
+    console.log("是否可长按：" + obj.isLongClickable());
+}
+```
+
+## isCheckable()
+
+**返回：** `{boolean}`
+
+判断控件是否可选中
+
+```javascript
+let obj = new UiSelector().className("CheckBox").findOne();
+if(obj){
+    console.log("是否可选中：" + obj.isCheckable());
+}
+```
+
+## isChecked()
+
+**返回：** `{boolean}`
+
+判断控件是否已选中
+
+```javascript
+let obj = new UiSelector().className("CheckBox").findOne();
+if(obj){
+    console.log("是否已选中：" + obj.isChecked());
+}
+```
+
+## isEnabled()
+
+**返回：** `{boolean}`
+
+判断控件是否已启用
+
+```javascript
+let obj = new UiSelector().className("Button").findOne();
+if(obj){
+    console.log("是否已启用：" + obj.isEnabled());
+}
+```
+
+## isFocusable()
+
+**返回：** `{boolean}`
+
+判断控件是否可获取焦点
+
+```javascript
+let obj = new UiSelector().className("EditText").findOne();
+if(obj){
+    console.log("是否可获取焦点：" + obj.isFocusable());
+}
+```
+
+## isFocused()
+
+**返回：** `{boolean}`
+
+判断控件是否已获取焦点
+
+```javascript
+let obj = new UiSelector().className("EditText").findOne();
+if(obj){
+    console.log("是否已获取焦点：" + obj.isFocused());
+}
+```
+
+## isScrollable()
+
+**返回：** `{boolean}`
+
+判断控件是否可滚动
+
+```javascript
+let obj = new UiSelector().className("ScrollView").findOne();
+if(obj){
+    console.log("是否可滚动：" + obj.isScrollable());
+}
+```
+
+
+## isVisibleToUser()
 
 **返回：** `{boolean}`
 
@@ -414,9 +440,28 @@ if(obj){
 ```javascript
 let obj = new UiSelector().className("TextView").findOne();
 if(obj){
-    console.log("是否对用户可见：" + obj.visibleToUser());
+    console.log("是否对用户可见：" + obj.isVisibleToUser());
 }
 ```
+
+## isEditable()
+
+**返回：** `{boolean}`
+
+判断控件是否可编辑
+
+```javascript
+let obj = new UiSelector().className("EditText").findOne();
+if(obj){
+    console.log("是否可编辑：" + obj.isVisibleToUser());
+}
+```
+
+## isPassword()
+
+**返回：** `{boolean}`
+
+判断控件是否为密码输入框
 
 ## className()
 
@@ -431,7 +476,7 @@ if(obj){
 }
 ```
 
-## packageName()
+## getPackageName()
 
 **返回：** `{string}`
 
@@ -444,32 +489,6 @@ if(obj){
 }
 ```
 
-## resourceId()
-
-**返回：** `{string}`
-
-获取控件的资源ID
-
-```javascript
-let obj = new UiSelector().className("TextView").findOne();
-if(obj){
-    console.log("资源ID：" + obj.resourceId());
-}
-```
-
-## clear()
-
-**返回：** `{void}`
-
-清空输入框的内容
-
-```javascript
-let obj = new UiSelector().className("EditText").findOne();
-if(obj){
-    obj.clear();
-}
-```
-
 ## setHintText(hintText)
 
 **参数：** `hintText {string}` 辅助提示文本
@@ -477,3 +496,99 @@ if(obj){
 **返回：** `{void}`
 
 设置一个 辅助提示文本
+
+
+## setClickable(clickable)
+
+**参数：** `clickable {boolean}` 是否可以点击
+**返回：** `{UiObject}`
+
+设置控件是否可以点击
+
+
+## setLongClickable(longClickable)
+
+**参数：** `longClickable {boolean}` 是否可以长按
+**返回：** `{UiObject}`
+
+设置控件是否可以长按
+
+
+## setEditable(editable)
+
+**参数：** `editable {boolean}` 是否可以编辑
+**返回：** `{UiObject}`
+
+设置控件是否可以编辑
+
+
+## setEnabled(enabled)
+
+**参数：** `enabled {boolean}` 是否可用
+**返回：** `{UiObject}`
+
+设置控件是否可用
+
+
+## setCheckable(checkable)
+
+**参数：** `checkable {boolean}` 是否可以选中
+**返回：** `{UiObject}`
+
+设置控件是否可以选中
+
+
+## setChecked(checked)
+
+**参数：** `checked {boolean}` 是否选中
+**返回：** `{UiObject}`
+
+设置控件是否选中
+
+
+## setSelected(selected)
+
+**参数：** `selected {boolean}` 是否选中
+**返回：** `{UiObject}`
+
+设置控件是否选中
+
+
+## setFocusable(focusable)
+
+**参数：** `focusable {boolean}` 是否可获得焦点
+**返回：** `{UiObject}`
+
+设置控件是否可获得焦点
+
+
+## setFocused(focusable)
+
+**参数：** `focusable {boolean}` 是否获得焦点
+**返回：** `{UiObject}`
+
+设置控件是否获得焦点
+
+
+## setScrollable(scrollable)
+
+**参数：** `scrollable {boolean}` 是否可以滚动
+**返回：** `{UiObject}`
+
+设置控件是否可以滚动
+
+
+## setPassword(password)
+
+**参数：** `password {boolean}` 是否是密码控件
+**返回：** `{UiObject}`
+
+设置控件是否是密码控件
+
+
+## setVisibleToUser(visibleToUser)
+
+**参数：** `visibleToUser {boolean}` 是否对用户可见
+**返回：** `{UiObject}`
+
+设置控件是否对用户可见
