@@ -108,6 +108,7 @@ obj.paste();
 ```
 
 ## focus()
+
 **返回：** `{boolean}` 返回是否成功
 
 获取焦点
@@ -156,7 +157,7 @@ for(let i = 0; i < children.length; i++){
 根据选择器查找控件
 
 ```javascript
-let obj = new UiSelector().className("LinearLayout").findOne();
+let obj = new UiSelector().className("TextView").findOne();
 let child = obj.findOne(new UiSelector().className("TextView"));
 if(child){
     console.log(child.text());
@@ -177,6 +178,19 @@ if(obj){
     console.log("上边界：" + bounds.top);
     console.log("右边界：" + bounds.right);
     console.log("下边界：" + bounds.bottom);
+}
+```
+
+## id()
+
+**返回：** `{string}`
+
+获取控件的id
+
+```javascript
+let obj = new UiSelector().className("TextView").findOne();
+if(obj){
+    console.log(obj.id());
 }
 ```
 
@@ -214,50 +228,33 @@ if(obj){
 }
 ```
 
-## id()
+## className()
 
 **返回：** `{string}`
 
-获取控件的id
+获取控件的类名
 
 ```javascript
 let obj = new UiSelector().className("TextView").findOne();
 if(obj){
-    console.log(obj.id());
+    console.log("控件类名：" + obj.className());
 }
 ```
 
-## findChildren(uiSelector)
 
-**返回：** `{UiObject[]|null}`
+## getPackageName()
 
-获取控件的子控件
+**返回：** `{string}`
+
+获取控件所属的包名
 
 ```javascript
-let obj = new UiSelector().className("LinearLayout").findOne();
+let obj = new UiSelector().className("TextView").findOne();
 if(obj){
-    let children = obj.findChildren(new UiSelector().className("TextView"));
-    for(let i = 0; i < children.length; i++){
-        console.log(children[i].text());
-    }
+    console.log("包名：" + obj.packageName());
 }
 ```
 
-## findChild(uiSelector)
-
-**返回：** `{UiObject|null}`
-
-获取控件的子控件
-
-```javascript
-let obj = new UiSelector().className("LinearLayout").findOne();
-if(obj){
-    let child = obj.findChild(new UiSelector().className("TextView"));
-    if(child){
-        console.log(child.text());
-    }
-}
-```
 
 ## childCount()
 
@@ -270,6 +267,37 @@ let obj = new UiSelector().className("LinearLayout").findOne();
 if(obj){
     console.log("子控件数量：" + obj.childCount());
 }
+```
+
+## children()
+
+**返回：** `{number}`
+
+获取控件的子控件
+
+```javascript
+let obj = new UiSelector().className("LinearLayout").findOne();
+if(obj && obj.childCount() > 0){
+    //获取当前控件下面的所有TextView控件
+    let childs = obj.children().find(UiSelector().className("TextView"));
+    //获取当前控件下面的第一个TextView控件
+    let child = obj.children().find(UiSelector().className("TextView"));
+
+    //获取第index个子控件
+    let indexChild = obj.children().getChildren(index);
+}
+```
+
+## getChildren()
+
+**返回：** `{UiObject}`
+
+获取控件的子控件
+
+```javascript
+//获取第index个子控件
+let obj = new UiSelector().className("LinearLayout").findOne();
+let indexChild = obj.children().getChildren(index);
 ```
 
 ## parent()
@@ -286,20 +314,9 @@ if(obj){
 }
 ```
 
-## depth()
-
-**返回：** `{number}` 层级
-
-获取控件在布局中的层级
-
-```javascript
-let obj = new UiSelector().className("TextView").findOne();
-if(obj){
-    console.log("控件层级：" + obj.depth());
-}
-```
 
 ## getDrawingOrder()
+
 **返回：** `{number}` 绘制顺序
 
 获取控件的绘制顺序
@@ -310,6 +327,12 @@ if(obj){
     console.log("绘制顺序：" + obj.getDrawingOrder());
 }
 ```
+
+## getHintText()
+
+**返回：** `{string}`
+
+获取控件的提示文本
 
 
 ## isSelected()
@@ -352,42 +375,16 @@ if(obj){
 }
 ```
 
-## isCheckable()
+## isEditable()
 
 **返回：** `{boolean}`
 
-判断控件是否可选中
+判断控件是否可编辑
 
 ```javascript
-let obj = new UiSelector().className("CheckBox").findOne();
+let obj = new UiSelector().className("EditText").findOne();
 if(obj){
-    console.log("是否可选中：" + obj.isCheckable());
-}
-```
-
-## isChecked()
-
-**返回：** `{boolean}`
-
-判断控件是否已选中
-
-```javascript
-let obj = new UiSelector().className("CheckBox").findOne();
-if(obj){
-    console.log("是否已选中：" + obj.isChecked());
-}
-```
-
-## isEnabled()
-
-**返回：** `{boolean}`
-
-判断控件是否已启用
-
-```javascript
-let obj = new UiSelector().className("Button").findOne();
-if(obj){
-    console.log("是否已启用：" + obj.isEnabled());
+    console.log("是否可编辑：" + obj.isVisibleToUser());
 }
 ```
 
@@ -417,6 +414,42 @@ if(obj){
 }
 ```
 
+## isCheckable()
+
+**返回：** `{boolean}`
+
+判断控件是否可选中
+
+```javascript
+let obj = new UiSelector().className("CheckBox").findOne();
+if(obj){
+    console.log("是否可选中：" + obj.isCheckable());
+}
+```
+
+
+## isEnabled()
+
+**返回：** `{boolean}`
+
+判断控件是否已启用
+
+```javascript
+let obj = new UiSelector().className("Button").findOne();
+if(obj){
+    console.log("是否已启用：" + obj.isEnabled());
+}
+```
+
+
+## isPassword()
+
+**返回：** `{boolean}`
+
+判断控件是否为密码输入框
+
+
+
 ## isScrollable()
 
 **返回：** `{boolean}`
@@ -444,58 +477,18 @@ if(obj){
 }
 ```
 
-## isEditable()
+## isChecked()
 
 **返回：** `{boolean}`
 
-判断控件是否可编辑
+判断控件是否已选中
 
 ```javascript
-let obj = new UiSelector().className("EditText").findOne();
+let obj = new UiSelector().className("CheckBox").findOne();
 if(obj){
-    console.log("是否可编辑：" + obj.isVisibleToUser());
+    console.log("是否已选中：" + obj.isChecked());
 }
 ```
-
-## isPassword()
-
-**返回：** `{boolean}`
-
-判断控件是否为密码输入框
-
-## className()
-
-**返回：** `{string}`
-
-获取控件的类名
-
-```javascript
-let obj = new UiSelector().className("TextView").findOne();
-if(obj){
-    console.log("控件类名：" + obj.className());
-}
-```
-
-## getPackageName()
-
-**返回：** `{string}`
-
-获取控件所属的包名
-
-```javascript
-let obj = new UiSelector().className("TextView").findOne();
-if(obj){
-    console.log("包名：" + obj.packageName());
-}
-```
-
-## setHintText(hintText)
-
-**参数：** `hintText {string}` 辅助提示文本
-
-**返回：** `{void}`
-
-设置一个 辅助提示文本
 
 
 ## setClickable(clickable)
@@ -564,6 +557,7 @@ if(obj){
 ## setFocusable(focusable)
 
 **参数：** `focusable {boolean}` 是否可获得焦点
+
 **返回：** `{UiObject}`
 
 设置控件是否可获得焦点
@@ -581,6 +575,7 @@ if(obj){
 ## setScrollable(scrollable)
 
 **参数：** `scrollable {boolean}` 是否可以滚动
+
 **返回：** `{UiObject}`
 
 设置控件是否可以滚动
@@ -602,3 +597,22 @@ if(obj){
 **返回：** `{UiObject}`
 
 设置控件是否对用户可见
+
+
+## setDesc(desc)
+
+**参数：** `desc {string}` 控件描述
+
+**返回：** `{void}`
+
+设置控件描述
+
+
+## setHintText(hintText)
+
+**参数：** `hintText {string}` 辅助提示文本
+
+**返回：** `{void}`
+
+设置一个 辅助提示文本
+
