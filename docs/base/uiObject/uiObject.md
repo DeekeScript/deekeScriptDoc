@@ -213,13 +213,6 @@ if(obj){
 
 获取控件的描述信息
 
-## setDesc(desc)
-
-**参数：** `desc {string}` 控件描述内容
-
-**返回：** `{void}`
-
-设置控件的描述信息
 
 ```javascript
 let obj = new UiSelector().className("ImageView").findOne();
