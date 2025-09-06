@@ -80,3 +80,18 @@ FloatDialogs.show("恭喜你，弹窗成功弹出");
 
 FloatDialogs.show("温馨提示", "恭喜你，弹窗成功弹出");
 ```
+
+## setFloatWindowClickable(clickable)
+> clickable {boolean}  是否可点击
+>
+> 返回 void
+
+设置右侧悬浮窗是否可点击；主要是防止在执行click的时候，点击到右侧悬浮窗，导致点击失败；
+
+```javascript
+//下面这行是异步执行的，所以执行后，需要等待几百毫秒
+FloatDialogs.setFloatWindowClickable(false);
+System.sleep(300);//建议休眠300毫秒，防止上面的设置未生效
+Gesture.click(100, 200);
+FloatDialogs.setFloatWindowClickable(true);
+```

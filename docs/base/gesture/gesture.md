@@ -13,7 +13,7 @@ description: DeekeScript - 手势操作 - Gesture
 
 **返回：** `{boolean}`
 
-点击屏幕位置
+点击屏幕位置，注意点击时间为200-300毫秒，如果需要控制点击时间，请使用press方法
 
 ```javascript
 Gesture.click(100, 200);
@@ -27,7 +27,7 @@ Gesture.click(100, 200);
 
 **返回：** `{boolean}`
 
-长按屏幕位置
+长按屏幕位置，注意点击时间为600-800毫秒，如果需要控制时间请使用press方法
 
 ```javascript
 Gesture.longClick(100, 200);

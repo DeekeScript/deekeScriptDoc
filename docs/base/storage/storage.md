@@ -22,7 +22,7 @@ let storage = Storage.create('myDb');
 
 //下面是使用系统默认的db获取数据的方法
 //假设我们deekeScript.json文件中的method的settingPage里面的params有一个name为zan_rate的表单，则可以通过下面的方法获取设置的值
-let zanRate = Storage.getInteger('zan_rate');//注意，类型不同使用的方法不同，否则读取的数据会存在问题
+let zanRate = Storage.getInteger('zan_rate');//注意，类型不同使用的方法不同，否则读取的数据会存在问题【注意这里的Storage第一个字母是大写】
 ```
 
 ## put(key, value);
@@ -67,12 +67,11 @@ Log.log(user);//输出字符串test
 storage.putInteger("age", 18);
 storage.putBoolean("is_success", true);
 storage.putDouble("money", 1000000.11);
+
+//注意putObj只支持标准的json对象，对象里面不能有function类型
 storage.putObj("obj", {
     name: "DeekeScript",
-    age: 22,
-    getName: function() {
-        return this.name;
-    }
+    age: 22
 });
 
 storage.putArray("arr", [1,2,3, 'a', 'c', {name: 'deekeScript'}]);

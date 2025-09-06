@@ -75,7 +75,7 @@ console.log(Files.isDirectory(Paths.get("/sdcard/文件夹/"))); //返回false
 
 读取文本文件path的所有行并返回。如果文件不存在，则抛出异常；文件特别大的情况下，不推荐使用这种方式读取文件
 
-## readBytes(path)
+## readAllBytes(path)
 
 **参数：** `path {string}` 路径
 
