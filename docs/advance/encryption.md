@@ -36,7 +36,7 @@ sha256加密
 
 
 ## base64Encode(str)
-> str {string} 需要编码的字符串
+> str {string|byte[]} 需要编码的字符串
 > 
 > 返回 {string}
 
