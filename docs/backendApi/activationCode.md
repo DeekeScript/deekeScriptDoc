@@ -171,14 +171,16 @@ Content-Type: application/json
 
 系统拿到接口结果后，会比对当前版本号是否小于最新版本号，如果是则访问downloadUrl下载apk，最终提示用户安装apk，并完成升级。
 
-## 是否展示支付入口接口
+## 支付成功接口【成功后，App端将不会展示支付入口】
 > type: getToken
 >
 > 接口地址：/alipay/getToken
 
+本接口，在用户支付完成后，会返回激活码和剩余天数（开发者需要自行实现本接口）。用户在App内支付后，App会调用本接口判断支付是否成功。同时这个接口返回激活码后，支付入口将会关闭。
+
 ```
-  //返回成功，则不允许调用支付
-  {code: 0, msg: '不展示支付入口', success: true, data: []}
+  //返回成功，则不允许调用支付；  用户支付成功后，本接口应该返回下面的数据
+  {code: 0, msg: '不展示支付入口', success: true, data: [], "token": "激活码", "token_time": "还剩1天过期"}
   //返回失败，可以支付
   {code: 1, msg: '展示支付入口', success: false, data: []}
 ```

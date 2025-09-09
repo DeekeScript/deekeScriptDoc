@@ -7,24 +7,23 @@ description: DeekeScript - 设备 - Device
 
 Device对象，提供一些设备相关的方法。
 
-## keepScreenOn(seconds)
+## keepCpuAwake(seconds)
 
 **参数：** `seconds {number}` 屏幕常量秒数
 
 **返回：** `{void}`
 
-屏幕常量，如果seconds为0，则亮屏10分钟，否则亮屏seconds秒。seconds最大值可能在不同设备上有一定限制。
-保证屏幕常量，一般在操作（操作过程中，屏幕一般不会息屏）完相关步骤后，回到我们的App应用（在我们自己的应用上，可以保证长时间不息屏），即可保证不会息屏
+息屏后，保持 CPU 唤醒，延时释放
 
 ```javascript
-Device.keepScreenOn(600);//常量10分钟
+Device.keepCpuAwake(600);//常量10分钟
 ```
 
-## closeScreenLight()
+## releaseCpuWakeLock()
 
 **返回：** `{void}`
 
-常量关闭
+释放CPU唤醒状态
 
 ## width()
 
