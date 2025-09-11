@@ -196,6 +196,27 @@ Content-Type: application/json
 > 接口地址：/alipay/createOrder
 
 ```
+//请求参数如下：
+//扫码支付
+{
+    "type": "scan",
+    "goods_name": "一天",
+    "total_amount": "9.9"
+}
+
+//App支付
+{
+    "goods_name": "一天",
+    "total_amount": "9.9"
+}
+```
+
+> 注意：这里的goods_name是来自[配置接口](#配置接口)里面的payList参数里面的day字段，total_amount来自payList参数里面的money字段
+>
+
+
+```
+//返回数据如下：
 //成功
 {
     code: 0, 
