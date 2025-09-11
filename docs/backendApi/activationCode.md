@@ -110,19 +110,24 @@ Content-Type: application/json
 
 ```
 {
-    code: 0, 
-    msg: "成功", 
-    success: true,
-    data: {
-    ad: {
-        app_open_url => '开屏广告图片地址，如：https://xx.xx.xx/1.png', 
-        app_pay_ad_url => '支付宝支付入口广告图片地址，如：https://xx.xx.xx/2.png'
-    },
-    role: [
-        label : "角色名称，如：营销大师",
-        value : 1,
-        content : "智能体角色属性设定：你的角色是一个营销大师，xxxxxx",
-    ]
+    "code": 0, 
+    "msg": "成功", 
+    "success": true,
+    "data": {
+        "ad": {
+            "app_open_url" : '开屏广告图片地址，如：https://xx.xx.xx/1.png', 
+            "app_pay_ad_url" : '支付宝支付入口广告图片地址，如：https://xx.xx.xx/2.png'
+        },
+        "payList":{
+            "switch" => true,//是否开启扫码支付
+            "money" => [499, 199, 39.9, 299, 99, 599, 9.9],//设置为0，则自动隐藏，如只展示【9.9元/天】试用：[0, 0, 0, 0, 0, 0, 9.9]
+            "day" => ['1年', '1月', '3天', '3月', '7天', '2年', '1天'] //money和day一一对应
+        },
+        "role": [
+            "label" : "角色名称，如：营销大师",
+            "value" : 1,
+            "content" : "智能体角色属性设定：你的角色是一个营销大师，xxxxxx",
+        ]
     }
 }
 ```
