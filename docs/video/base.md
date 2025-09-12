@@ -63,7 +63,7 @@ description: DeekeScript - base
     <div class="video-container"> 
         <div>第三讲：DeekeScript功能开发</div>
         <div>
-            <iframe src="https://www.bilibili.com/video/BV1S9Hqz4Eet/?share_source=copy_web&vd_source=89a788888b71214e06f66767142bd18c" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115186962796734&bvid=BV1S9Hqz4Eet&cid=32320324772&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
 </div>
