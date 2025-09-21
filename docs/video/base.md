@@ -61,9 +61,39 @@ description: DeekeScript - base
         </div>
     </div>
     <div class="video-container"> 
-        <div>第三讲：DeekeScript功能开发</div>
+        <div>第四讲：DeekeScript功能开发</div>
         <div>
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115186962796734&bvid=BV1S9Hqz4Eet&cid=32320324772&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="video-container"> 
+        <div>第五讲：DeekeScript异常处理</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115198136490223&bvid=BV1RzpnzdE9r&cid=32364954969&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="video-container"> 
+        <div>第六讲：DeekeScript功能模块配置与手动执行</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115198169979312&bvid=BV1ekpnz9EPU&cid=32365085908&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="video-container"> 
+        <div>第七讲：DeekeScript日志模块</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115198471970561&bvid=BV1SupnzjE1E&cid=32365805592&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="video-container"> 
+        <div>第八讲：DeekeScript定时器和多线程以及Engines运行时管理器</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115209175831080&bvid=BV1D6pqzFEzA&cid=32405719103&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="video-container"> 
+        <div>第九讲：DeekeScript模块化</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115213990957090&bvid=BV1Qvp2zsEJi&cid=32423348387&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
 </div>
