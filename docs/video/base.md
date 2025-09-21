@@ -96,4 +96,10 @@ description: DeekeScript - base
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115213990957090&bvid=BV1Qvp2zsEJi&cid=32423348387&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
+    <div class="video-container"> 
+        <div>第十讲：DeekeScript打包与更新以及卡密激活</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115243099362815&bvid=BV1D2JRzMEtQ&cid=32540199541&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
 </div>
