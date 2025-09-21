@@ -97,7 +97,7 @@ Content-Type: application/json
 
 ```
 //成功返回如下
-{code: 0, msg: "成功",success: true, access_token: "xxxxxxxxxxxxxx", data: []}
+{code: 0, msg: "成功",success: true, data: {access_token: "xxxxxxxxxxxxxx"}}
 
 //失败返回，可以通过此接口限制调用次数
 {code: 1, msg: "智能话术已使用完~",success: false, data: []}
