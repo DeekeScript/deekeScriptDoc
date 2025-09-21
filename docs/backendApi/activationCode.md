@@ -81,7 +81,7 @@ Content-Type: application/json
 
 ```json
 //成功
-{code: 0, msg: "成功", success: true, token_time: "29.98天后过期", data: []}
+{code: 0, msg: "成功", success: true, data: { token_time: "29.99天后过期"}}
 
 //失败
  {code: 1, msg: "已过期", success: false, data: []}
@@ -107,6 +107,8 @@ Content-Type: application/json
 > type: config
 >
 > 请求地址：/dkee/config
+
+本接口不需要验证当前设备是否激活
 
 ```
 {
