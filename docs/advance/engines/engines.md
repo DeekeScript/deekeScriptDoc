@@ -73,3 +73,10 @@ Engines.closeAll();//关闭所有脚本运行时，当前脚本所在运行时�
 关闭hooks启动的脚本
 
 > 如果你在hooks里面启动了持续保活的脚本，可以使用这个方法关闭hooks脚本
+
+
+## childScriptCount()
+
+返回所有子脚本数量
+
+> 通过Engines手动启动的脚本总数
