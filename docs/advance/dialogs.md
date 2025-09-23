@@ -95,3 +95,12 @@ System.sleep(300);//建议休眠300毫秒，防止上面的设置未生效
 Gesture.click(100, 200);
 FloatDialogs.setFloatWindowClickable(true);
 ```
+
+## closeAll()
+> 返回 void
+
+关闭所有弹窗
+
+```javascript
+FloatDialogs.closeAll();
+```

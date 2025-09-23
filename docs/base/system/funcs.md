@@ -249,3 +249,9 @@ System.getDataFrom(key, 'role', 'content');//获取当前设置的角色的内�
 ```javascript
 System.setTimeWindowShow(false);//关闭运行时间悬浮窗
 ```
+
+## isRunning()
+
+**返回：** `{void}`
+
+判断是否有任务在运行
