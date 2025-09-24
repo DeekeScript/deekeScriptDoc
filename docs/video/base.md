@@ -102,4 +102,16 @@ description: DeekeScript - base
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115243099362815&bvid=BV1D2JRzMEtQ&cid=32540199541&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
+    <div class="video-container"> 
+        <div>第十一讲：DeekeScript话术库调用</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115248971388926&bvid=BV1FrnAzyEfi&cid=32563201364&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="video-container"> 
+        <div>第十二讲：DeekeScript群控</div>
+        <div>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115259926974646&bvid=BV1FFnWzPEJa&cid=32607307225&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
 </div>
