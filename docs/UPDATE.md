@@ -12,3 +12,8 @@ description: DeekeScript - DeekeScript更新文档
 * 节点查看器优化
 * 非调试模式或者非debug模式则需要激活
 * 已知问题优化
+
+## 1.2.27版本 [2025-09-24]
+
+* Engines增加子脚本数量查询
+

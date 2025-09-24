@@ -178,7 +178,7 @@ export default defineConfig({
         items: [
           { text: '常见问题', link: '/question/question' },
           { text: '无障碍问题', link: '/question/accessibility' },
-          { text: 'Bug提交入口', link: '/question/bug' }
+          { text: '技术交流与反馈', link: '/question/bug' }
         ]
       },
       {
