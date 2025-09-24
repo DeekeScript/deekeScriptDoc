@@ -13,6 +13,6 @@ description: DeekeScript - 技术交流与反馈
 # 技术交流群
 <div style="display: flex;margin-top: 24px;gap:2%;">
     <img src="https://www.deeke.cn/assets/images/qq/1.jpg" width="33%" />
-    <img src="https://www.deeke.cn/assets/images/qq/1.jpg" width="33%" />
-    <img src="https://www.deeke.cn/assets/images/qq/1.jpg" width="33%" />
+    <img src="https://www.deeke.cn/assets/images/qq/2.jpg" width="33%" />
+    <img src="https://www.deeke.cn/assets/images/qq/3.jpg" width="33%" />
 </div>
