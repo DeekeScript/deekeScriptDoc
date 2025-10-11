@@ -76,6 +76,8 @@ console.log(System.currentPackage());//输出：top.deeke.script
 
 注意，信息的显示是"异步"执行的，并且，不会等待信息消失程序才继续执行。
 
+> 后台运行时，请使用FloatDialogs.toast()
+
 
 ## toastLong(message)
 
@@ -86,6 +88,8 @@ console.log(System.currentPackage());//输出：top.deeke.script
 比toast(message)显示的更久一些，具体时长以开发机为准
 
 注意，信息的显示是"异步"执行的，并且，不会等待信息消失程序才继续执行。
+
+> 后台运行时，请使用FloatDialogs.toastLong()
 
 ## waitForActivity(activity, period, timeout)
 
@@ -250,8 +254,17 @@ System.getDataFrom(key, 'role', 'content');//获取当前设置的角色的内�
 System.setTimeWindowShow(false);//关闭运行时间悬浮窗
 ```
 
-## isRunning()
+## setAccessibilityMode(mode)
 
+**参数：** `mode {string}`
 **返回：** `{void}`
 
-判断是否有任务在运行
+切换无障碍模式，快速模式下，将自动过滤非重要控件。注意通过id或者text方式获取控件不受此模式影响；
+如果你感觉节点查找很慢，可以尝试切换为快速模式。此代码执行后立马生效，不需要重启无障碍。
+因此你可以在大多数情况下使用快速模式，如果发现界面上某个控件拿不到，请切换为非快速模式。控件处理完后再切换到快速模式，这样就可以提升整体的运行速度。
+
+```javascript
+
+setAccessibilityMode('fast');//快速模式
+setAccessibilityMode('!fast');//正常模式  注意只要mode不为fast，则切换为正常模式
+```

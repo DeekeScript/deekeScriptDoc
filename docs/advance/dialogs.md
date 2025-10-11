@@ -96,6 +96,16 @@ Gesture.click(100, 200);
 FloatDialogs.setFloatWindowClickable(true);
 ```
 
+## toast(content)
+> 返回 void
+
+显示一个toast，与System.toast()效果相同，此方法在APP后台运行时弹出提示
+
+## toastLong(content)
+> 返回 void
+
+显示一个toast，显示时间相对于toast更长，与System.toastLong()效果相同，此方法在APP后台运行时弹出提示
+
 ## closeAll()
 > 返回 void
 
