@@ -37,7 +37,7 @@ description: DeekeScript - 快速开始
 ### 2. 移动端准备
 
 #### 📱 安装DeekeScript软件包
-* 在手机上 **[下载安装DeekeScript软件包](https://doc.deeke.cn/assets/apk/v1.2.29-release.apk)**，或者扫码下载：
+* 在手机上 **[下载安装DeekeScript软件包](https://doc.deeke.cn/assets/apk/v1.2.31-release.apk)**，或者扫码下载：
 
    <img src="/assets/qrcode.png" width="30%" />
 
