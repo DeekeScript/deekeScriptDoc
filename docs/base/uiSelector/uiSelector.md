@@ -133,30 +133,6 @@ if(sendButton){
 
 为当前选择器附加控件"scrollable 等于 canScroll"的筛选条件。
 
-## longClickable(canLongClick)
-
-**参数：** `canLongClick {boolean}` 是否可以长按
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
-
-为当前选择器附加控件"longClickable 等于 canLongClick"的筛选条件。
-
-## packageName(name)
-
-**参数：** `name {string}`
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
-
-为当前选择器附加控件"packageName 等于字符串 name"的筛选条件。
-
-## resourceId(name)
-
-**参数：** `name {string}`
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
-
-为当前选择器附加控件"resourceId 等于字符串 name"的筛选条件。
-
 ## textContains(content)
 
 **参数：** `content {string}`
@@ -165,19 +141,9 @@ if(sendButton){
 
 为当前选择器附加控件"text 包含字符串 content"的筛选条件。
 
-## textStartsWith(content)
-
-**参数：** `content {string}`
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
-
-为当前选择器附加控件"text 以字符串 content 开头"的筛选条件。
-
-## textEndsWith(content)
-
-**参数：** `content {string}`
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+```javascript
+let tag = UiSelector.textContains("点赞").textContains("按钮").findOne();//同时包含“点赞”和“按钮”的控件
+```
 
 为当前选择器附加控件"text 以字符串 content 结尾"的筛选条件。
 
@@ -189,6 +155,12 @@ if(sendButton){
 
 为当前选择器附加控件"text 正则匹配 content"的筛选条件。
 
+```javascript
+let tag = UiSelector.textMatches(/点赞/).findOne();//含有"点赞"的控件
+let tag2 = UiSelector.textMatches(/d+/).findOne();//有数字的控件
+let tag3 = UiSelector.textMatches('点赞').findOne();//和textContans效果一致
+```
+
 ## descContains(content)
 
 **参数：** `content {string}`
@@ -197,21 +169,9 @@ if(sendButton){
 
 为当前选择器附加控件"contentDescribe 包含字符串 content"的筛选条件。
 
-## descStartsWith(content)
-
-**参数：** `content {string}`
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
-
-为当前选择器附加控件"contentDescribe 以字符串 content 开头"的筛选条件。
-
-## descEndsWith(content)
-
-**参数：** `content {string}`
-
-**返回：** `{UiSelector}` 返回选择器自身以便链式调用
-
-为当前选择器附加控件"contentDescribe 以字符串 content 结尾"的筛选条件。
+```javascript
+let tag = UiSelector.descContains("点赞").descContains("按钮").findOne();//同时包含“点赞”和“按钮”的控件
+```
 
 ## descMatches(content)
 
@@ -220,6 +180,13 @@ if(sendButton){
 **返回：** `{UiSelector}` 返回选择器自身以便链式调用
 
 为当前选择器附加控件"contentDescribe 正则匹配 content"的筛选条件。
+
+
+```javascript
+let tag = UiSelector.descMatches(/点赞/).findOne();//含有"点赞"的控件
+let tag2 = UiSelector.descMatches(/d+/).findOne();//有数字的控件
+let tag3 = UiSelector.descMatches('点赞').findOne();//和descContans效果一致
+```
 
 ## filter(callback)
 
