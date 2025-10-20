@@ -157,7 +157,7 @@ let tag = UiSelector.textContains("点赞").textContains("按钮").findOne();//�
 
 ```javascript
 let tag = UiSelector.textMatches(/点赞/).findOne();//含有"点赞"的控件
-let tag2 = UiSelector.textMatches(/d+/).findOne();//有数字的控件
+let tag2 = UiSelector.textMatches(/\d+/).findOne();//有数字的控件
 let tag3 = UiSelector.textMatches('点赞').findOne();//和textContans效果一致
 ```
 
@@ -184,7 +184,7 @@ let tag = UiSelector.descContains("点赞").descContains("按钮").findOne();//�
 
 ```javascript
 let tag = UiSelector.descMatches(/点赞/).findOne();//含有"点赞"的控件
-let tag2 = UiSelector.descMatches(/d+/).findOne();//有数字的控件
+let tag2 = UiSelector.descMatches(/\d+/).findOne();//有数字的控件
 let tag3 = UiSelector.descMatches('点赞').findOne();//和descContans效果一致
 ```
 
