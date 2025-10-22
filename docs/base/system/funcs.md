@@ -265,6 +265,6 @@ System.setTimeWindowShow(false);//关闭运行时间悬浮窗
 
 ```javascript
 
-setAccessibilityMode('fast');//快速模式
-setAccessibilityMode('!fast');//正常模式  注意只要mode不为fast，则切换为正常模式
+System.setAccessibilityMode('fast');//快速模式
+System.setAccessibilityMode('!fast');//正常模式  注意只要mode不为fast，则切换为正常模式
 ```
