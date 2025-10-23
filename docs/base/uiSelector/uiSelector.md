@@ -142,7 +142,7 @@ if(sendButton){
 为当前选择器附加控件"text 包含字符串 content"的筛选条件。
 
 ```javascript
-let tag = UiSelector.textContains("点赞").textContains("按钮").findOne();//同时包含“点赞”和“按钮”的控件
+let tag = UiSelector().textContains("点赞").textContains("按钮").findOne();//同时包含“点赞”和“按钮”的控件
 ```
 
 为当前选择器附加控件"text 以字符串 content 结尾"的筛选条件。
@@ -156,9 +156,9 @@ let tag = UiSelector.textContains("点赞").textContains("按钮").findOne();//�
 为当前选择器附加控件"text 正则匹配 content"的筛选条件。
 
 ```javascript
-let tag = UiSelector.textMatches(/点赞/).findOne();//含有"点赞"的控件
-let tag2 = UiSelector.textMatches(/\d+/).findOne();//有数字的控件
-let tag3 = UiSelector.textMatches('点赞').findOne();//和textContans效果一致
+let tag = UiSelector().textMatches(/点赞/).findOne();//含有"点赞"的控件
+let tag2 = UiSelector().textMatches(/\d+/).findOne();//有数字的控件
+let tag3 = UiSelector().textMatches('点赞').findOne();//和textContans效果一致
 ```
 
 ## descContains(content)
@@ -170,7 +170,7 @@ let tag3 = UiSelector.textMatches('点赞').findOne();//和textContans效果一�
 为当前选择器附加控件"contentDescribe 包含字符串 content"的筛选条件。
 
 ```javascript
-let tag = UiSelector.descContains("点赞").descContains("按钮").findOne();//同时包含“点赞”和“按钮”的控件
+let tag = UiSelector().descContains("点赞").descContains("按钮").findOne();//同时包含“点赞”和“按钮”的控件
 ```
 
 ## descMatches(content)
@@ -183,9 +183,9 @@ let tag = UiSelector.descContains("点赞").descContains("按钮").findOne();//�
 
 
 ```javascript
-let tag = UiSelector.descMatches(/点赞/).findOne();//含有"点赞"的控件
-let tag2 = UiSelector.descMatches(/\d+/).findOne();//有数字的控件
-let tag3 = UiSelector.descMatches('点赞').findOne();//和descContans效果一致
+let tag = UiSelector().descMatches(/点赞/).findOne();//含有"点赞"的控件
+let tag2 = UiSelector().descMatches(/\d+/).findOne();//有数字的控件
+let tag3 = UiSelector().descMatches('点赞').findOne();//和descContans效果一致
 ```
 
 ## filter(callback)

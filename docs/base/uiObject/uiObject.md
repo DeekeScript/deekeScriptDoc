@@ -15,7 +15,7 @@ Android中的界面是由一个个控件构成的，例如图片部分是一个�
 
 ```javascript
 //这里的sendButton就是一个控件对象，可以对控件对象进行各种操作
-let sendButton = new UiSelector().text("发送").findOne();
+let sendButton = UiSelector().text("发送").findOne();
 if(sendButton){
     sendButton.click();
 }
@@ -28,7 +28,7 @@ if(sendButton){
 点击控件
 
 ```javascript
-let sendButton = new UiSelector().text("发送").findOne();
+let sendButton = UiSelector().text("发送").findOne();
 if(sendButton){
     sendButton.click();
 }
@@ -41,7 +41,7 @@ if(sendButton){
 长按控件
 
 ```javascript
-let sendButton = new UiSelector().text("发送").findOne();
+let sendButton = UiSelector().text("发送").findOne();
 if(sendButton){
     sendButton.longClick();
 }
@@ -76,7 +76,7 @@ if(sendButton){
 复制选中的文本内容
 
 ```javascript
-let et = new UiSelector().className("EditText").findOne();
+let et = UiSelector().className("EditText").findOne();
 //选中前两个字
 et.setSelection(0, 2);
 //对选中内容进行复制
@@ -103,7 +103,7 @@ if(et.copy()){
 
 ```javascript
 System.setClip("DeekeScript");//将字符串"DeekeScript"粘贴到文本框
-let obj = new UiSelector().className("EditText").findOne();
+let obj = UiSelector().className("EditText").findOne();
 obj.paste();
 ```
 
@@ -114,7 +114,7 @@ obj.paste();
 获取焦点
 
 ```javascript
-let obj = new UiSelector().className("EditText").findOne();
+let obj = UiSelector().className("EditText").findOne();
 obj.focus();
 ```
 
@@ -128,7 +128,7 @@ obj.focus();
 设置输入框控件的文本内容
 
 ```javascript
-let obj = new UiSelector().className("EditText").findOne();
+let obj = UiSelector().className("EditText").findOne();
 obj.setText("DeekeScript");
 ```
 
@@ -141,8 +141,8 @@ obj.setText("DeekeScript");
 根据选择器查找控件
 
 ```javascript
-let obj = new UiSelector().className("LinearLayout").findOne();
-let children = obj.find(new UiSelector().className("TextView"));
+let obj = UiSelector().className("LinearLayout").findOne();
+let children = obj.find(UiSelector().className("TextView"));
 for(let i = 0; i < children.length; i++){
     console.log(children[i].text());
 }
@@ -157,8 +157,8 @@ for(let i = 0; i < children.length; i++){
 根据选择器查找控件
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
-let child = obj.findOne(new UiSelector().className("TextView"));
+let obj = UiSelector().className("TextView").findOne();
+let child = obj.findOne(UiSelector().className("TextView"));
 if(child){
     console.log(child.text());
 }
@@ -171,7 +171,7 @@ if(child){
 获取控件在屏幕上的边界信息
 
 ```javascript
-let obj = new UiSelector().text("发送").findOne();
+let obj = UiSelector().text("发送").findOne();
 if(obj){
     let bounds = obj.bounds();
     console.log("左边界：" + bounds.left);
@@ -188,7 +188,7 @@ if(obj){
 获取控件的id
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     console.log(obj.id());
 }
@@ -201,7 +201,7 @@ if(obj){
 获取控件的文本内容
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     console.log(obj.text());
 }
@@ -215,7 +215,7 @@ if(obj){
 
 
 ```javascript
-let obj = new UiSelector().className("ImageView").findOne();
+let obj = UiSelector().className("ImageView").findOne();
 if(obj){
     console.log(obj.desc());
 }
@@ -228,7 +228,7 @@ if(obj){
 获取控件的类名
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     console.log("控件类名：" + obj.className());
 }
@@ -242,7 +242,7 @@ if(obj){
 获取控件所属的包名
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     console.log("包名：" + obj.packageName());
 }
@@ -256,7 +256,7 @@ if(obj){
 获取控件的子控件数量
 
 ```javascript
-let obj = new UiSelector().className("LinearLayout").findOne();
+let obj = UiSelector().className("LinearLayout").findOne();
 if(obj){
     console.log("子控件数量：" + obj.childCount());
 }
@@ -269,7 +269,7 @@ if(obj){
 获取控件的子控件
 
 ```javascript
-let obj = new UiSelector().className("LinearLayout").findOne();
+let obj = UiSelector().className("LinearLayout").findOne();
 if(obj && obj.childCount() > 0){
     //获取当前控件下面的所有TextView控件
     let childs = obj.children().find(UiSelector().className("TextView"));
@@ -289,7 +289,7 @@ if(obj && obj.childCount() > 0){
 
 ```javascript
 //获取第index个子控件
-let obj = new UiSelector().className("LinearLayout").findOne();
+let obj = UiSelector().className("LinearLayout").findOne();
 let indexChild = obj.children().getChildren(index);
 ```
 
@@ -300,7 +300,7 @@ let indexChild = obj.children().getChildren(index);
 获取控件的父控件
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     let parent = obj.parent();
     console.log("父控件类名：" + parent.className());
@@ -315,7 +315,7 @@ if(obj){
 获取控件的绘制顺序
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     console.log("绘制顺序：" + obj.getDrawingOrder());
 }
@@ -335,7 +335,7 @@ if(obj){
 判断控件是否已选中
 
 ```javascript
-let obj = new UiSelector().className("RadioButton").findOne();
+let obj = UiSelector().className("RadioButton").findOne();
 if(obj){
     console.log("是否已选中：" + obj.isSelected());
 }
@@ -349,7 +349,7 @@ if(obj){
 判断控件是否可点击
 
 ```javascript
-let obj = new UiSelector().className("Button").findOne();
+let obj = UiSelector().className("Button").findOne();
 if(obj){
     console.log("是否可点击：" + obj.isClickable());
 }
@@ -362,7 +362,7 @@ if(obj){
 判断控件是否可长按
 
 ```javascript
-let obj = new UiSelector().className("Button").findOne();
+let obj = UiSelector().className("Button").findOne();
 if(obj){
     console.log("是否可长按：" + obj.isLongClickable());
 }
@@ -375,7 +375,7 @@ if(obj){
 判断控件是否可编辑
 
 ```javascript
-let obj = new UiSelector().className("EditText").findOne();
+let obj = UiSelector().className("EditText").findOne();
 if(obj){
     console.log("是否可编辑：" + obj.isVisibleToUser());
 }
@@ -388,7 +388,7 @@ if(obj){
 判断控件是否可获取焦点
 
 ```javascript
-let obj = new UiSelector().className("EditText").findOne();
+let obj = UiSelector().className("EditText").findOne();
 if(obj){
     console.log("是否可获取焦点：" + obj.isFocusable());
 }
@@ -401,7 +401,7 @@ if(obj){
 判断控件是否已获取焦点
 
 ```javascript
-let obj = new UiSelector().className("EditText").findOne();
+let obj = UiSelector().className("EditText").findOne();
 if(obj){
     console.log("是否已获取焦点：" + obj.isFocused());
 }
@@ -414,7 +414,7 @@ if(obj){
 判断控件是否可选中
 
 ```javascript
-let obj = new UiSelector().className("CheckBox").findOne();
+let obj = UiSelector().className("CheckBox").findOne();
 if(obj){
     console.log("是否可选中：" + obj.isCheckable());
 }
@@ -428,7 +428,7 @@ if(obj){
 判断控件是否已启用
 
 ```javascript
-let obj = new UiSelector().className("Button").findOne();
+let obj = UiSelector().className("Button").findOne();
 if(obj){
     console.log("是否已启用：" + obj.isEnabled());
 }
@@ -450,7 +450,7 @@ if(obj){
 判断控件是否可滚动
 
 ```javascript
-let obj = new UiSelector().className("ScrollView").findOne();
+let obj = UiSelector().className("ScrollView").findOne();
 if(obj){
     console.log("是否可滚动：" + obj.isScrollable());
 }
@@ -464,7 +464,7 @@ if(obj){
 判断控件是否对用户可见
 
 ```javascript
-let obj = new UiSelector().className("TextView").findOne();
+let obj = UiSelector().className("TextView").findOne();
 if(obj){
     console.log("是否对用户可见：" + obj.isVisibleToUser());
 }
@@ -477,7 +477,7 @@ if(obj){
 判断控件是否已选中
 
 ```javascript
-let obj = new UiSelector().className("CheckBox").findOne();
+let obj = UiSelector().className("CheckBox").findOne();
 if(obj){
     console.log("是否已选中：" + obj.isChecked());
 }
