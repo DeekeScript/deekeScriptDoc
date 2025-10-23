@@ -136,9 +136,9 @@ obj.setText("DeekeScript");
 
 **参数：** `uiSelector {UiSelector}` 要查找的内容
 
-**返回：** `{UiObject[]|null}` 返回查找到的控件对象
+**返回：** `{UiObject[]|null}` 返回查找到的多个控件
 
-根据选择器查找控件
+返回当前控件的子控件中所有符合uiSelector条件的控件
 
 ```javascript
 let obj = UiSelector().className("LinearLayout").findOne();
@@ -152,9 +152,10 @@ for(let i = 0; i < children.length; i++){
 
 **参数：** `uiSelector {UiSelector}` 要查找的内容
 
-**返回：** `{UiObject|null}` 返回查找到的控件对象
+**返回：** `{UiObject|null}` 返回查找到的控件
 
-根据选择器查找控件
+
+返回当前控件的子控件中一个符合uiSelector条件的控件
 
 ```javascript
 let obj = UiSelector().className("TextView").findOne();
