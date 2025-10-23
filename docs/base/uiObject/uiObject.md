@@ -282,8 +282,9 @@ if(obj && obj.childCount() > 0){
 }
 ```
 
-## getChildren()
+## getChildren(index)
 
+**参数：** `index {number}` 子控件索引
 **返回：** `{UiObject}`
 
 获取控件的子控件
