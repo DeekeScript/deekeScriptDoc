@@ -106,13 +106,14 @@ description: DeekeScript - 开发环境说明
 
 | 功能 | 支持情况 | 用途 |
 |------|----------|------|
-| **[Http](../base/http/http.md)** | ✅ 完全支持 | RESTful API调用 |
+| **[Http](../base/http/http.md)** | ✅ 完全支持 | API调用 |
 | **[Websocket](../base/webSocket/webSocket.md)** | ✅ 完全支持 | 实时双向通信 |
+| **[Socket.io](../base/socket/client.md)** | ✅ 完全支持 | 实时双向通信 |
 
 ### 开发工具
 
 - **VSCode插件** - 完整的开发环境支持
-- **实时调试** - 断点调试、变量查看
+- **节点查看器** - 控件查看与调试
 - **热更新** - 代码修改即时生效
 - **完整文档** - 详细的API文档和示例
 
