@@ -71,6 +71,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'DeekeScript.json', link: '/config/config' },
+          { text: '表单示例', link: '/base/ui/form' },
           { text: '动态配置', link: '/config/dynamics' },
           { text: 'Vscode开发篇', link: '/config/vscode' }
         ]
@@ -83,16 +84,15 @@ export default defineConfig({
           { text: '控件操作-UiObject', link: '/base/uiObject/uiObject' },
           { text: '手势操作-Gesture', link: '/base/gesture/gesture' },
           { text: 'App', link: '/base/app/app' },
-          { text: '系统函数', link: '/base/system/funcs' },
+          { text: '系统函数-System', link: '/base/system/funcs' },
           { text: '设备-Device', link: '/base/device/device' },
-          { text: '表单', link: '/base/ui/form' },
           { text: '定时器', link: '/base/timer/timer' },
           { text: 'Http', link: '/base/http/http' },
           { text: 'WebSocket', link: '/base/webSocket/webSocket' },
           { text: 'Socket.IO-客户端', link: '/base/socket/client' },
           { text: '控制台-console', link: '/base/console/console' },
           { text: '日志-Log', link: '/base/log/log' },
-          { text: '本地存储', link: '/base/storage/storage' },
+          { text: '本地存储-Storage', link: '/base/storage/storage' },
           { text: '文件系统-Files', link: '/base/files/files' },
         ]
       },

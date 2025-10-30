@@ -134,6 +134,14 @@ Content-Type: application/json
 }
 ```
 
+> APP会自动缓存（5分钟）这个接口返回的值，如果你想拿到该接口的内容，请使用下面的代码获取：
+
+```javascript
+let config = Storage.create('deekeScript:important').get("DeekeConfig");
+let res = Json.parse(config);
+console.log(res);
+```
+
 `注意：这里的的role、ad等属性与deekeScript.json配置的dataFrom有联系，如果开发者需要使用类似角色的动态select选择框表单，可以使用此接口实现。`
 
 
