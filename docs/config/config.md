@@ -41,8 +41,8 @@ description: DeekeScript - 配置
 | ------------ | ------- | -------|-------- | -------|
 |     title    | String  |   是    | XX截流  | App主界面的功能名称 |
 |  titleHidden | String  |   否    | false  | App主界面功能组标题是否隐藏，默认不隐藏 |
-|    hidden    | Boolean |   否    | false  | 是否隐藏当前功能组，默认不隐藏 |
-|   methods    |  Array   |   是    | [methods参数](#methods参数)  | 功能对应的设置页面，如果为空，则直接执行jsFile脚本  |
+|    hidden    | Boolean |   否    | false  | 是否隐藏当前功能组，默认不隐藏 
+|   methods    |  Array   |   是    | [methods参数](#methods参数)  | 当前功能组下的功能列表  |
 
 ### ⚡ methods参数
 
