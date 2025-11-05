@@ -68,6 +68,8 @@ description: DeekeScript - 配置
 
 ### 🔍 params参数
 
+> params参数主要用于配置表单。表单设置示例，请参阅[表单示例](../base/ui/form.md)示例
+
 |     参数名    |  类型    | 必填 |      示例    |    说明   |
 | ------------ | ------- | ------- | ----------- | ---------|
 |     type     | String  |    是   |   text      | Form参数类型，有text、textArea、select、checkboxGroup、checkbox、radio、switch、number、numberRange、digitRange、digit、notice|
@@ -79,10 +81,10 @@ description: DeekeScript - 配置
 |     step     |   int   |    否   |  1   | 滑动最小单位，当type为numberRange或者digitRange时必须  |
 |    options   |  Json   |    否   |  [options参数](#options参数)  | 属性值，当type为select、checkbox、radio时必须 |
 |    hidden    | boolean |    否   |   true    | 属性值，当为true的时候，则界面上不再显示此字段；默认为false   |
-|  columnCount |  array  |    否   |   true    | 每行展示Checkbox数量，当type为checkboxGroup时必须   |
 |   children   |  array  |    否   |   true    | CheckboxsGroup里面的Checkbox所有值，当type为checkboxGroup时必须|
 |     lines    |   int   |    否   |     5     | type为textArea时，控制输入框展示的行数|
 |   notice     | String  |    否   |   * 注意：用户账号不能为空| 特别注意，当type为text或者textArea的时候，用于表单下方的提示语 |
+|   dataFrom   | String  |    否   |   如果你需要动态渲染表单的值（仅支持type为radio的情况），使用方式请查看[表单示例](../base/ui/form.md#表单动态值) |
 
 > 注：type为notice，用于每个设置页面的说明。
 
@@ -219,7 +221,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "性别",
                 "name": "toker_run_sex",
-                "columnCount": 6,
                 "children": [
                   "女",
                   "男",
@@ -253,7 +254,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "运行时间",
                 "name": "toker_run_hour",
-                "columnCount": 6,
                 "children": [
                   "0时",
                   "1时",
@@ -390,7 +390,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "性别",
                 "name": "toker_city_run_sex",
-                "columnCount": 6,
                 "children": [
                   "女",
                   "男",
@@ -424,7 +423,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "运行时间",
                 "name": "toker_city_run_hour",
-                "columnCount": 6,
                 "children": [
                   "0时",
                   "1时",
@@ -1077,7 +1075,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "功能",
                 "name": "task_dy_qingsong_tuoke_op",
-                "columnCount": 6,
                 "children": [
                   "关注",
                   "私信",
@@ -1178,7 +1175,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "功能",
                 "name": "task_dy_zan_back_op",
-                "columnCount": 6,
                 "children": [
                   "关注",
                   "私信",
@@ -1262,7 +1258,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "功能",
                 "name": "task_dy_friend_change_op",
-                "columnCount": 6,
                 "children": [
                   "关注",
                   "私信",
@@ -1322,7 +1317,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "功能",
                 "name": "task_dy_toker_uid_op",
-                "columnCount": 6,
                 "children": [
                   "关注",
                   "私信"
@@ -1740,7 +1734,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "性别",
                 "name": "toker_xhs_run_sex",
-                "columnCount": 6,
                 "hidden": true,
                 "children": [
                   "女",
@@ -1777,7 +1770,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "运行时间",
                 "name": "toker_xhs_run_hour",
-                "columnCount": 6,
                 "children": [
                   "0时",
                   "1时",
@@ -1886,7 +1878,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "功能",
                 "name": "task_xhs_fans_op",
-                "columnCount": 6,
                 "children": [
                   "关注",
                   "私信",
@@ -1957,7 +1948,6 @@ description: DeekeScript - 配置
                 "type": "checkboxGroup",
                 "label": "功能",
                 "name": "task_xhs_toker_uid_op",
-                "columnCount": 6,
                 "children": [
                   "关注",
                   "私信"
@@ -2120,9 +2110,7 @@ description: DeekeScript - 配置
           },
           {
             "type": "notice",
-            "title": "* 开启后，将使用{NAME}官方AI角色（可自定义）进行评论和私信，让拓客变得更简单~",
-            "textColor": "#AA0000",
-            "textSize": 16
+            "title": "* 开启后，将使用{NAME}官方AI角色（可自定义）进行评论和私信，让拓客变得更简单~"
           }
         ]
       },

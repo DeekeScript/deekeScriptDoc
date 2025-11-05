@@ -1,71 +1,250 @@
 ---
-title: 表单
-description: DeekeScript - 表单
+title: 表单示例
+description: DeekeScript - 表单示例
 ---
 
-# 表单
+# 表单示例
 
 ## 基本介绍
 
 当前在DeekeScript框架开发中，form表单是通过deekeScript.json文件来配置的，采用Android内置的Preference Framework。表单主要有以下几种类型，分别是：text、textArea、select、checkboxGroup、checkbox、radio、switch、number、numberRange、digitRange、digit、notice
 
-## 表单提示
+> 各个参数类型，请严格按照示例中填写，否则可以导致APP闪退。
 
-> 表单提示，用于提示用户表单的提示信息
+> deekeScript.json中表单的值采用下面的方式获取：
 
+```javascript
+//不同类型需要不同的方式获取，具体请参与“本地存储-Storage”章节
+Storage.get('task_name');
+Storage.getInteger("number_1");//输出：33
+Storage.getBoolean("switch_1");//输出：true
+Storage.getArray("select_1");//输出：[1,2,3]
+```
+
+## 📝 text
+
+> **notice**: 输入框说明信息，非必须
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "text",
+    "label": "输入任务名称",
+    "name": "task_name",
+    "value": "23432",
+    "notice": "* 任务名称不能为空"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/text.png" width="40%">
+
+
+## 📝 textarea
+
+> **notice**: 输入框说明信息，非必须
+> **hidden**: 非必须，表示是否隐藏，默认false
+> **lines**: 非必须，表示多少行（默认1行）
+
+```json
+{
+    "type": "textArea",
+    "label": "输入任务名称",
+    "name": "text_2",
+    "lines": 5,
+    "value": "23432",
+    "notice": "* 任务名称不能为空"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/textarea.png" width="40%">
+
+
+## 📝 switch
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "switch",
+    "label": "自动运行",
+    "name": "switch_1",
+    "value": true
+}
+```
+> 显示效果
+
+<img src="../../photo/form/switch.png" width="40%">
+
+
+## 📝 select
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "select",
+    "label": "菜单",
+    "name": "select_1",
+    "options": [{
+        "label": "小猫",
+        "value": 1,
+        "selected": true
+    },
+    {
+        "label": "小狗",
+        "value": 2
+    }]
+}
+```
+> 显示效果
+
+<img src="../../photo/form/select.png" width="40%">
+
+
+## 📝 radio
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "radio",
+    "label": "性别",
+    "name": "radio_1",
+    "value": 1,
+    "options": [{
+        "label": "男",
+        "value": 1,
+    },
+    {
+        "label": "女",
+        "value": 2
+    }]
+}
+```
+> 显示效果
+
+<img src="../../photo/form/radio.png" width="40%">
+
+
+## 📝 checkbox
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "checkbox",
+    "label": "性别",
+    "name": "checkbox_1",
+    "options": [{
+        "label": "男",
+        "value": 1,
+        "selected": true
+    },
+    {
+        "label": "女",
+        "value": 2
+    }]
+}
+```
+> 显示效果
+
+<img src="../../photo/form/checkbox.png" width="40%">
+
+
+
+## 📝 checkboxGroup
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "checkboxGroup",
+    "label": "运行时间",
+    "name": "checkboxGroup",
+    "children": [
+        "00时",
+        "01时",
+        "02时",
+        "03时",
+        "04时",
+        "05时",
+        "06时",
+        "07时",
+        "08时",
+        "09时",
+        "10时",
+        "11时",
+        "12时",
+    ],
+    "values": [
+        0,
+        1,
+        3,
+        5
+    ]
+}
+```
+> 显示效果
+
+<img src="../../photo/form/checkboxGroup.png" width="40%">
+
+
+## 📝 digitRange或者numberRange
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+> **min**: 最小值，非必须，默认0
+> **max**: 最大值，非必须，默认100
+> **step**: 步长，非必须，默认1
+
+```json
+{
+    "type": "numberRange",
+    "label": "年龄",
+    "name": "numberRange_1",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "value": 33
+}
+```
+> 显示效果
+
+<img src="../../photo/form/numberRange.png" width="40%">
+
+## 📝 digit或者number
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "number",
+    "label": "执行时间",
+    "name": "number_1",
+    "value": 33
+}
+```
+> 显示效果
+
+<img src="../../photo/form/number.png" width="40%">
+
+
+# 表单动态值
+
+> 有时候你希望通过接口来初始化表单的值，而不是直接固定值（目前仅支持radio表单）
+
+## radio默认值
 ```
 {
-    "type": "notice",
-    "title": "帮助你快速取消单向关注（你关注他，他没有关注你）的用户~"
-},
+    "type": "radio",
+    "label": "请选择角色",
+    "name": "role",
+    "options": [],
+    "dataFrom": "role"
+}
 ```
 
-## 表单属性如下
-> "*" 表示属性必填
-> 
-> "○" 表示非必填
-> 
-> "-" 表示表单无此属性
-
-|  属性/类型  |   text  |textArea|  select  |checkboxGroup| checkbox |  radio  |  switch |  number |numberRange|digitRange| digit  |
-| :-------- | :-----: | :----: | :------: | :---------: | :------: | :-----: | :-----: | :-----: | :-------: | :-----: | :-----: |
-|   label   |    *    |    *   |    *    |       *      |     *    |    *    |    *    |    *    |     *     |    *    |    *    |
-|   name    |    *    |    *   |    *    |       *      |     *    |    *    |    *    |    *    |     *     |    *    |    *    |
-|   value   |    ○    |    ○   |    ○    |       ○      |     ○    |    ○    |    ○    |    ○    |     ○     |    ○    |    ○    |
-|   notice  |    ○    |    ○   |    -    |       -      |     -    |    -    |    -    |    -    |     -     |    -    |    -    |
-|   hidden  |    ○    |    ○   |    ○    |       ○      |     ○    |    ○    |    ○    |    ○    |     ○     |    ○    |    ○    |
-|   lines   |    ○    |    ○   |    -    |       -      |     -    |    -    |    -    |    -    |     -     |    -    |    -    |
-|  options  |    -    |    -   |    *    |       -      |     *    |    ○    |    -    |    -    |     -     |    -    |    -    |
-|    max    |    -    |    -   |    -    |       -      |     -    |    -    |    -    |    -    |     *     |    *    |    -    |
-|    min    |    -    |    -   |    -    |       -      |     -    |    -    |    -    |    -    |     *     |    *    |    -    |
-|    step   |    -    |    -   |    -    |       -      |     -    |    -    |    -    |    -    |     ○     |    ○    |    -    |
-|  dataFrom |    -    |    -   |    -    |       -      |     -    |    ○    |    -    |    -    |     -     |    -    |    -    |
-|  children |    -    |    -   |    -    |       *      |     -    |    -    |    -    |    -    |     -     |    -    |    -    |
-|  values   |    -    |    -   |    -    |       *      |     -    |    -    |    -    |    -    |     -     |    -    |    -    |
-|columnCount|    -    |    -   |    -    |       *      |     -    |    -    |    -    |    -    |     -     |    -    |    -    |
-
-
-### 属性说明
-|  属性   |   说明   |  类型  |  可选值  |  默认值  |
-| :----- | :------: | :----: | :------: | :------: |
-|  label  |   表单的标题   |  String  |  -  |  -  |
-|  name   |   表单的name属性   |  String  |  -  |  -  |
-|  value  |   表单的默认值   |  String或者Number  |  -  |  -  |
-|  notice  |   表单的提示信息   |  String  |  -  |  -  |
-|  hidden  |   表单是否隐藏   |  Boolean  |  true、false  |  false  |
-|  lines  |   textArea的行数   |  Number  |  -  |  -  |
-|  options  |   select、checkboxGroup的选项   |  Array  |  -  |  -  |
-|  max  |   numberRange、digitRange的最大值   |  Number  |  -  |  -  |
-|  min  |   numberRange、digitRange的最小值   |  Number  |  -  |  -  |
-|  step  |   numberRange、digitRange的步长   |  Number  |  -  |  -  |
-|  dataFrom  |   radio的动态数据源   |  String  |  -  |  -  |
-|  children  |   checkboxGroup的子元素   |  Array  |  -  |  -  |
-|  values  |   checkboxGroup的默认值   |  Array  |  -  |  -  |
-|  columnCount  |   checkboxGroup的列数   |  Number  |  -  |  -  |
-
+> 需要[config接口](../../backendApi/activationCode.md#配置接口)的data字段中包含role字段，并且role的值必须包含options需要的字段（label和value）
 
 > 属性类型说明请参考[deekeScript.json文件](../../config/config.md)
->
-> dataFrom属性需要与[config接口](../../backendApi/activationCode.md)对应，需要动态渲染的列表，可以使用radio的dataFrom属性。
-> 
-> 需要注意的是，Preference Framework有一个特点，就是当表单的名称和类型确定之后，如果再更改表单类型，可能会出现问题导致崩溃。更改表单的name属性即可解决，或者卸载app重装
