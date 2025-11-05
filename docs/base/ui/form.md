@@ -229,6 +229,20 @@ Storage.getArray("select_1");//输出：[1,2,3]
 
 <img src="../../photo/form/number.png" width="40%">
 
+## 📝 notice
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "notice",
+    "title": "* 注意，本功能必须开启图色查找权限"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/notice.png" width="40%">
+
 
 # 表单动态值
 
