@@ -98,10 +98,16 @@ console.log(System.currentPackage());//输出：top.deeke.script
 - `period {number}` 等待的毫秒数
 - `timeout {number}` 等待的总毫秒数
 
-**返回：** `{void}`
+**返回：** `{boolean}` 如果Activity出现返回true，超时返回false
 
 等待Activity出现，period为检查Activity的间隔。如果timeout毫秒后未出现，则停止等待。
 
+```javascript
+let found = System.waitForActivity("com.example.MainActivity", 100, 5000);
+if (found) {
+    console.log("Activity已出现");
+}
+```
 
 ## waitForPackage(package, period, timeout)
 
@@ -110,9 +116,16 @@ console.log(System.currentPackage());//输出：top.deeke.script
 - `period {number}` 等待的毫秒数
 - `timeout {number}` 等待的总毫秒数
 
-**返回：** `{void}`
+**返回：** `{boolean}` 如果Package出现返回true，超时返回false
 
 等待Package出现，period为检查Package的间隔。如果timeout毫秒后未出现，则停止等待。
+
+```javascript
+let found = System.waitForPackage("com.example.app", 100, 5000);
+if (found) {
+    console.log("Package已出现");
+}
+```
 
 
 ## exit()
@@ -225,14 +238,14 @@ let baiduWenxin = {
 
 该函数会将当前界面的所有控件记录到日志文件（APP上传日志后，即可拿到界面的控件的信息，一般用于bug定位使用）。
 
-## getDataFrom()
+## getDataFrom(key, dataForm, content)
 
 **参数：**
-- `key {string}`
-- `dataForm {string}`
-- `content {string}`
+- `key {string}` 配置项的key
+- `dataForm {string}` 数据来源类型
+- `content {string}` 内容类型
 
-**返回：** `{void}`
+**返回：** `{string | null}` 返回配置内容，如果失败返回null
 
 dataForm类型的表单数据获取
 

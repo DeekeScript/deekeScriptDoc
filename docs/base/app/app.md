@@ -29,11 +29,19 @@ console.log(App.currentPackageName());//输出 top.deeke.script
 
 返回当前App的版本名称
 
-## packageInfo()
+## packageInfo(packageName)
+
+**参数：** `packageName {string}` 包名
 
 **返回：** `{PackageInfo}`
 
-返回当前App的包信息，通过包信息你可以获取诸如"版本号，版本名称"等信息，可以遍历查看其属性和值
+返回指定App的包信息，通过包信息你可以获取诸如"版本号，版本名称"等信息，可以遍历查看其属性和值
+
+```javascript
+let packageInfo = App.packageInfo("top.deeke.script");
+console.log(packageInfo.versionCode); // 版本号
+console.log(packageInfo.versionName); // 版本名称
+```
 
 ## gotoIntent(uri)
 
@@ -123,4 +131,36 @@ let versionName = App.getAppVersionName("top.deeke.script");
 //跳转到目标APP
 let intent = new Intent(Intent.ACTION_VIEW, Uri.parse("myapp://second_activity"));
 startActivity(intent);
+```
+
+## notifySuccess(title, content)
+
+**参数：** 
+- `title {string}` 通知标题
+- `content {string}` 通知内容
+
+**返回：** `{void}`
+
+显示成功通知
+
+```javascript
+App.notifySuccess("操作成功", "任务已完成");
+```
+
+## openUrl(url, packageName)
+
+**参数：** 
+- `url {string}` URL地址
+- `packageName {string}` 包名（可选，用于指定打开URL的应用）
+
+**返回：** `{void}`
+
+通过指定应用打开URL，如果应用未安装则使用浏览器打开
+
+```javascript
+// 通过抖音打开URL
+App.openUrl("https://www.douyin.com/user/xxx", "com.ss.android.ugc.aweme");
+
+// 如果抖音未安装，则使用浏览器打开
+App.openUrl("https://www.douyin.com/user/xxx", "com.ss.android.ugc.aweme");
 ```
