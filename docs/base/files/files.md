@@ -7,6 +7,10 @@ description: DeekeScript - Files
 
 Files对象提供了文件操作相关的功能，包括文件读写、移动、复制、删除、目录操作等。
 
+**注意：Files对象不能操作系统的所有目录和文件，默认只允许操作当前应用的私有目录**
+
+> 如果你想操作媒体文件（如：相册），请使用[MediaFiles](../mediaStore/mediaStore.md)对象。
+
 ## read(path)
 
 **参数：** `path {string}` 文件路径
@@ -16,7 +20,8 @@ Files对象提供了文件操作相关的功能，包括文件读写、移动、
 读取文件内容，返回文件的所有文本内容。
 
 ```javascript
-let content = Files.read("/sdcard/test.txt");
+let filesPath = Files.getFilesPath();
+let content = Files.read(filesPath + "/test.txt");
 if (content !== null) {
     console.log(content);
 }

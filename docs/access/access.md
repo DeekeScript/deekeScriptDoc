@@ -61,3 +61,42 @@ if (!hasAccess) {
     System.exit();
 }
 ```
+
+## 媒体权限
+
+> 重要程度：可选
+
+> 如果需要访问相册、视频、音频、下载文件、文档等媒体文件，需要申请媒体权限。媒体权限会根据Android版本自动请求相应的权限：
+> - Android 13+: 请求 READ_MEDIA_IMAGES 和 READ_MEDIA_VIDEO
+> - Android 10-12: 请求 READ_EXTERNAL_STORAGE
+> - Android 9-: 请求 READ_EXTERNAL_STORAGE 和 WRITE_EXTERNAL_STORAGE
+
+### 检查媒体权限
+
+```javascript
+// 检查是否有媒体读取权限
+let hasPermission = Access.hasMediaReadPermission();
+console.log('是否有媒体权限', hasPermission);
+```
+
+### 申请媒体权限
+
+```javascript
+// 检查权限是否被永久拒绝（用户选择了"不再询问"）
+if (Access.isMediaPermissionPermanentlyDenied()) {
+    // 权限被永久拒绝，需要引导用户去设置页面手动开启
+    Dialogs.show('提示', '需要媒体权限才能继续，请在设置中开启');
+    Access.openPermissionSettings(); // 打开应用权限设置页面
+    System.exit();
+} else {
+    // 正常请求权限
+    Access.requestMediaPermissions();
+}
+```
+
+### 打开权限设置页面
+
+```javascript
+// 打开应用权限设置页面，用户可以手动开启权限
+Access.openPermissionSettings();
+```
