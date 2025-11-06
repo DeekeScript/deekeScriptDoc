@@ -82,7 +82,7 @@ images.forEach(image => {
 - `displayName {string}` 显示名称（可选）
 - `relativePath {string}` 相对路径（可选，如 "Pictures/MyApp"）
 
-**返回：** `{string}` 保存后的 content:// Uri 字符串，失败返回空字符串 ""
+**返回：** `{string|null}` 保存后的 content:// Uri 字符串，失败返回 null
 
 ```javascript
 // 保存图片（使用默认配置）
@@ -159,7 +159,7 @@ videos.forEach(video => {
 - `displayName {string}` 显示名称（可选）
 - `relativePath {string}` 相对路径（可选）
 
-**返回：** `{string}` 保存后的 content:// Uri 字符串，失败返回空字符串 ""
+**返回：** `{string|null}` 保存后的 content:// Uri 字符串，失败返回 null
 
 ```javascript
 let uri = MediaStore.saveVideo('/sdcard/video.mp4', 'my_video.mp4');
@@ -229,7 +229,7 @@ audios.forEach(audio => {
 - `sourcePath {string}` 源文件路径
 - `displayName {string}` 显示名称（可选）
 
-**返回：** `{string}` 保存后的 content:// Uri 字符串，失败返回空字符串 ""
+**返回：** `{string|null}` 保存后的 content:// Uri 字符串，失败返回 null
 
 ```javascript
 let uri = MediaStore.saveAudio('/sdcard/audio.mp3', 'my_audio.mp3');
@@ -246,7 +246,7 @@ console.log('保存成功，URI：', uri);
 - `sourcePath {string}` 源文件路径
 - `displayName {string}` 显示名称（可选）
 
-**返回：** `{string}` 保存后的 content:// Uri 字符串（Android 10+）或文件路径（Android 9-），失败返回空字符串 ""
+**返回：** `{string|null}` 保存后的 content:// Uri 字符串（Android 10+）或文件路径（Android 9-），失败返回 null
 
 **注意：** 该方法会自动处理不同 Android 版本的差异：
 - Android 10+: 使用 MediaStore API，返回 content:// URI
@@ -286,7 +286,7 @@ downloads.forEach(file => {
 - `sourcePath {string}` 源文件路径
 - `displayName {string}` 显示名称（可选）
 
-**返回：** `{string}` 保存后的 content:// Uri 字符串（Android 10+）或文件路径（Android 9-），失败返回空字符串 ""
+**返回：** `{string|null}` 保存后的 content:// Uri 字符串（Android 10+）或文件路径（Android 9-），失败返回 null
 
 **注意：** 该方法会自动处理不同 Android 版本的差异：
 - Android 10+: 使用 MediaStore API，返回 content:// URI
@@ -340,7 +340,7 @@ documents.forEach(doc => {
 **参数：**
 - `uriString {string}` content:// Uri 字符串
 
-**返回：** `{Array}` 文件内容字节数组，失败返回空数组 []
+**返回：** `{Array|null}` 文件内容字节数组，失败返回 null
 
 ```javascript
 let uri = 'content://media/external/images/media/12345';
