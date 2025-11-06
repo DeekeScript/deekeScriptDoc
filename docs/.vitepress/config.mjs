@@ -93,6 +93,7 @@ export default defineConfig({
           { text: '控制台-console', link: '/base/console/console' },
           { text: '日志-Log', link: '/base/log/log' },
           { text: '本地存储-Storage', link: '/base/storage/storage' },
+          { text: '媒体文件-MediaStore', link: '/base/mediaStore/mediaStore' },
           { text: '文件系统-Files', link: '/base/files/files' },
         ]
       },
