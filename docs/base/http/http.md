@@ -37,7 +37,7 @@ let params = {
     password: "DeekeScript"
 }
 
-let res = Http.post('https://script.deeke.cn/api/login', params, null);
+let res = Http.post('https://script.deeke.cn/api/login', params);
 console.log(res);//输出 {code: 0, msg: "成功", data: []}
 
 
