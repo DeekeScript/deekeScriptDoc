@@ -75,7 +75,7 @@ let res = Http.postFile('https://script.deeke.top/api/fileUpload', files, params
 ```
 
 
-## downloadFile(url, destPath, headers = {})
+## download(url, destPath, headers = {})
 
 **参数：** `url {string}` 文件下载地址（网络地址）
 **参数：** `destPath {string}` 目标文件地址
