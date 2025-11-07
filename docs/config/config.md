@@ -83,8 +83,8 @@ description: DeekeScript - 配置
 |    hidden    | boolean |    否   |   true    | 属性值，当为true的时候，则界面上不再显示此字段；默认为false   |
 |   children   |  array  |    否   |   true    | CheckboxsGroup里面的Checkbox所有值，当type为checkboxGroup时必须|
 |     lines    |   int   |    否   |     5     | type为textArea时，控制输入框展示的行数|
-|   notice     | String  |    否   |   * 注意：用户账号不能为空| 特别注意，当type为text或者textArea的时候，用于表单下方的提示语 |
-|   dataFrom   | String  |    否   |   如果你需要动态渲染表单的值（仅支持type为radio的情况），使用方式请查看[表单示例](../base/ui/form.md#表单动态值) |
+|   notice     | String  |    否   |* 注意：用户账号不能为空| 特别注意，当type为text或者textArea的时候，用于表单下方的提示语 |
+|   dataFrom   | String  |    否   |   role    |  如果你需要动态渲染表单的值（仅支持type为radio的情况），使用方式请查看[表单示例](../base/ui/form.md#表单动态值) |
 
 > 注：type为notice，用于每个设置页面的说明。
 
