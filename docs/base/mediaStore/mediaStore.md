@@ -30,7 +30,7 @@ function permission() {
   }
 
   //请求媒体权限
-  Access.requestMediaReadPermission();
+  Access.requestMediaPermissions();
   return false;
 }
 
