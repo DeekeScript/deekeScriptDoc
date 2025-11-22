@@ -1,9 +1,9 @@
 ---
-title: 输入法-Keyboards
-description: DeekeScript - 输入法-Keyboards
+title: 输入法-KeyBoards
+description: DeekeScript - 输入法-KeyBoards
 ---
 
-# 输入法-Keyboards
+# 输入法-KeyBoards
 
 ## 输入法的作用
 
@@ -27,8 +27,8 @@ description: DeekeScript - 输入法-Keyboards
 
 ```js
 
-if(Keyboards.canInput()){
-    Keyboards.input("文本框新增内容");
+if(KeyBoards.canInput()){
+    KeyBoards.input("文本框新增内容");
 }
 ```
 
@@ -39,7 +39,7 @@ if(Keyboards.canInput()){
 
 ```js
 
-if(!Keyboards.isEnabled()){
+if(!KeyBoards.isEnabled()){
     //输入法没有启用
 }
 ```
@@ -53,7 +53,7 @@ if(!Keyboards.isEnabled()){
 >
 
 ```js
-Keyboards.input("文本框新增内容");
+KeyBoards.input("文本框新增内容");
 ```
 
 ## delete()
@@ -63,5 +63,5 @@ Keyboards.input("文本框新增内容");
 >
 
 ```js
-Keyboards.delete();//删除一个字符，如果需要全部删除，可以先获取文本长度，再循环调用delete方法
+KeyBoards.delete();//删除一个字符，如果需要全部删除，可以先获取文本长度，再循环调用delete方法
 ```

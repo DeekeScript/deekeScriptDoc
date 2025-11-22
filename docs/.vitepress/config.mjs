@@ -141,7 +141,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '输入法设置', link: '/inputMethod/base' },
-          { text: '输入法-Keyboards', link: '/inputMethod/method' }
+          { text: '输入法-KeyBoards', link: '/inputMethod/method' }
         ]
       },
       {
