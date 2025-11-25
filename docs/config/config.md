@@ -40,7 +40,7 @@ description: DeekeScript - 配置
 |     参数名    |  类型   |  必填|   示例   |   说明 |
 | ------------ | ------- | -------|-------- | -------|
 |     title    | String  |   是    | XX截流  | App主界面的功能名称 |
-|  titleHidden | String  |   否    | false  | App主界面功能组标题是否隐藏，默认不隐藏 |
+|  titleHidden | Boolean  |   否    | false  | App主界面功能组标题是否隐藏，默认不隐藏 |
 |    hidden    | Boolean |   否    | false  | 是否隐藏当前功能组，默认不隐藏 
 |   methods    |  Array   |   是    | [methods参数](#methods参数)  | 当前功能组下的功能列表  |
 
