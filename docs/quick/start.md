@@ -96,6 +96,12 @@ git clone https://github.com/DeekeScript/DeekeScript ./
 npm install
 ```
 
+```
+注意：每次更新手机端APP后，请执行下面的代码更新代码提示文件（否则会导致框架新增的方法，没有代码提示）
+
+npm run update-types
+```
+
 ### 💻 开发环境配置
 
 1. **打开VSCode**，将刚刚拉取的项目打开，如下图：
