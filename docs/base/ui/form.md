@@ -61,6 +61,25 @@ Storage.getArray("select_1");//输出：[1,2,3]
 <img src="../../photo/form/textarea.png" width="40%">
 
 
+## 📝 password
+
+> **notice**: 输入框说明信息，非必须
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "password",
+    "label": "密码",
+    "name": "task_password",
+    "value": "",
+    "notice": "* 密码不能为空"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/password.png" width="40%">
+
+
 ## 📝 switch
 
 > **hidden**: 非必须，表示是否隐藏，默认false
@@ -229,6 +248,56 @@ Storage.getArray("select_1");//输出：[1,2,3]
 
 <img src="../../photo/form/number.png" width="40%">
 
+
+## 📝 file
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "file",
+    "label": "文件地址",
+    "name": "task_file"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/file.png" width="40%">
+
+
+## 📝 datePicker
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "datePicker",
+    "label": "日期",
+    "name": "task_date"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/datePicker.png" width="40%">
+
+
+## 📝 timePicker
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "timePicker",
+    "label": "日期",
+    "name": "task_time"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/timePicker.png" width="40%">
+
+
+
 ## 📝 notice
 
 > **hidden**: 非必须，表示是否隐藏，默认false
@@ -242,6 +311,22 @@ Storage.getArray("select_1");//输出：[1,2,3]
 > 显示效果
 
 <img src="../../photo/form/notice.png" width="40%">
+
+
+
+## 📝 divider
+
+> **hidden**: 非必须，表示是否隐藏，默认false
+
+```json
+{
+    "type": "divider",
+    "label": "分割线"
+}
+```
+> 显示效果
+
+<img src="../../photo/form/divider.png" width="40%">
 
 
 # 表单动态值

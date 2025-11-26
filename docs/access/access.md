@@ -100,3 +100,21 @@ if (Access.isMediaPermissionPermanentlyDenied()) {
 // 打开应用权限设置页面，用户可以手动开启权限
 Access.openPermissionSettings();
 ```
+
+
+### 文件权限
+```javascript
+//判断是否有文件读写权限
+if (!Access.hasStoragePermission()) {
+    console.log('没有权限');
+    if (Access.isStoragePermissionPermanentlyDenied()) {
+        console.log('禁止了权限');
+        Access.openPermissionSettings();//永久禁止，需要用户进入当前设置页手动打开
+    } else {
+        Access.requestStoragePermission();//请求权限
+        console.log('请求权限');
+    }
+} else {
+    console.log('有权限');
+}
+```
