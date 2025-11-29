@@ -133,6 +133,19 @@ if(sendButton){
 
 为当前选择器附加控件"scrollable 等于 canScroll"的筛选条件。
 
+## isVisibleToUser(isVisibleToUser)
+
+**参数：** `isVisibleToUser {boolean}` 是否对用户可见
+
+**返回：** `{UiSelector}` 返回选择器自身以便链式调用
+
+为当前选择器附加控件"isVisibleToUser 等于 isVisibleToUser"的筛选条件。
+
+```javascript
+// 查找对用户可见的控件
+let visibleButton = UiSelector().isVisibleToUser(true).text("发送").findOne();
+```
+
 ## textContains(content)
 
 **参数：** `content {string}`
@@ -202,11 +215,17 @@ let ui = UiSelector().filter((v)=>{
 }).findOne();
 ```
 
-## exist()
+## exists()
 
 **返回：** `{boolean}` 返回是否存在
 
 判断当前选择器是否能匹配到UiObject控件信息。
+
+```javascript
+if (UiSelector().text("发送").exists()) {
+    console.log("发送按钮存在");
+}
+```
 
 ## waitFindOne()
 

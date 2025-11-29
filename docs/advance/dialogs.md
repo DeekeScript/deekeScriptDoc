@@ -72,7 +72,7 @@ Dialogs.confirm("提示", "确定执行吗？", (result) => {
 >
 > 返回 void
 
-后台弹出弹窗，但是需要开启悬浮窗权限
+后台弹出弹窗，但是需要开启悬浮窗权限（弹窗会保持屏幕常亮）
 
 ```javascript
 //heart.js主要启动一个定时器setInterval，每间隔几秒钟往服务器发送当前App的状态
@@ -94,6 +94,21 @@ FloatDialogs.setFloatWindowClickable(false);
 System.sleep(300);//建议休眠300毫秒，防止上面的设置未生效
 Gesture.click(100, 200);
 FloatDialogs.setFloatWindowClickable(true);
+```
+
+## setFloatWindowVisible(visible)
+> visible {boolean}  是否显示
+>
+> 返回 void
+
+设置右侧悬浮窗显示/隐藏（隐藏后，将不会保持屏幕常亮）
+
+```javascript
+// 隐藏悬浮窗
+FloatDialogs.setFloatWindowVisible(false);
+
+// 显示悬浮窗
+FloatDialogs.setFloatWindowVisible(true);
 ```
 
 ## toast(content)

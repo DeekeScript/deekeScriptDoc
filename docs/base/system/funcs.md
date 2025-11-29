@@ -281,3 +281,18 @@ System.setTimeWindowShow(false);//关闭运行时间悬浮窗
 System.setAccessibilityMode('fast');//快速模式
 System.setAccessibilityMode('!fast');//正常模式  注意只要mode不为fast，则切换为正常模式
 ```
+
+## setKeepScreenOn(keepOn)
+
+**参数：** `keepOn {boolean}` 是否保持屏幕常亮
+
+**返回：** `{void}`
+
+设置屏幕是否保持常亮状态。当设置为true时，屏幕将保持常亮，不会自动息屏。
+
+> 注意：目前屏幕常亮状态，是通过右侧悬浮窗来实现的。如果悬浮窗权限没有开启，或者隐藏了右侧悬浮窗，此方法不生效。
+
+```javascript
+System.setKeepScreenOn(true);//保持屏幕常亮
+System.setKeepScreenOn(false);//取消保持屏幕常亮
+```
