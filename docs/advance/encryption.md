@@ -74,7 +74,7 @@ console.log(encodeStr);//输出加密后的内容
 > 
 > iv {string}
 > 
-> str {string} 需要被解密的内容
+> encodeStr {string} 需要被解密的内容
 > 
 > 返回 {string} 解密后的内容
 
@@ -83,6 +83,6 @@ console.log(encodeStr);//输出加密后的内容
 ```javascript
 let iv = Encrypt.generateIv();//替换成实际的iv
 let key = "DeekeScript";
-let str = Encrypt.aesCbcEncode(key, iv, encodeStr);
-console.log(encodeStr);//输出加密后的内容
+let str = Encrypt.aesCbcDecode(key, iv, encodeStr);
+console.log(str);//输出解密后的内容
 ```

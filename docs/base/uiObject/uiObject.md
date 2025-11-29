@@ -245,12 +245,12 @@ if(obj){
 ```javascript
 let obj = UiSelector().className("TextView").findOne();
 if(obj){
-    console.log("包名：" + obj.packageName());
+    console.log("包名：" + obj.getPackageName());
 }
 ```
 
 
-## childCount()
+## getChildCount()
 
 **返回：** `{number}`
 
@@ -259,7 +259,7 @@ if(obj){
 ```javascript
 let obj = UiSelector().className("LinearLayout").findOne();
 if(obj){
-    console.log("子控件数量：" + obj.childCount());
+    console.log("子控件数量：" + obj.getChildCount());
 }
 ```
 
@@ -271,7 +271,7 @@ if(obj){
 
 ```javascript
 let obj = UiSelector().className("LinearLayout").findOne();
-if(obj && obj.childCount() > 0){
+if(obj && obj.getChildCount() > 0){
     //获取当前控件下面的所有TextView控件
     let childs = obj.children().find(UiSelector().className("TextView"));
     //获取当前控件下面的第一个TextView控件
@@ -379,7 +379,7 @@ if(obj){
 ```javascript
 let obj = UiSelector().className("EditText").findOne();
 if(obj){
-    console.log("是否可编辑：" + obj.isVisibleToUser());
+    console.log("是否可编辑：" + obj.isEditable());
 }
 ```
 
