@@ -65,3 +65,76 @@ KeyBoards.input("文本框新增内容");
 ```js
 KeyBoards.delete();//删除一个字符，如果需要全部删除，可以先获取文本长度，再循环调用delete方法
 ```
+
+## hide()
+隐藏键盘
+
+> 返回 {boolean}  隐藏是否成功
+
+```js
+KeyBoards.hide();//隐藏当前显示的键盘
+```
+
+## pressKey(key)
+发送按键事件，支持各种按键
+
+> **注意**：输入法只能发送文本输入相关的按键，系统级按键（如HOME、BACK、POWER等）无法通过输入法发送
+> 
+> key {string|number}  按键代码，可以是字符串（如 "ENTER"）或数字（如 KeyBoards.KEYCODE.ENTER）
+> 
+> 返回 {boolean}  按键是否发送成功
+
+支持的字符串按键名称（不区分大小写）：
+- "ENTER": Enter键（回车）
+- "DEL" 或 "DELETE": 删除键（向后删除）
+- "TAB": Tab键（制表符）
+- "SPACE": 空格键
+- "UP": 上方向键（移动光标）
+- "DOWN": 下方向键（移动光标）
+- "LEFT": 左方向键（移动光标）
+- "RIGHT": 右方向键（移动光标）
+- "CENTER": 中心键（确认）
+- "ESCAPE" 或 "ESC": 退出键
+- "FORWARD_DEL": 向前删除键
+- "MOVE_HOME": 移动到行首
+- "MOVE_END": 移动到行尾
+- "PAGE_UP": 向上翻页
+- "PAGE_DOWN": 向下翻页
+
+```js
+// 使用字符串（推荐，最简单）
+KeyBoards.pressKey("ENTER");
+KeyBoards.pressKey("SPACE");
+KeyBoards.pressKey("DEL");
+
+// 使用常量对象（通过实例访问）
+KeyBoards.pressKey(KeyBoards.KEYCODE.ENTER);
+KeyBoards.pressKey(KeyBoards.KEYCODE.SPACE);
+```
+
+## pressEnter()
+发送Enter键（回车键）
+
+> 返回 {boolean}  按键是否发送成功
+
+```js
+KeyBoards.pressEnter();//等同于 KeyBoards.pressKey("ENTER")
+```
+
+## pressTab()
+发送Tab键（制表符）
+
+> 返回 {boolean}  按键是否发送成功
+
+```js
+KeyBoards.pressTab();//等同于 KeyBoards.pressKey("TAB")
+```
+
+## pressSpace()
+发送空格键
+
+> 返回 {boolean}  按键是否发送成功
+
+```js
+KeyBoards.pressSpace();//等同于 KeyBoards.pressKey("SPACE")
+```
