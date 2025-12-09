@@ -5,6 +5,8 @@ description: DeekeScript - 输入法设置
 
 # 输入法设置
 
+> 特别说明：APP打包后，对应的输入法名称会变成“XXX输入法”，其中“XXX”为APP名称
+
 ## DeekeScript输入法效果图
 
 <div style="display:flex">
