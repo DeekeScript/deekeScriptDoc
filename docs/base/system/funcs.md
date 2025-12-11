@@ -19,6 +19,20 @@ System.sleep(1000);
 console.log('1秒钟后输出');
 ```
 
+## preciseSleep(millisecond)
+
+**参数：** `millisecond {number}` 毫秒
+
+精确休眠millisecond毫秒。与`sleep()`方法相比，`preciseSleep()`使用更精确的休眠机制，通过WakeLock保持CPU唤醒状态，并使用循环检查来确保休眠时间的准确性。
+
+> 注意：此方法会保持CPU唤醒状态，可能会增加电量消耗。如果不需要精确的休眠时间，建议使用`sleep()`方法。
+
+```javascript
+console.log('开始精确休眠');
+System.preciseSleep(2000); // 精确休眠2秒
+console.log('2秒后输出');
+```
+
 ## time()
 
 **返回：** `{string}`

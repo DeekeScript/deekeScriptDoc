@@ -118,3 +118,68 @@ if (!Access.hasStoragePermission()) {
     console.log('有权限');
 }
 ```
+
+## 位置权限
+
+> 重要程度：可选
+
+> 如果需要获取设备位置信息（使用`Device.getLocation()`），需要申请位置权限。位置权限包括：
+> - ACCESS_FINE_LOCATION（精确定位）
+> - ACCESS_COARSE_LOCATION（粗略定位）
+> - 如果授予了 ACCESS_FINE_LOCATION，则自动拥有 ACCESS_COARSE_LOCATION 权限
+
+### 检查位置权限
+
+```javascript
+// 检查是否有位置权限
+let hasPermission = Access.hasLocationPermission();
+console.log('是否有位置权限', hasPermission);
+```
+
+### 申请位置权限
+
+```javascript
+// 检查权限是否被永久拒绝（用户选择了"不再询问"）
+if (Access.isLocationPermissionPermanentlyDenied()) {
+    // 权限被永久拒绝，需要引导用户去设置页面手动开启
+    Dialogs.show('提示', '需要位置权限才能继续，请在设置中开启');
+    Access.openPermissionSettings(); // 打开应用权限设置页面
+    System.exit();
+} else {
+    // 正常请求权限
+    Access.requestLocationPermissions();
+}
+```
+
+### 打开权限设置页面
+
+```javascript
+// 打开应用权限设置页面，用户可以手动开启权限
+Access.openPermissionSettings();
+```
+
+### 完整示例
+
+```javascript
+// 检查位置权限
+if (!Access.hasLocationPermission()) {
+    console.log('没有位置权限');
+    if (Access.isLocationPermissionPermanentlyDenied()) {
+        console.log('权限被永久拒绝');
+        Dialogs.show('提示', '需要位置权限才能继续，请在设置中开启');
+        Access.openPermissionSettings();
+        System.exit();
+    } else {
+        Access.requestLocationPermissions(); // 请求权限
+        System.sleep(1000); // 等待权限申请完成
+    }
+} else {
+    console.log('有位置权限');
+    // 获取位置信息
+    let location = Device.getLocation();
+    if (location) {
+        console.log('纬度:', location.latitude);
+        console.log('经度:', location.longitude);
+    }
+}
+```

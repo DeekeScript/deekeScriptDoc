@@ -314,3 +314,52 @@ console.log("MAC地址:", networkInfo.macAddress);
 console.log("当前IP:", networkInfo.ip);
 console.log("公网IP:", networkInfo.publicIP);
 ```
+
+## getLocation()
+
+**返回：** `{object | null}`
+
+获取设备当前位置信息。需要先申请位置权限（使用`Access.requestLocationPermissions()`）。
+
+**返回对象：**
+- `latitude {number}` - 纬度
+- `longitude {number}` - 经度
+- `altitude {number}` - 海拔高度（米）
+- `accuracy {number}` - 精度（米）
+- `speed {number}` - 速度（米/秒）
+- `bearing {number}` - 方向角（度）
+- `time {number}` - 时间戳（毫秒）
+- `provider {string}` - 定位提供者（"gps" 或 "network"）
+
+**如果获取失败或没有权限，返回 `null`**
+
+> 注意：此方法会优先使用GPS定位（更精确），如果GPS不可用，会尝试使用网络定位。如果仍然无法获取位置，会尝试使用被动定位提供者。
+
+```javascript
+// 先检查并申请位置权限
+if (!Access.hasLocationPermission()) {
+    if (Access.isLocationPermissionPermanentlyDenied()) {
+        Dialogs.show('提示', '需要位置权限才能继续，请在设置中开启');
+        Access.openPermissionSettings();
+        System.exit();
+    } else {
+        Access.requestLocationPermissions();
+        System.sleep(1000); // 等待权限申请完成
+    }
+}
+
+// 获取位置信息
+let location = Device.getLocation();
+if (location) {
+    console.log("纬度:", location.latitude);
+    console.log("经度:", location.longitude);
+    console.log("海拔:", location.altitude);
+    console.log("精度:", location.accuracy);
+    console.log("速度:", location.speed);
+    console.log("方向角:", location.bearing);
+    console.log("时间戳:", location.time);
+    console.log("定位提供者:", location.provider);
+} else {
+    console.log("获取位置失败，请检查权限和定位服务是否开启");
+}
+```
