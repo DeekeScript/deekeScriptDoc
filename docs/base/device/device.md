@@ -355,3 +355,32 @@ if (location) {
     console.log("获取位置失败，请检查权限和定位服务是否开启");
 }
 ```
+
+## getStatusBarHeight()
+
+**返回：** `{number}`
+
+获取状态栏高度（像素）。如果获取失败返回0。
+
+> 注意：状态栏是屏幕顶部显示时间、电池、信号等信息的区域。
+
+```javascript
+let statusBarHeight = Device.getStatusBarHeight();
+console.log("状态栏高度:", statusBarHeight, "像素");
+```
+
+## getNavigationBarHeight()
+
+**返回：** `{number}`
+
+获取底部虚拟按钮（导航栏）高度（像素）。如果导航栏隐藏了或获取失败返回0。
+
+> 注意：导航栏是屏幕底部显示返回、主页、最近任务等虚拟按钮的区域。如果设备使用物理按键或导航栏被隐藏，此方法返回0。
+
+```javascript
+let navBarHeight = Device.getNavigationBarHeight();
+console.log("导航栏高度:", navBarHeight, "像素");
+if (navBarHeight === 0) {
+    console.log("导航栏已隐藏或设备使用物理按键");
+}
+```
