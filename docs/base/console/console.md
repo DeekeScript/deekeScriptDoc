@@ -12,7 +12,9 @@ description: DeekeScript - 控制台 - console
 
 > 注意：console是DeekeScript中唯一一个首字母小写的对象（为了适应用户习惯）
 
-## log([data][, ...args])
+## 日志打印
+
+### log([data][, ...args])
 
 打印到控制台，并带上换行符。 可以传入多个参数，第一个参数作为主要信息，其他参数作为类似于 printf(3) 中的代替值（参数都会传给 util.format()）。
 
@@ -20,28 +22,30 @@ description: DeekeScript - 控制台 - console
 console.log("输出的内容", 324, {name: "张三"});
 ```
 
-## info([data][, ...args])
+### info([data][, ...args])
 
 与console.log类似。输出优先级高于log, 用于输出重要信息。
 
-## debug([data][, ...args])
+### debug([data][, ...args])
 
 与console.log类似。输出优先级高于log, 用于输出重要信息。
 
-## warn([data][, ...args])
+### warn([data][, ...args])
 
 与console.log类似。输出优先级高于info, 用于输出警告信息。
 
-## error([data][, ...args])
+### error([data][, ...args])
 
 与console.log类似。输出优先级高于warn, 用于输出错误信息。
 
-## trace([data][, ...args])
+### trace([data][, ...args])
 
 
 ## 日志窗口管理方法
 
-以下方法用于控制日志窗口的显示、样式和行为：
+以下方法用于控制日志窗口的显示、样式和行为。默认展示效果如下：
+
+<img src="../../public/assets/console2.png" width="40%" />
 
 ### show()
 
