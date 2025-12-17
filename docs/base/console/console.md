@@ -131,17 +131,62 @@ console.setTextSize(14);
 console.setLineHeight(20);
 ```
 
-### setButtonColors(closeColor, dragColor, resizeColor)
+### setButtonColors(closeColor, resizeColor)
 
-一次性设置三个按钮的颜色（关闭按钮、拖拽按钮、调整大小按钮）。
+一次性设置两个按钮的颜色（关闭按钮、调整大小按钮）。
 
 **参数：**
 - `closeColor {number}` - 关闭按钮颜色（ARGB格式）
-- `dragColor {number}` - 拖拽按钮颜色（ARGB格式）
 - `resizeColor {number}` - 调整大小按钮颜色（ARGB格式）
 
 ```javascript
-console.setButtonColors(0xFFFF0000, 0xFF00FF00, 0xFF0000FF);
+console.setButtonColors(0xFFFF0000, 0xFF0000FF);
+```
+
+### setTitleTextColor(color)
+
+设置标题栏文字的颜色。
+
+**参数：**
+- `color {number}` - 颜色值（ARGB格式，如 0xFFFFFFFF 表示白色）
+
+```javascript
+console.setTitleTextColor(0xFFFFFFFF); // 白色标题文字
+```
+
+### setTitleTextSize(size)
+
+设置标题栏文字的字体大小。
+
+**参数：**
+- `size {number}` - 字体大小（sp）
+
+```javascript
+console.setTitleTextSize(16);
+```
+
+### setTitleText(text)
+
+设置标题栏的文字内容。
+
+**参数：**
+- `text {string}` - 标题文字内容。如果传入 `null` 或空字符串，将使用应用名称作为默认标题
+
+```javascript
+console.setTitleText("我的日志窗口");
+console.setTitleText(""); // 使用应用名称作为标题
+```
+
+### setTitleBarColor(color)
+
+设置标题栏的背景颜色。
+
+**参数：**
+- `color {number}` - 颜色值（ARGB格式，如 0xFF2D2D2D 表示深灰色）。设置为 -1 表示自动计算（比背景色深20%）
+
+```javascript
+console.setTitleBarColor(0xFF2D2D2D); // 深灰色标题栏
+console.setTitleBarColor(-1); // 自动计算标题栏颜色
 ```
 
 ### setAllowMoveToTop(allow)
@@ -244,8 +289,11 @@ console.setAutoScroll(true);
   - `textSize {number}` - 字体大小
   - `lineHeight {number}` - 行高
   - `closeButtonColor {number}` - 关闭按钮颜色（ARGB格式）
-  - `dragButtonColor {number}` - 拖拽按钮颜色（ARGB格式）
   - `resizeButtonColor {number}` - 调整大小按钮颜色（ARGB格式）
+  - `titleTextColor {number}` - 标题栏文字颜色（ARGB格式）
+  - `titleTextSize {number}` - 标题栏文字大小（sp）
+  - `titleText {string}` - 标题栏文字内容（空字符串表示使用应用名称）
+  - `titleBarColor {number}` - 标题栏背景颜色（ARGB格式，-1表示自动计算）
   - `allowMoveToTop {boolean}` - 是否允许移动到顶部
   - `allowMoveToBottom {boolean}` - 是否允许移动到底部
   - `clickable {boolean}` - 是否可点击
@@ -261,8 +309,11 @@ console.setWindowStyle({
     textSize: 14,
     lineHeight: 20,
     closeButtonColor: 0xFFFF0000,  // 红色关闭按钮
-    dragButtonColor: 0xFF00FF00,     // 绿色拖拽按钮
     resizeButtonColor: 0xFF0000FF,  // 蓝色调整大小按钮
+    titleTextColor: 0xFFFFFFFF,     // 白色标题文字
+    titleTextSize: 14,               // 标题文字大小
+    titleText: "我的日志窗口",        // 标题文字内容
+    titleBarColor: -1,               // 自动计算标题栏颜色
     allowMoveToTop: true,
     allowMoveToBottom: true,
     clickable: true
@@ -281,5 +332,9 @@ console.log("窗口宽度:", style.width);
 console.log("窗口高度:", style.height);
 console.log("背景颜色:", style.backgroundColor);
 console.log("文本颜色:", style.textColor);
+console.log("标题文字颜色:", style.titleTextColor);
+console.log("标题文字大小:", style.titleTextSize);
+console.log("标题文字内容:", style.titleText);
+console.log("标题栏颜色:", style.titleBarColor);
 // ... 其他属性
 ```
