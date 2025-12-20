@@ -103,7 +103,7 @@ export default defineConfig({
         items: [
           { text: '弹窗', link: '/advance/dialogs' },
           { text: 'Engines', link: '/advance/engines/engines' },
-          { text: '多线程-Thread', link: '/advance/thread' },
+          { text: '多线程-Thread', link: '/advance/threads' },
           { text: '模块', link: '/advance/module' },
           { text: '异步', link: '/promise/awa' },
           { text: '加解密', link: '/advance/encryption' },
