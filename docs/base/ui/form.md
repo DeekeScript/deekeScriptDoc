@@ -131,14 +131,14 @@ Storage.getArray("select_1");//输出：[1,2,3]
     "type": "radio",
     "label": "性别",
     "name": "radio_1",
-    "value": 1,
+    "value": "1",
     "options": [{
         "label": "男",
-        "value": 1,
+        "value": "1",
     },
     {
         "label": "女",
-        "value": 2
+        "value": "2"
     }]
 }
 ```
