@@ -108,12 +108,12 @@ Storage.getArray("select_1");//输出：[1,2,3]
     "name": "select_1",
     "options": [{
         "label": "小猫",
-        "value": 1,
+        "value": "1",
         "selected": true
     },
     {
         "label": "小狗",
-        "value": 2
+        "value": "2"
     }]
 }
 ```
@@ -158,12 +158,12 @@ Storage.getArray("select_1");//输出：[1,2,3]
     "name": "checkbox_1",
     "options": [{
         "label": "男",
-        "value": 1,
+        "value": "1",
         "selected": true
     },
     {
         "label": "女",
-        "value": 2
+        "value": "2"
     }]
 }
 ```
@@ -198,10 +198,10 @@ Storage.getArray("select_1");//输出：[1,2,3]
         "12时",
     ],
     "values": [
-        0,
-        1,
-        3,
-        5
+        "0",
+        "1",
+        "3",
+        "5"
     ]
 }
 ```
