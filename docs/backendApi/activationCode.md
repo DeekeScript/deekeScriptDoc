@@ -41,7 +41,7 @@ Content-Type: application/json
 请求参数：
 {
     "token": "djhcn8dhfjwie7dbs9ikqlchdn76shbc",
-    "android_id": "sdfsd-dsfdsa-fdasfdas" //用户卸载App或者恢复出厂设置后，此ID将会变化
+    "android_id": "sdfsd-dsfdsa-fdasfdas" //恢复出厂设置后，此ID将会变化（用户卸载App不会发生变化）
 }
 ```
 
@@ -73,7 +73,7 @@ Content-Type: application/json
 {
     "timestamp": 1793293729,
     "secret": "djhcn8dhfjwie7dbs9ikqlchdn76shbc",
-    "android_id": "sdfsd-dsfdsa-fdasfdas" //用户卸载App或者恢复出厂设置后，此ID将会变化
+    "android_id": "sdfsd-dsfdsa-fdasfdas" //恢复出厂设置后，此ID将会变化（用户卸载App不会发生变化）
 }
 ```
 
