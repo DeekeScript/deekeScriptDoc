@@ -155,12 +155,15 @@ App.notifySuccess("操作成功", "任务已完成");
 
 **返回：** `{void}`
 
-通过指定应用打开URL，如果应用未安装则使用浏览器打开
+打开URL地址。如果提供了`packageName`参数，则优先使用指定应用打开，如果应用未安装则使用浏览器打开；如果未提供`packageName`参数，则直接使用浏览器打开。
 
 ```javascript
-// 通过抖音打开URL
+// 使用浏览器打开URL
+App.openUrl("https://www.baidu.com");
+
+// 通过指定应用（如抖音）打开URL
 App.openUrl("https://www.douyin.com/user/xxx", "com.ss.android.ugc.aweme");
 
-// 如果抖音未安装，则使用浏览器打开
+// 如果指定应用未安装，则自动使用浏览器打开
 App.openUrl("https://www.douyin.com/user/xxx", "com.ss.android.ugc.aweme");
 ```
