@@ -197,8 +197,8 @@ export default defineConfig({
       { icon: 'gitee', link: 'https://gitee.com/DeekeScript' }
     ],
     footer: {
-      message: 'Released under the ISC License.',
-      copyright: 'Copyright © 2025 DeekeScript'
+      message: '<a href="https://autojs.me" target="_blank">AutoJS文档</a> Released under the ISC License.',
+      copyright: 'Copyright © 2025 鄂ICP备2023007944号-3 DeekeScript'
     },
     search: {
       provider: 'local'
