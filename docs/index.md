@@ -22,7 +22,7 @@ features:
     details: JSON配置UI、内置标准的APP界面，开发者只需关注应用业务逻辑，大幅提升开发效率
   - icon: 🔧
     title: 强大功能
-    details: 支持模拟点击、输入、手势操作，完整的UI控件操作和系统功能，内置输入法、Hid操作
+    details: 支持模拟点击、输入、手势操作，完整的UI节点操作和系统功能，内置输入法、Hid操作
   - icon: 📱
     title: Android原生
     details: 基于Android无障碍服务，稳定可靠，兼容性强

@@ -81,7 +81,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '选择器-UiSelector', link: '/base/uiSelector/uiSelector' },
-          { text: '控件操作-UiObject', link: '/base/uiObject/uiObject' },
+          { text: '节点操作-UiObject', link: '/base/uiObject/uiObject' },
           { text: '手势操作-Gesture', link: '/base/gesture/gesture' },
           { text: 'App', link: '/base/app/app' },
           { text: '系统函数-System', link: '/base/system/funcs' },

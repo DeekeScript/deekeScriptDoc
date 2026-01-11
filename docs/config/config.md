@@ -74,9 +74,9 @@ description: DeekeScript - 配置
 |     参数名    |  类型    | 必填 |      示例    |    说明   |
 | ------------ | ------- | ------- | ----------- | ---------|
 |     type     | String  |    是   |   text      | Form参数类型，有text、textArea、select、checkboxGroup、checkbox、radio、switch、number、numberRange、digitRange、digit、password、file、timePicker、DatePicker、divider、notice|
-|     label    | String  |    否   |   用户账号   | 字段描述，控件的描述，用于告诉用户这个控件输入的内容 |
+|     label    | String  |    否   |   用户账号   | 字段描述，节点的描述，用于告诉用户这个节点输入的内容 |
 |    value     |   any   |    否   |   miniphper| 初始值，可以为空 ; number/numberRange/digitRange/digit的时候，value为数字类型，text/textArea/password/file/timePicker/DatePicker的时候，value为字符串类型 |
-|     name     | String  |    否   |   account  | 控件名称，后续[获取值](../base/storage/storage.md)的时候，需要这个参数名称  |
+|     name     | String  |    否   |   account  | 节点名称，后续[获取值](../base/storage/storage.md)的时候，需要这个参数名称  |
 |     min      |   int   |    否   |   0  | 最小值，当type为numberRange或者digitRange时必须  |
 |     max      |   int   |    否   | 1000  | 最大值，当type为numberRange或者digitRange时必须  |
 |     step     |   int   |    否   |  1   | 滑动最小单位，当type为numberRange或者digitRange时必须  |
@@ -97,7 +97,7 @@ description: DeekeScript - 配置
 |     参数名    |  类型   |                 示例               |               说明             |
 | ------------ | ------- | ---------------------------------- | -------------------------------|
 |    selected  | bool    |                 false              | 是否默认选中                    |
-|     label    | String  |                   男               | 描述，用于告诉用户这个控件的内容  |
+|     label    | String  |                   男               | 描述，用于告诉用户这个节点的内容  |
 |     value    | String  |                   1                | 值                             |
 
 
