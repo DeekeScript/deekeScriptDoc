@@ -63,7 +63,7 @@ description: DeekeScript - 快速开始
 * 无障碍、悬浮窗、图色查找、节点查看、开发模式必须开启
 ```
 
-1. **打开手机端DeekeScript**，如下图，可以看到手机的局域网IP是"192.168.1.3"：
+1. **打开手机端DeekeScript**，如下图，可以看到手机的局域网IP是"192.168.31.78"：
 
    <img src="/assets/dke.png" width="30%" />
 
