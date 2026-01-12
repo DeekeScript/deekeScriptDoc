@@ -384,3 +384,47 @@ if (navBarHeight === 0) {
     console.log("导航栏已隐藏或设备使用物理按键");
 }
 ```
+
+## getInstalledPackages()
+
+**返回：** `{string[]}`
+
+获取所有已安装应用的包名列表。
+
+**返回：**
+- `{string[]}` - 应用包名数组
+
+```javascript
+let packages = Device.getInstalledPackages();
+console.log("已安装应用数量:", packages.length);
+for (let i = 0; i < packages.length; i++) {
+    console.log("应用包名:", packages[i]);
+}
+```
+
+## getInstalledApplications()
+
+**返回：** `{Array<object>}`
+
+获取所有已安装应用的详细信息列表。
+
+**返回：**
+- `{Array<object>}` - 应用信息数组，每个元素包含以下属性：
+  - `packageName {string}` - 应用包名
+  - `appName {string}` - 应用名称
+  - `versionName {string}` - 版本名称
+  - `versionCode {number}` - 版本号
+
+```javascript
+let apps = Device.getInstalledApplications();
+console.log("已安装应用数量:", apps.length);
+for (let i = 0; i < apps.length; i++) {
+    let app = apps[i];
+    console.log("应用名称:", app.appName);
+    console.log("包名:", app.packageName);
+    console.log("版本:", app.versionName);
+    console.log("版本号:", app.versionCode);
+    console.log("---");
+}
+```
+```
