@@ -71,7 +71,7 @@ if (success2) {
 
 **返回：** `{boolean}`
 
-禁用/启用状态栏。禁用后，状态栏将被隐藏。需要Device Owner权限。API级别要求：API 23 (Android 6.0) 及以上。
+禁用/启用状态栏。禁用后，状态栏将被隐藏。需要Device Owner权限。API级别要求：API 26 (Android 8.0) 及以上。
 
 **返回：**
 - `true` - 设置成功
@@ -83,7 +83,7 @@ let success = DeviceHardware.setStatusBarDisabled(true);
 if (success) {
     console.log("状态栏已禁用");
 } else {
-    console.log("设置失败，请检查是否为Device Owner或Android版本是否为6.0及以上");
+    console.log("设置失败，请检查是否为Device Owner或Android版本是否为8.0及以上");
 }
 
 // 启用状态栏
