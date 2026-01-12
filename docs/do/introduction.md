@@ -9,6 +9,8 @@ description: DeekeScript - Device Owner模式介绍
 
 Device Owner（设备所有者）是Android系统提供的一种特殊权限模式，允许应用在设备上拥有最高级别的管理权限。当应用被设置为Device Owner后，它可以执行许多常规应用无法执行的操作，如静默安装/卸载应用、管理应用权限、控制设备硬件功能等。
 
+> **重要说明**：不仅DeekeScript应用可以设置为Device Owner，使用DeekeScript打包后的App也可以设置为Device Owner。这意味着你可以将你开发的自动化应用设置为Device Owner，从而获得完整的设备管理权限。
+
 ## 适用场景
 
 Device Owner模式主要适用于以下场景：
@@ -76,6 +78,7 @@ DeekeScript在Device Owner模式下提供了以下核心功能模块：
 | 权限管理 | ❌ 只能管理自己的权限 | ✅ 可以管理所有应用的权限 |
 | 锁屏控制 | ❌ 有限支持 | ✅ 完全控制 |
 | 截屏控制 | ❌ 不支持 | ✅ 可以禁用截屏 |
+| 禁用通知 | ❌ 不支持 | ✅ 可以禁用通知 |
 | 锁定任务模式 | ❌ 不支持 | ✅ 支持 |
 
 ## 使用前的准备

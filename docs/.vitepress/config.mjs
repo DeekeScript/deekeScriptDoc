@@ -114,6 +114,18 @@ export default defineConfig({
         ]
       },
       {
+        text: 'DO模式',
+        collapsed: false,
+        items: [
+          { text: '模式介绍', link: '/do/introduction' },
+          { text: '开启指南', link: '/do/setup' },
+          { text: 'DevicePolicy - 设备策略管理', link: '/do/devicePolicy' },
+          { text: 'DeviceApp - 应用管理', link: '/do/deviceApp' },
+          { text: 'DeviceHardware - 硬件控制', link: '/do/deviceHardware' },
+          { text: 'DeviceKiosk - Kiosk模式', link: '/do/deviceKiosk' }
+        ]
+      },
+      {
         text: 'Android权限',
         collapsed: false,
         items: [

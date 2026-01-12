@@ -5,20 +5,25 @@ description: DeekeScript - Device Owner模式开启指南
 
 # Device Owner模式 - 开启指南
 
-本文档介绍如何将DeekeScript应用设置为Device Owner（设备所有者）。
+本文档介绍如何将DeekeScript应用或使用DeekeScript打包后的App设置为Device Owner（设备所有者）。
+
+> **重要说明**：不仅DeekeScript应用可以设置为Device Owner，使用DeekeScript打包后的App也可以设置为Device Owner。设置时只需要将命令中的包名替换为你打包后的App包名即可。
 
 ## 前提条件
 
 在开始之前，请确保：
 
 1. **设备状态** - 设备必须是**未激活状态**（首次启动）或需要**恢复出厂设置**
-2. **Android版本** - Android 5.0 (API 21) 及以上版本
+2. **Android版本** - Android 8.0 (API 26) 及以上版本
 3. **ADB权限** - 你需要有设备的ADB调试权限
 4. **USB调试** - 设备需要开启USB调试模式
 
-> **重要提示**：Device Owner只能在设备未激活时设置。如果设备已经激活，必须先恢复出厂设置。
+> **重要提示**：
+> - Device Owner只能在设备未激活时设置。如果设备已经激活，必须先恢复出厂设置。
+> - **每台设备只能设置一个应用为Device Owner模式**。如果设备上已有Device Owner，必须先恢复出厂设置才能设置新的Device Owner。
+> - **必须删除所有用户账户**：设置Device Owner前，需要删除设备上的所有用户账户（包括Google账户、小米账户、华为账户等）。如果设备已登录账号，需要先退出所有账号或恢复出厂设置。
 
-## 方法一：通过ADB命令设置（推荐）
+## 通过ADB命令设置
 
 这是最常用的方法，适用于开发和测试环境。
 
@@ -27,32 +32,48 @@ description: DeekeScript - Device Owner模式开启指南
 1. **恢复出厂设置**（如果设备已激活）
    - 进入设备设置 → 系统 → 重置选项 → 恢复出厂设置
    - 或通过Recovery模式恢复出厂设置
+   - **注意**：恢复出厂设置会自动清除所有账户，这是设置Device Owner的必要步骤
 
-2. **开启开发者选项**
+2. **退出所有账户**（如果设备已激活但未恢复出厂设置）
+   - 进入设备设置 → 账户
+   - 删除所有已登录的账户（Google账户、小米账户、华为账户等）
+   - 如果设备启用了多用户模式、访客模式或应用双开，也需要关闭或删除这些功能
+   - **建议**：如果设备已激活，直接恢复出厂设置是最简单的方法
+   - **小米手机特殊说明**：小米手机可能需要先登录小米账号才能通过adb执行命令，但设置Device Owner又需要退出小米账号。如果遇到这种情况，建议：
+     - 先登录小米账号，完成adb授权等准备工作
+     - 在执行Device Owner设置命令前，退出小米账号
+     - 然后再执行adb设置Device Owner命令
+
+3. **开启开发者选项**
    - 进入设备设置 → 关于手机
    - 连续点击"版本号"7次
    - 返回设置，找到"开发者选项"
 
-3. **开启USB调试**
+4. **开启USB调试**
    - 进入开发者选项
    - 开启"USB调试"
 
-4. **连接电脑**
+5. **连接电脑**
    - 使用USB线连接设备到电脑
    - 在设备上允许USB调试授权
 
 ### 步骤2：获取应用包名和Receiver类名
 
-DeekeScript应用的Device Owner Receiver信息：
-- **包名**: `top.deeke.script`
+**DeekeScript应用的Device Owner Receiver信息：**
+- **包名**: `com.android.deeke.script`
 - **Receiver类名**: `top.deeke.script.service.AdminReceiver`
 
+> **提示**：如果你使用的是打包后的App，需要将包名替换为你打包后的App包名。Receiver类名保持不变，因为打包后的App会继承DeekeScript的Device Owner Receiver配置。
+
 ### 步骤3：执行ADB命令
+
+> **小米手机注意事项**：如果是小米手机，adb调试相关设置可能需要登录小米账号，相关设置打开后，再退出账号，最后执行下面的命令。
 
 在电脑上打开终端/命令提示符，执行以下命令：
 
 ```bash
-adb shell dpm set-device-owner top.deeke.script/.service.AdminReceiver
+adb shell dpm set-device-owner \
+com.android.deeke.script/top.deeke.script.service.AdminReceiver
 ```
 
 ### 步骤4：验证设置
@@ -60,8 +81,8 @@ adb shell dpm set-device-owner top.deeke.script/.service.AdminReceiver
 执行命令后，如果看到类似以下输出，说明设置成功：
 
 ```
-Success: Device owner set to package top.deeke.script
-Active admin set to component {top.deeke.script/top.deeke.script.service.AdminReceiver}
+Success: Device owner set to package com.android.deeke.script
+Active admin set to component {com.android.deeke.script/top.deeke.script.service.AdminReceiver}
 ```
 
 ### 步骤5：在代码中验证
@@ -74,34 +95,6 @@ if (DevicePolicy.isDeviceOwner()) {
 } else {
     console.log("❌ Device Owner设置失败，请检查设置步骤");
 }
-```
-
-## 方法二：通过设备管理器设置（不推荐）
-
-此方法在某些设备上可能不适用，仅作为备选方案。
-
-### 步骤1：准备设备
-
-1. 恢复出厂设置（如果设备已激活）
-2. 开启USB调试
-3. 安装DeekeScript应用
-
-### 步骤2：激活设备
-
-1. 启动设备，完成初始设置向导
-2. **不要**在设置向导中设置设备管理员
-
-### 步骤3：通过ADB跳过设置向导（如果仍在设置向导中）
-
-```bash
-adb shell settings put global device_provisioned 1
-adb shell settings put secure user_setup_complete 1
-```
-
-### 步骤4：设置Device Owner
-
-```bash
-adb shell dpm set-device-owner top.deeke.script/.service.AdminReceiver
 ```
 
 ## 常见问题
