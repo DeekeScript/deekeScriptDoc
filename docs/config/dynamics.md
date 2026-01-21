@@ -56,6 +56,26 @@ let obj = {
                                 "min": 0,
                                 "step": 1,
                                 "value": 100
+                            },
+                            {
+                                "type": "switch",
+                                "value": true,
+                                "name": "switch",
+                                "label": "开启后，子表单也开启",
+                                "childrenParams": [
+                                    {
+                                        "type": "text",
+                                        "label": "子表单1",
+                                        "name": "child_text1",
+                                        "value": ""
+                                    },
+                                    {
+                                        "type": "number",
+                                        "label": "子表单2",
+                                        "name": "child_number1",
+                                        "value": 0
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -68,6 +88,20 @@ let obj = {
 let str = JSON.stringify(obj);
 DeekeScriptJson.setDeekeScriptJsonGroup(str);
 ```
+
+#### 📝 params 字段说明
+
+`params` 是一个数组，包含表单配置项。每个配置项支持以下字段：
+
+- **type** {string} - 表单类型，支持：text、textArea、password、switch、select、radio、checkbox、checkboxGroup、number、numberRange、digitRange、digit、file、datePicker、timePicker、notice、divider
+- **label** {string} - 表单标签（显示文本）
+- **name** {string} - 表单字段名（用于Storage存储和获取）
+- **value** {any} - 默认值（根据类型不同，可以是string、number、boolean等）
+- **hidden** {boolean} - 是否隐藏，默认false
+- **notice** {string} - 说明信息（非必须）
+- **childrenParams** {array} - 子表单数组（仅switch类型支持）。当switch开启时，子表单才会显示。
+
+更多表单类型和字段说明，请参考[表单示例](../base/ui/form.md)文档。
 
 ### 🔧 setSettingLists(str)
 

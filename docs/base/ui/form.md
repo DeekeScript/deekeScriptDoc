@@ -83,6 +83,7 @@ Storage.getArray("select_1");//输出：[1,2,3]
 ## 📝 switch
 
 > **hidden**: 非必须，表示是否隐藏，默认false
+> **childrenParams**: 非必须，子表单数组。当switch开启时，子表单才会显示
 
 ```json
 {
@@ -95,6 +96,31 @@ Storage.getArray("select_1");//输出：[1,2,3]
 > 显示效果
 
 <img src="../../photo/form/switch.png" width="40%">
+
+### switch 带子表单示例
+
+```json
+{
+    "type": "switch",
+    "value": true,
+    "name": "switch",
+    "label": "开启后，子表单也开启",
+    "childrenParams": [
+        {
+            "type": "text",
+            "label": "子表单1",
+            "name": "child_text1",
+            "value": ""
+        },
+        {
+            "type": "number",
+            "label": "子表单2",
+            "name": "child_number1",
+            "value": 0
+        }
+    ]
+}
+```
 
 
 ## 📝 select
