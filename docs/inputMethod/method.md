@@ -138,3 +138,25 @@ KeyBoards.pressTab();//等同于 KeyBoards.pressKey("TAB")
 ```js
 KeyBoards.pressSpace();//等同于 KeyBoards.pressKey("SPACE")
 ```
+
+## showInputMethodPicker()
+智能方法：根据当前状态自动跳转到合适的页面
+- 如果已经是默认输入法，返回 true
+- 如果未启用，跳转到启用页面（用户需要先启用）
+- 如果已启用但未设为默认，弹出输入法选择界面（用户可以选择为默认）
+
+> 返回 {boolean}  返回当前输入法是否已设为默认（true表示已是默认，false表示需要用户操作）
+
+```js
+// 检查并引导用户设置输入法
+if (!KeyBoards.showInputMethodPicker()) {
+    console.log("需要用户手动设置输入法为默认");
+    // 等待用户操作
+    System.sleep(2000);
+    
+    // 再次检查
+    if (KeyBoards.canInput()) {
+        console.log("输入法已设置为默认");
+    }
+}
+```
