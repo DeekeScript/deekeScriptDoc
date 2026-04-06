@@ -171,10 +171,10 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Apk打包与云市场',
+        text: 'Apk打包与管理后台',
         collapsed: false,
         items: [
-          { text: '在线打包', link: '/apk/apk' },
+          { text: 'APP打包', link: '/apk/apk' },
           { text: '管理后台支持', link: '/backend/backend' }
         ]
       },

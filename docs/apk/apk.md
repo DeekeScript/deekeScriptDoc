@@ -1,40 +1,20 @@
 ---
-title: 在线打包
-description: DeekeScript - 在线打包
+title: APP打包
+description: DeekeScript - APP打包
 ---
 
-# 在线打包
+# APP打包
 
-> <a href="https://mp.deeke.cn" target="_blank">DeekeScript开放平台</a>提供了在线打包的功能，用户可以在线打包Android应用。
 
 ### 操作流程
 
-- 本地执行打包（压缩成zip文件）,打开项目根目录下面的package.json文件，可以看到如下配置
+将开发完的代码同步到手机端，并且在DeekeScript中可以查看到，然后执行下面的步骤
 
-  ```
-  "scripts": {
-    "build": "cpx \"src/**/*\" script",
-    "build-zip": "cpx \"src/**/*\" script && ts-node --esm ./deekeScriptZipBuild",
-    "build-obfuscator": "cpx \"src/**/*\" script && ts-node --esm ./gulpfile",
-    "build-obfuscator-zip": "cpx \"src/**/*\" script && ts-node --esm ./gulpfile && ts-node --esm ./deekeScriptZipBuild",
-    "postinstall": "ts-node --esm init"
-  },
-  ```
+1.点击 “打包” 按钮
+2.未登录则登录（未注册请先注册）
+3.开通会员（使用支付宝扫码支付或者直接支付方式进行支付）
+4.开始打包（整个过程几分钟内完成）
 
-- 执行`npm run build-zip`命令，即可打包成zip文件。(如果需要[混淆代码](../code/encryption.md)，请执行`npm run build-obfuscator-zip`命令)
+<img src="image.png" width="50%">
 
-- 执行完后，会在根目录下生成一个`deekeScript.zip`文件
-
-- 登录<a href="https://mp.deeke.cn" target="_blank">DeekeScript开放平台</a>
-
-- 购买会员服务
-
-- 创建App
-
-- 进入App包管理，创建包
-
-- 将deekeScript.zip文件上传到包中
-
-- 等待打包完成，下载App即可
-
-> 注意：包名不允许修改，deekeScript.json文件的host配置的域名也不允许修改；后续只允许修改版本号~
+`如果操作过程中有任何问题，请在开发QQ群中反馈！`

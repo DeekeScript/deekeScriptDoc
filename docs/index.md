@@ -11,10 +11,6 @@ hero:
     - theme: alt
       text: API文档
       link: /quick/quick
-    - theme: alt
-      text: 在线打包平台
-      link: https://mp.deeke.cn
-      target: _blank
 
 features:
   - icon: 🚀
@@ -28,7 +24,7 @@ features:
     details: 基于Android无障碍服务，稳定可靠，兼容性强
   - icon: ☁️
     title: 系统化支持
-    details: 提供SaaS卡密系统和管理后台，支持在线打包
+    details: 提供SaaS卡密系统和管理后台，支持本地APP打包
   - icon: 🔒
     title: 安全可靠
     details: 支持代码混淆加密，保护开发者知识产权
