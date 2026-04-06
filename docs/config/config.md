@@ -17,6 +17,7 @@ description: DeekeScript - 配置
 |     参数名    |  类型   | 必填|  示例   |    说明    |
 | ------------ | ------- | ------ | -------| ----------|
 |     name     | String  |    是   |         Deeke                    | App安装成功之后，在手机上的名称                        |
+| packageName  | String  |    是   |      cn.deeke.test               | 包名，请修改成你的包名，不要使用默认包名（包名是手机区分APP的方式）                |
 | versionCode  | String  |    是   |      100               | 版本号（软件自动升级凭证，当前版本号大于或者等于后台上传的版本号，则无法升级）                  |
 | versionName  | String  |    是   |      1.0.0               | 版本名称，尽量和版本号统一（版本号100，则配置为1.0.0）                 |
 |     icon     | String  |    是   |      logo/dke.png               | 图标建议采用200*200像素的，清晰度大的                  |
@@ -142,6 +143,7 @@ description: DeekeScript - 配置
   "name": "Deeke",
   "icon": "logo/dke.png",
   "head": "img/robot.png",
+  "packageName": "com.deeke.test",
   "versionCode": "100",
   "versionName": "1.0.0",
   "host": "https://home.deeke.top",
