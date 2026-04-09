@@ -1,0 +1,25 @@
+import{_ as s,c as n,o as e,ag as p}from"./chunks/framework.S-Qvb3wi.js";const d=JSON.parse('{"title":"扩展","description":"DeekeScript - 扩展","frontmatter":{"title":"扩展","description":"DeekeScript - 扩展"},"headers":[],"relativePath":"advance/extension/extension.md","filePath":"advance/extension/extension.md"}'),l={name:"advance/extension/extension.md"};function i(t,a,r,c,o,b){return e(),n("div",null,a[0]||(a[0]=[p(`<h1 id="扩展" tabindex="-1">扩展 <a class="header-anchor" href="#扩展" aria-label="Permalink to &quot;扩展&quot;">​</a></h1><p>DeekeScript将JavaScript运行在Android环境中，很多时候我们需要使用Java的一些类来实现一些能力，从而弥补JavaScript的一些不足。</p><h3 id="直接使用java提供的类" tabindex="-1">直接使用java提供的类 <a class="header-anchor" href="#直接使用java提供的类" aria-label="Permalink to &quot;直接使用java提供的类&quot;">​</a></h3><blockquote><p>可以参考<a href="./../thread.html">线程</a></p></blockquote><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>let javaString = new java.lang.String(&#39;Java&#39;);</span></span>
+<span class="line"><span>console.log(javaString);//输出：&quot;Java&quot;</span></span>
+<span class="line"><span>console.log(java.lang.Math.PI);//输出：&quot;3.141592653589793&quot;</span></span>
+<span class="line"><span>console.log(new java.util.Date());//输出：&quot;Tue Jan 14 10:52:55 CST 2025&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>let f = new java.io.File(&quot;test.txt&quot;);</span></span>
+<span class="line"><span>console.log(f.exists());// false</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>let Files = java.nio.file.Files;</span></span>
+<span class="line"><span>let path = java.nio.file.Paths.get(&#39;example.txt&#39;);</span></span>
+<span class="line"><span>console.log(Files.exists(path));//输出：false</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="使用javaimporter" tabindex="-1">使用JavaImporter <a class="header-anchor" href="#使用javaimporter" aria-label="Permalink to &quot;使用JavaImporter&quot;">​</a></h3><blockquote><p>下面以线程使用为例</p></blockquote><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>let obj = {</span></span>
+<span class="line"><span>  run: function () {</span></span>
+<span class="line"><span>    console.log(&#39;线程&#39;);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>//注意java.lang.Thread和java.lang.Runnable外层不需要引号</span></span>
+<span class="line"><span>let javaImporterTest = JavaImporter(java.lang.Thread, java.lang.Runnable);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>with(javaImporterTest){</span></span>
+<span class="line"><span>  new Thread(new Runnable(obj)).start();</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="使用packages导入模块" tabindex="-1">使用Packages导入模块 <a class="header-anchor" href="#使用packages导入模块" aria-label="Permalink to &quot;使用Packages导入模块&quot;">​</a></h3><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>var Files = Packages.java.nio.file.Files;</span></span>
+<span class="line"><span>var path = Packages.java.nio.file.Paths.get(&#39;example.txt&#39;);</span></span>
+<span class="line"><span>console.log(Files.exists(path));//输出：false</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div>`,10)]))}const m=s(l,[["render",i]]);export{d as __pageData,m as default};
