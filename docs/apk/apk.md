@@ -15,6 +15,6 @@ description: DeekeScript - APP打包
 3.开通会员（使用支付宝扫码支付或者直接支付方式进行支付）
 4.开始打包（整个过程几分钟内完成）
 
-<img src="/assets/image.png" width="50%">
+<img src="/assets/image-package.png" width="50%">
 
 `如果操作过程中有任何问题，请在开发QQ群中反馈！`
