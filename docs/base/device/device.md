@@ -19,6 +19,26 @@ Device对象，提供一些设备相关的方法。
 
 获取屏幕真实的高度（像素值）；手机旋转方向后，依然会返回真实的高度
 
+## pixelDensity()
+
+**返回：** `{number}`
+
+获取设备屏幕像素密度（`density`），用于 dp 与 px 的换算。
+
+常见密度值示例：
+- `1`：mdpi（约 160dpi）
+- `2`：xhdpi（约 320dpi）
+- `3`：xxhdpi（约 480dpi）
+
+```javascript
+let density = Device.pixelDensity();
+console.log("屏幕像素密度:", density);
+
+// 例：将 16dp 转换为 px（通常用于计算点击/绘制坐标）
+let px = 16 * density;
+console.log("16dp 对应像素:", px);
+```
+
 ## sdkInt()
 
 **返回：** `{number}`
