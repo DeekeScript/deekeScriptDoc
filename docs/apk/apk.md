@@ -24,7 +24,7 @@ description: DeekeScript - APP打包
 5.开始打包
 ```
 
-> 注意：打包后的文件将在你手机的根目录下面的「DCIM/DeekeScript/包名/」文件夹下，包括前面文件和说明文件等
+> 注意：打包后的文件将在你手机的根目录下面的「DCIM/DeekeScript/包名/」文件夹下，包括签名文件和说明文件等
 
 <div style="display: flex; justify-content: space-around;">
     <img src="/assets/image-package.png" width="40%">
