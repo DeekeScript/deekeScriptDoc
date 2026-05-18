@@ -1,9 +1,9 @@
 ---
-title: 节点数据 - DeekeScript
-description: DeekeScript - 节点数据获取 - DeekeScript
+title: 杂项 - DeekeScript
+description: DeekeScript - 杂项 - DeekeScript
 ---
 
-# 节点数据 - DeekeScript
+# 杂项 - DeekeScript
 
 DeekeScript 对象提供了直接获取无障碍节点原始数据的能力，适合需要自定义节点处理的场景。相比 UiSelector/UiObject，DeekeScript 可以一次性获取所有节点数据，性能更好，适合批量处理。
 
