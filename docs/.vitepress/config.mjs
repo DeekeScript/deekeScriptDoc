@@ -82,6 +82,7 @@ export default defineConfig({
         items: [
           { text: '选择器-UiSelector', link: '/base/uiSelector/uiSelector' },
           { text: '节点操作-UiObject', link: '/base/uiObject/uiObject' },
+          { text: '杂项-DeekeScript', link: '/base/deekeScript/deekeScript' },
           { text: '手势操作-Gesture', link: '/base/gesture/gesture' },
           { text: 'App', link: '/base/app/app' },
           { text: '系统函数-System', link: '/base/system/funcs' },
@@ -94,6 +95,7 @@ export default defineConfig({
           { text: '日志-Log', link: '/base/log/log' },
           { text: '本地存储-Storage', link: '/base/storage/storage' },
           { text: '媒体文件-MediaStore', link: '/base/mediaStore/mediaStore' },
+          { text: '音频播放-Audio', link: '/base/audio/audio' },
           { text: '文件系统-Files', link: '/base/files/files' },
         ]
       },

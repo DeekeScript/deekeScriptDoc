@@ -127,9 +127,16 @@ let obj = {
             "icon": "img/manual.png",
             "type": "notice",
             "file": "task.html"
+        },
+        {
+            "title": "执行自定义脚本",
+            "icon": "img/code.png",
+            "type": "execJs",
+            "jsFile": "tasks/custom_task.js"
         }
     ]
 }
+DeekeScriptJson.setSettingLists(JSON.stringify(obj));
 ```
 
 ### toJson()

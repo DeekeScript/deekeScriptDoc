@@ -119,8 +119,8 @@ description: DeekeScript - 配置
 |    title   | String  |   是  |   清理缓存   | 设置页标题名称    |
 |    icon    | String  |   是  | logo/clear.png| 底部菜单图标  |
 |     url    | String  |   否  | /dke/uploadLog | type为uploadLog的时候必须，用于接受上传日志；type为updateApp的时候必须，用于下载apk  |
-|    type    | String  |   是  |   clear   | 支持clear、uploadLog、customerService、updateApp、notice、settingService、qiwei，分别表示 清理缓存、上传日志、联系客服、更新App、自定义html页面、设置页、企业微信机器人通知表单 |
-|   jsFile   | String  |   否  |   statistics/statistics.js    | type为statistics时候必须，用于统计数据  |
+|    type    | String  |   是  |   clear   | 支持clear、uploadLog、customerService、updateApp、notice、settingService、qiwei、statistics、execJs，分别表示 清理缓存、上传日志、联系客服、更新App、自定义html页面、设置页、企业微信机器人通知表单、统计数据、执行JS文件 |
+|   jsFile   | String  |   否  |   statistics/statistics.js    | type为statistics或者execJs时候必须，用于统计数据或执行的JS脚本  |
 |description | String  |   否  |  确定清理吗？  | type为clear的时候，会弹出提示框，确认后执行清理；type为customerService可以设置为“客服微信：miniphper”  |
 |    file    | String  |   否  |  task.html  | type为notice的时候必须  |
 |   hidden   | Boolean |   否  |  false  | 默认为false  |

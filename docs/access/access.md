@@ -183,3 +183,57 @@ if (!Access.hasLocationPermission()) {
     }
 }
 ```
+
+## 蓝牙权限
+
+> 重要程度：可选
+
+> 如果需要使用蓝牙 Hid 功能（Hid.initBluetooth），需要申请蓝牙权限。蓝牙权限包括：
+> - BLUETOOTH_CONNECT（蓝牙连接）
+> - BLUETOOTH_SCAN（蓝牙扫描）
+> - Android 12（API 31）以下无需申请
+
+### 检查蓝牙权限
+
+```javascript
+// 检查是否有蓝牙连接权限
+let hasPermission = Access.hasBluetoothConnectionPermission();
+console.log('是否有蓝牙权限', hasPermission);
+```
+
+### 申请蓝牙权限
+
+```javascript
+// 检查权限是否被永久拒绝（用户选择了"不再询问"）
+if (Access.isBluetoothPermissionPermanentlyDenied()) {
+    // 权限被永久拒绝，需要引导用户去设置页面手动开启
+    Dialogs.show('提示', '需要蓝牙权限才能继续，请在设置中开启');
+    Access.openBluetoothPermissionSettings(); // 打开应用详情设置页
+    System.exit();
+} else {
+    // 正常请求权限
+    Access.requestBluetoothConnectionPermission();
+}
+```
+
+### 完整示例
+
+```javascript
+// 检查蓝牙权限
+if (!Access.hasBluetoothConnectionPermission()) {
+    console.log('没有蓝牙权限');
+    if (Access.isBluetoothPermissionPermanentlyDenied()) {
+        console.log('蓝牙权限被永久拒绝');
+        Dialogs.show('提示', '需要蓝牙权限才能继续，请在设置中开启');
+        Access.openBluetoothPermissionSettings();
+        System.exit();
+    } else {
+        Access.requestBluetoothConnectionPermission();
+        System.sleep(1000);
+    }
+} else {
+    console.log('有蓝牙权限');
+    // 初始化蓝牙 Hid
+    Hid.initBluetooth(context);
+}
+```
