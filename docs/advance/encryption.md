@@ -51,6 +51,18 @@ base64解密后的字符串
 
 
 
+## hmac_sha256(key, data)
+> key {string} 密钥
+> 
+> data {string} 待签名的数据
+> 
+> 返回 {string} HMAC-SHA256 签名结果（十六进制字符串）
+
+```javascript
+let sign = Encrypt.hmac_sha256("my-app-secret", "string to sign");
+console.log(sign); // 输出 hex 字符串
+```
+
 ## aesCbcEncode(key, iv, str)
 > key {string}
 > 

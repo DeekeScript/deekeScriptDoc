@@ -97,6 +97,7 @@ export default defineConfig({
           { text: '媒体文件-MediaStore', link: '/base/mediaStore/mediaStore' },
           { text: '音频播放-Audio', link: '/base/audio/audio' },
           { text: '文件系统-Files', link: '/base/files/files' },
+          { text: '腾讯云COS-Cos', link: '/base/cos/cos' },
         ]
       },
       {
