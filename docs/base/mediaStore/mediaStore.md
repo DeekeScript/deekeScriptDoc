@@ -73,6 +73,39 @@ images.forEach(image => {
 });
 ```
 
+### getImagesByPath(path)
+
+根据相对目录获取图片。
+
+**参数：**
+- `path {string}` 相对路径，例如 `"/storage/emulated/0/Pictures/WeiXin"`、`"Pictures/WeiXin"`、`"DCIM/Camera"`、`"Screenshots"`
+
+**返回：** `{Array}` JavaScript 数组，包含图片信息对象
+
+每个图片对象包含以下属性：
+- `id` - 图片ID
+- `name` - 图片名称
+- `size` - 图片大小（字节）
+- `date` - 添加时间（时间戳）
+- `relativePath` - 相对路径
+- `uri` - 图片URI（content://格式）
+
+```javascript
+// 获取微信保存的图片
+let weixinImages = MediaStore.getImagesByPath("Pictures/WeiXin");
+console.log('微信图片数量：', weixinImages.length);
+
+// 获取相机拍摄的照片
+let cameraImages = MediaStore.getImagesByPath("DCIM/Camera");
+console.log('相机照片数量：', cameraImages.length);
+
+// 获取截屏图片
+let screenshots = MediaStore.getImagesByPath("Screenshots");
+screenshots.forEach(img => {
+    console.log('截屏：', img.name, img.uri);
+});
+```
+
 ### saveImage(sourcePath, displayName, relativePath)
 
 保存图片到相册。
