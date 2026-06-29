@@ -5,9 +5,7 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __commonJS = (cb, mod) => function() {
-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
+var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
     key = keys[i];
@@ -18,30 +16,30 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target$1) => (target$1 = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target$1, "default", {
+var __toESM = (mod, isNodeMode, target2) => (target2 = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target2, "default", {
   value: mod,
   enumerable: true
-}) : target$1, mod));
+}) : target2, mod));
 var isBrowser = typeof navigator !== "undefined";
 var target = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : typeof global !== "undefined" ? global : {};
 var isInChromePanel = typeof target.chrome !== "undefined" && !!target.chrome.devtools;
 var isInIframe = isBrowser && target.self !== target.top;
 var isInElectron = typeof navigator !== "undefined" && navigator.userAgent?.toLowerCase().includes("electron");
 var isNuxtApp = typeof window !== "undefined" && !!window.__NUXT__;
-var require_rfdc = __commonJS({ "../../node_modules/.pnpm/rfdc@1.4.1/node_modules/rfdc/index.js"(exports, module) {
-  module.exports = rfdc$1;
+var import_rfdc = __toESM(__commonJSMin(((exports, module) => {
+  module.exports = rfdc;
   function copyBuffer(cur) {
     if (cur instanceof Buffer) return Buffer.from(cur);
     return new cur.constructor(cur.buffer.slice(), cur.byteOffset, cur.length);
   }
-  function rfdc$1(opts) {
+  function rfdc(opts) {
     opts = opts || {};
     if (opts.circles) return rfdcCircles(opts);
     const constructorHandlers = /* @__PURE__ */ new Map();
     constructorHandlers.set(Date, (o) => new Date(o));
     constructorHandlers.set(Map, (o, fn) => new Map(cloneArray(Array.from(o), fn)));
     constructorHandlers.set(Set, (o, fn) => new Set(cloneArray(Array.from(o), fn)));
-    if (opts.constructorHandlers) for (const handler$1 of opts.constructorHandlers) constructorHandlers.set(handler$1[0], handler$1[1]);
+    if (opts.constructorHandlers) for (const handler2 of opts.constructorHandlers) constructorHandlers.set(handler2[0], handler2[1]);
     let handler = null;
     return opts.proto ? cloneProto : clone;
     function cloneArray(a, fn) {
@@ -94,7 +92,7 @@ var require_rfdc = __commonJS({ "../../node_modules/.pnpm/rfdc@1.4.1/node_module
     constructorHandlers.set(Date, (o) => new Date(o));
     constructorHandlers.set(Map, (o, fn) => new Map(cloneArray(Array.from(o), fn)));
     constructorHandlers.set(Set, (o, fn) => new Set(cloneArray(Array.from(o), fn)));
-    if (opts.constructorHandlers) for (const handler$1 of opts.constructorHandlers) constructorHandlers.set(handler$1[0], handler$1[1]);
+    if (opts.constructorHandlers) for (const handler2 of opts.constructorHandlers) constructorHandlers.set(handler2[0], handler2[1]);
     let handler = null;
     return opts.proto ? cloneProto : clone;
     function cloneArray(a, fn) {
@@ -160,8 +158,7 @@ var require_rfdc = __commonJS({ "../../node_modules/.pnpm/rfdc@1.4.1/node_module
       return o2;
     }
   }
-} });
-var import_rfdc = __toESM(require_rfdc());
+}))(), 1);
 var classifyRE = /(?:^|[-_/])(\w)/g;
 function toUpper(_, c) {
   return c ? c.toUpperCase() : "";
@@ -187,14 +184,13 @@ function isUrlString(str) {
 var deepClone = (0, import_rfdc.default)({ circles: true });
 
 // node_modules/perfect-debounce/dist/index.mjs
-var DEBOUNCE_DEFAULTS = {
-  trailing: true
-};
+var DEBOUNCE_DEFAULTS = { trailing: true };
 function debounce(fn, wait = 25, options = {}) {
-  options = { ...DEBOUNCE_DEFAULTS, ...options };
-  if (!Number.isFinite(wait)) {
-    throw new TypeError("Expected `wait` to be a finite number");
-  }
+  options = {
+    ...DEBOUNCE_DEFAULTS,
+    ...options
+  };
+  if (!Number.isFinite(wait)) throw new TypeError("Expected `wait` to be a finite number");
   let leadingValue;
   let timeout;
   let resolveList = [];
@@ -212,32 +208,45 @@ function debounce(fn, wait = 25, options = {}) {
     });
     return currentPromise;
   };
-  return function(...args) {
-    if (currentPromise) {
-      if (options.trailing) {
-        trailingArgs = args;
-      }
-      return currentPromise;
-    }
+  const debounced = function(...args) {
+    if (options.trailing) trailingArgs = args;
+    if (currentPromise) return currentPromise;
     return new Promise((resolve) => {
       const shouldCallNow = !timeout && options.leading;
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         timeout = null;
         const promise = options.leading ? leadingValue : applyFn(this, args);
-        for (const _resolve of resolveList) {
-          _resolve(promise);
-        }
+        trailingArgs = null;
+        for (const _resolve of resolveList) _resolve(promise);
         resolveList = [];
       }, wait);
       if (shouldCallNow) {
         leadingValue = applyFn(this, args);
         resolve(leadingValue);
-      } else {
-        resolveList.push(resolve);
-      }
+      } else resolveList.push(resolve);
     });
   };
+  const _clearTimeout = (timer) => {
+    if (timer) {
+      clearTimeout(timer);
+      timeout = null;
+    }
+  };
+  debounced.isPending = () => !!timeout;
+  debounced.cancel = () => {
+    _clearTimeout(timeout);
+    resolveList = [];
+    trailingArgs = null;
+  };
+  debounced.flush = () => {
+    _clearTimeout(timeout);
+    if (!trailingArgs || currentPromise) return;
+    const args = trailingArgs;
+    trailingArgs = null;
+    return applyFn(this, args);
+  };
+  return debounced;
 }
 async function _applyPromised(fn, _this, args) {
   return await fn.apply(_this, args);
@@ -459,9 +468,7 @@ var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames2 = Object.getOwnPropertyNames;
 var __getProtoOf2 = Object.getPrototypeOf;
 var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-var __commonJS2 = (cb, mod) => function() {
-  return mod || (0, cb[__getOwnPropNames2(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
+var __commonJSMin2 = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
 var __copyProps2 = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames2(from), i = 0, n = keys.length, key; i < n; i++) {
     key = keys[i];
@@ -472,11 +479,12 @@ var __copyProps2 = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM2 = (mod, isNodeMode, target$1) => (target$1 = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps2(isNodeMode || !mod || !mod.__esModule ? __defProp2(target$1, "default", {
+var __toESM2 = (mod, isNodeMode, target2) => (target2 = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps2(isNodeMode || !mod || !mod.__esModule ? __defProp2(target2, "default", {
   value: mod,
   enumerable: true
-}) : target$1, mod));
+}) : target2, mod));
 function getComponentTypeName(options) {
+  if (typeof options === "function") return options.displayName || options.name || options.__VUE_DEVTOOLS_COMPONENT_GUSSED_NAME__ || "";
   const name = options.name || options._componentTag || options.__VUE_DEVTOOLS_COMPONENT_GUSSED_NAME__ || options.__name;
   if (name === "index" && options.__file?.endsWith("index.vue")) return "";
   return name;
@@ -510,14 +518,11 @@ function getInstanceName(instance) {
   return "Anonymous Component";
 }
 function getUniqueComponentId(instance) {
-  const appId = instance?.appContext?.app?.__VUE_DEVTOOLS_NEXT_APP_RECORD_ID__ ?? 0;
-  const instanceId = instance === instance?.root ? "root" : instance.uid;
-  return `${appId}:${instanceId}`;
+  return `${instance?.appContext?.app?.__VUE_DEVTOOLS_NEXT_APP_RECORD_ID__ ?? 0}:${instance === instance?.root ? "root" : instance.uid}`;
 }
 function getComponentInstance(appRecord, instanceId) {
   instanceId = instanceId || `${appRecord.id}:root`;
-  const instance = appRecord.instanceMap.get(instanceId);
-  return instance || appRecord.instanceMap.get(":root");
+  return appRecord.instanceMap.get(instanceId) || appRecord.instanceMap.get(":root");
 }
 function createRect() {
   const rect = {
@@ -694,8 +699,7 @@ function highlight(instance) {
   const bounds = getComponentBoundingRect(instance);
   if (!bounds.width && !bounds.height) return;
   const name = getInstanceName(instance);
-  const container = getContainerElement();
-  container ? update({
+  getContainerElement() ? update({
     bounds,
     name
   }) : create({
@@ -709,17 +713,15 @@ function unhighlight() {
 }
 var inspectInstance = null;
 function inspectFn(e) {
-  const target$1 = e.target;
-  if (target$1) {
-    const instance = target$1.__vueParentComponent;
+  const target2 = e.target;
+  if (target2) {
+    const instance = target2.__vueParentComponent;
     if (instance) {
       inspectInstance = instance;
-      const el = instance.vnode.el;
-      if (el) {
+      if (instance.vnode.el) {
         const bounds = getComponentBoundingRect(instance);
         const name = getInstanceName(instance);
-        const container = getContainerElement();
-        container ? update({
+        getContainerElement() ? update({
           bounds,
           name
         }) : create({
@@ -733,10 +735,7 @@ function inspectFn(e) {
 function selectComponentFn(e, cb) {
   e.preventDefault();
   e.stopPropagation();
-  if (inspectInstance) {
-    const uniqueComponentId = getUniqueComponentId(inspectInstance);
-    cb(uniqueComponentId);
-  }
+  if (inspectInstance) cb(getUniqueComponentId(inspectInstance));
 }
 var inspectComponentHighLighterSelectFn = null;
 function cancelInspectComponentHighLighter() {
@@ -787,8 +786,8 @@ function scrollToComponent(options) {
       const bounds = getComponentBoundingRect(instance);
       if (bounds.width || bounds.height) {
         const name = getInstanceName(instance);
-        const el$1 = getContainerElement();
-        el$1 ? update({
+        const el2 = getContainerElement();
+        el2 ? update({
           ...options,
           name,
           bounds
@@ -798,7 +797,7 @@ function scrollToComponent(options) {
           bounds
         });
         setTimeout(() => {
-          if (el$1) el$1.style.display = "none";
+          if (el2) el2.style.display = "none";
         }, 1500);
       }
     }, 1200);
@@ -836,13 +835,13 @@ function getComponentInspector() {
     else setup();
   });
 }
-var ReactiveFlags = (function(ReactiveFlags$1) {
-  ReactiveFlags$1["SKIP"] = "__v_skip";
-  ReactiveFlags$1["IS_REACTIVE"] = "__v_isReactive";
-  ReactiveFlags$1["IS_READONLY"] = "__v_isReadonly";
-  ReactiveFlags$1["IS_SHALLOW"] = "__v_isShallow";
-  ReactiveFlags$1["RAW"] = "__v_raw";
-  return ReactiveFlags$1;
+var ReactiveFlags = (function(ReactiveFlags2) {
+  ReactiveFlags2["SKIP"] = "__v_skip";
+  ReactiveFlags2["IS_REACTIVE"] = "__v_isReactive";
+  ReactiveFlags2["IS_READONLY"] = "__v_isReadonly";
+  ReactiveFlags2["IS_SHALLOW"] = "__v_isShallow";
+  ReactiveFlags2["RAW"] = "__v_raw";
+  return ReactiveFlags2;
 })({});
 function isReadonly(value) {
   return !!(value && value[ReactiveFlags.IS_READONLY]);
@@ -858,12 +857,12 @@ function toRaw$1(observed) {
   const raw = observed && observed[ReactiveFlags.RAW];
   return raw ? toRaw$1(raw) : observed;
 }
-var Fragment = Symbol.for("v-fgt");
 var StateEditor = class {
-  refEditor = new RefStateEditor();
+  constructor() {
+    this.refEditor = new RefStateEditor();
+  }
   set(object, path, value, cb) {
     const sections = Array.isArray(path) ? path : path.split(".");
-    const markRef = false;
     while (sections.length > 1) {
       const section = sections.shift();
       if (object instanceof Map) object = object.get(section);
@@ -905,8 +904,8 @@ var StateEditor = class {
       else if (toRaw$1(object) instanceof Set) object.delete(Array.from(object.values())[field]);
       else Reflect.deleteProperty(object, field);
       if (!state.remove) {
-        const target$1 = object[state.newKey || field];
-        if (this.refEditor.isRef(target$1)) this.refEditor.set(target$1, value);
+        const target2 = object[state.newKey || field];
+        if (this.refEditor.isRef(target2)) this.refEditor.set(target2, value);
         else if (toRaw$1(object) instanceof Map) object.set(state.newKey || field, value);
         else if (toRaw$1(object) instanceof Set) object.add(value);
         else object[state.newKey || field] = value;
@@ -925,12 +924,12 @@ var RefStateEditor = class {
       }
       const currentKeys = Object.keys(value);
       if (ref instanceof Map) {
-        const previousKeysSet$1 = new Set(ref.keys());
+        const previousKeysSet2 = new Set(ref.keys());
         currentKeys.forEach((key) => {
           ref.set(key, Reflect.get(value, key));
-          previousKeysSet$1.delete(key);
+          previousKeysSet2.delete(key);
         });
-        previousKeysSet$1.forEach((key) => ref.delete(key));
+        previousKeysSet2.forEach((key) => ref.delete(key));
         return;
       }
       const previousKeysSet = new Set(Object.keys(ref));
@@ -951,7 +950,7 @@ var RefStateEditor = class {
 var stateEditor = new StateEditor();
 var TIMELINE_LAYERS_STATE_STORAGE_ID = "__VUE_DEVTOOLS_KIT_TIMELINE_LAYERS_STATE__";
 function getTimelineLayersStateFromStorage() {
-  if (!isBrowser || typeof localStorage === "undefined" || localStorage === null) return {
+  if (typeof window === "undefined" || !isBrowser || typeof localStorage === "undefined" || localStorage === null) return {
     recordingState: false,
     mouseEventEnabled: false,
     keyboardEventEnabled: false,
@@ -959,7 +958,7 @@ function getTimelineLayersStateFromStorage() {
     performanceEventEnabled: false,
     selected: ""
   };
-  const state = localStorage.getItem(TIMELINE_LAYERS_STATE_STORAGE_ID);
+  const state = typeof localStorage.getItem !== "undefined" ? localStorage.getItem(TIMELINE_LAYERS_STATE_STORAGE_ID) : null;
   return state ? JSON.parse(state) : {
     recordingState: false,
     mouseEventEnabled: false,
@@ -970,8 +969,8 @@ function getTimelineLayersStateFromStorage() {
   };
 }
 target.__VUE_DEVTOOLS_KIT_TIMELINE_LAYERS ??= [];
-var devtoolsTimelineLayers = new Proxy(target.__VUE_DEVTOOLS_KIT_TIMELINE_LAYERS, { get(target$1, prop, receiver) {
-  return Reflect.get(target$1, prop, receiver);
+var devtoolsTimelineLayers = new Proxy(target.__VUE_DEVTOOLS_KIT_TIMELINE_LAYERS, { get(target2, prop, receiver) {
+  return Reflect.get(target2, prop, receiver);
 } });
 function addTimelineLayer(options, descriptor) {
   devtoolsState.timelineLayersState[descriptor.id] = false;
@@ -982,8 +981,8 @@ function addTimelineLayer(options, descriptor) {
   });
 }
 target.__VUE_DEVTOOLS_KIT_INSPECTOR__ ??= [];
-var devtoolsInspector = new Proxy(target.__VUE_DEVTOOLS_KIT_INSPECTOR__, { get(target$1, prop, receiver) {
-  return Reflect.get(target$1, prop, receiver);
+var devtoolsInspector = new Proxy(target.__VUE_DEVTOOLS_KIT_INSPECTOR__, { get(target2, prop, receiver) {
+  return Reflect.get(target2, prop, receiver);
 } });
 var callInspectorUpdatedHook = debounce(() => {
   devtoolsContext.hooks.callHook(DevToolsMessagingHookKeys.SEND_INSPECTOR_TO_CLIENT, getActiveInspectors());
@@ -1018,46 +1017,46 @@ function getActiveInspectors() {
 function getInspector(id, app) {
   return devtoolsInspector.find((inspector) => inspector.options.id === id && (app ? inspector.descriptor.app === app : true));
 }
-var DevToolsV6PluginAPIHookKeys = (function(DevToolsV6PluginAPIHookKeys$1) {
-  DevToolsV6PluginAPIHookKeys$1["VISIT_COMPONENT_TREE"] = "visitComponentTree";
-  DevToolsV6PluginAPIHookKeys$1["INSPECT_COMPONENT"] = "inspectComponent";
-  DevToolsV6PluginAPIHookKeys$1["EDIT_COMPONENT_STATE"] = "editComponentState";
-  DevToolsV6PluginAPIHookKeys$1["GET_INSPECTOR_TREE"] = "getInspectorTree";
-  DevToolsV6PluginAPIHookKeys$1["GET_INSPECTOR_STATE"] = "getInspectorState";
-  DevToolsV6PluginAPIHookKeys$1["EDIT_INSPECTOR_STATE"] = "editInspectorState";
-  DevToolsV6PluginAPIHookKeys$1["INSPECT_TIMELINE_EVENT"] = "inspectTimelineEvent";
-  DevToolsV6PluginAPIHookKeys$1["TIMELINE_CLEARED"] = "timelineCleared";
-  DevToolsV6PluginAPIHookKeys$1["SET_PLUGIN_SETTINGS"] = "setPluginSettings";
-  return DevToolsV6PluginAPIHookKeys$1;
+var DevToolsV6PluginAPIHookKeys = (function(DevToolsV6PluginAPIHookKeys2) {
+  DevToolsV6PluginAPIHookKeys2["VISIT_COMPONENT_TREE"] = "visitComponentTree";
+  DevToolsV6PluginAPIHookKeys2["INSPECT_COMPONENT"] = "inspectComponent";
+  DevToolsV6PluginAPIHookKeys2["EDIT_COMPONENT_STATE"] = "editComponentState";
+  DevToolsV6PluginAPIHookKeys2["GET_INSPECTOR_TREE"] = "getInspectorTree";
+  DevToolsV6PluginAPIHookKeys2["GET_INSPECTOR_STATE"] = "getInspectorState";
+  DevToolsV6PluginAPIHookKeys2["EDIT_INSPECTOR_STATE"] = "editInspectorState";
+  DevToolsV6PluginAPIHookKeys2["INSPECT_TIMELINE_EVENT"] = "inspectTimelineEvent";
+  DevToolsV6PluginAPIHookKeys2["TIMELINE_CLEARED"] = "timelineCleared";
+  DevToolsV6PluginAPIHookKeys2["SET_PLUGIN_SETTINGS"] = "setPluginSettings";
+  return DevToolsV6PluginAPIHookKeys2;
 })({});
-var DevToolsContextHookKeys = (function(DevToolsContextHookKeys$1) {
-  DevToolsContextHookKeys$1["ADD_INSPECTOR"] = "addInspector";
-  DevToolsContextHookKeys$1["SEND_INSPECTOR_TREE"] = "sendInspectorTree";
-  DevToolsContextHookKeys$1["SEND_INSPECTOR_STATE"] = "sendInspectorState";
-  DevToolsContextHookKeys$1["CUSTOM_INSPECTOR_SELECT_NODE"] = "customInspectorSelectNode";
-  DevToolsContextHookKeys$1["TIMELINE_LAYER_ADDED"] = "timelineLayerAdded";
-  DevToolsContextHookKeys$1["TIMELINE_EVENT_ADDED"] = "timelineEventAdded";
-  DevToolsContextHookKeys$1["GET_COMPONENT_INSTANCES"] = "getComponentInstances";
-  DevToolsContextHookKeys$1["GET_COMPONENT_BOUNDS"] = "getComponentBounds";
-  DevToolsContextHookKeys$1["GET_COMPONENT_NAME"] = "getComponentName";
-  DevToolsContextHookKeys$1["COMPONENT_HIGHLIGHT"] = "componentHighlight";
-  DevToolsContextHookKeys$1["COMPONENT_UNHIGHLIGHT"] = "componentUnhighlight";
-  return DevToolsContextHookKeys$1;
+var DevToolsContextHookKeys = (function(DevToolsContextHookKeys2) {
+  DevToolsContextHookKeys2["ADD_INSPECTOR"] = "addInspector";
+  DevToolsContextHookKeys2["SEND_INSPECTOR_TREE"] = "sendInspectorTree";
+  DevToolsContextHookKeys2["SEND_INSPECTOR_STATE"] = "sendInspectorState";
+  DevToolsContextHookKeys2["CUSTOM_INSPECTOR_SELECT_NODE"] = "customInspectorSelectNode";
+  DevToolsContextHookKeys2["TIMELINE_LAYER_ADDED"] = "timelineLayerAdded";
+  DevToolsContextHookKeys2["TIMELINE_EVENT_ADDED"] = "timelineEventAdded";
+  DevToolsContextHookKeys2["GET_COMPONENT_INSTANCES"] = "getComponentInstances";
+  DevToolsContextHookKeys2["GET_COMPONENT_BOUNDS"] = "getComponentBounds";
+  DevToolsContextHookKeys2["GET_COMPONENT_NAME"] = "getComponentName";
+  DevToolsContextHookKeys2["COMPONENT_HIGHLIGHT"] = "componentHighlight";
+  DevToolsContextHookKeys2["COMPONENT_UNHIGHLIGHT"] = "componentUnhighlight";
+  return DevToolsContextHookKeys2;
 })({});
-var DevToolsMessagingHookKeys = (function(DevToolsMessagingHookKeys$1) {
-  DevToolsMessagingHookKeys$1["SEND_INSPECTOR_TREE_TO_CLIENT"] = "sendInspectorTreeToClient";
-  DevToolsMessagingHookKeys$1["SEND_INSPECTOR_STATE_TO_CLIENT"] = "sendInspectorStateToClient";
-  DevToolsMessagingHookKeys$1["SEND_TIMELINE_EVENT_TO_CLIENT"] = "sendTimelineEventToClient";
-  DevToolsMessagingHookKeys$1["SEND_INSPECTOR_TO_CLIENT"] = "sendInspectorToClient";
-  DevToolsMessagingHookKeys$1["SEND_ACTIVE_APP_UNMOUNTED_TO_CLIENT"] = "sendActiveAppUpdatedToClient";
-  DevToolsMessagingHookKeys$1["DEVTOOLS_STATE_UPDATED"] = "devtoolsStateUpdated";
-  DevToolsMessagingHookKeys$1["DEVTOOLS_CONNECTED_UPDATED"] = "devtoolsConnectedUpdated";
-  DevToolsMessagingHookKeys$1["ROUTER_INFO_UPDATED"] = "routerInfoUpdated";
-  return DevToolsMessagingHookKeys$1;
+var DevToolsMessagingHookKeys = (function(DevToolsMessagingHookKeys2) {
+  DevToolsMessagingHookKeys2["SEND_INSPECTOR_TREE_TO_CLIENT"] = "sendInspectorTreeToClient";
+  DevToolsMessagingHookKeys2["SEND_INSPECTOR_STATE_TO_CLIENT"] = "sendInspectorStateToClient";
+  DevToolsMessagingHookKeys2["SEND_TIMELINE_EVENT_TO_CLIENT"] = "sendTimelineEventToClient";
+  DevToolsMessagingHookKeys2["SEND_INSPECTOR_TO_CLIENT"] = "sendInspectorToClient";
+  DevToolsMessagingHookKeys2["SEND_ACTIVE_APP_UNMOUNTED_TO_CLIENT"] = "sendActiveAppUpdatedToClient";
+  DevToolsMessagingHookKeys2["DEVTOOLS_STATE_UPDATED"] = "devtoolsStateUpdated";
+  DevToolsMessagingHookKeys2["DEVTOOLS_CONNECTED_UPDATED"] = "devtoolsConnectedUpdated";
+  DevToolsMessagingHookKeys2["ROUTER_INFO_UPDATED"] = "routerInfoUpdated";
+  return DevToolsMessagingHookKeys2;
 })({});
 function createDevToolsCtxHooks() {
-  const hooks$1 = createHooks();
-  hooks$1.hook(DevToolsContextHookKeys.ADD_INSPECTOR, ({ inspector, plugin }) => {
+  const hooks2 = createHooks();
+  hooks2.hook(DevToolsContextHookKeys.ADD_INSPECTOR, ({ inspector, plugin }) => {
     addInspector(inspector, plugin.descriptor);
   });
   const debounceSendInspectorTree = debounce(async ({ inspectorId, plugin }) => {
@@ -1070,19 +1069,19 @@ function createDevToolsCtxHooks() {
       rootNodes: []
     };
     await new Promise((resolve) => {
-      hooks$1.callHookWith(async (callbacks) => {
+      hooks2.callHookWith(async (callbacks) => {
         await Promise.all(callbacks.map((cb) => cb(_payload)));
         resolve();
       }, DevToolsV6PluginAPIHookKeys.GET_INSPECTOR_TREE);
     });
-    hooks$1.callHookWith(async (callbacks) => {
+    hooks2.callHookWith(async (callbacks) => {
       await Promise.all(callbacks.map((cb) => cb({
         inspectorId,
         rootNodes: _payload.rootNodes
       })));
     }, DevToolsMessagingHookKeys.SEND_INSPECTOR_TREE_TO_CLIENT);
   }, 120);
-  hooks$1.hook(DevToolsContextHookKeys.SEND_INSPECTOR_TREE, debounceSendInspectorTree);
+  hooks2.hook(DevToolsContextHookKeys.SEND_INSPECTOR_TREE, debounceSendInspectorTree);
   const debounceSendInspectorState = debounce(async ({ inspectorId, plugin }) => {
     if (!inspectorId || !plugin?.descriptor?.app || devtoolsState.highPerfModeEnabled) return;
     const inspector = getInspector(inspectorId, plugin.descriptor.app);
@@ -1094,12 +1093,12 @@ function createDevToolsCtxHooks() {
     };
     const ctx = { currentTab: `custom-inspector:${inspectorId}` };
     if (_payload.nodeId) await new Promise((resolve) => {
-      hooks$1.callHookWith(async (callbacks) => {
+      hooks2.callHookWith(async (callbacks) => {
         await Promise.all(callbacks.map((cb) => cb(_payload, ctx)));
         resolve();
       }, DevToolsV6PluginAPIHookKeys.GET_INSPECTOR_STATE);
     });
-    hooks$1.callHookWith(async (callbacks) => {
+    hooks2.callHookWith(async (callbacks) => {
       await Promise.all(callbacks.map((cb) => cb({
         inspectorId,
         nodeId: _payload.nodeId,
@@ -1107,50 +1106,46 @@ function createDevToolsCtxHooks() {
       })));
     }, DevToolsMessagingHookKeys.SEND_INSPECTOR_STATE_TO_CLIENT);
   }, 120);
-  hooks$1.hook(DevToolsContextHookKeys.SEND_INSPECTOR_STATE, debounceSendInspectorState);
-  hooks$1.hook(DevToolsContextHookKeys.CUSTOM_INSPECTOR_SELECT_NODE, ({ inspectorId, nodeId, plugin }) => {
+  hooks2.hook(DevToolsContextHookKeys.SEND_INSPECTOR_STATE, debounceSendInspectorState);
+  hooks2.hook(DevToolsContextHookKeys.CUSTOM_INSPECTOR_SELECT_NODE, ({ inspectorId, nodeId, plugin }) => {
     const inspector = getInspector(inspectorId, plugin.descriptor.app);
     if (!inspector) return;
     inspector.selectedNodeId = nodeId;
   });
-  hooks$1.hook(DevToolsContextHookKeys.TIMELINE_LAYER_ADDED, ({ options, plugin }) => {
+  hooks2.hook(DevToolsContextHookKeys.TIMELINE_LAYER_ADDED, ({ options, plugin }) => {
     addTimelineLayer(options, plugin.descriptor);
   });
-  hooks$1.hook(DevToolsContextHookKeys.TIMELINE_EVENT_ADDED, ({ options, plugin }) => {
-    const internalLayerIds = [
+  hooks2.hook(DevToolsContextHookKeys.TIMELINE_EVENT_ADDED, ({ options, plugin }) => {
+    if (devtoolsState.highPerfModeEnabled || !devtoolsState.timelineLayersState?.[plugin.descriptor.id] && ![
       "performance",
       "component-event",
       "keyboard",
       "mouse"
-    ];
-    if (devtoolsState.highPerfModeEnabled || !devtoolsState.timelineLayersState?.[plugin.descriptor.id] && !internalLayerIds.includes(options.layerId)) return;
-    hooks$1.callHookWith(async (callbacks) => {
+    ].includes(options.layerId)) return;
+    hooks2.callHookWith(async (callbacks) => {
       await Promise.all(callbacks.map((cb) => cb(options)));
     }, DevToolsMessagingHookKeys.SEND_TIMELINE_EVENT_TO_CLIENT);
   });
-  hooks$1.hook(DevToolsContextHookKeys.GET_COMPONENT_INSTANCES, async ({ app }) => {
+  hooks2.hook(DevToolsContextHookKeys.GET_COMPONENT_INSTANCES, async ({ app }) => {
     const appRecord = app.__VUE_DEVTOOLS_NEXT_APP_RECORD__;
     if (!appRecord) return null;
     const appId = appRecord.id.toString();
-    const instances = [...appRecord.instanceMap].filter(([key]) => key.split(":")[0] === appId).map(([, instance]) => instance);
-    return instances;
+    return [...appRecord.instanceMap].filter(([key]) => key.split(":")[0] === appId).map(([, instance]) => instance);
   });
-  hooks$1.hook(DevToolsContextHookKeys.GET_COMPONENT_BOUNDS, async ({ instance }) => {
-    const bounds = getComponentBoundingRect(instance);
-    return bounds;
+  hooks2.hook(DevToolsContextHookKeys.GET_COMPONENT_BOUNDS, async ({ instance }) => {
+    return getComponentBoundingRect(instance);
   });
-  hooks$1.hook(DevToolsContextHookKeys.GET_COMPONENT_NAME, ({ instance }) => {
-    const name = getInstanceName(instance);
-    return name;
+  hooks2.hook(DevToolsContextHookKeys.GET_COMPONENT_NAME, ({ instance }) => {
+    return getInstanceName(instance);
   });
-  hooks$1.hook(DevToolsContextHookKeys.COMPONENT_HIGHLIGHT, ({ uid }) => {
+  hooks2.hook(DevToolsContextHookKeys.COMPONENT_HIGHLIGHT, ({ uid }) => {
     const instance = activeAppRecord.value.instanceMap.get(uid);
     if (instance) highlight(instance);
   });
-  hooks$1.hook(DevToolsContextHookKeys.COMPONENT_UNHIGHLIGHT, () => {
+  hooks2.hook(DevToolsContextHookKeys.COMPONENT_UNHIGHLIGHT, () => {
     unhighlight();
   });
-  return hooks$1;
+  return hooks2;
 }
 target.__VUE_DEVTOOLS_KIT_APP_RECORDS__ ??= [];
 target.__VUE_DEVTOOLS_KIT_ACTIVE_APP_RECORD__ ??= {};
@@ -1210,20 +1205,19 @@ function setActiveAppRecordId(id) {
   updateAllStates();
 }
 var devtoolsState = new Proxy(target[STATE_KEY], {
-  get(target$1, property) {
+  get(target$3, property) {
     if (property === "appRecords") return devtoolsAppRecords;
     else if (property === "activeAppRecordId") return activeAppRecord.id;
     else if (property === "tabs") return target.__VUE_DEVTOOLS_KIT_CUSTOM_TABS__;
     else if (property === "commands") return target.__VUE_DEVTOOLS_KIT_CUSTOM_COMMANDS__;
     return target[STATE_KEY][property];
   },
-  deleteProperty(target$1, property) {
-    delete target$1[property];
+  deleteProperty(target2, property) {
+    delete target2[property];
     return true;
   },
-  set(target$1, property, value) {
-    const oldState = { ...target[STATE_KEY] };
-    target$1[property] = value;
+  set(target$4, property, value) {
+    target$4[property] = value;
     target[STATE_KEY][property] = value;
     return true;
   }
@@ -1296,8 +1290,8 @@ function openInEditor(options = {}) {
   }
 }
 target.__VUE_DEVTOOLS_KIT_PLUGIN_BUFFER__ ??= [];
-var devtoolsPluginBuffer = new Proxy(target.__VUE_DEVTOOLS_KIT_PLUGIN_BUFFER__, { get(target$1, prop, receiver) {
-  return Reflect.get(target$1, prop, receiver);
+var devtoolsPluginBuffer = new Proxy(target.__VUE_DEVTOOLS_KIT_PLUGIN_BUFFER__, { get(target2, prop, receiver) {
+  return Reflect.get(target2, prop, receiver);
 } });
 function _getSettings(settings) {
   const _settings = {};
@@ -1310,8 +1304,7 @@ function getPluginLocalKey(pluginId) {
   return `__VUE_DEVTOOLS_NEXT_PLUGIN_SETTINGS__${pluginId}__`;
 }
 function getPluginSettingsOptions(pluginId) {
-  const item = devtoolsPluginBuffer.find((item$1) => item$1[0].id === pluginId && !!item$1[0]?.settings)?.[0] ?? null;
-  return item?.settings ?? null;
+  return (devtoolsPluginBuffer.find((item) => item[0].id === pluginId && !!item[0]?.settings)?.[0] ?? null)?.settings ?? null;
 }
 function getPluginSettings(pluginId, fallbackValue) {
   const localKey = getPluginLocalKey(pluginId);
@@ -1319,16 +1312,12 @@ function getPluginSettings(pluginId, fallbackValue) {
     const localSettings = localStorage.getItem(localKey);
     if (localSettings) return JSON.parse(localSettings);
   }
-  if (pluginId) {
-    const item = devtoolsPluginBuffer.find((item$1) => item$1[0].id === pluginId)?.[0] ?? null;
-    return _getSettings(item?.settings ?? {});
-  }
+  if (pluginId) return _getSettings((devtoolsPluginBuffer.find((item) => item[0].id === pluginId)?.[0] ?? null)?.settings ?? {});
   return _getSettings(fallbackValue);
 }
 function initPluginSettings(pluginId, settings) {
   const localKey = getPluginLocalKey(pluginId);
-  const localSettings = localStorage.getItem(localKey);
-  if (!localSettings) localStorage.setItem(localKey, JSON.stringify(_getSettings(settings)));
+  if (!localStorage.getItem(localKey)) localStorage.setItem(localKey, JSON.stringify(_getSettings(settings)));
 }
 function setPluginSettings(pluginId, key, value) {
   const localKey = getPluginLocalKey(pluginId);
@@ -1349,22 +1338,22 @@ function setPluginSettings(pluginId, key, value) {
     }));
   }, DevToolsV6PluginAPIHookKeys.SET_PLUGIN_SETTINGS);
 }
-var DevToolsHooks = (function(DevToolsHooks$1) {
-  DevToolsHooks$1["APP_INIT"] = "app:init";
-  DevToolsHooks$1["APP_UNMOUNT"] = "app:unmount";
-  DevToolsHooks$1["COMPONENT_UPDATED"] = "component:updated";
-  DevToolsHooks$1["COMPONENT_ADDED"] = "component:added";
-  DevToolsHooks$1["COMPONENT_REMOVED"] = "component:removed";
-  DevToolsHooks$1["COMPONENT_EMIT"] = "component:emit";
-  DevToolsHooks$1["PERFORMANCE_START"] = "perf:start";
-  DevToolsHooks$1["PERFORMANCE_END"] = "perf:end";
-  DevToolsHooks$1["ADD_ROUTE"] = "router:add-route";
-  DevToolsHooks$1["REMOVE_ROUTE"] = "router:remove-route";
-  DevToolsHooks$1["RENDER_TRACKED"] = "render:tracked";
-  DevToolsHooks$1["RENDER_TRIGGERED"] = "render:triggered";
-  DevToolsHooks$1["APP_CONNECTED"] = "app:connected";
-  DevToolsHooks$1["SETUP_DEVTOOLS_PLUGIN"] = "devtools-plugin:setup";
-  return DevToolsHooks$1;
+var DevToolsHooks = (function(DevToolsHooks2) {
+  DevToolsHooks2["APP_INIT"] = "app:init";
+  DevToolsHooks2["APP_UNMOUNT"] = "app:unmount";
+  DevToolsHooks2["COMPONENT_UPDATED"] = "component:updated";
+  DevToolsHooks2["COMPONENT_ADDED"] = "component:added";
+  DevToolsHooks2["COMPONENT_REMOVED"] = "component:removed";
+  DevToolsHooks2["COMPONENT_EMIT"] = "component:emit";
+  DevToolsHooks2["PERFORMANCE_START"] = "perf:start";
+  DevToolsHooks2["PERFORMANCE_END"] = "perf:end";
+  DevToolsHooks2["ADD_ROUTE"] = "router:add-route";
+  DevToolsHooks2["REMOVE_ROUTE"] = "router:remove-route";
+  DevToolsHooks2["RENDER_TRACKED"] = "render:tracked";
+  DevToolsHooks2["RENDER_TRIGGERED"] = "render:triggered";
+  DevToolsHooks2["APP_CONNECTED"] = "app:connected";
+  DevToolsHooks2["SETUP_DEVTOOLS_PLUGIN"] = "devtools-plugin:setup";
+  return DevToolsHooks2;
 })({});
 var devtoolsHooks = target.__VUE_DEVTOOLS_HOOK ??= createHooks();
 var on = {
@@ -1406,8 +1395,6 @@ var hook = {
   }
 };
 var DevToolsV6PluginAPI = class {
-  plugin;
-  hooks;
   constructor({ plugin, ctx }) {
     this.hooks = ctx.hooks;
     this.plugin = plugin;
@@ -1582,7 +1569,7 @@ target[ROUTER_KEY] ??= {};
 var devtoolsRouterInfo = new Proxy(target[ROUTER_INFO_KEY], { get(target$1, property) {
   return target[ROUTER_INFO_KEY][property];
 } });
-var devtoolsRouter = new Proxy(target[ROUTER_KEY], { get(target$1, property) {
+var devtoolsRouter = new Proxy(target[ROUTER_KEY], { get(target$2, property) {
   if (property === "value") return target[ROUTER_KEY];
 } });
 function getRoutes(router) {
@@ -1617,7 +1604,7 @@ function filterCurrentRoute(route) {
   }
   return route;
 }
-function normalizeRouterInfo(appRecord, activeAppRecord$1) {
+function normalizeRouterInfo(appRecord, activeAppRecord2) {
   function init() {
     const router = appRecord.app?.config.globalProperties.$router;
     const currentRoute = filterCurrentRoute(router?.currentRoute.value);
@@ -1634,13 +1621,13 @@ function normalizeRouterInfo(appRecord, activeAppRecord$1) {
   }
   init();
   hook.on.componentUpdated(debounce(() => {
-    if (activeAppRecord$1.value?.app !== appRecord.app) return;
+    if (activeAppRecord2.value?.app !== appRecord.app) return;
     init();
     if (devtoolsState.highPerfModeEnabled) return;
     devtoolsContext.hooks.callHook(DevToolsMessagingHookKeys.ROUTER_INFO_UPDATED, { state: target[ROUTER_INFO_KEY] });
   }, 200));
 }
-function createDevToolsApi(hooks$1) {
+function createDevToolsApi(hooks2) {
   return {
     async getInspectorTree(payload) {
       const _payload = {
@@ -1649,7 +1636,7 @@ function createDevToolsApi(hooks$1) {
         rootNodes: []
       };
       await new Promise((resolve) => {
-        hooks$1.callHookWith(async (callbacks) => {
+        hooks2.callHookWith(async (callbacks) => {
           await Promise.all(callbacks.map((cb) => cb(_payload)));
           resolve();
         }, DevToolsV6PluginAPIHookKeys.GET_INSPECTOR_TREE);
@@ -1664,7 +1651,7 @@ function createDevToolsApi(hooks$1) {
       };
       const ctx = { currentTab: `custom-inspector:${payload.inspectorId}` };
       await new Promise((resolve) => {
-        hooks$1.callHookWith(async (callbacks) => {
+        hooks2.callHookWith(async (callbacks) => {
           await Promise.all(callbacks.map((cb) => cb(_payload, ctx)));
           resolve();
         }, DevToolsV6PluginAPIHookKeys.GET_INSPECTOR_STATE);
@@ -1672,21 +1659,21 @@ function createDevToolsApi(hooks$1) {
       return _payload.state;
     },
     editInspectorState(payload) {
-      const stateEditor$1 = new StateEditor();
+      const stateEditor2 = new StateEditor();
       const _payload = {
         ...payload,
         app: activeAppRecord.value.app,
         set: (obj, path = payload.path, value = payload.state.value, cb) => {
-          stateEditor$1.set(obj, path, value, cb || stateEditor$1.createDefaultSetCallback(payload.state));
+          stateEditor2.set(obj, path, value, cb || stateEditor2.createDefaultSetCallback(payload.state));
         }
       };
-      hooks$1.callHookWith((callbacks) => {
+      hooks2.callHookWith((callbacks) => {
         callbacks.forEach((cb) => cb(_payload));
       }, DevToolsV6PluginAPIHookKeys.EDIT_INSPECTOR_STATE);
     },
     sendInspectorState(inspectorId) {
       const inspector = getInspector(inspectorId);
-      hooks$1.callHook(DevToolsContextHookKeys.SEND_INSPECTOR_STATE, {
+      hooks2.callHook(DevToolsContextHookKeys.SEND_INSPECTOR_STATE, {
         inspectorId,
         plugin: {
           descriptor: inspector.descriptor,
@@ -1752,7 +1739,7 @@ target.__VUE_DEVTOOLS_KIT_CONTEXT__ ??= {
   api: createDevToolsApi(hooks)
 };
 var devtoolsContext = target.__VUE_DEVTOOLS_KIT_CONTEXT__;
-var require_speakingurl$1 = __commonJS2({ "../../node_modules/.pnpm/speakingurl@14.0.1/node_modules/speakingurl/lib/speakingurl.js"(exports, module) {
+var require_speakingurl$1 = __commonJSMin2(((exports, module) => {
   (function(root) {
     "use strict";
     var charMap = {
@@ -3033,7 +3020,7 @@ var require_speakingurl$1 = __commonJS2({ "../../node_modules/.pnpm/speakingurl@
       "(",
       ")"
     ].join("");
-    var getSlug = function getSlug$1(input, opts) {
+    var getSlug = function getSlug2(input, opts) {
       var separator = "-";
       var result = "";
       var diatricString = "";
@@ -3129,8 +3116,8 @@ var require_speakingurl$1 = __commonJS2({ "../../node_modules/.pnpm/speakingurl@
         }
         result += ch.replace(new RegExp("[^\\w\\s" + allowedChars + "_-]", "g"), separator);
       }
-      if (titleCase) result = result.replace(/(\w)(\S*)/g, function(_, i$1, r) {
-        var j = i$1.toUpperCase() + (r !== null ? r : "");
+      if (titleCase) result = result.replace(/(\w)(\S*)/g, function(_, i2, r) {
+        var j = i2.toUpperCase() + (r !== null ? r : "");
         return Object.keys(customReplacements).indexOf(j.toLowerCase()) < 0 ? j : j.toLowerCase();
       });
       result = result.replace(/\s+/g, separator).replace(new RegExp("\\" + separator + "+", "g"), separator).replace(new RegExp("(^\\" + separator + "+|\\" + separator + "+$)", "g"), "");
@@ -3142,12 +3129,12 @@ var require_speakingurl$1 = __commonJS2({ "../../node_modules/.pnpm/speakingurl@
       if (!maintainCase && !titleCase) result = result.toLowerCase();
       return result;
     };
-    var createSlug = function createSlug$1(opts) {
+    var createSlug = function createSlug2(opts) {
       return function getSlugWithConfig(input) {
         return getSlug(input, opts);
       };
     };
-    var escapeChars = function escapeChars$1(input) {
+    var escapeChars = function escapeChars2(input) {
       return input.replace(/[-\\^$*+?.()|[\]{}\/]/g, "\\$&");
     };
     var isReplacedCustomChar = function(ch, customReplacements) {
@@ -3168,11 +3155,10 @@ var require_speakingurl$1 = __commonJS2({ "../../node_modules/.pnpm/speakingurl@
     } catch (e) {
     }
   })(exports);
-} });
-var require_speakingurl = __commonJS2({ "../../node_modules/.pnpm/speakingurl@14.0.1/node_modules/speakingurl/index.js"(exports, module) {
+}));
+var import_speakingurl = __toESM2(__commonJSMin2(((exports, module) => {
   module.exports = require_speakingurl$1();
-} });
-var import_speakingurl = __toESM2(require_speakingurl(), 1);
+}))(), 1);
 var appRecordInfo = target.__VUE_DEVTOOLS_NEXT_APP_RECORD_INFO__ ??= {
   id: 0,
   appIds: /* @__PURE__ */ new Set()
@@ -3201,8 +3187,7 @@ function updateDevToolsClientDetected(params) {
     ...devtoolsState.devtoolsClientDetected,
     ...params
   };
-  const devtoolsClientVisible = Object.values(devtoolsState.devtoolsClientDetected).some(Boolean);
-  toggleHighPerfMode(!devtoolsClientVisible);
+  toggleHighPerfMode(!Object.values(devtoolsState.devtoolsClientDetected).some(Boolean));
 }
 target.__VUE_DEVTOOLS_UPDATE_CLIENT_DETECTED__ ??= updateDevToolsClientDetected;
 var DoubleIndexedKV = class {
@@ -3274,7 +3259,6 @@ function find(record, predicate) {
     const value = valuesNotNever[i];
     if (predicate(value)) return value;
   }
-  return void 0;
 }
 function forEach(record, run) {
   Object.entries(record).forEach(([key, value]) => run(value, key));
@@ -3287,7 +3271,6 @@ function findArr(record, predicate) {
     const value = record[i];
     if (predicate(value)) return value;
   }
-  return void 0;
 }
 var CustomTransformerRegistry = class {
   constructor() {
@@ -3336,14 +3319,12 @@ var parsePath = (string) => {
   let segment = "";
   for (let i = 0; i < string.length; i++) {
     let char = string.charAt(i);
-    const isEscapedDot = char === "\\" && string.charAt(i + 1) === ".";
-    if (isEscapedDot) {
+    if (char === "\\" && string.charAt(i + 1) === ".") {
       segment += ".";
       i++;
       continue;
     }
-    const isEndOfSegment = char === ".";
-    if (isEndOfSegment) {
+    if (char === ".") {
       result.push(segment);
       segment = "";
       continue;
@@ -3414,14 +3395,10 @@ function compositeTransformation(isApplicable, annotation, transform, untransfor
   };
 }
 var symbolRule = compositeTransformation((s, superJson) => {
-  if (isSymbol(s)) {
-    const isRegistered = !!superJson.symbolRegistry.getIdentifier(s);
-    return isRegistered;
-  }
+  if (isSymbol(s)) return !!superJson.symbolRegistry.getIdentifier(s);
   return false;
 }, (s, superJson) => {
-  const identifier = superJson.symbolRegistry.getIdentifier(s);
-  return ["symbol", identifier];
+  return ["symbol", superJson.symbolRegistry.getIdentifier(s)];
 }, (v) => v.description, (_, a, superJson) => {
   const value = superJson.symbolRegistry.getValue(a[1]);
   if (!value) throw new Error("Trying to deserialize unknown symbol");
@@ -3447,15 +3424,11 @@ var typedArrayRule = compositeTransformation(isTypedArray, (v) => ["typed-array"
   return new ctor(v);
 });
 function isInstanceOfRegisteredClass(potentialClass, superJson) {
-  if (potentialClass?.constructor) {
-    const isRegistered = !!superJson.classRegistry.getIdentifier(potentialClass.constructor);
-    return isRegistered;
-  }
+  if (potentialClass?.constructor) return !!superJson.classRegistry.getIdentifier(potentialClass.constructor);
   return false;
 }
 var classRule = compositeTransformation(isInstanceOfRegisteredClass, (clazz, superJson) => {
-  const identifier = superJson.classRegistry.getIdentifier(clazz.constructor);
-  return ["class", identifier];
+  return ["class", superJson.classRegistry.getIdentifier(clazz.constructor)];
 }, (clazz, superJson) => {
   const allowedProps = superJson.classRegistry.getAllowedProps(clazz.constructor);
   if (!allowedProps) return { ...clazz };
@@ -3472,11 +3445,9 @@ var classRule = compositeTransformation(isInstanceOfRegisteredClass, (clazz, sup
 var customRule = compositeTransformation((value, superJson) => {
   return !!superJson.customTransformerRegistry.findApplicable(value);
 }, (value, superJson) => {
-  const transformer = superJson.customTransformerRegistry.findApplicable(value);
-  return ["custom", transformer.name];
+  return ["custom", superJson.customTransformerRegistry.findApplicable(value).name];
 }, (value, superJson) => {
-  const transformer = superJson.customTransformerRegistry.findApplicable(value);
-  return transformer.serialize(value);
+  return superJson.customTransformerRegistry.findApplicable(value).serialize(value);
 }, (v, a, superJson) => {
   const transformer = superJson.customTransformerRegistry.findByName(a[1]);
   if (!transformer) throw new Error("Trying to deserialize unknown custom value");
@@ -3499,7 +3470,6 @@ var transformValue = (value, superJson) => {
     value: applicableSimpleRule.transform(value, superJson),
     type: applicableSimpleRule.annotation
   };
-  return void 0;
 };
 var simpleRulesByAnnotation = {};
 simpleRules.forEach((rule) => {
@@ -3573,8 +3543,7 @@ var setDeep = (object, path, mapper) => {
       const row = +key;
       parent = getNthKey(parent, row);
     } else if (isMap(parent)) {
-      const isEnd = i === path.length - 2;
-      if (isEnd) break;
+      if (i === path.length - 2) break;
       const row = +key;
       const type = +path[++i] === 0 ? "key" : "value";
       const keyOfRow = getNthKey(parent, row);
@@ -3602,33 +3571,31 @@ var setDeep = (object, path, mapper) => {
   if (isMap(parent)) {
     const row = +path[path.length - 2];
     const keyToRow = getNthKey(parent, row);
-    const type = +lastKey === 0 ? "key" : "value";
-    switch (type) {
+    switch (+lastKey === 0 ? "key" : "value") {
       case "key": {
         const newKey = mapper(keyToRow);
         parent.set(newKey, parent.get(keyToRow));
         if (newKey !== keyToRow) parent.delete(keyToRow);
         break;
       }
-      case "value": {
+      case "value":
         parent.set(keyToRow, mapper(parent.get(keyToRow)));
         break;
-      }
     }
   }
   return object;
 };
-function traverse(tree, walker$1, origin = []) {
+function traverse(tree, walker2, origin = []) {
   if (!tree) return;
   if (!isArray$2(tree)) {
-    forEach(tree, (subtree, key) => traverse(subtree, walker$1, [...origin, ...parsePath(key)]));
+    forEach(tree, (subtree, key) => traverse(subtree, walker2, [...origin, ...parsePath(key)]));
     return;
   }
   const [nodeValue, children] = tree;
   if (children) forEach(children, (child, key) => {
-    traverse(child, walker$1, [...origin, ...parsePath(key)]);
+    traverse(child, walker2, [...origin, ...parsePath(key)]);
   });
-  walker$1(nodeValue, origin);
+  walker2(nodeValue, origin);
 }
 function applyValueAnnotations(plain, annotations, superJson) {
   traverse(annotations, (type, path) => {
@@ -3680,13 +3647,13 @@ var walker = (object, identities, superJson, dedupe, path = [], objectsInThisPat
     if (seen) return dedupe ? { transformedValue: null } : seen;
   }
   if (!isDeep(object, superJson)) {
-    const transformed$1 = transformValue(object, superJson);
-    const result$1 = transformed$1 ? {
-      transformedValue: transformed$1.value,
-      annotations: [transformed$1.type]
+    const transformed2 = transformValue(object, superJson);
+    const result2 = transformed2 ? {
+      transformedValue: transformed2.value,
+      annotations: [transformed2.type]
     } : { transformedValue: object };
-    if (!primitive) seenObjects.set(object, result$1);
-    return result$1;
+    if (!primitive) seenObjects.set(object, result2);
+    return result2;
   }
   if (includes(objectsInThisPath, object)) return { transformedValue: null };
   const transformationResult = transformValue(object, superJson);
@@ -3732,7 +3699,7 @@ function isOneOf(a, b, c, d, e) {
 function isUndefined(payload) {
   return getType(payload) === "Undefined";
 }
-var isNullOrUndefined = isOneOf(isNull, isUndefined);
+isOneOf(isNull, isUndefined);
 function assignProp(carry, key, newVal, originalObject, includeNonenumerable) {
   const propType = {}.propertyIsEnumerable.call(originalObject, key) ? "enumerable" : "nonenumerable";
   if (propType === "enumerable") carry[key] = newVal;
@@ -3743,16 +3710,15 @@ function assignProp(carry, key, newVal, originalObject, includeNonenumerable) {
     configurable: true
   });
 }
-function copy(target$1, options = {}) {
-  if (isArray$1(target$1)) return target$1.map((item) => copy(item, options));
-  if (!isPlainObject$1(target$1)) return target$1;
-  const props = Object.getOwnPropertyNames(target$1);
-  const symbols = Object.getOwnPropertySymbols(target$1);
+function copy(target2, options = {}) {
+  if (isArray$1(target2)) return target2.map((item) => copy(item, options));
+  if (!isPlainObject$1(target2)) return target2;
+  const props = Object.getOwnPropertyNames(target2);
+  const symbols = Object.getOwnPropertySymbols(target2);
   return [...props, ...symbols].reduce((carry, key) => {
     if (isArray$1(options.props) && !options.props.includes(key)) return carry;
-    const val = target$1[key];
-    const newVal = copy(val, options);
-    assignProp(carry, key, newVal, target$1, options.nonenumerable);
+    const val = target2[key];
+    assignProp(carry, key, copy(val, options), target2, options.nonenumerable);
     return carry;
   }, {});
 }
@@ -3820,14 +3786,14 @@ SuperJSON.registerClass = SuperJSON.defaultInstance.registerClass.bind(SuperJSON
 SuperJSON.registerSymbol = SuperJSON.defaultInstance.registerSymbol.bind(SuperJSON.defaultInstance);
 SuperJSON.registerCustom = SuperJSON.defaultInstance.registerCustom.bind(SuperJSON.defaultInstance);
 SuperJSON.allowErrorProps = SuperJSON.defaultInstance.allowErrorProps.bind(SuperJSON.defaultInstance);
-var serialize = SuperJSON.serialize;
-var deserialize = SuperJSON.deserialize;
-var stringify$1 = SuperJSON.stringify;
-var parse$1 = SuperJSON.parse;
-var registerClass = SuperJSON.registerClass;
-var registerCustom = SuperJSON.registerCustom;
-var registerSymbol = SuperJSON.registerSymbol;
-var allowErrorProps = SuperJSON.allowErrorProps;
+SuperJSON.serialize;
+SuperJSON.deserialize;
+SuperJSON.stringify;
+SuperJSON.parse;
+SuperJSON.registerClass;
+SuperJSON.registerCustom;
+SuperJSON.registerSymbol;
+SuperJSON.allowErrorProps;
 target.__VUE_DEVTOOLS_KIT_MESSAGE_CHANNELS__ ??= [];
 target.__VUE_DEVTOOLS_KIT_RPC_CLIENT__ ??= null;
 target.__VUE_DEVTOOLS_KIT_RPC_SERVER__ ??= null;
