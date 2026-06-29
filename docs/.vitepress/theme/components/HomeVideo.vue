@@ -7,7 +7,7 @@
       <h2 class="home-section-title">入门教学视频</h2>
       <p class="home-section-subtitle">跟随视频快速上手 DeekeScript 开发</p>
     </div>
-    <div class="video-wrapper glass-card">
+    <div class="video-wrapper">
       <div class="video-container">
         <iframe
           src="//player.bilibili.com/player.html?isOutside=true&aid=115027981898564&bvid=BV11Pb7zyEHH&cid=31698521810&p=1"
@@ -27,7 +27,6 @@
 .video-wrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 6px;
 }
 .video-container {
   position: relative;
@@ -44,9 +43,5 @@
   height: 100%;
   border: 0;
   border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-  .video-wrapper { padding: 4px; }
 }
 </style>
