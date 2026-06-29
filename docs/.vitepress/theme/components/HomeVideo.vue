@@ -25,12 +25,15 @@
 
 <style scoped>
 .video-wrapper {
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  width: 100%;
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   border-radius: 12px;
