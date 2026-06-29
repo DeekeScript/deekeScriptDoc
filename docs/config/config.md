@@ -36,7 +36,7 @@ description: DeekeScript - 配置
 |     参数名    |   类型   | 必填 |  示例  |     说明       |
 | ------------ | ------- | --- | ------ | --------------|
 |   alipay     | Boolean |  是 |  true  | 支持支付宝支付   |
-
+|   showAd     | Boolean |  是 |  true  | 是否展示开屏广告   |
 
 ### 📦 groups参数
 |     参数名    |  类型   |  必填|   示例   |   说明 |
@@ -148,7 +148,8 @@ description: DeekeScript - 配置
   "versionName": "1.0.0",
   "host": "https://home.deeke.top",
   "switchSetting": {
-    "alipay": true
+    "alipay": true,
+    "showAd": true
   },
   "groups": [
     {
