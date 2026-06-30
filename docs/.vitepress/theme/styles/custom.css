@@ -44,11 +44,12 @@
   --card-border: #E8E8F0;
   --card-hover-border: rgba(0, 106, 101, 0.3);
   --card-hover-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 106, 101, 0.08);
-  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --vp-nav-bg: #fff;
   --nav-border: #E8E8F0;
   --footer-bg: #fff;
   --footer-border: #E8E8F0;
-  --sidebar-bg: rgba(255, 255, 255, 0.8);
+  --sidebar-bg: rgba(255, 255, 255, 0.95);
   --sidebar-border: #E8E8F0;
   --scrollbar-track: #F5F6F8;
   --scrollbar-thumb: #C0C0C8;
@@ -116,6 +117,7 @@ html.dark {
   --card-hover-border: rgba(0, 150, 136, 0.25);
   --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 150, 136, 0.08);
   --nav-bg: rgba(10, 10, 15, 0.75);
+  --vp-nav-bg: var(--vp-c-bg-elv);
   --nav-border: rgba(255, 255, 255, 0.06);
   --footer-bg: rgba(10, 10, 15, 0.8);
   --footer-border: rgba(255, 255, 255, 0.06);
@@ -148,8 +150,39 @@ html.dark {
 
 /* ===== BODY ===== */
 body {
-  background: var(--vp-c-bg);
+  background: #fff;
   overflow-x: hidden;
+}
+
+/* Homepage keeps the gray tone */
+.VPHome {
+  background: var(--vp-c-bg);
+}
+
+/* Doc content area — white background in light mode */
+.VPContent,
+.VPDoc,
+.vp-doc {
+  background: #fff;
+}
+
+/* Sidebar also white in light mode */
+.VPSidebar {
+  background: #fff !important;
+}
+
+html.dark .VPDoc,
+html.dark .VPContent,
+html.dark .vp-doc {
+  background: var(--vp-c-bg-elv);
+}
+
+html.dark body {
+  background: var(--vp-c-bg);
+}
+
+html.dark .VPSidebar {
+  background: var(--sidebar-bg) !important;
 }
 
 .Layout {
@@ -157,7 +190,8 @@ body {
 }
 
 /* ===== NAVBAR ===== */
-.VPNav {
+.VPNav,
+.VPNavBar {
   background: var(--nav-bg) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -165,6 +199,11 @@ body {
 }
 .VPNavBar.has-sidebar {
   border-bottom: 1px solid var(--nav-border) !important;
+  background: var(--nav-bg) !important;
+}
+
+.VPNavBar:not(.home.top) .content-body {
+  background: var(--nav-bg) !important;
 }
 
 /* ===== HERO ===== */
