@@ -195,11 +195,40 @@ html.dark .VPSidebar {
   background: var(--nav-bg) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--nav-border) !important;
 }
 .VPNavBar.has-sidebar {
-  border-bottom: 1px solid var(--nav-border) !important;
   background: var(--nav-bg) !important;
+}
+
+/* ponytail: one full-width rule via ::after; VitePress split borders don't span the full sidebar column */
+.VPNavBar {
+  position: relative;
+  border-bottom: none !important;
+}
+.VPNavBar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--nav-border);
+  pointer-events: none;
+  z-index: 10;
+}
+.VPNavBar.home.top:not(.screen-open)::after {
+  display: none;
+}
+.VPNavBarTitle.has-sidebar .title {
+  border-bottom-color: transparent !important;
+}
+.VPNavBar .divider-line {
+  background-color: transparent !important;
+}
+@media (min-width: 960px) {
+  .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
+    background-color: transparent !important;
+  }
 }
 
 .VPNavBar:not(.home.top) .content-body {
