@@ -1,8 +1,9 @@
 <script setup>
 const stats = [
-  { value: '50+', label: 'API 接口' },
-  { value: '免ROOT', label: '无障碍服务驱动' },
-  { value: '一键打包', label: 'APK 云端构建' },
+  { value: '> 98%', label: 'Android 8+ 主流手机覆盖' },
+  { value: '免ROOT', label: '无障碍服务驱动、蓝牙Hid支持' },
+   { value: 'DO模式', label: '更高权限、企业级设备管理' },
+  { value: '一键打包', label: 'APK 本地快速构建' },
   { value: 'SaaS', label: '卡密·代理商系统' }
 ]
 </script>
@@ -22,14 +23,14 @@ const stats = [
 .stats-bar {
   display: flex;
   gap: 20px;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 60px auto 0;
 }
 .stat-card {
   flex: 1;
   min-width: 180px;
   text-align: center;
-  padding: 28px 20px;
+  padding: 28px 12px;
 }
 .stat-value {
   font-size: clamp(24px, 4vw, 36px);
