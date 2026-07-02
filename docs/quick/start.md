@@ -14,7 +14,7 @@ description: DeekeScript - 快速开始
 | 特性 | 说明 | 优势 |
 |------|------|------|
 | **代码提示** | 完整的IDE智能提示 | 提升开发效率 |
-| **代码混淆** | 支持JavaScript混淆 | 保护源代码 |
+| **代码加密** | 支持JavaScript混淆 | 保护源代码 |
 | **模块化** | 支持模块化开发 | 代码复用性强 |
 | **多线程** | 支持并发处理 | 性能更优 |
 | **定时器** | 内置定时器功能 | 自动化调度 |
@@ -103,11 +103,6 @@ git clone https://github.com/DeekeScript/DeekeScript ./
 npm install
 ```
 
-```
-注意：每次更新手机端APP后，请执行下面的代码更新代码提示文件（否则会导致框架新增的方法，没有代码提示）
-
-npm run update-types
-```
 
 ### 💻 开发环境配置
 
@@ -117,17 +112,10 @@ npm run update-types
 
 2. **编写JavaScript代码** - 开始您的自动化开发之旅
 
-3. **[代码混淆](../code/encryption.md)**（可选）
-   ```bash
-   # 在项目根目录下执行如下命令（命令可以查看项目下的package.json文件）
-   npm run build
-   ```
 
-   <img src="/assets/build.png" width="100%" />
+3. **[同步项目到手机](../config/vscode.md)**，让APP启动
 
-4. **[同步项目到手机](../config/vscode.md)**，让APP启动
-
-5. **运行测试** - 手机中的APP已经出现了相应的界面，可以在手机中点击对应的功能进行运行，大概如下图：
+4. **运行测试** - 手机中的APP已经出现了相应的界面，可以在手机中点击对应的功能进行运行，大概如下图：
 
    <img src="/assets/deeke.png" width="30%" />
 

@@ -7,7 +7,7 @@ description: DeekeScript - 专业的Android自动化开发框架
 
 ## 什么是DeekeScript？
 
-**DeekeScript** 是一款专为企业级应用打造的Android自动化开发框架，基于Android无障碍服务构建，为开发者提供稳定、高效、易用的自动化解决方案。
+**DeekeScript** 是一款专为企业级应用打造的Android自动化开发框架，基于Android无障碍服务构建，为开发者提供稳定、高效、易用、安全的自动化解决方案。
 
 ### 🎯 核心价值
 
@@ -72,6 +72,7 @@ description: DeekeScript - 专业的Android自动化开发框架
 | 开发效率 | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | 商业化支持 | ⭐ | ⭐⭐⭐⭐⭐ |
 | 文档完善度 | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| 代码安全 | ⭐⭐⭐ | ⭐⭐⭐⭐ |
 <!-- | 社区活跃度 | ⭐⭐⭐ | ⭐ | -->
 
 

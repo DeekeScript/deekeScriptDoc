@@ -171,7 +171,7 @@ export default defineConfig({
         text: '代码安全',
         collapsed: false,
         items: [
-          { text: '代码混淆加密', link: '/code/encryption' }
+          { text: '代码加密', link: '/code/encryption' }
         ]
       },
       {
@@ -202,7 +202,6 @@ export default defineConfig({
         text: '其他',
         collapsed: false,
         items: [
-          { text: '更新文档', link: '/UPDATE' },
           { text: '招贤纳士', link: '/INVITE' },
           { text: '企业服务', link: '/demo/demo' }
         ]
