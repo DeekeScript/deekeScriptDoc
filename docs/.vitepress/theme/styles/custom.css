@@ -351,3 +351,9 @@ html.dark .VPSidebar {
 @media (max-width: 480px) {
   .VPHero { min-height: 60vh; }
 }
+
+/* ===== LAST UPDATED ===== */
+.last-updated {
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+}

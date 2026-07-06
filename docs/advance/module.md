@@ -9,8 +9,6 @@ description: DeekeScript - module - 模块
 
 在DeekeScript中，可以轻松通过require方法来加载JavaScript文件。下面是一个实例：
 
-> 注意：为了方便你的使用，在使用require的时候，请使用相对路径，不要使用绝对路径（如果你不使用代码混淆，则可以使用绝对路径，否则混淆后的代码由原src文件夹变更到script文件夹，导致找不到模块）
-
 ## require
 
 ```javascript
