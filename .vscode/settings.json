@@ -1,0 +1,7 @@
+{
+    "[javascript]": {
+        "editor.maxTokenizationLineLength": 2500,
+        "editor.wordBasedSuggestions": "off",
+        "javascript.suggest.enabled": false
+    }
+}
