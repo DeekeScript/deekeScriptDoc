@@ -53,7 +53,7 @@ export default defineConfig({
       { text: '快速开始', link: '/quick/start' },
       { text: 'API文档', link: '/quick/quick' },
       { text: '案例', link: '/deeke/deeke' },
-      { text: '🔥 云平台', link: '/cloud/index' },
+      { text: '🔥 多设备自动化管理平台', link: 'https://hub.deeke.cn' },
       { text: 'Deeke官网', link: 'https://deeke.cn' }
     ],
     sidebar: [
