@@ -90,17 +90,8 @@ description: DeekeScript - 快速开始
 
 ### 📥 获取项目代码
 
-#### 方式一：NPM安装（推荐）
-```bash
-# 如果执行下面的代码卡顿，注意将npm镜像设置为阿里云镜像
-npm i deeke-script-app
-```
-
-#### 方式二：Git克隆
 ```bash
 git clone https://github.com/DeekeScript/DeekeScript ./
-# 如果执行下面的代码卡顿，注意将npm镜像设置为阿里云镜像
-npm install
 ```
 
 
