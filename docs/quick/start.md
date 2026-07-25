@@ -85,7 +85,6 @@ description: DeekeScript - 快速开始
 
 | 工具 | 说明 | 安装方式 |
 |------|------|----------|
-| **Node.js** | JavaScript运行环境 | [官网下载](https://nodejs.org/) |
 | **Git** | 版本控制工具 | [官网下载](https://git-scm.com/) |
 
 ### 📥 获取项目代码
