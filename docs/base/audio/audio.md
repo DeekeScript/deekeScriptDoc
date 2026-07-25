@@ -56,6 +56,18 @@ Audio.play();
 Audio.play('https://example.com/audio/bg.mp3');
 ```
 
+## playAndRelease(source)
+
+**参数：** `source {string}` 音频资源路径
+
+**返回：** `{boolean}` 是否成功
+
+加载并播放音频，播放结束后自动释放播放器资源。适合一次性的短音频（如提示音）。
+
+```javascript
+Audio.playAndRelease('https://example.com/sfx/ding.mp3');
+```
+
 ## pause()
 
 **返回：** `{boolean}` 是否成功

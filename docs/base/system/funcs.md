@@ -296,6 +296,29 @@ System.setAccessibilityMode('fast');//快速模式
 System.setAccessibilityMode('!fast');//正常模式  注意只要mode不为fast，则切换为正常模式
 ```
 
+## getAccessibilityMode()
+
+**返回：** `{string}` 当前无障碍模式，`"fast"` 或 `"normal"`
+
+获取当前无障碍扫描模式。
+
+```javascript
+let mode = System.getAccessibilityMode();
+console.log('当前模式：' + mode);
+```
+
+## isAccessibilityQuick()
+
+**返回：** `{boolean}`
+
+判断当前无障碍服务是否处于快速模式。
+
+```javascript
+if (System.isAccessibilityQuick()) {
+    console.log('当前为快速扫描模式');
+}
+```
+
 ## setKeepScreenOn(keepOn)
 
 **参数：** `keepOn {boolean}` 是否保持屏幕常亮

@@ -48,6 +48,21 @@ Gesture.longClick(100, 200);
 Gesture.press(100, 200, 10);//每次按压10毫秒
 ```
 
+## pressQuick(x, y, duration)
+
+**参数：**
+- `x {number}` x轴坐标
+- `y {number}` y轴坐标
+- `duration {number}` 按压时间 毫秒
+
+**返回：** `{boolean}`
+
+快速按压屏幕位置一段时间。与 `press()` 区别在于此方法不阻塞当前线程，dispatch 手势后立即返回，不等待手势执行完成。
+
+```javascript
+Gesture.pressQuick(100, 200, 50);//快速按压50毫秒，不阻塞
+```
+
 ## swipe(startX, startY, endX, endY, duration)
 
 **参数：**

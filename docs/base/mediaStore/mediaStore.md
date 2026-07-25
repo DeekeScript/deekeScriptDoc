@@ -106,6 +106,36 @@ screenshots.forEach(img => {
 });
 ```
 
+### saveContentImageToGallery(contentUriString, displayName, relativePath)
+
+将 Content URI 指向的图片直接保存到相册（无需复制文件）。
+
+**参数：**
+- `contentUriString {string}` 图片的 content:// URI
+- `displayName {string}` 显示名称（可选）
+- `relativePath {string}` 相对路径（可选）
+
+**返回：** `{string|null}` 保存后的 content:// Uri 字符串，失败返回 null
+
+```javascript
+// 传入 content URI
+let uri = MediaStore.saveContentImageToGallery('content://media/external/images/12345', 'screenshot.jpg', 'Pictures/Screenshots');
+console.log('保存成功：', uri);
+```
+
+### saveContentImageToGallery(contentUriString)
+
+将 Content URI 指向的图片直接保存到相册（使用默认配置）。
+
+**参数：**
+- `contentUriString {string}` 图片的 content:// URI
+
+**返回：** `{string}` 保存后的 content:// Uri 字符串
+
+```javascript
+let uri = MediaStore.saveContentImageToGallery('content://media/external/images/12345');
+```
+
 ### saveImage(sourcePath, displayName, relativePath)
 
 保存图片到相册。
